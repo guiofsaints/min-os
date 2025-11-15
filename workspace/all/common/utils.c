@@ -202,14 +202,14 @@ void serializeTime(char *dest_str, int nTime)
         int h = nTime / 3600;
         int m = (nTime - 3600 * h) / 60;
         if (h > 0) {
-            sprintf(dest_str, "%dh %dm", h, m);
+            snprintf(dest_str, 256, "%dh %dm", h, m);
         }
         else {
-            sprintf(dest_str, "%dm %ds", m, nTime - 60 * m);
+            snprintf(dest_str, 256, "%dm %ds", m, nTime - 60 * m);
         }
     }
     else {
-        sprintf(dest_str, "%ds", nTime);
+        snprintf(dest_str, 256, "%ds", nTime);
     }
 }
 int countChar(const char *str, char ch)
@@ -375,9 +375,9 @@ void getEmuName(const char* in_name, char* out_name) { // NOTE: both char arrays
 	// printf(" out_name: %s\n", out_name); fflush(stdout);
 }
 void getEmuPath(char* emu_name, char* pak_path) {
-	sprintf(pak_path, "%s/Emus/%s/%s.pak/launch.sh", SDCARD_PATH, PLATFORM, emu_name);
+	snprintf(pak_path, 256, "%s/Emus/%s/%s.pak/launch.sh", SDCARD_PATH, PLATFORM, emu_name);
 	if (exists(pak_path)) return;
-	sprintf(pak_path, "%s/Emus/%s.pak/launch.sh", PAKS_PATH, emu_name);
+	snprintf(pak_path, 256, "%s/Emus/%s.pak/launch.sh", PAKS_PATH, emu_name);
 }
 
 void normalizeNewline(char* line) {
@@ -476,7 +476,7 @@ int getInt(char* path) {
 }
 void putInt(char* path, int value) {
 	char buffer[8];
-	sprintf(buffer, "%d", value);
+	snprintf(buffer, sizeof(buffer), "%d", value);
 	putFile(path, buffer);
 }
 

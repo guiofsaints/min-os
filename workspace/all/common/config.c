@@ -78,7 +78,7 @@ void CFG_init(FontLoad_callback_t cb, ColorSet_callback_t ccb)
     bool fontLoaded = false;
 
     char settingsPath[MAX_PATH];
-    sprintf(settingsPath, "%s/minuisettings.txt", SHARED_USERDATA_PATH);
+    snprintf(settingsPath, MAX_PATH, "%s/minuisettings.txt", SHARED_USERDATA_PATH);
     FILE *file = fopen(settingsPath, "r");
     if (file == NULL)
     {
@@ -669,152 +669,152 @@ void CFG_get(const char *key, char *value)
 {
     if (strcmp(key, "font") == 0)
     {
-        sprintf(value, "%i", CFG_getFontId());
+        snprintf(value, 256, "%i", CFG_getFontId());
     }
     else if (strcmp(key, "color1") == 0)
     {
-        sprintf(value, "\"0x%06X\"", CFG_getColor(1));
+        snprintf(value, 256, "\"0x%06X\"", CFG_getColor(1));
     }
     else if (strcmp(key, "color2") == 0)
     {
-        sprintf(value, "\"0x%06X\"", CFG_getColor(2));
+        snprintf(value, 256, "\"0x%06X\"", CFG_getColor(2));
     }
     else if (strcmp(key, "color3") == 0)
     {
-        sprintf(value, "\"0x%06X\"", CFG_getColor(3));
+        snprintf(value, 256, "\"0x%06X\"", CFG_getColor(3));
     }
     else if (strcmp(key, "color4") == 0)
     {
-        sprintf(value, "\"0x%06X\"", CFG_getColor(4));
+        snprintf(value, 256, "\"0x%06X\"", CFG_getColor(4));
     }
     else if (strcmp(key, "color5") == 0)
     {
-        sprintf(value, "\"0x%06X\"", CFG_getColor(5));
+        snprintf(value, 256, "\"0x%06X\"", CFG_getColor(5));
     }
     else if (strcmp(key, "color6") == 0)
     {
-        sprintf(value, "\"0x%06X\"", CFG_getColor(6));
+        snprintf(value, 256, "\"0x%06X\"", CFG_getColor(6));
     }
     else if (strcmp(key, "color7") == 0)
     {
-        sprintf(value, "\"0x%06X\"", CFG_getColor(7));
+        snprintf(value, 256, "\"0x%06X\"", CFG_getColor(7));
     }
     else if (strcmp(key, "radius") == 0)
     {
-        sprintf(value, "%i", CFG_getThumbnailRadius());
+        snprintf(value, 256, "%i", CFG_getThumbnailRadius());
     }
     else if (strcmp(key, "showclock") == 0)
     {
-        sprintf(value, "%i", CFG_getShowClock());
+        snprintf(value, 256, "%i", CFG_getShowClock());
     }
     else if (strcmp(key, "clock24h") == 0)
     {
-        sprintf(value, "%i", CFG_getClock24H());
+        snprintf(value, 256, "%i", CFG_getClock24H());
     }
     else if (strcmp(key, "batteryperc") == 0)
     {
-        sprintf(value, "%i", CFG_getShowBatteryPercent());
+        snprintf(value, 256, "%i", CFG_getShowBatteryPercent());
     }
     else if (strcmp(key, "menuanim") == 0)
     {
-        sprintf(value, "%i", CFG_getMenuAnimations());
+        snprintf(value, 256, "%i", CFG_getMenuAnimations());
     }
     else if (strcmp(key, "menutransitions") == 0)
     {
-        sprintf(value, "%i", CFG_getMenuTransitions());
+        snprintf(value, 256, "%i", CFG_getMenuTransitions());
     }
     else if (strcmp(key, "recents") == 0)
     {
-        sprintf(value, "%i", CFG_getShowRecents());
+        snprintf(value, 256, "%i", CFG_getShowRecents());
     }
     else if (strcmp(key, "tools") == 0)
     {
-        sprintf(value, "%i", CFG_getShowTools());
+        snprintf(value, 256, "%i", CFG_getShowTools());
     }
     else if (strcmp(key, "gameart") == 0)
     {
-        sprintf(value, "%i", CFG_getShowGameArt());
+        snprintf(value, 256, "%i", CFG_getShowGameArt());
     }
 	else if (strcmp(key, "showfoldernamesatroot") == 0)
     {
-        sprintf(value, "%i", CFG_getShowFolderNamesAtRoot());
+        snprintf(value, 256, "%i", CFG_getShowFolderNamesAtRoot());
     }
     else if (strcmp(key, "screentimeout") == 0)
     {
-        sprintf(value, "%i", CFG_getScreenTimeoutSecs());
+        snprintf(value, 256, "%i", CFG_getScreenTimeoutSecs());
     }
     else if (strcmp(key, "suspendTimeout") == 0)
     {
-        sprintf(value, "%i", CFG_getSuspendTimeoutSecs());
+        snprintf(value, 256, "%i", CFG_getSuspendTimeoutSecs());
     }
     else if (strcmp(key, "switcherscale") == 0)
     {
-        sprintf(value, "%i", CFG_getGameSwitcherScaling());
+        snprintf(value, 256, "%i", CFG_getGameSwitcherScaling());
     }
     else if (strcmp(key, "romfolderbg") == 0)
     {
-        sprintf(value, "%i", CFG_getRomsUseFolderBackground());
+        snprintf(value, 256, "%i", CFG_getRomsUseFolderBackground());
     }
     else if (strcmp(key, "saveFormat") == 0)
     {
-        sprintf(value, "%i", CFG_getSaveFormat());
+        snprintf(value, 256, "%i", CFG_getSaveFormat());
     }
     else if (strcmp(key, "stateFormat") == 0)
     {
-        sprintf(value, "%i", CFG_getStateFormat());
+        snprintf(value, 256, "%i", CFG_getStateFormat());
     }
     else if (strcmp(key, "useExtractedFileName") == 0)
     {
-        sprintf(value, "%i", CFG_getUseExtractedFileName());
+        snprintf(value, 256, "%i", CFG_getUseExtractedFileName());
     }
     else if (strcmp(key, "muteLeds") == 0)
     {
-        sprintf(value, "%i", CFG_getMuteLEDs());
+        snprintf(value, 256, "%i", CFG_getMuteLEDs());
     }
     else if (strcmp(key, "artWidth") == 0)
     {
-        sprintf(value, "%i", (int)(CFG_getGameArtWidth()) * 100);
+        snprintf(value, 256, "%i", (int)(CFG_getGameArtWidth()) * 100);
     }
     else if (strcmp(key, "wifi") == 0)
     {
-        sprintf(value, "%i", (int)(CFG_getWifi()));
+        snprintf(value, 256, "%i", (int)(CFG_getWifi()));
     }
     else if (strcmp(key, "defaultView") == 0)
     {
-        sprintf(value, "%i", (int)(CFG_getDefaultView()));
+        snprintf(value, 256, "%i", (int)(CFG_getDefaultView()));
     }
     else if (strcmp(key, "quickSwitcherUi") == 0)
     {
-        sprintf(value, "%i", (int)(CFG_getShowQuickswitcherUI()));
+        snprintf(value, 256, "%i", (int)(CFG_getShowQuickswitcherUI()));
     }
     else if (strcmp(key, "wifiDiagnostics") == 0)
     {
-        sprintf(value, "%i", (int)(CFG_getWifiDiagnostics()));
+        snprintf(value, 256, "%i", (int)(CFG_getWifiDiagnostics()));
     }
     else if (strcmp(key, "bluetooth") == 0)
     {
-        sprintf(value, "%i", (int)(CFG_getBluetooth()));
+        snprintf(value, 256, "%i", (int)(CFG_getBluetooth()));
     }
     else if (strcmp(key, "btDiagnostics") == 0)
     {
-        sprintf(value, "%i", (int)(CFG_getBluetoothDiagnostics()));
+        snprintf(value, 256, "%i", (int)(CFG_getBluetoothDiagnostics()));
     }
     else if (strcmp(key, "btMaxRate") == 0)
     {
-        sprintf(value, "%i", CFG_getBluetoothSamplingrateLimit());
+        snprintf(value, 256, "%i", CFG_getBluetoothSamplingrateLimit());
     }
 
     // meta, not a real setting
     else if (strcmp(key, "fontpath") == 0)
     {
         if (CFG_getFontId() == 1)
-            sprintf(value, "\"%s\"", RES_PATH "/font1.ttf");
+            snprintf(value, 256, "\"%s\"", RES_PATH "/font1.ttf");
         else
-            sprintf(value, "\"%s\"", RES_PATH "/font2.ttf");
+            snprintf(value, 256, "\"%s\"", RES_PATH "/font2.ttf");
     }
 
     else {
-        sprintf(value, "");
+        snprintf(value, 256, "");
     }
 }
 
@@ -822,7 +822,7 @@ void CFG_sync(void)
 {
     // write to file
     char settingsPath[MAX_PATH];
-    sprintf(settingsPath, "%s/minuisettings.txt", getenv("SHARED_USERDATA_PATH"));
+    snprintf(settingsPath, MAX_PATH, "%s/minuisettings.txt", getenv("SHARED_USERDATA_PATH"));
     FILE *file = fopen(settingsPath, "w");
     if (file == NULL)
     {
