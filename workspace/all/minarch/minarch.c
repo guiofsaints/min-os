@@ -147,9 +147,20 @@ static void Game_open(char* path) {
 	int skipzip = 0;
 	memset(&game, 0, sizeof(game));
 	
-	strcpy((char*)game.path, path);
-	strcpy((char*)game.name, strrchr(path, '/')+1);
-	strcpy((char*)game.alt_name, game.name); // default it
+	strncpy((char*)game.path, path, sizeof(game.path) - 1);
+	game.path[sizeof(game.path) - 1] = '\0';
+	
+	char* slash = strrchr(path, '/');
+	if (slash) {
+		strncpy((char*)game.name, slash + 1, sizeof(game.name) - 1);
+		game.name[sizeof(game.name) - 1] = '\0';
+	} else {
+		strncpy((char*)game.name, path, sizeof(game.name) - 1);
+		game.name[sizeof(game.name) - 1] = '\0';
+	}
+	
+	strncpy((char*)game.alt_name, game.name, sizeof(game.alt_name) - 1);
+	game.alt_name[sizeof(game.alt_name) - 1] = '\0';
 
 	// check first if the rom already is alive in tmp folder if so skip unzipping shit
 	char tmpfldr[255];
@@ -157,12 +168,18 @@ static void Game_open(char* path) {
 	char *tmppath = PLAT_findFileInDir(tmpfldr, game.name);
 	if (tmppath) {
 		printf("File exists skipping unzipping and setting game.tmp_path: %s\n", tmppath);
-		strcpy((char*)game.tmp_path, tmppath);
+		strncpy((char*)game.tmp_path, tmppath, sizeof(game.tmp_path) - 1);
+		game.tmp_path[sizeof(game.tmp_path) - 1] = '\0';
 		skipzip = 1;
 		free(tmppath);
 		// Update the game name to the extracted file name instead of the zip name
-		if (CFG_getUseExtractedFileName())
-			strcpy((char*)game.alt_name, strrchr(game.tmp_path, '/')+1);
+		if (CFG_getUseExtractedFileName()) {
+			char* slash = strrchr(game.tmp_path, '/');
+			if (slash) {
+				strncpy((char*)game.alt_name, slash + 1, sizeof(game.alt_name) - 1);
+				game.alt_name[sizeof(game.alt_name) - 1] = '\0';
+			}
+		}
 	} else {
 		printf("File does not exist in %s\n",tmpfldr);
 	}
