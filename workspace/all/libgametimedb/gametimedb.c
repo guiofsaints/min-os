@@ -209,10 +209,18 @@ void __ensure_rel_path(char *rel_path, const char *rom_path)
 {
     if (!pathRelativeTo(rel_path, ROMS_PATH, rom_path)) {
         if (strstr(rom_path, "../../Roms/") != NULL) {
-            strcpy(rel_path, splitString(strdup((const char *)rom_path), "../../Roms/"));
+            char *result = splitString(strdup((const char *)rom_path), "../../Roms/");
+            if (result) {
+                strncpy(rel_path, result, MAX_PATH - 1);
+                rel_path[MAX_PATH - 1] = '\0';
+            }
         }
         else {
-            strcpy(rel_path, replaceString2(strdup((const char *)rom_path), ROMS_PATH "/", ""));
+            char *result = replaceString2(strdup((const char *)rom_path), ROMS_PATH "/", "");
+            if (result) {
+                strncpy(rel_path, result, MAX_PATH - 1);
+                rel_path[MAX_PATH - 1] = '\0';
+            }
         }
     }
 }

@@ -753,14 +753,18 @@ FALLBACK_IMPLEMENTATION void PLAT_setEffectColor(int next_color) {}
 int GFX_truncateText(TTF_Font *font, const char *in_name, char *out_name, int max_width, int padding)
 {
 	int text_width;
-	strcpy(out_name, in_name);
+	strncpy(out_name, in_name, MAX_PATH - 1);
+	out_name[MAX_PATH - 1] = '\0';
 	TTF_SizeUTF8(font, out_name, &text_width, NULL);
 	text_width += padding;
 
 	while (text_width > max_width)
 	{
 		int len = strlen(out_name);
-		strcpy(&out_name[len - 4], "...\0");
+		if (len >= 4) {
+			strncpy(&out_name[len - 4], "...", 4);
+			out_name[len - 1] = '\0';
+		}
 		TTF_SizeUTF8(font, out_name, &text_width, NULL);
 		text_width += padding;
 	}
@@ -770,7 +774,8 @@ int GFX_truncateText(TTF_Font *font, const char *in_name, char *out_name, int ma
 int GFX_getTextHeight(TTF_Font *font, const char *in_name, char *out_name, int max_width, int padding)
 {
 	int text_height;
-	strcpy(out_name, in_name);
+	strncpy(out_name, in_name, MAX_PATH - 1);
+	out_name[MAX_PATH - 1] = '\0';
 	TTF_SizeUTF8(font, out_name, NULL, &text_height);
 	text_height += padding;
 
@@ -779,7 +784,8 @@ int GFX_getTextHeight(TTF_Font *font, const char *in_name, char *out_name, int m
 int GFX_getTextWidth(TTF_Font *font, const char *in_name, char *out_name, int max_width, int padding)
 {
 	int text_width;
-	strcpy(out_name, in_name);
+	strncpy(out_name, in_name, MAX_PATH - 1);
+	out_name[MAX_PATH - 1] = '\0';
 	TTF_SizeUTF8(font, out_name, &text_width, NULL);
 	text_width += padding;
 
@@ -800,7 +806,8 @@ int GFX_wrapText(TTF_Font *font, char *str, int max_width, int max_lines)
 	if (line_width <= max_width)
 	{
 		line_width = GFX_truncateText(font, line, buffer, max_width, 0);
-		strcpy(line, buffer);
+		strncpy(line, buffer, MAX_PATH - 1);
+		line[MAX_PATH - 1] = '\0';
 		return line_width;
 	}
 
@@ -851,7 +858,8 @@ int GFX_wrapText(TTF_Font *font, char *str, int max_width, int max_lines)
 	}
 
 	line_width = GFX_truncateText(font, line, buffer, max_width, 0);
-	strcpy(line, buffer);
+	strncpy(line, buffer, MAX_PATH - 1);
+	line[MAX_PATH - 1] = '\0';
 
 	if (line_width > max_line_width)
 		max_line_width = line_width;
@@ -1720,7 +1728,8 @@ void GFX_blitMessage(TTF_Font *font, char *msg, SDL_Surface *dst, SDL_Rect *dst_
 		else
 		{
 			len = strlen(rows[i]);
-			strcpy(line, rows[i]);
+			strncpy(line, rows[i], sizeof(line) - 1);
+			line[sizeof(line) - 1] = '\0';
 		}
 
 		if (len)
@@ -2038,7 +2047,8 @@ void GFX_sizeText(TTF_Font *font, const char *str, int leading, int *w, int *h)
 		else
 		{
 			len = strlen(lines[i]);
-			strcpy(line, lines[i]);
+			strncpy(line, lines[i], sizeof(line) - 1);
+			line[sizeof(line) - 1] = '\0';
 		}
 
 		if (len)
@@ -2085,7 +2095,8 @@ void GFX_blitText(TTF_Font *font, const char *str, int leading, SDL_Color color,
 		else
 		{
 			len = strlen(lines[i]);
-			strcpy(line, lines[i]);
+			strncpy(line, lines[i], sizeof(line) - 1);
+			line[sizeof(line) - 1] = '\0';
 		}
 
 		if (len)
