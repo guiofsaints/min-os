@@ -1752,7 +1752,7 @@ void GFX_blitBatteryAtPosition(SDL_Surface *dst, int x, int y)
 		if (CFG_getShowBatteryPercent())
 		{
 			char percentage[16];
-			sprintf(percentage, "%i", pwr.charge);
+			snprintf(percentage, sizeof(percentage), "%i", pwr.charge);
 			SDL_Surface *text = TTF_RenderUTF8_Blended(font.micro, percentage, uintToColour(THEME_COLOR6_255));
 			SDL_Rect target = {
 				x + (battery_rect.w - text->w) / 2 + 1,
@@ -3898,7 +3898,7 @@ int PWR_getBattery(void)
 FALLBACK_IMPLEMENTATION int PLAT_setDateTime(int y, int m, int d, int h, int i, int s)
 {
 	char cmd[512];
-	sprintf(cmd, "date -s '%d-%d-%d %d:%d:%d'; hwclock --utc -w", y, m, d, h, i, s);
+	snprintf(cmd, sizeof(cmd), "date -s '%d-%d-%d %d:%d:%d'; hwclock --utc -w", y, m, d, h, i, s);
 	system(cmd);
 	return 0; // why does this return an int?
 }

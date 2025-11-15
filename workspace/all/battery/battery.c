@@ -133,7 +133,7 @@ void secondsToHoursMinutes(int seconds, char *output)
 {
     int hours = seconds / 3600;
     int minutes = (seconds % 3600) / 60;
-    sprintf(output, "%dh%02d", hours, minutes);
+    snprintf(output, 32, "%dh%02d", hours, minutes);
 }
 
 void drawLine(int x1, int y1, int x2, int y2, Uint32 color)
@@ -222,30 +222,30 @@ void switch_zoom_profile(int segment_duration)
     {
     case GRAPH_SEGMENT_LOW:
         // A segment is 120 minutes
-        sprintf(label[0], "%s", "4h");
-        sprintf(label[1], "%s", "8h");
-        sprintf(label[2], "%s", "12h");
-        sprintf(label[3], "%s", "16h");
+        snprintf(label[0], 32, "%s", "4h");
+        snprintf(label[1], 32, "%s", "8h");
+        snprintf(label[2], 32, "%s", "12h");
+        snprintf(label[3], 32, "%s", "16h");
         break;
     case GRAPH_SEGMENT_MED:
         // A segment is 60 minutes
-        sprintf(label[0], "%s", "2h");
-        sprintf(label[1], "%s", "4h");
-        sprintf(label[2], "%s", "6h");
-        sprintf(label[3], "%s", "8h");
+        snprintf(label[0], 32, "%s", "2h");
+        snprintf(label[1], 32, "%s", "4h");
+        snprintf(label[2], 32, "%s", "6h");
+        snprintf(label[3], 32, "%s", "8h");
         break;
     case GRAPH_SEGMENT_HIGH:
         // A segment is 30 minutes
-        sprintf(label[0], "%s", "1h");
-        sprintf(label[1], "%s", "2h");
-        sprintf(label[2], "%s", "3h");
-        sprintf(label[3], "%s", "4h");
+        snprintf(label[0], 32, "%s", "1h");
+        snprintf(label[1], 32, "%s", "2h");
+        snprintf(label[2], 32, "%s", "3h");
+        snprintf(label[3], 32, "%s", "4h");
         break;
     default:
-        sprintf(label[0], "%s", "");
-        sprintf(label[1], "%s", "");
-        sprintf(label[2], "%s", "");
-        sprintf(label[3], "%s", "");
+        snprintf(label[0], 32, "%s", "");
+        snprintf(label[1], 32, "%s", "");
+        snprintf(label[2], 32, "%s", "");
+        snprintf(label[3], 32, "%s", "");
         break;
     }
 }
@@ -300,7 +300,7 @@ void compute_graph(void)
 
                 if (total_duration == 0)
                 {
-                    sprintf(current_percentage, "%d%%", bat_perc);
+                    snprintf(current_percentage, sizeof(current_percentage), "%d%%", bat_perc);
                 }
 
                 current_index = (graph.layout.graph_max_size - 1) - duration_to_pixel(total_duration);
@@ -465,16 +465,16 @@ void renderPage()
     drawBatteryIcon(0, (SDL_Rect){graph.layout.icon_x, graph.layout.icon4_y});
 
     char text_line[255];
-    sprintf(text_line, "Since Charge: %s", session_duration);
+    snprintf(text_line, sizeof(text_line), "Since Charge: %s", session_duration);
     renderText(text_line, font.medium, COLOR_WHITE, &(SDL_Rect){graph.layout.label_session_x, graph.layout.label_session_y, graph.layout.label_size_x, graph.layout.label_size_y});
 
-    sprintf(text_line, "Current: %s", current_percentage);
+    snprintf(text_line, sizeof(text_line), "Current: %s", current_percentage);
     renderText(text_line, font.medium, COLOR_WHITE, &(SDL_Rect){graph.layout.label_current_x, graph.layout.label_current_y, graph.layout.label_size_x, graph.layout.label_size_y});
 
-    sprintf(text_line, "Remaining: %s", session_left);
+    snprintf(text_line, sizeof(text_line), "Remaining: %s", session_left);
     renderTextAlignRight(text_line, font.medium, COLOR_WHITE, &(SDL_Rect){graph.layout.label_left_x, graph.layout.label_left_y, graph.layout.label_size_x, graph.layout.label_size_y});
 
-    sprintf(text_line, "Longest: %s", session_best);
+    snprintf(text_line, sizeof(text_line), "Longest: %s", session_best);
     renderTextAlignRight(text_line, font.medium, COLOR_WHITE, &(SDL_Rect){graph.layout.label_best_x, graph.layout.label_best_y, graph.layout.label_size_x, graph.layout.label_size_y});
 
     int half_line_width = (int)(GRAPH_LINE_WIDTH) / 2;
@@ -733,16 +733,16 @@ int main(int argc, char *argv[])
                 switch (current_zoom)
                 {
                 case 0:
-                    sprintf(display_name, "Battery usage: Last %s", "16 hours");
+                    snprintf(display_name, sizeof(display_name), "Battery usage: Last %s", "16 hours");
                     break;
                 case 1:
-                    sprintf(display_name, "Battery usage: Last %s", "8 hours");
+                    snprintf(display_name, sizeof(display_name), "Battery usage: Last %s", "8 hours");
                     break;
                 case 2:
-                    sprintf(display_name, "Battery usage: Last %s", "4 hours");
+                    snprintf(display_name, sizeof(display_name), "Battery usage: Last %s", "4 hours");
                     break;
                 default:
-                    sprintf(display_name, "Battery usage: Last %s", "8 hours");
+                    snprintf(display_name, sizeof(display_name), "Battery usage: Last %s", "8 hours");
                     break;
                 }
 
