@@ -1549,10 +1549,12 @@ void GFX_blitAssetColor(int asset, SDL_Rect *src_rect, SDL_Surface *dst, SDL_Rec
 }
 void GFX_blitAsset(int asset, SDL_Rect *src_rect, SDL_Surface *dst, SDL_Rect *dst_rect)
 {
+	if (!dst || !dst_rect) return;
 	GFX_blitAssetColor(asset, src_rect, dst, dst_rect, RGB_WHITE);
 }
 void GFX_blitPillColor(int asset, SDL_Surface *dst, SDL_Rect *dst_rect, uint32_t asset_color, uint32_t fill_color)
 {
+	if (!dst || !dst_rect) return;
 	int x = dst_rect->x;
 	int y = dst_rect->y;
 	int w = dst_rect->w;
@@ -1578,23 +1580,28 @@ void GFX_blitPillColor(int asset, SDL_Surface *dst, SDL_Rect *dst_rect, uint32_t
 }
 void GFX_blitPill(int asset, SDL_Surface *dst, SDL_Rect *dst_rect)
 {
+	if (!dst || !dst_rect) return;
 	GFX_blitPillColor(asset, dst, dst_rect, asset_rgbs[asset], RGB_WHITE);
 }
 void GFX_blitPillLight(int asset, SDL_Surface *dst, SDL_Rect *dst_rect)
 {
+	if (!dst || !dst_rect) return;
 	GFX_blitPillColor(asset, dst, dst_rect, THEME_COLOR2, RGB_WHITE);
 }
 void GFX_blitPillDark(int asset, SDL_Surface *dst, SDL_Rect *dst_rect)
 {
+	if (!dst || !dst_rect) return;
 	GFX_blitPillColor(asset, dst, dst_rect, THEME_COLOR1, RGB_WHITE);
 }
 void GFX_blitRect(int asset, SDL_Surface *dst, SDL_Rect *dst_rect)
 {
+	if (!dst || !dst_rect) return;
 	int c = asset_rgbs[asset];
 	GFX_blitRectColor(asset, dst, dst_rect, c);
 }
 void GFX_blitRectColor(int asset, SDL_Surface *dst, SDL_Rect *dst_rect, uint32_t asset_color)
 {
+	if (!dst || !dst_rect) return;
 	int x = dst_rect->x;
 	int y = dst_rect->y;
 	int w = dst_rect->w;
@@ -1632,6 +1639,7 @@ void GFX_blitBattery(SDL_Surface *dst, SDL_Rect *dst_rect)
 
 int GFX_getButtonWidth(const char *hint, const char *button)
 {
+	if (!hint || !button) return 0;
 	int button_width = 0;
 	int width;
 
@@ -1655,6 +1663,7 @@ int GFX_getButtonWidth(const char *hint, const char *button)
 }
 void GFX_blitButton(const char *hint, const char *button, SDL_Surface *dst, SDL_Rect *dst_rect)
 {
+	if (!hint || !button || !dst || !dst_rect) return;
 	SDL_Surface *text;
 	int ox = 0;
 
@@ -1694,6 +1703,7 @@ void GFX_blitButton(const char *hint, const char *button, SDL_Surface *dst, SDL_
 }
 void GFX_blitMessage(TTF_Font *font, const char *msg, SDL_Surface *dst, SDL_Rect *dst_rect)
 {
+	if (!font || !msg || !dst) return;
 	if (!dst_rect)
 		dst_rect = &(SDL_Rect){0, 0, dst->w, dst->h};
 
@@ -1750,6 +1760,7 @@ void GFX_blitMessage(TTF_Font *font, const char *msg, SDL_Surface *dst, SDL_Rect
 
 void GFX_blitBatteryAtPosition(SDL_Surface *dst, int x, int y)
 {
+	if (!dst) return;
 	SDL_Rect battery_rect = asset_rects[ASSET_BATTERY];
 
 	if (pwr.is_charging)
