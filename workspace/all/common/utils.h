@@ -5,14 +5,14 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-int prefixMatch(char* pre, const char* str);
-int suffixMatch(char* suf,const char* str);
+int prefixMatch(const char* pre, const char* str);
+int suffixMatch(const char* suf, const char* str);
 int exactMatch(const char* str1, const char* str2);
-int containsString(char* haystack, char* needle);
-int hide(char* file_name);
+int containsString(const char* haystack, const char* needle);
+int hide(const char* file_name);
 
 char *splitString(char *str, const char *delim);
-char *replaceString2(const char *orig, char *rep, char *with);
+char *replaceString2(const char *orig, const char *rep, const char *with);
 void truncateString(char *string, size_t max_len);
 void wrapString(char *string, size_t max_len, size_t max_lines);
 size_t trimString(char *out, size_t len, const char *str, bool first);
@@ -27,20 +27,20 @@ bool pathRelativeTo(char *path_out, const char *dir_from, const char *file_to);
 
 void getDisplayName(const char* in_name, char* out_name);
 void getEmuName(const char* in_name, char* out_name);
-void getEmuPath(char* emu_name, char* pak_path);
+void getEmuPath(const char* emu_name, char* pak_path);
 
 void normalizeNewline(char* line);
 void trimTrailingNewlines(char* line);
 void trimSortingMeta(char** str);
 
-int exists(char* path);
-void touch(char* path);
-int toggle(char *path); // creates or removes file
-void putFile(char *path, char *contents);
-char* allocFile(char* path); // caller must free
-void getFile(char* path, char* buffer, size_t buffer_size);
-void putInt(char* path, int value);
-int getInt(char* path);
+int exists(const char* path);
+void touch(const char* path);
+int toggle(const char *path); // creates or removes file
+void putFile(const char *path, const char *contents);
+char* allocFile(const char* path); // caller must free
+void getFile(const char* path, char* buffer, size_t buffer_size);
+void putInt(const char* path, int value);
+int getInt(const char* path);
 
 uint64_t getMicroseconds(void);
 

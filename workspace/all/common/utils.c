@@ -12,10 +12,10 @@
 
 ///////////////////////////////////////
 
-int prefixMatch(char* pre, const char* str) {
+int prefixMatch(const char* pre, const char* str) {
 	return (strncasecmp(pre,str,strlen(pre))==0);
 }
-int suffixMatch(char* suf, const char* str) {
+int suffixMatch(const char* suf, const char* str) {
 	int len = strlen(suf);
 	int offset = strlen(str)-len;
 	return (offset>=0 && strncasecmp(suf, str+offset, len)==0);
@@ -26,10 +26,10 @@ int exactMatch(const char* str1, const char* str2) {
 	if (len1!=strlen(str2)) return 0;
 	return (strncmp(str1,str2,len1)==0);
 }
-int containsString(char* haystack, char* needle) {
+int containsString(const char* haystack, const char* needle) {
 	return strcasestr(haystack, needle) != NULL;
 }
-int hide(char* file_name) {
+int hide(const char* file_name) {
 	return file_name[0]=='.' || suffixMatch(".disabled", file_name) || exactMatch("map.txt", file_name);
 }
 char *splitString(char *str, const char *delim)
@@ -68,7 +68,7 @@ void wrapString(char *string, size_t max_len, size_t max_lines) {
 }
 // TODO: verify this yields the same result as the one in minui.c, remove one
 // This one does not modify the input, cause we arent savages
-char *replaceString2(const char *orig, char *rep, char *with)
+char *replaceString2(const char *orig, const char *rep, const char *with)
 {
     const char *ins;     // the next insert point
     char *tmp;     // varies
@@ -393,7 +393,7 @@ void getEmuName(const char* in_name, char* out_name) { // NOTE: both char arrays
 	
 	// printf(" out_name: %s\n", out_name); fflush(stdout);
 }
-void getEmuPath(char* emu_name, char* pak_path) {
+void getEmuPath(const char* emu_name, char* pak_path) {
 	snprintf(pak_path, 256, "%s/Emus/%s/%s.pak/launch.sh", SDCARD_PATH, PLATFORM, emu_name);
 	if (exists(pak_path)) return;
 	snprintf(pak_path, 256, "%s/Emus/%s.pak/launch.sh", PAKS_PATH, emu_name);
@@ -431,13 +431,13 @@ void trimSortingMeta(char** str) { // eg. `001) `
 
 ///////////////////////////////////////
 
-int exists(char* path) {
+int exists(const char* path) {
 	return access(path, F_OK)==0;
 }
-void touch(char* path) {
+void touch(const char* path) {
 	close(open(path, O_RDWR|O_CREAT, 0777));
 }
-int toggle(char *path) {
+int toggle(const char *path) {
     if (access(path, F_OK) == 0) {
         unlink(path);
         return 0;
@@ -446,14 +446,14 @@ int toggle(char *path) {
         return 1;
     }
 }
-void putFile(char* path, char* contents) {
+void putFile(const char* path, const char* contents) {
 	FILE* file = fopen(path, "w");
 	if (file) {
 		fputs(contents, file);
 		fclose(file);
 	}
 }
-void getFile(char* path, char* buffer, size_t buffer_size) {
+void getFile(const char* path, char* buffer, size_t buffer_size) {
 	FILE *file = fopen(path, "r");
 	if (file) {
 		fseek(file, 0L, SEEK_END);
@@ -465,7 +465,7 @@ void getFile(char* path, char* buffer, size_t buffer_size) {
 		buffer[size] = '\0';
 	}
 }
-char* allocFile(char* path) { // caller must free!
+char* allocFile(const char* path) { // caller must free!
 	char* contents = NULL;
 	FILE *file = fopen(path, "r");
 	if (file) {
@@ -479,7 +479,7 @@ char* allocFile(char* path) { // caller must free!
 	}
 	return contents;
 }
-int getInt(char* path) {
+int getInt(const char* path) {
 	int i = 0;
     if(path == NULL)
         return i;
@@ -493,7 +493,7 @@ int getInt(char* path) {
 	}
 	return i;
 }
-void putInt(char* path, int value) {
+void putInt(const char* path, int value) {
 	char buffer[8];
 	snprintf(buffer, sizeof(buffer), "%d", value);
 	putFile(path, buffer);
