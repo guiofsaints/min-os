@@ -299,10 +299,10 @@ bool pathRelativeTo(char *path_out, const char *dir_from, const char *file_to)
     if (strlen(p1) > 0) {
         int num_parens = countChar(p1, '/') + 1;
         for (int i = 0; i < num_parens; i++) {
-            strcat(path_out, "../");
+            strncat(path_out, "../", MAX_PATH - strlen(path_out) - 1);
         }
     }
-    strcat(path_out, p2);
+    strncat(path_out, p2, MAX_PATH - strlen(path_out) - 1);
 
     return true;
 }

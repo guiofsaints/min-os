@@ -605,8 +605,8 @@ static void Cheat_getPaths(char paths[CHEAT_MAX_PATHS][MAX_PATH], int* count) {
 		int i;
 		char list[CHEAT_MAX_LIST_LENGTH] = {0};
 		for (i=0; i<*count; i++) {
-			strcat(list, paths[i]);
-			if (i < *count-1) strcat(list, ", ");
+			strncat(list, paths[i], CHEAT_MAX_LIST_LENGTH - strlen(list) - 1);
+			if (i < *count-1) strncat(list, ", ", CHEAT_MAX_LIST_LENGTH - strlen(list) - 1);
 		}
 		LOG_info("Cheat paths to check: %s\n", list);
 	}
@@ -5580,13 +5580,13 @@ static int OptionCheats_openMenu(MenuList* list, int i) {
 		char cheats_path[CHEAT_MAX_LIST_LENGTH] = {0};
 
 		// prepend title
-		strcat(cheats_path, "No cheat file loaded.\n\n");
+		strncat(cheats_path, "No cheat file loaded.\n\n", CHEAT_MAX_LIST_LENGTH - strlen(cheats_path) - 1);
 
 		for (int i = 0; i < count; i++) {
 			char* p = basename(paths[i]);
 			// append to cheats_path
-			strcat(cheats_path, p);
-			if (i < count - 1) strcat(cheats_path, "\n");
+			strncat(cheats_path, p, CHEAT_MAX_LIST_LENGTH - strlen(cheats_path) - 1);
+			if (i < count - 1) strncat(cheats_path, "\n", CHEAT_MAX_LIST_LENGTH - strlen(cheats_path) - 1);
 		}
 
 		Menu_messageWithFont(cheats_path, (char*[]){ "B","BACK", NULL }, font.small);

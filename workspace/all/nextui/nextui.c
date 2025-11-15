@@ -1371,7 +1371,7 @@ Array* pathToStack(const char* path) {
 
 		// Append segment
 		if (current_len + segment_len >= PATH_MAX) break;
-		strcat(temp_path, segment);
+		strncat(temp_path, segment, PATH_MAX - current_len - 1);
 		current_len += segment_len;
 
 		if (strcmp(segment, PLATFORM) == 0) {
