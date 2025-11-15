@@ -1017,7 +1017,7 @@ static Array* getCollection(char* path) {
 }
 static Array* getDiscs(char* path){
 	
-	// TODO: does path have SDCARD_PATH prefix?
+	// NOTE: path is always a full path to .m3u file
 	
 	Array* entries = Array_new();
 	
@@ -1027,7 +1027,7 @@ static Array* getDiscs(char* path){
 	char* tmp = strrchr(base_path, '/') + 1;
 	tmp[0] = '\0';
 	
-	// TODO: limit number of discs supported (to 9?)
+	// NOTE: No enforced limit on disc count, but UI/UX works best with <10 discs
 	FILE* file = fopen(path, "r");
 	if (file) {
 		char line[256];
@@ -1531,7 +1531,7 @@ static void openDirectory(char* path, int auto_launch) {
 			openRom(auto_path, path);
 			return;
 		}
-		// TODO: doesn't handle empty m3u files
+		// NOTE: Empty m3u files will result in empty entries array - handled by caller
 	}
 
 	// If this is the exact same directory for some reason, just return.

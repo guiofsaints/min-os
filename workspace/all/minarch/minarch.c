@@ -134,7 +134,7 @@ static bool getAlias(char* path, char* alias);
 
 static struct Game {
 	char path[MAX_PATH];
-	char name[MAX_PATH]; // TODO: rename to basename?
+	char basename[MAX_PATH]; // base filename without path
 	char alt_name[MAX_PATH]; // alternate name, eg. unzipped rom file name
 	char m3u_path[MAX_PATH];
 	char tmp_path[MAX_PATH]; // location of unzipped file
@@ -152,7 +152,7 @@ static void Game_open(char* path) {
 	
 	char* slash = strrchr(path, '/');
 	if (slash) {
-		strncpy((char*)game.name, slash + 1, sizeof(game.name) - 1);
+		strncpy((char*)game.basename, slash + 1, sizeof(game.basename) - 1);
 		game.name[sizeof(game.name) - 1] = '\0';
 	} else {
 		strncpy((char*)game.name, path, sizeof(game.name) - 1);
@@ -286,10 +286,10 @@ static void Game_open(char* path) {
 		game.m3u_path[sizeof(game.m3u_path) - 1] = '\0';
 		tmp = strrchr(m3u_path, '/');
 		if (tmp) {
-			strncpy((char*)game.name, tmp + 1, sizeof(game.name) - 1);
-			((char*)game.name)[sizeof(game.name) - 1] = '\0';
+			strncpy((char*)game.basename, tmp + 1, sizeof(game.basename) - 1);
+			((char*)game.basename)[sizeof(game.basename) - 1] = '\0';
 		}
-		strncpy((char*)game.alt_name, game.name, sizeof(game.alt_name) - 1);
+		strncpy((char*)game.alt_name, game.basename, sizeof(game.alt_name) - 1);
 		((char*)game.alt_name)[sizeof(game.alt_name) - 1] = '\0';
 	}
 	
@@ -577,7 +577,7 @@ finish:
 #define CHEAT_MAX_LIST_LENGTH (CHEAT_MAX_PATHS * MAX_PATH)
 static void Cheat_getPaths(char paths[CHEAT_MAX_PATHS][MAX_PATH], int* count) {
 	// Generate possible paths, ordered by most likely to be used (pre v6.2.3 style first)
-	snprintf(paths[(*count)++], MAX_PATH, "%s/%s.cht", core.cheats_dir, game.name); // /mnt/SDCARD/Cheats/GB/Super Example World.<ext>.chtd.<ext>.cht
+	snprintf(paths[(*count)++], MAX_PATH, "%s/%s.cht", core.cheats_dir, game.basename); // /mnt/SDCARD/Cheats/GB/Super Example World.<ext>.chtd.<ext>.cht
 	if(CFG_getUseExtractedFileName())
 		snprintf(paths[(*count)++], MAX_PATH, "%s/%s.cht", core.cheats_dir, game.alt_name); // /mnt/SDCARD/Cheats/GB/Super Example World (USA).<ext>.cht
 
@@ -1452,7 +1452,7 @@ enum {
 typedef struct ButtonMapping { 
 	char* name;
 	int retro;
-	int local; // TODO: dislike this name...
+	int platform_button_id; // Platform-specific button ID (BTN_ID_*)
 	int mod;
 	int default_;
 	int ignore;
@@ -2234,7 +2234,7 @@ static void Config_init(void) {
 		for (int j=0; button_label_mapping[j].name; j++) {
 			ButtonMapping* button = &button_label_mapping[j];
 			if (!strcmp(button_id,button->name)) {
-				local_id = button->local;
+				local_id = button->platform_button_id;
 				if (retro_id==-1) retro_id = button->retro;
 				break;
 			}
@@ -2244,7 +2244,6 @@ static void Config_init(void) {
 		
 		LOG_info("\tbind %s (%s) %i:%i\n", button_name, button_id, local_id, retro_id);
 		
-		// TODO: test this without a final line return
 		tmp2 = calloc(strlen(button_name)+1, sizeof(char));
 		if (!tmp2) {
 			LOG_error("Failed to allocate memory for button name\n");
@@ -2255,7 +2254,7 @@ static void Config_init(void) {
 		ButtonMapping* button = &core_button_mapping[i++];
 		button->name = tmp2;
 		button->retro = retro_id;
-		button->local = local_id;
+		button->platform_button_id = local_id;
 	};
 	
 	// populate shader options
@@ -2384,7 +2383,7 @@ static void Config_readControlsString(char* cfg) {
 			mod = 1;
 		}
 		
-		mapping->local = id;
+		mapping->platform_button_id = id;
 		mapping->mod = mod;
 	}
 	
@@ -2410,7 +2409,7 @@ static void Config_readControlsString(char* cfg) {
 		}
 		// LOG_info("shortcut %s:%s (%i:%i)\n", key,value, id, mod);
 
-		mapping->local = id;
+		mapping->platform_button_id = id;
 		mapping->mod = mod;
 	}
 }
@@ -2550,13 +2549,13 @@ static void Config_write(int override) {
 	
 	for (int i=0; config.controls[i].name; i++) {
 		ButtonMapping* mapping = &config.controls[i];
-		int j = mapping->local + 1;
+		int j = mapping->platform_button_id + 1;
 		if (mapping->mod) j += LOCAL_BUTTON_COUNT;
 		fprintf(file, "bind %s = %s\n", mapping->name, button_labels[j]);
 	}
 	for (int i=0; config.shortcuts[i].name; i++) {
 		ButtonMapping* mapping = &config.shortcuts[i];
-		int j = mapping->local + 1;
+		int j = mapping->platform_button_id + 1;
 		if (mapping->mod) j += LOCAL_BUTTON_COUNT;
 		fprintf(file, "bind %s = %s\n", mapping->name, button_labels[j]);
 	}
@@ -2602,12 +2601,12 @@ static void Config_restore(void) {
 
 	for (int i=0; config.controls[i].name; i++) {
 		ButtonMapping* mapping = &config.controls[i];
-		mapping->local = mapping->default_;
+		mapping->platform_button_id = mapping->default_;
 		mapping->mod = 0;
 	}
 	for (int i=0; config.shortcuts[i].name; i++) {
 		ButtonMapping* mapping = &config.shortcuts[i];
-		mapping->local = BTN_ID_NONE;
+		mapping->platform_button_id = BTN_ID_NONE;
 		mapping->mod = 0;
 	}
 	
@@ -3235,7 +3234,7 @@ static void input_poll_callback(void) {
 	static int toggled_ff_on = 0; // this logic only works because TOGGLE_FF is before HOLD_FF in the menu...
 	for (int i=0; i<SHORTCUT_COUNT; i++) {
 		ButtonMapping* mapping = &config.shortcuts[i];
-		int btn = 1 << mapping->local;
+		int btn = 1 << mapping->platform_button_id;
 		if (btn==BTN_NONE) continue; // not bound
 		if (!mapping->mod || PAD_isPressed(BTN_MENU)) {
 			if (i==SHORTCUT_TOGGLE_FF) {
@@ -3327,7 +3326,7 @@ static void input_poll_callback(void) {
 	buttons = 0;
 	for (int i=0; config.controls[i].name; i++) {
 		ButtonMapping* mapping = &config.controls[i];
-		int btn = 1 << mapping->local;
+		int btn = 1 << mapping->platform_button_id;
 		if (btn==BTN_NONE) continue; // present buttons can still be unbound
 		if (gamepad_type==0) {
 			switch(btn) {
@@ -3402,7 +3401,7 @@ static void Input_init(const struct retro_input_descriptor *vars) {
 
 	for (int i=0;default_button_mapping[i].name; i++) {
 		ButtonMapping* mapping = &default_button_mapping[i];
-		//LOG_info("DEFAULT %s (%s): <%s>\n", core_button_names[mapping->retro], mapping->name, (mapping->local==BTN_ID_NONE ? "NONE" : device_button_names[mapping->local]));
+		//LOG_info("DEFAULT %s (%s): <%s>\n", core_button_names[mapping->retro], mapping->name, (mapping->platform_button_id==BTN_ID_NONE ? "NONE" : device_button_names[mapping->platform_button_id]));
 		if (core_button_names[mapping->retro]) mapping->name = (char*)core_button_names[mapping->retro];
 	}
 	
@@ -3410,14 +3409,14 @@ static void Input_init(const struct retro_input_descriptor *vars) {
 
 	for (int i=0; config.controls[i].name; i++) {
 		ButtonMapping* mapping = &config.controls[i];
-		mapping->default_ = mapping->local;
+		mapping->default_ = mapping->platform_button_id;
 
 		// ignore mappings that aren't available in this core
 		if (core_mapped && !present[mapping->retro]) {
 			mapping->ignore = 1;
 			continue;
 		}
-		//LOG_info("%s: <%s> (%i:%i)\n", mapping->name, (mapping->local==BTN_ID_NONE ? "NONE" : device_button_names[mapping->local]), mapping->local, mapping->retro);
+		//LOG_info("%s: <%s> (%i:%i)\n", mapping->name, (mapping->platform_button_id==BTN_ID_NONE ? "NONE" : device_button_names[mapping->platform_button_id]), mapping->platform_button_id, mapping->retro);
 	}
 	
 	puts("---------------------------------");
@@ -5026,7 +5025,7 @@ void Menu_init(void) {
 	mkdir(menu.minui_dir, 0755);
 
 	// always sanitized/outer name, to keep main UI from having to inspect archives
-	snprintf(menu.slot_path, sizeof(menu.slot_path), "%s/%s.txt", menu.minui_dir, game.name);
+	snprintf(menu.slot_path, sizeof(menu.slot_path), "%s/%s.txt", menu.minui_dir, game.basename);
 	
 	if (simple_mode) menu.items[ITEM_OPTS] = "Reset";
 	
@@ -5356,7 +5355,7 @@ int OptionControls_bind(MenuList* list, int i) {
 		for (int id=0; id<=LOCAL_BUTTON_COUNT; id++) {
 			if (PAD_justPressed(1 << (id-1))) {
 				item->value = id;
-				button->local = id - 1;
+				button->platform_button_id = id - 1;
 				if (PAD_isPressed(BTN_MENU)) {
 					item->value += LOCAL_BUTTON_COUNT;
 					button->mod = 1;
@@ -5378,7 +5377,7 @@ static int OptionControls_unbind(MenuList* list, int i) {
 	if (item->values!=button_labels) return MENU_CALLBACK_NOP;
 	
 	ButtonMapping* button = &config.controls[item->id];
-	button->local = -1;
+	button->platform_button_id = -1;
 	button->mod = 0;
 	return MENU_CALLBACK_NOP;
 }
@@ -5425,13 +5424,13 @@ static int OptionControls_openMenu(MenuList* list, int i) {
 			ButtonMapping* button = &config.controls[j];
 			if (button->ignore) continue;
 			
-			//LOG_info("\t%s (%i:%i)\n", button->name, button->local, button->retro);
+			//LOG_info("\t%s (%i:%i)\n", button->name, button->platform_button_id, button->retro);
 			
 			MenuItem* item = &OptionControls_menu.items[k++];
 			item->id = j;
 			item->name = button->name;
 			item->desc = NULL;
-			item->value = button->local + 1;
+			item->value = button->platform_button_id + 1;
 			if (button->mod) item->value += LOCAL_BUTTON_COUNT;
 			item->values = button_labels;
 		}
@@ -5450,7 +5449,7 @@ static int OptionControls_openMenu(MenuList* list, int i) {
 			if (button->ignore) continue;
 			
 			MenuItem* item = &OptionControls_menu.items[k++];
-			item->value = button->local + 1;
+			item->value = button->platform_button_id + 1;
 			if (button->mod) item->value += LOCAL_BUTTON_COUNT;
 		}
 	}
@@ -5470,7 +5469,7 @@ static int OptionShortcuts_bind(MenuList* list, int i) {
 		for (int id=0; id<=LOCAL_BUTTON_COUNT; id++) {
 			if (PAD_justPressed(1 << (id-1))) {
 				item->value = id;
-				button->local = id - 1;
+				button->platform_button_id = id - 1;
 				if (PAD_isPressed(BTN_MENU)) {
 					item->value += LOCAL_BUTTON_COUNT;
 					button->mod = 1;
@@ -5490,7 +5489,7 @@ static int OptionShortcuts_bind(MenuList* list, int i) {
 static int OptionShortcuts_unbind(MenuList* list, int i) {
 	MenuItem* item = &list->items[i];
 	ButtonMapping* button = &config.shortcuts[item->id];
-	button->local = -1;
+	button->platform_button_id = -1;
 	button->mod = 0;
 	return MENU_CALLBACK_NOP;
 }
@@ -5521,7 +5520,7 @@ static int OptionShortcuts_openMenu(MenuList* list, int i) {
 			item->id = j;
 			item->name = button->name;
 			item->desc = NULL;
-			item->value = button->local + 1;
+			item->value = button->platform_button_id + 1;
 			if (button->mod) item->value += LOCAL_BUTTON_COUNT;
 			item->values = button_labels;
 		}
@@ -5531,7 +5530,7 @@ static int OptionShortcuts_openMenu(MenuList* list, int i) {
 		for (int j=0; config.shortcuts[j].name; j++) {
 			ButtonMapping* button = &config.shortcuts[j];
 			MenuItem* item = &OptionShortcuts_menu.items[j];
-			item->value = button->local + 1;
+			item->value = button->platform_button_id + 1;
 			if (button->mod) item->value += LOCAL_BUTTON_COUNT;
 		}
 	}
@@ -6430,8 +6429,8 @@ static void Menu_updateState(void) {
 	state_slot = last_slot;
 
 	// always sanitized/outer name, to keep main UI from having to inspect archives
-	snprintf(menu.bmp_path, sizeof(menu.bmp_path), "%s/%s.%d.bmp", menu.minui_dir, game.name, menu.slot);
-	snprintf(menu.txt_path, sizeof(menu.txt_path), "%s/%s.%d.txt", menu.minui_dir, game.name, menu.slot);
+	snprintf(menu.bmp_path, sizeof(menu.bmp_path), "%s/%s.%d.bmp", menu.minui_dir, game.basename, menu.slot);
+	snprintf(menu.txt_path, sizeof(menu.txt_path), "%s/%s.%d.txt", menu.minui_dir, game.basename, menu.slot);
 	
 	menu.save_exists = exists(save_path);
 	menu.preview_exists = menu.save_exists && exists(menu.bmp_path);
@@ -6606,7 +6605,7 @@ static void Menu_loop(void) {
 	// path and string things
 	char* tmp;
 	char rom_name[256]; // without extension or cruft
-	getDisplayName(game.name, rom_name);
+	getDisplayName(game.basename, rom_name);
 	getAlias(game.path, rom_name);
 	
 	int rom_disc = -1;
