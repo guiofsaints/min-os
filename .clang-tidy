@@ -1,0 +1,44 @@
+# NextUI clang-tidy Configuration
+# Focused on correctness, safety, and maintainability for embedded C firmware
+
+---
+Checks: >
+  bugprone-*,
+  clang-analyzer-*,
+  performance-*,
+  readability-identifier-naming,
+  readability-braces-around-statements,
+  readability-inconsistent-declaration-parameter-name,
+  readability-misleading-indentation,
+  readability-redundant-control-flow,
+  readability-simplify-boolean-expr,
+  -bugprone-easily-swappable-parameters,
+  -readability-magic-numbers,
+  -readability-function-cognitive-complexity,
+  -readability-identifier-length,
+  -clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling
+
+WarningsAsErrors: ''
+HeaderFilterRegex: '.*'
+FormatStyle: file
+
+CheckOptions:
+  - key: readability-identifier-naming.VariableCase
+    value: lower_case
+  - key: readability-identifier-naming.FunctionCase
+    value: lower_case
+  - key: readability-identifier-naming.MacroDefinitionCase
+    value: UPPER_CASE
+  - key: readability-identifier-naming.EnumConstantCase
+    value: UPPER_CASE
+  - key: readability-identifier-naming.ConstantCase
+    value: UPPER_CASE
+  - key: readability-identifier-naming.GlobalConstantCase
+    value: UPPER_CASE
+
+# Explanation of disabled checks:
+# - bugprone-easily-swappable-parameters: Too noisy for function signatures
+# - readability-magic-numbers: Embedded code has many hardware-specific constants
+# - readability-function-cognitive-complexity: Legacy code, gradual refactor needed
+# - readability-identifier-length: Short names common in embedded C (e.g., x, y, i)
+# - clang-analyzer-security.insecureAPI.*: strcpy/sprintf flagged, but intentional in some contexts

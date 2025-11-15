@@ -1,0 +1,275 @@
+workspace/desktop\platform\platform.h:78:// TODO: these ended up swapped in the first public release of stock :sob:
+workspace/desktop\platform\platform.c:696:	// SDL_FillRect(screen, NULL, 0); // TODO: revisit
+workspace/desktop\platform\platform.c:715:static int hard_scale = 4; // TODO: base src size, eg. 160x144 can be 4
+workspace/desktop\platform\platform.c:720:	// TODO: minarch disables crisp (and nn upscale before linear downscale) when native, is this true?
+workspace/desktop\platform\platform.c:849:			// opacity = 96; // TODO: tmp, for white grid
+workspace/desktop\platform\platform.c:1953:// TODO: 
+workspace/_unmaintained\magicmini\platform\platform.h:67:// TODO: unused
+workspace/_unmaintained\m17\platform\platform.c:100:			// TODO: tmp, hardcoded, missing some buttons
+workspace/_unmaintained\m17\platform\platform.c:224:	// SDL_SetHintWithPriority(SDL_HINT_RENDER_VSYNC, "1", SDL_HINT_OVERRIDE); // TODO: not doing anything
+workspace/_unmaintained\m17\platform\platform.c:275:	SDL_FillRect(screen, NULL, 0); // TODO: revisit
+workspace/_unmaintained\m17\platform\platform.c:285:static int hard_scale = 4; // TODO: base src size, eg. 160x144 can be 4 o
+workspace/_unmaintained\m17\platform\platform.c:300:	// TODO: figure out how to ignore minarch upscale requests
+workspace/_unmaintained\m17\platform\platform.c:377:		// vid.blit->true_w,vid.blit->true_h,vid.blit->src_p, // TODO: fix to be confirmed, issue may not present on this platform
+workspace/_unmaintained\m17\platform\platform.c:422:// TODO: 
+workspace/_unmaintained\magicmini\platform\platform.c:137:			// TODO: tmp, hardcoded, missing some buttons
+workspace/_unmaintained\magicmini\platform\platform.c:265:	// LOG_info("Current audio driver: %s\n", SDL_GetCurrentAudioDriver()); // NOTE: hadn't been selected yet so will always be NULL!
+workspace/_unmaintained\magicmini\platform\platform.c:280:	// SDL_RenderSetLogicalSize(vid.renderer, w,h); // TODO: wrong, but without and with the below it's even wrong-er
+workspace/_unmaintained\magicmini\platform\platform.c:312:	// TODO: doesn't work here
+workspace/_unmaintained\magicmini\platform\platform.c:364:	SDL_FillRect(screen, NULL, 0); // TODO: revisit
+workspace/_unmaintained\magicmini\platform\platform.c:367:	PLAT_clearVideo(vid.screen); // TODO: revist
+workspace/_unmaintained\magicmini\platform\platform.c:375:static int hard_scale = 4; // TODO: base src size, eg. 160x144 can be 4
+workspace/_unmaintained\magicmini\platform\platform.c:380:	// TODO: minarch disables crisp (and nn upscale before linear downscale) when native
+workspace/_unmaintained\magicmini\platform\platform.c:683:// TODO: 
+workspace/_unmaintained\trimuismart\show\show.c:11:// TODO: revisit
+workspace/desktop\libmsettings\msettings.c:47:	// NOTE: doesn't really need to be persisted but still needs to be shared
+workspace/desktop\libmsettings\msettings.c:64:	// NOTE: doesn't really need to be persisted but still needs to be shared
+workspace/desktop\libmsettings\msettings.c:84:	// NOTE: doesn't really need to be persisted but still needs to be shared
+workspace/desktop\libmsettings\msettings.c:105:	// NOTE: doesn't really need to be persisted but still needs to be shared
+workspace/desktop\libmsettings\msettings.c:136:	// NOTE: doesn't really need to be persisted but still needs to be shared
+workspace/_unmaintained\zero28\platform\platform.h:76:// TODO: these ended up swapped in the first public release of stock :sob:
+workspace/_unmaintained\m17\libmsettings\msettings.c:23:	// NOTE: doesn't really need to be persisted but still needs to be shared
+workspace/_unmaintained\m17\libmsettings\msettings.c:76:			// TODO: use settings->version for future proofing?
+workspace/_unmaintained\zero28\platform\platform.c:108:	LOG_info("texture size: %ix%i\n", tw,th); // TODO: why is this 1024x768? :lolsob:
+workspace/_unmaintained\zero28\platform\platform.c:159:	SDL_FillRect(screen, NULL, 0); // TODO: revisit
+workspace/_unmaintained\zero28\platform\platform.c:162:	PLAT_clearVideo(vid.screen); // TODO: revist
+workspace/_unmaintained\zero28\platform\platform.c:170:static int hard_scale = 4; // TODO: base src size, eg. 160x144 can be 4
+workspace/_unmaintained\zero28\platform\platform.c:175:	// TODO: minarch disables crisp (and nn upscale before linear downscale) when native, is this true?
+workspace/_unmaintained\zero28\platform\platform.c:304:			// opacity = 96; // TODO: tmp, for white grid
+workspace/_unmaintained\zero28\platform\platform.c:461:// TODO: 
+workspace/_unmaintained\magicmini\libmsettings\msettings.c:24:	// NOTE: doesn't really need to be persisted but still needs to be shared
+workspace/_unmaintained\magicmini\libmsettings\msettings.c:63:			// TODO: use settings->version for future proofing?
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:140://FIXME:still need?
+workspace/_unmaintained\m17\keymon\keymon.c:82:	// TODO: make sure manually handling repeat is necessary on this device
+workspace/_unmaintained\rg35xx\platform\platform.c:549:	// TODO: tmp
+workspace/_unmaintained\rgb30\platform\platform.h:64:// TODO: these were swapped from keymon?
+workspace/_unmaintained\miyoomini\platform\platform.c:235:	// TODO: Prevent Tearing/Vsync
+workspace/_unmaintained\miyoomini\platform\platform.c:332:	if (!vid.direct) GFX_BlitSurfaceExec(vid.screen, NULL, vid.video, NULL, 0,0,1); // TODO: handle aspect clipping
+workspace/_unmaintained\miyoomini\platform\platform.c:350:// TODO:
+workspace/_unmaintained\miyoomini\platform\platform.c:467:	// TODO: tmp
+workspace/_unmaintained\miyoomini\platform\platform.c:504:// 	// TODO: this isn't quite right
+workspace/_unmaintained\trimuismart\platform\platform.c:336:		vid.rotated_pitch = vid.height * FIXED_BPP; // ((vid.height+7)/8)*8 * FIXED_BPP; // TODO: this should be the fix but it's not :sob:
+workspace/_unmaintained\trimuismart\platform\platform.c:398:// TODO: 
+workspace/_unmaintained\trimuismart\platform\platform.c:480:		// TODO: restore screen
+workspace/_unmaintained\trimuismart\platform\platform.c:485:		// TODO: copy screen
+workspace/_unmaintained\trimuismart\platform\platform.c:486:		// TODO: clear screen
+workspace/_unmaintained\zero28\libmsettings\msettings.c:26:	// NOTE: doesn't really need to be persisted but still needs to be shared
+workspace/_unmaintained\zero28\libmsettings\msettings.c:79:			// TODO: use settings->version for future proofing?
+workspace/_unmaintained\zero28\libmsettings\msettings.c:122:		// TODO: revisit
+workspace/_unmaintained\zero28\libmsettings\msettings.c:179:	// TODO: unfortunately doing it this way creating a linker nightmare
+workspace/_unmaintained\rgb30\platform\platform.c:108:			// TODO: tmp, hardcoded, missing some buttons
+workspace/_unmaintained\rgb30\platform\platform.c:142:				// TODO: these seem to be switched on the rgb30 according to the padtest rom
+workspace/_unmaintained\rgb30\platform\platform.c:245:	// LOG_info("Current audio driver: %s\n", SDL_GetCurrentAudioDriver()); // NOTE: hadn't been selected yet so will always be NULL!
+workspace/_unmaintained\rgb30\platform\platform.c:259:	// SDL_RenderSetLogicalSize(vid.renderer, w,h); // TODO: wrong, but without and with the below it's even wrong-er
+workspace/_unmaintained\rgb30\platform\platform.c:290:	// TODO: doesn't work here
+workspace/_unmaintained\rgb30\platform\platform.c:341:	SDL_FillRect(screen, NULL, 0); // TODO: revisit
+workspace/_unmaintained\rgb30\platform\platform.c:344:	PLAT_clearVideo(vid.screen); // TODO: revist
+workspace/_unmaintained\rgb30\platform\platform.c:352:static int hard_scale = 4; // TODO: base src size, eg. 160x144 can be 4
+workspace/_unmaintained\rgb30\platform\platform.c:357:	// TODO: minarch disables crisp (and nn upscale before linear downscale) when native
+workspace/_unmaintained\rgb30\platform\platform.c:634:// TODO: 
+workspace/_unmaintained\magicmini\keymon\keymon.c:40:	// TODO: will require two inputs
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:4: * NOTE: SHOULD only be included by de_atm7059.c
+workspace/all\nextui\nextui.c:411:	char* path; // NOTE: this is without the SDCARD_PATH prefix!
+workspace/all\nextui\nextui.c:543:static int hasCue(char* dir_path, char* cue_path) { // NOTE: dir_path not rom_path
+workspace/all\nextui\nextui.c:548:static int hasM3u(char* rom_path, char* m3u_path) { // NOTE: rom_path not dir_path
+workspace/all\nextui\nextui.c:627:					if (hasM3u(sd_path, m3u_path)) { // TODO: this might tank launch speed
+workspace/all\nextui\nextui.c:941:	// TODO: does path have SDCARD_PATH prefix?
+workspace/all\nextui\nextui.c:950:	// TODO: limit number of discs supported (to 9?)
+workspace/all\nextui\nextui.c:1017:				// TODO: this should make sure launch.sh exists
+workspace/all\nextui\nextui.c:1183:	// NOTE: bypasses recents
+workspace/all\nextui\nextui.c:1221:	// NOTE: escapeSingleQuotes() modifies the passed string 
+workspace/all\nextui\nextui.c:1283:	// NOTE: escapeSingleQuotes() modifies the passed string 
+workspace/all\nextui\nextui.c:1426:		// TODO: doesn't handle empty m3u files
+workspace/all\nextui\nextui.c:1529:		// NOTE: that we don't have to save the file because
+workspace/all\nextui\nextui.c:1572:				// NOTE: strlen() is required for collated_path, '\0' wasn't reading as NULL for some reason
+workspace/all\nextui\nextui.c:1996:		// TODO: Figure out why this is here. Ideally we shouldnt refer to specific platforms in here, but the commit message doesnt
+workspace/all\nextui\nextui.c:2484:			// NOTE:22 This causes slowdown when CFG_getMenuTransitions is set to false because animationdirection turns > 0 somewhere but is never set back to 0 and so this code runs on every action, will fix later
+workspace/all\nextui\nextui.c:2986:					// TODO: for some reason screen's dimensions end up being 0x0 in GFX_blitMessage...
+workspace/all\nextui\nextui.c:3180:				// TODO: Why 17? Seems like an odd choice for 60fps, it almost guarantees we miss at least one frame.
+workspace/all\nextui\nextui.c:3207:			saveLast(entry->path); // NOTE: doesn't work in Recents (by design)
+workspace/all\gametime\gametime.c:249:            // TODO: no getter exposed for this right now
+workspace/tg5040\wifimanager\src\core\wifi.c:529:     *     IFNAME=iface <N>CTRL-EVENT-XXX
+workspace/tg5040\wifimanager\src\core\wifi.c:531:     *     <N>CTRL-EVENT-XXX
+workspace/tg5040\wifimanager\src\core\wifi.c:534:     * etc.) and XXX is the event nae. The level information is not useful
+workspace/_unmaintained\gkdpixel\platform\platform.c:229:// TODO: not sure how to create AVERAGE_2_1() using the above MAGIC values
+workspace/_unmaintained\gkdpixel\platform\platform.c:230:#define AVERAGE_2_1 Weight2_1 // TODO: the WeightX_Y macros serve a similar (the same?) purpose
+workspace/_unmaintained\gkdpixel\platform\platform.c:231:#define AVERAGE_1_2 Weight1_2 // TODO: the WeightX_Y macros serve a similar (the same?) purpose
+workspace/_unmaintained\gkdpixel\platform\platform.c:426:	// TODO: creates disagreement with minarch menu preview
+workspace/_unmaintained\gkdpixel\platform\platform.c:439:			// TODO: this is probably a terrible idea
+workspace/_unmaintained\gkdpixel\platform\platform.c:578:				// TODO: can I fudge this here to fix minarch menu scaled preview? nope.
+workspace/_unmaintained\gkdpixel\platform\platform.c:605:// TODO: 
+workspace/_unmaintained\rgb30\libmsettings\msettings.c:23:	// NOTE: doesn't really need to be persisted but still needs to be shared
+workspace/_unmaintained\rgb30\libmsettings\msettings.c:78:			// TODO: use settings->version for future proofing?
+workspace/_unmaintained\rgb30\libmsettings\msettings.c:123:		// TODO: redo, range is 0-255
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:140://FIXME:still need?
+workspace/_unmaintained\gkdpixel\libmsettings\msettings.c:24:	// NOTE: doesn't really need to be persisted but still needs to be shared
+workspace/_unmaintained\gkdpixel\libmsettings\msettings.c:73:			// TODO: use settings->version for future proofing?
+workspace/_unmaintained\gkdpixel\libmsettings\msettings.c:112:	// TODO: this needs a curve, 1,10,20,30 are 
+workspace/_unmaintained\gkdpixel\libmsettings\msettings.c:140:	// TODO: setting to 0 prevents the screen from coming back on
+workspace/_unmaintained\gkdpixel\libmsettings\msettings.c:150:	// TODO: this is still weird
+workspace/_unmaintained\trimuismart\libmsettings\msettings.c:25:	// NOTE: doesn't really need to be persisted but still needs to be shared
+workspace/_unmaintained\trimuismart\libmsettings\msettings.c:63:			// TODO: use settings->version for future proofing?
+workspace/all\minarch\minarch.c:137:	char name[MAX_PATH]; // TODO: rename to basename?
+workspace/all\minarch\minarch.c:300:	// strcpy(tmp_template, "/tmp/minarch-XXXXXX");
+workspace/all\minarch\minarch.c:740:	// TODO: rzipstream_open can also handle uncompressed, else branch is probably unnecessary
+workspace/all\minarch\minarch.c:924:	// TODO: rzipstream_open can also handle uncompressed, else branch is probably unnecessary
+workspace/all\minarch\minarch.c:1083:	int count; // TODO: drop this?
+workspace/all\minarch\minarch.c:1419:	int local; // TODO: dislike this name...
+workspace/all\minarch\minarch.c:1486:// NOTE: these must be in BTN_ID_ order also off by 1 because of NONE (which is -1 in BTN_ID_ land)
+workspace/all\minarch\minarch.c:1531:// TODO: this should be provided by the core
+workspace/all\minarch\minarch.c:2211:		// TODO: test this without a final line return
+workspace/all\minarch\minarch.c:2803:	// TODO: store previous value?
+workspace/all\minarch\minarch.c:2807:// TODO: does this also need to be applied to OptionList_vars()?
+workspace/all\minarch\minarch.c:2828:	// TODO: add frontend options to this? so the can use the same override method? eg. minarch_*
+workspace/all\minarch\minarch.c:2908:	// TODO: add frontend options to this? so the can use the same override method? eg. minarch_*
+workspace/all\minarch\minarch.c:3251:	// TODO: figure out how to ignore button when MENU+button is handled first
+workspace/all\minarch\minarch.c:3252:	// TODO: array size of LOCAL_ whatever that macro is
+workspace/all\minarch\minarch.c:3253:	// TODO: then split it into two loops
+workspace/all\minarch\minarch.c:3254:	// TODO: first check for MENU+button
+workspace/all\minarch\minarch.c:3255:	// TODO: when found mark button the array
+workspace/all\minarch\minarch.c:3256:	// TODO: then check for button
+workspace/all\minarch\minarch.c:3257:	// TODO: only modify if absent from array
+workspace/all\minarch\minarch.c:3258:	// TODO: the shortcuts loop above should also contribute to the array
+workspace/all\minarch\minarch.c:3321:			// TODO: don't ignore unavailable buttons, just override them to BTN_ID_NONE!
+workspace/all\minarch\minarch.c:3361:	// TODO: handle other args? not sure I can
+workspace/all\minarch\minarch.c:3392:		// TODO: used by fceumm at least
+workspace/all\minarch\minarch.c:3437:	// TODO: this is called whether using variables or options
+workspace/all\minarch\minarch.c:3448:	// TODO: I think this is where the core reports its variables (the precursor to options)
+workspace/all\minarch\minarch.c:3449:	// TODO: this is called if RETRO_ENVIRONMENT_GET_CORE_OPTIONS_VERSION sets out to 0
+workspace/all\minarch\minarch.c:3450:	// TODO: not used by anything yet
+workspace/all\minarch\minarch.c:3510:			// TODO: store to gamepad_values/gamepad_labels for gamepad_device
+workspace/all\minarch\minarch.c:3522:		return false; // TODO: tmp
+workspace/all\minarch\minarch.c:3606:	// TODO: RETRO_ENVIRONMENT_GET_MESSAGE_INTERFACE_VERSION 59
+workspace/all\minarch\minarch.c:3607:	// TODO: used by mgba, (but only during frameskip?)
+workspace/all\minarch\minarch.c:3620:	// TODO: used by mgba, (but only during frameskip?)
+workspace/all\minarch\minarch.c:3636:	// TODO: RETRO_ENVIRONMENT_SET_FASTFORWARDING_OVERRIDE 64
+workspace/all\minarch\minarch.c:3672:	// TODO: used by gambatte for L/R palette switching (seems like it needs to return true even if data is NULL to indicate support)
+workspace/all\minarch\minarch.c:3746:// TODO: this is a dumb API
+workspace/all\minarch\minarch.c:4177:	// TODO: make sure this doesn't break fit==1 devices
+workspace/all\minarch\minarch.c:4195:	// TODO: this is saving non-rgb30 devices from themselves...or rather, me
+workspace/all\minarch\minarch.c:4219:		// TODO: this is all kinds of messed up
+workspace/all\minarch\minarch.c:4220:		// TODO: is this blowing up because the smart has to rotate before scaling?
+workspace/all\minarch\minarch.c:4221:		// TODO: or is it just that I'm trying to cram 4 logical rects into 2 rect arguments
+workspace/all\minarch\minarch.c:4222:		// TODO: eg. src.size + src.clip + dst.size + dst.clip
+workspace/all\minarch\minarch.c:4300:		// if (scale>2) scale = 4; // TODO: restore, requires sanity checking
+workspace/all\minarch\minarch.c:4393:	// TODO: need to sanity check scale and demands on the buffer
+workspace/all\minarch\minarch.c:4588:	// TODO: 10 was based on rg35xx, probably different results on other supported platforms
+workspace/all\minarch\minarch.c:4894:	// NOTE: must be called after core.load_game!
+workspace/all\minarch\minarch.c:4944:// TODO: I don't love how overloaded this has become
+workspace/all\minarch\minarch.c:5100:	return MENU_CALLBACK_NOP; // TODO: this should probably be an arg
+workspace/all\minarch\minarch.c:5110:	// TODO: what calls this? do menu's register for needing it? then call it on quit for each?
+workspace/all\minarch\minarch.c:5127:		// TODO: where do I free this? I guess I don't :sweat_smile:
+workspace/all\minarch\minarch.c:5182:	.on_confirm = OptionEmulator_optionDetail, // TODO: this needs pagination to be truly useful
+workspace/all\minarch\minarch.c:5311:		// NOTE: off by one because of the initial NONE value
+workspace/all\minarch\minarch.c:5355:		"\nSupports single button and MENU+button." // TODO: not supported on nano because POWER doubles as MENU
+workspace/all\minarch\minarch.c:5367:		// TODO: where do I free this?
+workspace/all\minarch\minarch.c:5425:		// NOTE: off by one because of the initial NONE value
+workspace/all\minarch\minarch.c:5456:		"\nSupports single button and MENU+button." // TODO: not supported on nano because POWER doubles as MENU
+workspace/all\minarch\minarch.c:5472:		// TODO: where do I free this? I guess I don't :sweat_smile:
+workspace/all\minarch\minarch.c:5563:	.on_confirm = OptionCheats_optionDetail, // TODO: this needs pagination to be truly useful
+workspace/all\minarch\minarch.c:5931:			// TODO: is there a way to defer on_confirm for MENU_INPUT so we can clear the currently set value to indicate it is awaiting input? 
+workspace/all\minarch\minarch.c:6035:			// NOTE: no need to calculate max width
+workspace/all\minarch\minarch.c:6085:				// TODO: blit a black pill on unselected rows (to cover longer item->values?) or truncate longer item->values?
+workspace/all\minarch\minarch.c:6571:	int status = STATUS_CONT; // TODO: no longer used?
+workspace/all\minarch\minarch.c:6576:	SDL_Surface* preview = SDL_CreateRGBSurface(SDL_SWSURFACE,DEVICE_WIDTH/2,DEVICE_HEIGHT/2,32,RGBA_MASK_8888); // TODO: retain until changed?
+workspace/all\minarch\minarch.c:6684:					quit = 1; // TODO: tmp?
+workspace/all\minarch\minarch.c:6777:				#define WINDOW_RADIUS 4 // TODO: this logic belongs in blitRect?
+workspace/all\minarch\minarch.c:6860:	else if (exists(NOUI_PATH)) PWR_powerOff(0); // TODO: won't work with threaded core, only check this once per launch
+workspace/all\minarch\minarch.c:6867:// TODO: move to PWR_*?
+workspace/all\minarch\minarch.c:6978:	// FIXME: This shouldnt be necessary, alsa should just read .asoundrc for the changed defult device.
+workspace/all\minarch\minarch.c:7058:	// TODO: find a better place to do this
+workspace/_unmaintained\rg35xx\libmsettings\msettings.c:23:	// NOTE: doesn't really need to be persisted but still needs to be shared
+workspace/_unmaintained\rg35xx\libmsettings\msettings.c:64:			// TODO: use settings->version for future proofing?
+workspace/_unmaintained\my282\platform\platform.h:67:// TODO: unused
+workspace/_unmaintained\my282\platform\platform.c:99:			// TODO: tmp, hardcoded, missing some buttons
+workspace/_unmaintained\my282\platform\platform.c:228:	// LOG_info("Current audio driver: %s\n", SDL_GetCurrentAudioDriver()); // NOTE: hadn't been selected yet so will always be NULL!
+workspace/_unmaintained\my282\platform\platform.c:243:	// SDL_RenderSetLogicalSize(vid.renderer, w,h); // TODO: wrong, but without and with the below it's even wrong-er
+workspace/_unmaintained\my282\platform\platform.c:274:	// TODO: doesn't work here
+workspace/_unmaintained\my282\platform\platform.c:325:	SDL_FillRect(screen, NULL, 0); // TODO: revisit
+workspace/_unmaintained\my282\platform\platform.c:328:	PLAT_clearVideo(vid.screen); // TODO: revist
+workspace/_unmaintained\my282\platform\platform.c:336:static int hard_scale = 4; // TODO: base src size, eg. 160x144 can be 4
+workspace/_unmaintained\my282\platform\platform.c:341:	// TODO: minarch disables crisp (and nn upscale before linear downscale) when native
+workspace/_unmaintained\my282\platform\platform.c:627:// TODO: 
+workspace/_unmaintained\gkdpixel\keymon\keymon.c:53:	// TODO: tmp
+workspace/_unmaintained\gkdpixel\keymon\keymon.c:87:				// TODO: tmp
+workspace/_unmaintained\gkdpixel\keymon\keymon.c:105:		// TODO: tmp
+workspace/_unmaintained\gkdpixel\keymon\keymon.c:107:		// 	system("sync && killall -9 minarch.elf"); // TODO: tmp
+workspace/_unmaintained\gkdpixel\keymon\keymon.c:108:		// 	system("sync && killall -9 launch.sh"); // TODO: tmp
+workspace/_unmaintained\miyoomini\libmsettings\msettings.c:137:			// TODO: use settings->version for future proofing
+workspace/_unmaintained\miyoomini\libmsettings\msettings.c:194:	int fd = open("/dev/mi_ao", O_RDWR); // TODO: can this be kept open?
+workspace/all\battery\battery.c:220:    // TODO: no reason this cant be dynamic
+workspace/_unmaintained\my282\keymon\keymon.c:40:	// TODO: will require two inputs
+workspace/all\common\api.h:35:// TODO: these only seem to be used by a tmp.pak in trimui (model s)
+workspace/all\common\api.h:80:// TODO: do we need that many free externs? This should move
+workspace/all\common\api.h:188:	// TODO: document this better
+workspace/all\common\api.h:198:	// TODO: I think this is overscaled
+workspace/all\common\api.h:323:// NOTE: all dimensions should be pre-scaled
+workspace/_unmaintained\my282\libmsettings\msettings.c:24:	// NOTE: doesn't really need to be persisted but still needs to be shared
+workspace/_unmaintained\my282\libmsettings\msettings.c:63:			// TODO: use settings->version for future proofing?
+workspace/_unmaintained\my282\libmstick\mstick.c:212:	// TODO: this causes it to ignore small changes which might be desirable as dejitter
+workspace/all\common\scaler.c:18://	** NOTE **
+workspace/all\common\api.c:289:	// TODO: this doesn't really belong here...
+workspace/all\common\api.c:1118:	double blend_denominator = (renderer->src_w > renderer->dst_w) ? 5 : 2.5; // TODO: these values are really only good for the nano...
+workspace/all\common\api.c:1486:		// TODO: Is there a neat way to get the opposite effect of SDL_MapRGB?
+workspace/all\common\api.c:1626:	int special_case = !strcmp(button, BRIGHTNESS_BUTTON_LABEL); // TODO: oof
+workspace/all\common\api.c:1649:	int special_case = !strcmp(button, BRIGHTNESS_BUTTON_LABEL); // TODO: oof
+workspace/all\common\api.c:1700:			return; // TODO: bail
+workspace/all\common\api.c:2021:			break; // TODO: bail?
+workspace/all\common\api.c:2067:			break; // TODO: bail?
+workspace/all\common\api.c:3066:			// TODO: safe to assume hats will always be the primary dpad?
+workspace/all\common\api.c:3067:			// TODO: this is literally a bitmask, make it one (oh, except there's 3 states...)
+workspace/all\common\api.c:3594:	// TODO: only delay hiding setting changes if that setting didn't require a modifier button be held, otherwise release as soon as modifier is released
+workspace/all\common\api.c:3652:// TODO: this isn't whether it can sleep but more if it should sleep in response to the sleep button
+workspace/all\common\api.c:3699:		// TODO: for some reason screen's dimensions end up being 0x0 in GFX_blitMessage...
+workspace/all\common\api.c:3897:// TODO: tmp? move to individual platforms or allow overriding like PAD_poll/PAD_wake?
+workspace/all\common\utils.c:69:// TODO: verify this yields the same result as the one in minui.c, remove one
+workspace/all\common\utils.c:348:void getEmuName(const char* in_name, char* out_name) { // NOTE: both char arrays need to be MAX_PATH length!
+workspace/all\common\utils.c:398:	// TODO: this code is suss
+workspace/all\common\defines.h:164:// TODO: doesn't this belong in api.h? it's meaningless without PAD_*
+workspace/all\common\scaler.h:16://	** NOTE **
+workspace/all\clock\clock.c:30:	// TODO: make use of SCALE1()
+workspace/all\clock\clock.c:46:		// TODO: y offset is wrong here
+workspace/_unmaintained\rg35xxplus\platform\platform.h:126:// TODO: if HDMI_HEIGHT > FIXED_HEIGHT then MAIN_ROW_COUNT will be insufficient
+workspace/all\ledcontrol\ledcontrol.c:38:    // TODO: this shouldnt be in shared userdata
+workspace/_unmaintained\rg35xxplus\platform\platform.c:58:// TODO: thanks I hate it
+workspace/_unmaintained\rg35xxplus\platform\platform.c:218:			// TODO: tmp, hardcoded, missing some buttons
+workspace/_unmaintained\rg35xxplus\platform\platform.c:382:#define HDMI_STATE_PATH "/sys/class/switch/hdmi/cable.0/state" // TODO: can detect but doesn't update automatically
+workspace/_unmaintained\rg35xxplus\platform\platform.c:410:	char* model = getenv("RGXX_MODEL"); // TODO: use device?
+workspace/_unmaintained\rg35xxplus\platform\platform.c:469:	// SDL_RenderSetLogicalSize(vid.renderer, w,h); // TODO: wrong, but without and with the below it's even wrong-er
+workspace/_unmaintained\rg35xxplus\platform\platform.c:500:	// TODO: doesn't work here
+workspace/_unmaintained\rg35xxplus\platform\platform.c:551:	SDL_FillRect(screen, NULL, 0); // TODO: revisit
+workspace/_unmaintained\rg35xxplus\platform\platform.c:554:	PLAT_clearVideo(vid.screen); // TODO: revist
+workspace/_unmaintained\rg35xxplus\platform\platform.c:562:static int hard_scale = 4; // TODO: base src size, eg. 160x144 can be 4
+workspace/_unmaintained\rg35xxplus\platform\platform.c:567:	// TODO: minarch disables crisp (and nn upscale before linear downscale) when native
+workspace/_unmaintained\rg35xxplus\platform\platform.c:858:// TODO: 
+workspace/_unmaintained\rg35xxplus\platform\platform.c:950:	// TODO: why wasn't this ever implemented?
+workspace/_unmaintained\my355\libmsettings\msettings.c:24:	// NOTE: doesn't really need to be persisted but still needs to be shared
+workspace/_unmaintained\my355\libmsettings\msettings.c:116:			// TODO: use settings->version for future proofing?
+workspace/_unmaintained\my355\libmsettings\msettings.c:166:		// TODO :revisit
+workspace/tg5040\platform\platform.h:80:// TODO: these ended up swapped in the first public release of stock :sob:
+workspace/tg5040\platform\platform.c:835:	// SDL_FillRect(screen, NULL, 0); // TODO: revisit
+workspace/tg5040\platform\platform.c:856:static int hard_scale = 4; // TODO: base src size, eg. 160x144 can be 4
+workspace/tg5040\platform\platform.c:861:	// TODO: minarch disables crisp (and nn upscale before linear downscale) when native, is this true?
+workspace/tg5040\platform\platform.c:988:			// opacity = 96; // TODO: tmp, for white grid
+workspace/tg5040\platform\platform.c:2090:// TODO: 
+workspace/tg5040\platform\platform.c:3348:// TODO: can we get away with just implementing those we need?
+workspace/tg5040\platform\platform.c:3422:	// TODO: check for device class and call SDL_OpenJoystick if its a gamepad/HID device
+workspace/_unmaintained\my355\keymon\keymon.c:135:		// TODO: check if if necessary
+workspace/_unmaintained\rg35xxplus\libmsettings\msettings.c:24:	// NOTE: doesn't really need to be persisted but still needs to be shared
+workspace/_unmaintained\rg35xxplus\libmsettings\msettings.c:44:#define JACK_STATE_PATH "/sys/module/snd_soc_sunxi_component_jack/parameters/jack_state" // TODO: doesn't change, always 0
+workspace/_unmaintained\rg35xxplus\libmsettings\msettings.c:76:			// TODO: use settings->version for future proofing?
+workspace/_unmaintained\my355\platform\platform.c:149:	// SDL_RenderSetLogicalSize(vid.renderer, w,h); // TODO: wrong, but without and with the below it's even wrong-er
+workspace/_unmaintained\my355\platform\platform.c:180:	// TODO: doesn't work here
+workspace/_unmaintained\my355\platform\platform.c:231:	SDL_FillRect(screen, NULL, 0); // TODO: revisit
+workspace/_unmaintained\my355\platform\platform.c:234:	PLAT_clearVideo(vid.screen); // TODO: revist
+workspace/_unmaintained\my355\platform\platform.c:242:static int hard_scale = 4; // TODO: base src size, eg. 160x144 can be 4
+workspace/_unmaintained\my355\platform\platform.c:247:	// TODO: minarch disables crisp (and nn upscale before linear downscale) when native
+workspace/_unmaintained\my355\platform\platform.c:538:// TODO: 
+workspace/_unmaintained\my355\platform\platform.h:129:// TODO: if HDMI_HEIGHT > FIXED_HEIGHT then MAIN_ROW_COUNT will be insufficient
+workspace/_unmaintained\rg35xxplus\keymon\keymon.c:99:		// TODO: check if if necessary
+workspace/tg5040\libmsettings\msettings.c:51:	// NOTE: doesn't really need to be persisted but still needs to be shared
+workspace/tg5040\libmsettings\msettings.c:67:	// NOTE: doesn't really need to be persisted but still needs to be shared
+workspace/tg5040\libmsettings\msettings.c:87:	// NOTE: doesn't really need to be persisted but still needs to be shared
+workspace/tg5040\libmsettings\msettings.c:108:	// NOTE: doesn't really need to be persisted but still needs to be shared
+workspace/tg5040\libmsettings\msettings.c:139:	// NOTE: doesn't really need to be persisted but still needs to be shared
+workspace/tg5040\libmsettings\msettings.c:170:	// NOTE: doesn't really need to be persisted but still needs to be shared

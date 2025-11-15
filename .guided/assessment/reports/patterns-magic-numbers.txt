@@ -1,0 +1,1576 @@
+workspace/desktop\platform\platform.c:715:static int hard_scale = 4; // TODO: base src size, eg. 160x144 can be 4
+workspace/desktop\platform\platform.c:723:	// else if (h>=160) hard_scale = 2; // limits gba and up to 2x (seems sufficient for 640x480)
+workspace/desktop\platform\platform.c:787:    uint8_t red = (rgb565 >> 11) & 0x1F;
+workspace/desktop\platform\platform.c:789:    uint8_t green = (rgb565 >> 5) & 0x3F;
+workspace/desktop\platform\platform.c:791:    uint8_t blue = rgb565 & 0x1F;
+workspace/desktop\platform\platform.c:1959:#define OVERLAY_RGBA_MASK 0x00ff0000,0x0000ff00,0x000000ff,0xff000000 // ARGB
+workspace/_unmaintained\magicmini\platform\platform.c:78:#define EV_KEY			0x01
+workspace/_unmaintained\magicmini\platform\platform.c:79:#define EV_ABS			0x03
+workspace/_unmaintained\magicmini\platform\platform.c:375:static int hard_scale = 4; // TODO: base src size, eg. 160x144 can be 4
+workspace/_unmaintained\magicmini\platform\platform.c:451:    uint8_t red = (rgb565 >> 11) & 0x1F;
+workspace/_unmaintained\magicmini\platform\platform.c:453:    uint8_t green = (rgb565 >> 5) & 0x3F;
+workspace/_unmaintained\magicmini\platform\platform.c:455:    uint8_t blue = rgb565 & 0x1F;
+workspace/_unmaintained\magicmini\platform\platform.c:689:#define OVERLAY_RGBA_MASK 0x00ff0000,0x0000ff00,0x000000ff,0xff000000 // ARGB
+workspace/_unmaintained\m17\platform\platform.c:67:#define EV_KEY			0x01
+workspace/_unmaintained\m17\platform\platform.c:68:#define EV_ABS			0x03
+workspace/_unmaintained\m17\platform\platform.c:285:static int hard_scale = 4; // TODO: base src size, eg. 160x144 can be 4 o
+workspace/_unmaintained\m17\platform\platform.c:428:#define OVERLAY_RGBA_MASK 0x00ff0000,0x0000ff00,0x000000ff,0xff000000 // ARGB
+workspace/all\gametime\gametime.c:58:	tempcol.r = (colour >> 16) & 0xFF;
+workspace/all\gametime\gametime.c:59:	tempcol.g = (colour >> 8) & 0xFF;
+workspace/all\gametime\gametime.c:60:	tempcol.b = colour & 0xFF;
+workspace/all\gametime\gametime.c:111:                pixelPtr[0] = (color >> 16) & 0xFF;
+workspace/all\gametime\gametime.c:112:                pixelPtr[1] = (color >> 8) & 0xFF;
+workspace/all\gametime\gametime.c:113:                pixelPtr[2] = color & 0xFF;
+workspace/all\gametime\gametime.c:115:                pixelPtr[0] = color & 0xFF;
+workspace/all\gametime\gametime.c:116:                pixelPtr[1] = (color >> 8) & 0xFF;
+workspace/all\gametime\gametime.c:117:                pixelPtr[2] = (color >> 16) & 0xFF;
+workspace/_unmaintained\zero28\show\show.c:13:#define RGBA_MASK_565	0xF800, 0x07E0, 0x001F, 0x0000
+workspace/all\minarch\minarch.c:2781:	// 	putInt("/tmp/dmg_grid_color",0xF79E);
+workspace/all\minarch\minarch.c:4103:		fillRect(ox, oy, w, h, 0x000000FF, data, stride);
+workspace/all\minarch\minarch.c:4113:						*row = 0xFFFFFFFF;  // white RGBA8888
+workspace/all\minarch\minarch.c:4138:	uint32_t borderColor = 0xFFFFFFFF;  // White RGBA
+workspace/all\minarch\minarch.c:4139:	uint32_t bgColor = 0x000000FF;      // Black RGBA
+workspace/all\minarch\minarch.c:4294:		// odd resolutions (eg. PS1 Rayman: 320x239) is throwing this off, need to snap to eights
+workspace/all\minarch\minarch.c:4462:            uint8_t a = (color >> 24) & 0xFF;
+workspace/all\minarch\minarch.c:4463:            uint8_t b = (color >> 16) & 0xFF;
+workspace/all\minarch\minarch.c:4464:            uint8_t g = (color >> 8) & 0xFF;
+workspace/all\minarch\minarch.c:4465:            uint8_t r = (color >> 0) & 0xFF;
+workspace/all\minarch\minarch.c:4508:            uint32_t color = 0xFF000000; 
+workspace/all\minarch\minarch.c:4515:            uint8_t a = (color >> 24) & 0xFF;
+workspace/all\minarch\minarch.c:4516:            uint8_t b = (color >> 16) & 0xFF;
+workspace/all\minarch\minarch.c:4517:            uint8_t g = (color >> 8) & 0xFF;
+workspace/all\minarch\minarch.c:4518:            uint8_t r = (color >> 0) & 0xFF;
+workspace/all\minarch\minarch.c:4565:                uint8_t a = (color >> 24) & 0xFF; 
+workspace/all\minarch\minarch.c:4702:				uint8_t r = (pixel >> 16) & 0xFF;
+workspace/all\minarch\minarch.c:4703:				uint8_t g = (pixel >> 8) & 0xFF;
+workspace/all\minarch\minarch.c:4704:				uint8_t b = (pixel >> 0) & 0xFF;
+workspace/all\minarch\minarch.c:4705:				uint8_t a = 0xFF;
+workspace/all\minarch\minarch.c:4719:					uint8_t r = ((pixel >> 11) & 0x1F) << 3; 
+workspace/all\minarch\minarch.c:4720:					uint8_t g = ((pixel >> 5) & 0x3F) << 2;   
+workspace/all\minarch\minarch.c:4721:					uint8_t b = (pixel & 0x1F) << 3;          
+workspace/all\minarch\minarch.c:4722:					uint8_t a = 0xFF;
+workspace/all\minarch\minarch.c:6945:		if (elapsed>0 && elapsed<0x80000) {
+workspace/all\nextui\nextui.c:2986:					// TODO: for some reason screen's dimensions end up being 0x0 in GFX_blitMessage...
+workspace/_unmaintained\zero28\platform\platform.c:170:static int hard_scale = 4; // TODO: base src size, eg. 160x144 can be 4
+workspace/_unmaintained\zero28\platform\platform.c:178:	// else if (h>=160) hard_scale = 2; // limits gba and up to 2x (seems sufficient for 640x480)
+workspace/_unmaintained\zero28\platform\platform.c:243:    uint8_t red = (rgb565 >> 11) & 0x1F;
+workspace/_unmaintained\zero28\platform\platform.c:245:    uint8_t green = (rgb565 >> 5) & 0x3F;
+workspace/_unmaintained\zero28\platform\platform.c:247:    uint8_t blue = rgb565 & 0x1F;
+workspace/_unmaintained\zero28\platform\platform.c:467:#define OVERLAY_RGBA_MASK 0x00ff0000,0x0000ff00,0x000000ff,0xff000000 // ARGB
+workspace/_unmaintained\gkdpixel\platform\platform.c:122:#define MAGIC_VAL1 0xF7DEu
+workspace/_unmaintained\gkdpixel\platform\platform.c:123:#define MAGIC_VAL2 0x0821u
+workspace/_unmaintained\gkdpixel\platform\platform.c:124:#define MAGIC_VAL3 0xE79Cu
+workspace/_unmaintained\gkdpixel\platform\platform.c:125:#define MAGIC_VAL4 0x1863u
+workspace/_unmaintained\gkdpixel\platform\platform.c:137:#define RED_FROM_NATIVE(rgb565) (((rgb565) >> 11) & 0x1F)
+workspace/_unmaintained\gkdpixel\platform\platform.c:138:#define RED_TO_NATIVE(r) (((r) & 0x1F) << 11)
+workspace/_unmaintained\gkdpixel\platform\platform.c:139:#define GREEN_FROM_NATIVE(rgb565) (((rgb565) >> 5) & 0x3F)
+workspace/_unmaintained\gkdpixel\platform\platform.c:140:#define GREEN_TO_NATIVE(g) (((g) & 0x3F) << 5)
+workspace/_unmaintained\gkdpixel\platform\platform.c:141:#define BLUE_FROM_NATIVE(rgb565) ((rgb565) & 0x1F)
+workspace/_unmaintained\gkdpixel\platform\platform.c:142:#define BLUE_TO_NATIVE(b) ((b) & 0x1F)
+workspace/_unmaintained\gkdpixel\platform\platform.c:176:#define cR(A) (((A) & 0xf800) >> 11)
+workspace/_unmaintained\gkdpixel\platform\platform.c:177:#define cG(A) (((A) & 0x7e0) >> 5)
+workspace/_unmaintained\gkdpixel\platform\platform.c:178:#define cB(A) ((A) & 0x1f)
+workspace/_unmaintained\gkdpixel\platform\platform.c:180:#define Weight1_1(A, B)  ((((cR(A) + cR(B)) >> 1) & 0x1f) << 11 | (((cG(A) + cG(B)) >> 1) & 0x3f) << 5 | (((cB(A) + cB(B)) >> 1) & 0x1f))
+workspace/_unmaintained\gkdpixel\platform\platform.c:181:#define Weight1_2(A, B)  ((((cR(A) + (cR(B) << 1)) / 3) & 0x1f) << 11 | (((cG(A) + (cG(B) << 1)) / 3) & 0x3f) << 5 | (((cB(A) + (cB(B) << 1)) / 3) & 0x1f))
+workspace/_unmaintained\gkdpixel\platform\platform.c:182:#define Weight2_1(A, B)  ((((cR(B) + (cR(A) << 1)) / 3) & 0x1f) << 11 | (((cG(B) + (cG(A) << 1)) / 3) & 0x3f) << 5 | (((cB(B) + (cB(A) << 1)) / 3) & 0x1f))
+workspace/_unmaintained\gkdpixel\platform\platform.c:183:#define Weight1_3(A, B)  ((((cR(A) + (cR(B) * 3)) >> 2) & 0x1f) << 11 | (((cG(A) + (cG(B) * 3)) >> 2) & 0x3f) << 5 | (((cB(A) + (cB(B) * 3)) >> 2) & 0x1f))
+workspace/_unmaintained\gkdpixel\platform\platform.c:184:#define Weight3_1(A, B)  ((((cR(B) + (cR(A) * 3)) >> 2) & 0x1f) << 11 | (((cG(B) + (cG(A) * 3)) >> 2) & 0x3f) << 5 | (((cB(B) + (cB(A) * 3)) >> 2) & 0x1f))
+workspace/_unmaintained\gkdpixel\platform\platform.c:185:#define Weight1_4(A, B)  ((((cR(A) + (cR(B) << 2)) / 5) & 0x1f) << 11 | (((cG(A) + (cG(B) << 2)) / 5) & 0x3f) << 5 | (((cB(A) + (cB(B) << 2)) / 5) & 0x1f))
+workspace/_unmaintained\gkdpixel\platform\platform.c:186:#define Weight4_1(A, B)  ((((cR(B) + (cR(A) << 2)) / 5) & 0x1f) << 11 | (((cG(B) + (cG(A) << 2)) / 5) & 0x3f) << 5 | (((cB(B) + (cB(A) << 2)) / 5) & 0x1f))
+workspace/_unmaintained\gkdpixel\platform\platform.c:187:#define Weight2_3(A, B)  (((((cR(A) << 1) + (cR(B) * 3)) / 5) & 0x1f) << 11 | ((((cG(A) << 1) + (cG(B) * 3)) / 5) & 0x3f) << 5 | ((((cB(A) << 1) + (cB(B) * 3)) / 5) & 0x1f))
+workspace/_unmaintained\gkdpixel\platform\platform.c:188:#define Weight3_2(A, B)  (((((cR(B) << 1) + (cR(A) * 3)) / 5) & 0x1f) << 11 | ((((cG(B) << 1) + (cG(A) * 3)) / 5) & 0x3f) << 5 | ((((cB(B) << 1) + (cB(A) * 3)) / 5) & 0x1f))
+workspace/_unmaintained\gkdpixel\platform\platform.c:189:#define Weight1_1_1_1(A, B, C, D)  ((((cR(A) + cR(B) + cR(C) + cR(D)) >> 2) & 0x1f) << 11 | (((cG(A) + cG(B) + cG(C) + cG(D)) >> 2) & 0x3f) << 5 | (((cB(A) + cB(B) + cB(C) + cB(D)) >> 2) & 0x1f))
+workspace/_unmaintained\gkdpixel\platform\platform.c:233:static inline void scale_240x160_320x213(void* __restrict src_, void* __restrict dst_, uint32_t src_w, uint32_t src_h, uint32_t src_pitch, uint32_t dst_w, uint32_t dst_h, uint32_t dst_pitch) {
+workspace/_unmaintained\gkdpixel\platform\platform.c:331:static inline void scale_160x144_266x240(void* __restrict src_, void* __restrict dst_, uint32_t src_w, uint32_t src_h, uint32_t src_pitch, uint32_t dst_w, uint32_t dst_h, uint32_t dst_pitch) {
+workspace/_unmaintained\gkdpixel\platform\platform.c:421:static inline void scale_256x224_320x238(void* __restrict src_, void* __restrict dst_, uint32_t src_w, uint32_t src_h, uint32_t src_pitch, uint32_t dst_w, uint32_t dst_h, uint32_t dst_pitch) {
+workspace/_unmaintained\gkdpixel\platform\platform.c:583:				return scale_256x224_320x238;
+workspace/_unmaintained\gkdpixel\platform\platform.c:585:			if (renderer->src_w==240 && renderer->src_h==160) return renderer->dst_h==240 ? GFX_getAAScaler(renderer) : scale_240x160_320x213;
+workspace/_unmaintained\gkdpixel\platform\platform.c:586:			if (renderer->src_w==160 && renderer->src_h==144) return renderer->dst_w==320 ? GFX_getAAScaler(renderer) : scale_160x144_266x240;
+workspace/_unmaintained\gkdpixel\platform\platform.c:611:#define OVERLAY_RGBA_MASK 0x00ff0000,0x0000ff00,0x000000ff,0xff000000 // ARGB
+workspace/tg5040\wifimanager\src\core\wpa_supplicant_conf.c:171:       flag |= (0x01 << 0);
+workspace/tg5040\wifimanager\src\core\wpa_supplicant_conf.c:202:           flag |= (0x01 << 1);
+workspace/tg5040\wifimanager\src\core\wifimanager.c:285:        if((unsigned char)app_ssid[i] <= 0x7f)
+workspace/tg5040\wifimanager\src\core\wifimanager.c:293:            h_val = (app_ssid[i] & 0xf0) >> 4;
+workspace/tg5040\wifimanager\src\core\wifimanager.c:296:            }else if((h_val >= 0x0a) && (h_val <= 0x0f)){
+workspace/tg5040\wifimanager\src\core\wifimanager.c:297:                *(scan_ssid++) = h_val + 'a' - 0xa;
+workspace/tg5040\wifimanager\src\core\wifimanager.c:300:            l_val = app_ssid[i] & 0x0f;
+workspace/tg5040\wifimanager\src\core\wifimanager.c:303:            }else if((l_val >= 0x0a) && (l_val <= 0x0f)){
+workspace/tg5040\wifimanager\src\core\wifimanager.c:304:                *(scan_ssid++) = l_val + 'a' - 0xa;
+workspace/tg5040\wifimanager\src\core\wifimanager.c:341:        h_val = (app_ssid[i] & 0xf0) >> 4;
+workspace/tg5040\wifimanager\src\core\wifimanager.c:344:        }else if((h_val >= 0x0a) && (h_val <= 0x0f)){
+workspace/tg5040\wifimanager\src\core\wifimanager.c:345:            *(conf_ssid++) = h_val + 'a' - 0xa;
+workspace/tg5040\wifimanager\src\core\wifimanager.c:348:        l_val = app_ssid[i] & 0x0f;
+workspace/tg5040\wifimanager\src\core\wifimanager.c:351:        }else if((l_val >= 0x0a) && (l_val <= 0x0f)){
+workspace/tg5040\wifimanager\src\core\wifimanager.c:352:            *(conf_ssid++) = l_val + 'a' - 0xa;
+workspace/tg5040\wifimanager\src\core\wifimanager.c:1121:			aw_wifi_disconnect_ap(0x7fffffff);
+workspace/tg5040\wifimanager\src\core\wifimanager.c:1280:    }else if(!(ret & (0x01<<1) ))
+workspace/_unmaintained\zero28\libmsettings\msettings.c:157:#define DISP_LCD_SET_BRIGHTNESS  0x102
+workspace/tg5040\wifimanager\src\core\wifi.c:32:static unsigned char dummy_key[21] = { 0x02, 0x11, 0xbe, 0x33, 0x43, 0x35,
+workspace/tg5040\wifimanager\src\core\wifi.c:33:                                       0x68, 0x47, 0x84, 0x99, 0xa9, 0x2b,
+workspace/tg5040\wifimanager\src\core\wifi.c:34:                                       0x1c, 0xd3, 0xee, 0xff, 0xf1, 0xe2,
+workspace/tg5040\wifimanager\src\core\wifi.c:35:                                       0xf3, 0xf4, 0xf5 };
+workspace/_unmaintained\gkdpixel\libmsettings\msettings.c:136:#define DISP_LCD_SET_BRIGHTNESS  0x102
+workspace/all\ledcontrol\ledcontrol.c:76:        0x000011, 0x000022, 0x000033, 0x000044, 0x000055, 0x000066, 0x000077, 0x000088, 0x000099, 0x0000AA, 0x0000BB, 0x0000CC, 0x3366FF, 0x4D7AFF, 0x6699FF, 0x80B3FF, 0x99CCFF, 0xB3D9FF, 0x0000FF,
+workspace/all\ledcontrol\ledcontrol.c:78:        0x001111, 0x002222, 0x003333, 0x004444, 0x005555, 0x006666, 0x007777, 0x008888, 0x009999, 0x00AAAA, 0x00BBBB, 0x00CCCC, 0x33FFFF, 0x4DFFFF, 0x66FFFF, 0x80FFFF, 0x99FFFF, 0xB3FFFF, 0x00FFFF,
+workspace/all\ledcontrol\ledcontrol.c:80:        0x001100, 0x002200, 0x003300, 0x004400, 0x005500, 0x006600, 0x007700, 0x008800, 0x009900, 0x00AA00, 0x00BB00, 0x00CC00, 0x33FF33, 0x4DFF4D, 0x66FF66, 0x80FF80, 0x99FF99, 0xB3FFB3, 0x00FF00,
+workspace/all\ledcontrol\ledcontrol.c:82:        0x110011, 0x220022, 0x330033, 0x440044, 0x550055, 0x660066, 0x770077, 0x880088, 0x990099, 0xAA00AA, 0xBB00BB, 0xCC00CC, 0xFF33FF, 0xFF4DFF, 0xFF66FF, 0xFF80FF, 0xFF99FF, 0xFFB3FF, 0xFF00FF,
+workspace/all\ledcontrol\ledcontrol.c:84:        0x220044, 0x330066, 0x440088, 0x5500AA, 0x6600CC, 0x7700DD, 0x8800EE, 0x9900FF, 0xAA00FF, 0xBB00FF, 0xCC00FF, 0x8833FF, 0x994DFF, 0xAA66FF, 0xBB80FF, 0xCC99FF, 0xDDB3FF,
+workspace/all\ledcontrol\ledcontrol.c:86:        0x220000, 0x440000, 0x660000, 0x880000, 0xAA0000, 0xCC0000, 0xFF3333, 0xFF4D4D, 0xFF6666, 0xFF8080, 0xFF9999, 0xFFB3B3, 0xFF0000,
+workspace/all\ledcontrol\ledcontrol.c:88:        0x222200, 0x444400, 0x666600, 0x888800, 0xAAAA00, 0xCCCC00, 0xFFFF33, 0xFFFF4D, 0xFFFF66, 0xFFFF80, 0xFFFF99, 0xFFFFB3, 0xFFFF00,
+workspace/all\ledcontrol\ledcontrol.c:90:        0x331100, 0x662200, 0x993300, 0xCC4400, 0xFF5500, 0xFF6600, 0xFF7711, 0xFF8822, 0xFF9933, 0xFFAA44, 0xFFBB55, 0xFFCC66, 0xFFDD77, 0xFFEE88,
+workspace/all\ledcontrol\ledcontrol.c:92:        0x000000, 0x111111, 0x222222, 0x333333, 0x444444, 0x555555, 0x666666, 0x777777, 0x888888, 0x999999, 0xAAAAAA, 0xBBBBBB, 0xCCCCCC, 0xDDDDDD, 0xFFFFFF
+workspace/all\common\sdl.h:20:#define SDL_SRCALPHA 0x00010000
+workspace/all\common\scaler.c:38:			dpix1 = 0xFF000000 | ((pix & 0xF800) << 8) | ((pix & 0x07E0) << 5) | ((pix & 0x001F) << 3);
+workspace/all\common\scaler.c:39:			dpix2 = 0xFF000000 | ((pix & 0xF8000000) >> 8) | ((pix & 0x07E00000) >> 11) | ((pix & 0x001F0000) >> 13);			d[dx  ] = dpix1; d[dx+1] = dpix1;
+workspace/all\common\scaler.c:45:			pix16 = 0xFF000000 | ((pix16 & 0xF800) << 8) | ((pix16 & 0x07E0) << 5) | ((pix16 & 0x001F) << 3);
+workspace/all\common\scaler.c:60:			dpix1 = 0xFF000000 | ((pix & 0xF800) << 8) | ((pix & 0x07E0) << 5) | ((pix & 0x001F) << 3);
+workspace/all\common\scaler.c:61:			dpix2 = 0xFF000000 | ((pix & 0xF8000000) >> 8) | ((pix & 0x07E00000) >> 11) | ((pix & 0x001F0000) >> 13);			d[dx  ] = dpix1; d[dx+1] = dpix1;
+workspace/all\common\scaler.c:67:			pix16 = 0xFF000000 | ((pix16 & 0xF800) << 8) | ((pix16 & 0x07E0) << 5) | ((pix16 & 0x001F) << 3);
+workspace/all\common\scaler.c:130:			dpix1=(pix & 0x0000FFFF)|(pix<<16);
+workspace/all\common\scaler.c:131:			dpix2=(pix & 0xFFFF0000)|(pix>>16);
+workspace/all\common\scaler.c:187:			dpix1=(pix & 0x0000FFFF)|(pix<<16);
+workspace/all\common\scaler.c:188:			dpix2=(pix & 0xFFFF0000)|(pix>>16);
+workspace/all\common\scaler.c:246:			dpix1=(pix & 0x0000FFFF)|(pix<<16);
+workspace/all\common\scaler.c:247:			dpix2=(pix & 0xFFFF0000)|(pix>>16);
+workspace/all\common\scaler.c:304:			dpix1=(pix & 0x0000FFFF)|(pix<<16);
+workspace/all\common\scaler.c:305:			dpix2=(pix & 0xFFFF0000)|(pix>>16);
+workspace/all\common\scaler.c:367:			dpix1=(pix & 0x0000FFFF)|(pix<<16);
+workspace/all\common\scaler.c:368:			dpix2=(pix & 0xFFFF0000)|(pix>>16);
+workspace/all\common\scaler.c:2897:#define cR(A) (((A) & 0xf800) >> 11)
+workspace/all\common\scaler.c:2898:#define cG(A) (((A) & 0x7e0) >> 5)
+workspace/all\common\scaler.c:2899:#define cB(A) ((A) & 0x1f)
+workspace/all\common\scaler.c:2901:#define Weight2_3(A, B)  (((((cR(A) << 1) + (cR(B) * 3)) / 5) & 0x1f) << 11 | ((((cG(A) << 1) + (cG(B) * 3)) / 5) & 0x3f) << 5 | ((((cB(A) << 1) + (cB(B) * 3)) / 5) & 0x1f))
+workspace/all\common\scaler.c:2902:#define Weight3_1(A, B)  ((((cR(B) + (cR(A) * 3)) >> 2) & 0x1f) << 11 | (((cG(B) + (cG(A) * 3)) >> 2) & 0x3f) << 5 | (((cB(B) + (cB(A) * 3)) >> 2) & 0x1f))
+workspace/all\common\scaler.c:2903:#define Weight3_2(A, B)  (((((cR(B) << 1) + (cR(A) * 3)) / 5) & 0x1f) << 11 | ((((cG(B) << 1) + (cG(A) * 3)) / 5) & 0x3f) << 5 | ((((cB(B) << 1) + (cB(A) * 3)) / 5) & 0x1f))
+workspace/all\common\scaler.c:2916:	uint16_t k = 0x0000;
+workspace/all\common\scaler.c:2931:	uint16_t k = 0x0000;
+workspace/all\common\scaler.c:2952:	uint16_t k = 0x0000;
+workspace/all\common\scaler.c:2984:	uint16_t k = 0x0000;
+workspace/all\common\scaler.c:3024:	uint16_t k = 0x0000;
+workspace/all\common\scaler.c:3045:	uint16_t k = 0x0000;
+workspace/tg5040\platform\platform.c:774:        uint8_t r = (pixel >> 24) & 0xFF;
+workspace/tg5040\platform\platform.c:775:        uint8_t g = (pixel >> 16) & 0xFF;
+workspace/tg5040\platform\platform.c:776:        uint8_t b = (pixel >> 8) & 0xFF;
+workspace/tg5040\platform\platform.c:795:    return (dominant_color << 8) | 0xFF;
+workspace/tg5040\platform\platform.c:856:static int hard_scale = 4; // TODO: base src size, eg. 160x144 can be 4
+workspace/tg5040\platform\platform.c:864:	// else if (h>=160) hard_scale = 2; // limits gba and up to 2x (seems sufficient for 640x480)
+workspace/tg5040\platform\platform.c:926:    uint8_t red = (rgb565 >> 11) & 0x1F;
+workspace/tg5040\platform\platform.c:928:    uint8_t green = (rgb565 >> 5) & 0x3F;
+workspace/tg5040\platform\platform.c:930:    uint8_t blue = rgb565 & 0x1F;
+workspace/tg5040\platform\platform.c:2096:#define OVERLAY_RGBA_MASK 0x00ff0000,0x0000ff00,0x000000ff,0xff000000 // ARGB
+workspace/tg5040\platform\platform.c:2370:#define MAX_STRENGTH 0xFFFF
+workspace/tg5040\platform\platform.c:2443:		0xFFFFFF,
+workspace/tg5040\platform\platform.c:2444:		0xFFFFFF,
+workspace/tg5040\platform\platform.c:2457:		0xFFFFFF,
+workspace/tg5040\platform\platform.c:2458:		0xFFFFFF,
+workspace/tg5040\platform\platform.c:2471:		0xFFFFFF,
+workspace/tg5040\platform\platform.c:2472:		0xFFFFFF,
+workspace/tg5040\platform\platform.c:2485:		0xFFFFFF,
+workspace/tg5040\platform\platform.c:2486:		0xFFFFFF,
+workspace/tg5040\platform\platform.c:2500:		0xFFFFFF,
+workspace/tg5040\platform\platform.c:2501:		0xFFFFFF,
+workspace/tg5040\platform\platform.c:2514:		0xFFFFFF,
+workspace/tg5040\platform\platform.c:2515:		0xFFFFFF,
+workspace/tg5040\platform\platform.c:2528:		0xFFFFFF,
+workspace/tg5040\platform\platform.c:2529:		0xFFFFFF,
+workspace/tg5040\platform\platform.c:3360:#define COD_MAJOR_MASK     0x1F00
+workspace/tg5040\platform\platform.c:3361:#define COD_MINOR_MASK     0x00FC
+workspace/tg5040\platform\platform.c:3362:#define COD_SERVICE_MASK   0xFFE000
+workspace/tg5040\platform\platform.c:3442:		if (GET_MAJOR_CLASS(device->r_class) == 0x04) { // Audio/Video
+workspace/tg5040\platform\platform.c:3446:		if (GET_MAJOR_CLASS(device->r_class) == 0x05) { // Peripheral
+workspace/tg5040\btmanager\src\include\bt_manager.h:142:	BTMG_BDADDR_BREDR = 0x00,
+workspace/tg5040\btmanager\src\include\bt_manager.h:143:	BTMG_BDADDR_LE_PUBLIC = 0x01,
+workspace/tg5040\btmanager\src\include\bt_manager.h:144:	BTMG_BDADDR_LE_RANDOM = 0x02,
+workspace/tg5040\btmanager\src\include\bt_manager.h:146:#define BTMG_LE_ADV_CHANNEL_NONE 0x00
+workspace/tg5040\btmanager\src\include\bt_manager.h:147:#define BTMG_LE_ADV_CHANNEL_37 0x01
+workspace/tg5040\btmanager\src\include\bt_manager.h:148:#define BTMG_LE_ADV_CHANNEL_38 (0x01 << 1)
+workspace/tg5040\btmanager\src\include\bt_manager.h:149:#define BTMG_LE_ADV_CHANNEL_39 (0x01 << 2)
+workspace/tg5040\btmanager\src\include\bt_manager.h:181:	BTMG_LE_PUBLIC_ADDRESS = 0x00,
+workspace/tg5040\btmanager\src\include\bt_manager.h:182:	BTMG_LE_RANDOM_ADDRESS = 0x01,
+workspace/tg5040\btmanager\src\include\bt_manager.h:183:	BTMG_LE_IRK_OR_PUBLIC_ADDRESS = 0x02,
+workspace/tg5040\btmanager\src\include\bt_manager.h:184:	BTMG_LE_IRK_OR_RANDOM_ADDRESS = 0x03,
+workspace/tg5040\btmanager\src\include\bt_manager.h:187:	BTMG_LE_ADV_IND = 0x00, /*connectable and scannable undirected advertising*/
+workspace/tg5040\btmanager\src\include\bt_manager.h:188:	BTMG_LE_ADV_DIRECT_HIGH_IND = 0x01, /*connectable high duty cycle directed advertising*/
+workspace/tg5040\btmanager\src\include\bt_manager.h:189:	BTMG_LE_ADV_SCAN_IND = 0x02, /*scannable undirected advertising*/
+workspace/tg5040\btmanager\src\include\bt_manager.h:190:	BTMG_LE_ADV_NONCONN_IND = 0x03, /*non connectable undirected advertising*/
+workspace/tg5040\btmanager\src\include\bt_manager.h:191:	BTMG_LE_ADV_DIRECT_LOW_IND = 0x04, /*connectable low duty cycle directed advertising*/
+workspace/tg5040\btmanager\src\include\bt_manager.h:194:	BTMG_LE_PROCESS_ALL_REQ = 0x00, /*process scan and connection requests from all devices*/
+workspace/tg5040\btmanager\src\include\bt_manager.h:195:	BTMG_LE_PROCESS_CONN_REQ = 0x01, /*process connection request from all devices and scan request only from white list*/
+workspace/tg5040\btmanager\src\include\bt_manager.h:196:	BTMG_LE_PROCESS_SCAN_REQ = 0x02, /*process scan request from all devices and connection request only from white list*/
+workspace/tg5040\btmanager\src\include\bt_manager.h:197:	BTMG_LE_PROCESS_WHITE_LIST_REQ = 0x03, /*process requests only from white list*/
+workspace/tg5040\btmanager\src\include\bt_manager.h:200:	BTMG_LE_PEER_PUBLIC_ADDRESS = 0x00, /*public device address(default) or public indentiy address*/
+workspace/tg5040\btmanager\src\include\bt_manager.h:201:	BTMG_LE_PEER_RANDOM_ADDRESS = 0x01, /*random device address(default) or random indentiy address*/
+workspace/tg5040\btmanager\src\include\bt_manager.h:214:    uint16_t scan_interval;                   // Range: 0x0004 to 0x4000 Time = N * 0.625 msec Time Range: 2.5 msec to 10.24 sec
+workspace/tg5040\btmanager\src\include\bt_manager.h:215:    uint16_t scan_window;                     // Range: 0x0004 to 0x4000 Time = N * 0.625 msec Time Range: 2.5 msec to 10.24 seconds
+workspace/tg5040\btmanager\src\include\bt_manager.h:216:    uint16_t timeout;                         // Scan timeout between 0x0001 and 0xFFFF in seconds, 0x0000 disables timeout.
+workspace/tg5040\btmanager\src\include\bt_manager.h:219:    LE_SCAN_TYPE_PASSIVE = 0x00,  // passive scanning
+workspace/tg5040\btmanager\src\include\bt_manager.h:234:    uint16_t min_conn_interval;// Range: 0x0006 to 0x0C80, Time = N * 1.25 msec, Time Range: 7.5 msec to 4 seconds.
+workspace/tg5040\btmanager\src\include\bt_manager.h:235:    uint16_t max_conn_interval;// Range: 0x0006 to 0x0C80, Time = N * 1.25 msec, Time Range: 7.5 msec to 4 seconds.
+workspace/tg5040\btmanager\src\include\bt_manager.h:236:    uint16_t slave_latency;    // Range: 0x0000 to 0x01F3
+workspace/tg5040\btmanager\src\include\bt_manager.h:237:    uint16_t conn_sup_timeout; // Range: 0x000A to 0x0C80, Time = N * 10 msec, Time Range: 100 msec to 32 seconds
+workspace/tg5040\btmanager\src\include\bt_manager.h:540:	BT_GATT_CHAR_PROPERTY_BROADCAST = 0x01,
+workspace/tg5040\btmanager\src\include\bt_manager.h:541:	BT_GATT_CHAR_PROPERTY_READ = 0x02,
+workspace/tg5040\btmanager\src\include\bt_manager.h:542:	BT_GATT_CHAR_PROPERTY_WRITE_NO_RESPONSE = 0x04,
+workspace/tg5040\btmanager\src\include\bt_manager.h:543:	BT_GATT_CHAR_PROPERTY_WRITE = 0x08,
+workspace/tg5040\btmanager\src\include\bt_manager.h:544:	BT_GATT_CHAR_PROPERTY_NOTIFY = 0x10,
+workspace/tg5040\btmanager\src\include\bt_manager.h:545:	BT_GATT_CHAR_PROPERTY_INDICATE = 0x20,
+workspace/tg5040\btmanager\src\include\bt_manager.h:546:	BT_GATT_CHAR_PROPERTY_SIGNED_WRITE = 0x40
+workspace/tg5040\btmanager\src\include\bt_manager.h:549:	BT_GATT_DESC_PROPERTY_READ = 0x01,
+workspace/tg5040\btmanager\src\include\bt_manager.h:550:	BT_GATT_DESC_PROPERTY_WRITE = 0x02,
+workspace/tg5040\btmanager\src\include\bt_manager.h:551:	BT_GATT_DESC_PROPERTY_ENCRY_READ = 0x04,
+workspace/tg5040\btmanager\src\include\bt_manager.h:552:	BT_GATT_DESC_PROPERTY_ENCRY_WRITE = 0x08,
+workspace/tg5040\btmanager\src\include\bt_manager.h:553:	BT_GATT_DESC_PROPERTY_ENCRY_AUTH_READ = 0x10,
+workspace/tg5040\btmanager\src\include\bt_manager.h:554:	BT_GATT_DESC_PROPERTY_ENCRY_AUTH_WRITE = 0x20,
+workspace/tg5040\btmanager\src\include\bt_manager.h:555:	BT_GATT_DESC_PROPERTY_SECURE_READ = 0x40,
+workspace/tg5040\btmanager\src\include\bt_manager.h:556:	BT_GATT_DESC_PROPERTY_SECURE_WRITE = 0x80
+workspace/tg5040\btmanager\src\include\bt_manager.h:560:	BT_GATT_PERM_READ = 0x01,
+workspace/tg5040\btmanager\src\include\bt_manager.h:561:	BT_GATT_PERM_WRITE = 0x02,
+workspace/tg5040\btmanager\src\include\bt_manager.h:562:	BT_GATT_PERM_READ_ENCYPT = 0x04,
+workspace/tg5040\btmanager\src\include\bt_manager.h:563:	BT_GATT_PERM_WRITE_ENCRYPT = 0x08,
+workspace/tg5040\btmanager\src\include\bt_manager.h:564:	BT_GATT_PERM_ENCRYPT = 0x04 | 0x08,
+workspace/tg5040\btmanager\src\include\bt_manager.h:565:	BT_GATT_PERM_READ_AUTHEN = 0x10,
+workspace/tg5040\btmanager\src\include\bt_manager.h:566:	BT_GATT_PERM_WRITE_AUTHEN = 0x20,
+workspace/tg5040\btmanager\src\include\bt_manager.h:567:	BT_GATT_PERM_AUTHEN = 0x10 | 0x20,
+workspace/tg5040\btmanager\src\include\bt_manager.h:568:	BT_GATT_PERM_AUTHOR = 0x40,
+workspace/tg5040\btmanager\src\include\bt_manager.h:569:	BT_GATT_PERM_NONE = 0x80
+workspace/tg5040\btmanager\src\include\bt_manager.h:573:	BT_GATT_SUCCESS  = 0x00,
+workspace/tg5040\btmanager\src\include\bt_manager.h:574:	BT_GATT_ERROR_INVALID_HANDLE   = 0x01, /*Invalid Handle*/
+workspace/tg5040\btmanager\src\include\bt_manager.h:575:	BT_GATT_ERROR_READ_NOT_PERMITTED = 0x02, /*Read not Permitted*/
+workspace/tg5040\btmanager\src\include\bt_manager.h:576:	BT_GATT_ERROR_WRITE_NOT_PERMITTED = 0x03, /*Writed Not Permitted*/
+workspace/tg5040\btmanager\src\include\bt_manager.h:577:	BT_GATT_ERROR_INVALID_PDU = 0x04, /*Invalid PDU*/
+workspace/tg5040\btmanager\src\include\bt_manager.h:578:	BT_GATT_ERROR_AUTHENTICATION  = 0x05, /*Insufficient Authentication*/
+workspace/tg5040\btmanager\src\include\bt_manager.h:579:	BT_GATT_ERROR_REQUEST_NOT_SUPPORTED  = 0x06, /*Request Not Supported*/
+workspace/tg5040\btmanager\src\include\bt_manager.h:580:	BT_GATT_ERROR_INVALID_OFFSET  = 0x07, /*Invalid Offset*/
+workspace/tg5040\btmanager\src\include\bt_manager.h:581:	BT_GATT_ERROR_AUTHORIZATION   = 0x08, /*Insufficient Authorization*/
+workspace/tg5040\btmanager\src\include\bt_manager.h:582:	BT_GATT_ERROR_PREPARE_QUEUE_FULL  = 0x09, /*Prepare Queue Full*/
+workspace/tg5040\btmanager\src\include\bt_manager.h:583:	BT_GATT_ERROR_ATTRIBUTE_NOT_FOUND  = 0x0A, /*Attribute Not Found*/
+workspace/tg5040\btmanager\src\include\bt_manager.h:584:	BT_GATT_ERROR_ATTRIBUTE_NOT_LONG  = 0x0B, /*Attribute Not Long*/
+workspace/tg5040\btmanager\src\include\bt_manager.h:585:	BT_GATT_ERROR_INSUFFICIENT_ENCRYPTION_KEY_SIZE = 0x0C, /*Insufficient Encryption Key Size*/
+workspace/tg5040\btmanager\src\include\bt_manager.h:586:	BT_GATT_ERROR_INVALID_ATTRIBUTE_VALUE_LEN  = 0x0D, /*Invalid Attribute Value Length*/
+workspace/tg5040\btmanager\src\include\bt_manager.h:587:	BT_GATT_ERROR_UNLIKELY  = 0x0E, /*Unlikely Error*/
+workspace/tg5040\btmanager\src\include\bt_manager.h:588:	BT_GATT_ERROR_INSUFFICIENT_ENCRYPTION  = 0x0F, /*Insufficient Encryption*/
+workspace/tg5040\btmanager\src\include\bt_manager.h:589:	BT_GATT_ERROR_UNSUPPORTED_GROUP_TYPE  = 0x10, /*Unsupported Group Type*/
+workspace/tg5040\btmanager\src\include\bt_manager.h:590:	BT_GATT_ERROR_INSUFFICIENT_RESOURCES  = 0x11, /*Insufficient Resources*/
+workspace/tg5040\btmanager\src\include\bt_manager.h:591:	BT_GATT_ERROR_DB_OUT_OF_SYNC  = 0x12, /*Database Out of Sync*/
+workspace/tg5040\btmanager\src\include\bt_manager.h:592:	BT_GATT_ERROR_VALUE_NOT_ALLOWED  = 0x13 /*Value Not Allowed*/
+workspace/tg5040\btmanager\src\include\bt_manager.h:593:	/*0x80-0x9F Application Error*/
+workspace/tg5040\btmanager\src\include\bt_manager.h:594:	/*0xE0-0xFF Common Profile and Service Error Codes*/
+workspace/all\common\defines.h:39:#define TRIAD_WHITE 		0xff,0xff,0xff
+workspace/all\common\defines.h:40:#define TRIAD_BLACK 		0x00,0x00,0x00
+workspace/all\common\defines.h:41:#define TRIAD_LIGHT_GRAY 	0x7f,0x7f,0x7f
+workspace/all\common\defines.h:42:#define TRIAD_GRAY 			0x99,0x99,0x99
+workspace/all\common\defines.h:43:#define TRIAD_DARK_GRAY 	0x26,0x26,0x26
+workspace/all\common\defines.h:45:#define TRIAD_LIGHT_TEXT 	0xcc,0xcc,0xcc
+workspace/all\common\defines.h:46:#define TRIAD_DARK_TEXT 	0x66,0x66,0x66
+workspace/tg5040\libmsettings\msettings.c:1085:#define DISP_LCD_SET_BRIGHTNESS  0x102
+workspace/tg5040\wifimanager\src\core\include\wpa_ctrl.h:221:#define WPA_BSS_MASK_ALL		0xFFFDFFFF
+workspace/tg5040\wifimanager\src\core\include\wifi_intf.h:21:	NETWORK_CONNECTED = 0x01,
+workspace/tg5040\wifimanager\src\core\include\wifi_intf.h:30:	WSE_UNKNOWN = 0x20,
+workspace/all\common\config.h:118:#define CFG_DEFAULT_COLOR1 0xffffffU
+workspace/all\common\config.h:119:#define CFG_DEFAULT_COLOR2 0x9b2257U
+workspace/all\common\config.h:120:#define CFG_DEFAULT_COLOR3 0x1e2329U
+workspace/all\common\config.h:121:#define CFG_DEFAULT_COLOR4 0xffffffU
+workspace/all\common\config.h:122:#define CFG_DEFAULT_COLOR5 0x000000U
+workspace/all\common\config.h:123:#define CFG_DEFAULT_COLOR6 0xffffffU
+workspace/all\common\config.h:124:#define CFG_DEFAULT_COLOR7 0x000000U
+workspace/all\common\api.h:46:#define RGBA_MASK_AUTO	0x0, 0x0, 0x0, 0x0
+workspace/all\common\api.h:47:#define RGBA_MASK_565	0xF800, 0x07E0, 0x001F, 0x0000
+workspace/all\common\api.h:48:#define RGBA_MASK_8888	0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000
+workspace/all\common\api.c:128:	*r = (col >> 16) & 0xff;
+workspace/all\common\api.c:129:	*g = (col >> 8) & 0xff;
+workspace/all\common\api.c:130:	*b = col & 0xff;
+workspace/all\common\api.c:475:			uint8_t r = ((pixel & 0xF800) >> 11) << 3;
+workspace/all\common\api.c:476:			uint8_t g = ((pixel & 0x07E0) >> 5) << 2;
+workspace/all\common\api.c:477:			uint8_t b = (pixel & 0x001F) << 3;
+workspace/all\common\api.c:507:				uint8_t r = ((pixel & 0xF800) >> 11) << 3;
+workspace/all\common\api.c:508:				uint8_t g = ((pixel & 0x07E0) >> 5) << 2;
+workspace/all\common\api.c:509:				uint8_t b = (pixel & 0x001F) << 3;
+workspace/all\common\api.c:879:	return (c1 + c2 + ((c1 ^ c2) & 0x0821)) >> 1;
+workspace/all\common\api.c:885:	uint32_t ret = sum + ((c1 ^ c2) & 0x08210821);
+workspace/all\common\api.c:906:	uint32_t ret, lowbits = 0x0821;
+workspace/all\common\api.c:920:	uint32_t ret, lowbits = 0x08210821;
+workspace/all\common\api.c:926:		"movcs %1, #0x80000000\n\t"
+workspace/all\common\api.c:1151:	tempcol.r = (colour >> 16) & 0xFF;
+workspace/all\common\api.c:1152:	tempcol.g = (colour >> 8) & 0xFF;
+workspace/all\common\api.c:1153:	tempcol.b = colour & 0xFF;
+workspace/all\common\api.c:1295:	Uint16 transparent_black = 0x0000;			// RGB565 has no alpha, so use black (0)
+workspace/all\common\api.c:1362:	Uint16 transparent_black = 0x0000;
+workspace/all\common\api.c:1396:	Uint32 transparent_black = 0x00000000; // Fully transparent (RGBA8888: 0xAARRGGBB)
+workspace/all\common\api.c:1439:			Uint8 r = (srcPixel >> 12) & 0xF;
+workspace/all\common\api.c:1440:			Uint8 g = (srcPixel >> 8) & 0xF;
+workspace/all\common\api.c:1441:			Uint8 b = (srcPixel >> 4) & 0xF;
+workspace/all\common\api.c:1442:			Uint8 a = (srcPixel) & 0xF;
+workspace/all\common\api.c:1466:					Uint8 destR = (existingPixel >> 11) & 0x1F;
+workspace/all\common\api.c:1467:					Uint8 destG = (existingPixel >> 5) & 0x3F;
+workspace/all\common\api.c:1468:					Uint8 destB = existingPixel & 0x1F;
+workspace/all\common\api.c:1506:							   (asset_color >> 16) & 0xFF,
+workspace/all\common\api.c:1507:							   (asset_color >> 8) & 0xFF,
+workspace/all\common\api.c:1508:							   asset_color & 0xFF);
+workspace/all\common\api.c:2739:#define AXIS_DEADZONE 0x4000
+workspace/all\common\api.c:3375:#define MIN_STRENGTH 0x0000
+workspace/all\common\api.c:3376:#define MAX_STRENGTH 0xFFFF
+workspace/all\common\api.c:3382:	return scaled_strength; // between 0x0000 and 0xFFFF
+workspace/all\common\api.c:3699:		// TODO: for some reason screen's dimensions end up being 0x0 in GFX_blitMessage...
+workspace/all\common\api.c:4059:		lightsLowBattery[i].color1 = 0xFF3300;
+workspace/all\common\api.c:4065:		lightsCriticalBattery[i].color1 = 0xFF0000;
+workspace/all\common\api.c:4071:		lightsCharging[i].color1 = 0x00FF00;
+workspace/_unmaintained\rg35xxplus\show\show.c:10:#define RGBA_MASK_565	0xF800, 0x07E0, 0x001F, 0x0000
+workspace/_unmaintained\zero28\bl\bl_enable.c:7:#define DISP_LCD_BACKLIGHT_ENABLE	0x104
+workspace/_unmaintained\rg35xxplus\libmsettings\msettings.c:153:#define DISP_LCD_SET_BRIGHTNESS  0x102
+workspace/_unmaintained\zero28\bl\bl_disable.c:7:#define DISP_LCD_BACKLIGHT_DISABLE	0x105
+workspace/tg5040\wifimanager\daemon\wifid_cmd_iface.c:47:	enum cmd_status  status = { 0xAB };
+workspace/tg5040\wifimanager\daemon\wifid_cmd_iface.c:69:	enum cmd_status  status = { 0xAB };
+workspace/_unmaintained\rg35xxplus\platform\platform.c:182:#define EV_KEY			0x01
+workspace/_unmaintained\rg35xxplus\platform\platform.c:183:#define EV_ABS			0x03
+workspace/_unmaintained\rg35xxplus\platform\platform.c:562:static int hard_scale = 4; // TODO: base src size, eg. 160x144 can be 4
+workspace/_unmaintained\rg35xxplus\platform\platform.c:570:	else if (h>=160) hard_scale = 2; // limits gba and up to 2x (seems sufficient for 640x480)
+workspace/_unmaintained\rg35xxplus\platform\platform.c:635:    uint8_t red = (rgb565 >> 11) & 0x1F;
+workspace/_unmaintained\rg35xxplus\platform\platform.c:637:    uint8_t green = (rgb565 >> 5) & 0x3F;
+workspace/_unmaintained\rg35xxplus\platform\platform.c:639:    uint8_t blue = rgb565 & 0x1F;
+workspace/_unmaintained\rg35xxplus\platform\platform.c:864:#define OVERLAY_RGBA_MASK 0x00ff0000,0x0000ff00,0x000000ff,0xff000000 // ARGB
+workspace/_unmaintained\my355\show\show.c:10:#define RGBA_MASK_565	0xF800, 0x07E0, 0x001F, 0x0000
+workspace/_unmaintained\my355\libmsettings\msettings.c:199:#define DISP_LCD_SET_BRIGHTNESS  0x102
+workspace/_unmaintained\miyoomini\show\show.c:26:	int map_size = vinfo.xres * vinfo.yres * (vinfo.bits_per_pixel / 8); // 640x480x4
+workspace/_unmaintained\miyoomini\show\show.c:40:			*(dst+3) = 0xf; // alpha
+workspace/_unmaintained\miyoomini\keymon\keymon.c:60:#define	AXPID	(0x34)
+workspace/_unmaintained\miyoomini\keymon\keymon.c:101://		B9 .. (& 0x7F) battery percentage
+workspace/_unmaintained\miyoomini\keymon\keymon.c:160:	if (is_plus) return axp_read(0xB9) & 0x7F;
+workspace/_unmaintained\miyoomini\keymon\keymon.c:181:	if (is_plus) return (axp_read(0x00) & 0x4) > 0;
+workspace/_unmaintained\my282\tests\volume\volume.c:15:    mem = mmap(0, 4096, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0x1c22000);
+workspace/_unmaintained\my282\tests\volume\volume.c:21:    p = (uint32_t *)(&mem[0xc00 + 0x258]);
+workspace/_unmaintained\my282\tests\volume\volume.c:22:    printf("%d\n", (*p & 0xff)); fflush(stdout);
+workspace/_unmaintained\my355\platform\platform.c:242:static int hard_scale = 4; // TODO: base src size, eg. 160x144 can be 4
+workspace/_unmaintained\my355\platform\platform.c:250:	else if (h>=160) hard_scale = 2; // limits gba and up to 2x (seems sufficient for 640x480)
+workspace/_unmaintained\my355\platform\platform.c:315:    uint8_t red = (rgb565 >> 11) & 0x1F;
+workspace/_unmaintained\my355\platform\platform.c:317:    uint8_t green = (rgb565 >> 5) & 0x3F;
+workspace/_unmaintained\my355\platform\platform.c:319:    uint8_t blue = rgb565 & 0x1F;
+workspace/_unmaintained\my355\platform\platform.c:544:#define OVERLAY_RGBA_MASK 0x00ff0000,0x0000ff00,0x000000ff,0xff000000 // ARGB
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:38:#define DE_IRQSTATUS				0x0004
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:39:#define DE_IRQENABLE				0x0000
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:40:#define DE_IF_CON				0x000c
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:42:#define DE_MMU_EN				0x0010
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:43:#define DE_MMU_BASE				0x0014
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:45:#define DE_OUTPUT_CON				0x1000
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:46:#define DE_OUTPUT_STAT				0x100c
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:47:#define DE_WB_CON				0x1004
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:48:#define DE_WB_ADDR				0x1008
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:51:#define DE_PATH_DITHER				0x150
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:56:#define DE_PATH_BASE				0x0100
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:57:#define DE_PATH_CTL(n)				(DE_PATH_BASE + (n) * 0x100  +  0x0000)
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:63:#define DE_PATH_BK(n)				(DE_PATH_BASE + (n) * 0x100  +  0x0020)
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:64:#define DE_PATH_SIZE(n)				(DE_PATH_BASE + (n) * 0x100  +  0x0024)
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:65:#define DE_PATH_E_COOR(n)			(DE_PATH_BASE + (n) * 0x100  +  0x0028)
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:67:#define DE_PATH_GAMMA_IDX(n)			(DE_PATH_BASE + (n) * 0x100  +  0x002C)
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:74:#define DE_PATH_GAMMA_RAM(n)			(DE_PATH_BASE + (n) * 0x100  +  0x0030)
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:76:#define DE_PATH_CURSOR_FB(n)			(DE_PATH_BASE + (n) * 0x100  +  0x0034)
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:77:#define DE_PATH_CURSOR_STR(n)			(DE_PATH_BASE + (n) * 0x100  +  0x0038)
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:80:#define DE_OVL_BASE				0x0400
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:81:#define DE_OVL_CFG(n)				(DE_OVL_BASE + (n) * 0x100  +  0x0000)
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:82:#define DE_OVL_ISIZE(n)				(DE_OVL_BASE + (n) * 0x100  +  0x0004)
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:83:#define DE_OVL_OSIZE(n)				(DE_OVL_BASE + (n) * 0x100  +  0x0008)
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:84:#define DE_OVL_SR(n)				(DE_OVL_BASE + (n) * 0x100  +  0x000c)
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:85:#define DE_OVL_SCOEF0(n)			(DE_OVL_BASE + (n) * 0x100  +  0x0010)
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:86:#define DE_OVL_SCOEF1(n)			(DE_OVL_BASE + (n) * 0x100  +  0x0014)
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:87:#define DE_OVL_SCOEF2(n)			(DE_OVL_BASE + (n) * 0x100  +  0x0018)
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:88:#define DE_OVL_SCOEF3(n)			(DE_OVL_BASE + (n) * 0x100  +  0x001c)
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:89:#define DE_OVL_SCOEF4(n)			(DE_OVL_BASE + (n) * 0x100  +  0x0020)
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:90:#define DE_OVL_SCOEF5(n)			(DE_OVL_BASE + (n) * 0x100  +  0x0024)
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:91:#define DE_OVL_SCOEF6(n)			(DE_OVL_BASE + (n) * 0x100  +  0x0028)
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:92:#define DE_OVL_SCOEF7(n)			(DE_OVL_BASE + (n) * 0x100  +  0x002c)
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:93:#define DE_OVL_BA0(n)				(DE_OVL_BASE + (n) * 0x100  +  0x0030)
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:94:#define DE_OVL_BA1UV(n)				(DE_OVL_BASE + (n) * 0x100  +  0x0034)
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:95:#define DE_OVL_BA2V(n)				(DE_OVL_BASE + (n) * 0x100  +  0x0038)
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:96:#define DE_OVL_3D_RIGHT_BA0(n)			(DE_OVL_BASE + (n) * 0x100  +  0x003C)
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:97:#define DE_OVL_3D_RIGHT_BA1UV(n)		(DE_OVL_BASE + (n) * 0x100  +  0x0040)
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:98:#define DE_OVL_3D_RIGHT_BA2V(n)			(DE_OVL_BASE + (n) * 0x100  +  0x0044)
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:99:#define DE_OVL_STR(n)				(DE_OVL_BASE + (n) * 0x100  +  0x0048)
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:100:#define DE_OVL_CRITICAL_CFG(n)			(DE_OVL_BASE + (n) * 0x100  +  0x004c)
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:101:#define DE_OVL_REMAPPING(n)			(DE_OVL_BASE + (n) * 0x100  +  0x0050)
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:102:#define DE_OVL_CKMAX(n)				(DE_OVL_BASE + (n) * 0x100  +  0x005c)
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:103:#define DE_OVL_CKMIN(n)				(DE_OVL_BASE + (n) * 0x100  +  0x0060)
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:104:#define DE_OVL_BLEND(n)				(DE_OVL_BASE + (n) * 0x100  +  0x0064)
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:106:#define DE_OVL_COOR(m, n)			(DE_OVL_BASE + (n) * 0x100  +  0x0054)
+workspace/_unmaintained\rg35xx\platform\de_atm7059.h:107:#define DE_OVL_ALPHA_CFG(m, n)			(DE_OVL_BASE + (n) * 0x100  +  0x0058)
+workspace/_unmaintained\rg35xx\platform\platform.h:39:#define CODE_UP			0x5A
+workspace/_unmaintained\rg35xx\platform\platform.h:40:#define CODE_DOWN		0x5B
+workspace/_unmaintained\rg35xx\platform\platform.h:41:#define CODE_LEFT		0x5C
+workspace/_unmaintained\rg35xx\platform\platform.h:42:#define CODE_RIGHT		0x5D
+workspace/_unmaintained\rg35xx\platform\platform.h:44:#define CODE_SELECT		0x63
+workspace/_unmaintained\rg35xx\platform\platform.h:45:#define CODE_START		0x62
+workspace/_unmaintained\rg35xx\platform\platform.h:47:#define CODE_A			0x5E
+workspace/_unmaintained\rg35xx\platform\platform.h:48:#define CODE_B			0x5F
+workspace/_unmaintained\rg35xx\platform\platform.h:49:#define CODE_X			0x60
+workspace/_unmaintained\rg35xx\platform\platform.h:50:#define CODE_Y			0x61
+workspace/_unmaintained\rg35xx\platform\platform.h:52:#define CODE_L1			0x64
+workspace/_unmaintained\rg35xx\platform\platform.h:53:#define CODE_R1			0x65
+workspace/_unmaintained\rg35xx\platform\platform.h:54:#define CODE_L2			0x66
+workspace/_unmaintained\rg35xx\platform\platform.h:55:#define CODE_R2			0x67
+workspace/_unmaintained\rg35xx\platform\platform.h:59:#define CODE_MENU		0x68
+workspace/_unmaintained\rg35xx\platform\platform.h:60:#define CODE_POWER		0x74
+workspace/_unmaintained\rg35xx\platform\platform.h:62:#define CODE_PLUS		0x6C
+workspace/_unmaintained\rg35xx\platform\platform.h:63:#define CODE_MINUS		0x6D
+workspace/_unmaintained\miyoomini\platform\platform.c:41:			if (surface->format->Amask == 0x0000) return E_MI_GFX_FMT_RGB565;
+workspace/_unmaintained\miyoomini\platform\platform.c:42:			if (surface->format->Amask == 0x8000) return E_MI_GFX_FMT_ARGB1555;
+workspace/_unmaintained\miyoomini\platform\platform.c:43:			if (surface->format->Amask == 0xF000) return E_MI_GFX_FMT_ARGB4444;
+workspace/_unmaintained\miyoomini\platform\platform.c:44:			if (surface->format->Amask == 0x0001) return E_MI_GFX_FMT_RGBA5551;
+workspace/_unmaintained\miyoomini\platform\platform.c:45:			if (surface->format->Amask == 0x000F) return E_MI_GFX_FMT_RGBA4444;
+workspace/_unmaintained\miyoomini\platform\platform.c:48:		if (surface->format->Bmask == 0x000000FF) return E_MI_GFX_FMT_ARGB8888;
+workspace/_unmaintained\miyoomini\platform\platform.c:49:		if (surface->format->Rmask == 0x000000FF) return E_MI_GFX_FMT_ABGR8888;
+workspace/_unmaintained\miyoomini\platform\platform.c:356:#define OVERLAY_RGBA_MASK 0x00ff0000,0x0000ff00,0x000000ff,0xff000000 // ARGB
+workspace/_unmaintained\miyoomini\platform\platform.c:377:#define	AXPID	(0x34)
+workspace/_unmaintained\miyoomini\platform\platform.c:418://		B9 .. (& 0x7F) battery percentage
+workspace/_unmaintained\miyoomini\platform\platform.c:463:	*is_charging = is_plus ? (axp_read(0x00) & 0x4) > 0 : getInt("/sys/devices/gpiochip0/gpio/gpio59/value");
+workspace/_unmaintained\miyoomini\platform\platform.c:532:    value[0] = (strength == 0 ? 0x31 : 0x30); // '0' : '1'
+workspace/_unmaintained\miyoomini\other\screenshot\main.c:22:	value[0] = ((val&1)^1) + 0x30;
+workspace/_unmaintained\miyoomini\other\screenshot\main.c:124://	Screenshot (640x480, rotate180, png)
+workspace/_unmaintained\miyoomini\other\screenshot\main.c:156:					linebuffer[x] = 0xFF000000 | (pix & 0x0000FF00) | (pix & 0x00FF0000)>>16 | (pix & 0x000000FF)<<16;
+workspace/_unmaintained\my282\tests\calibrate\calibrate.c:31:		SDL_FillRect(screen, &(SDL_Rect){(FIXED_WIDTH/2)+(STICK_SIZE*rx)/2-2,(FIXED_HEIGHT/2)+(STICK_SIZE*ry)/2-2,4,4}, 0xffff);
+workspace/_unmaintained\rg35xx\platform\platform.c:78:#define	DE		(0xB02E0000)
+workspace/_unmaintained\rg35xx\platform\platform.c:79:#define	DE_SIZE	(0x00002000)
+workspace/_unmaintained\rg35xx\platform\platform.c:91:		case DE_SCOEF_NONE:	// for integer scale	  < L R > (0x40=100%) Applies to the following pixels:
+workspace/_unmaintained\rg35xx\platform\platform.c:92:			de_mem[DE_OVL_SCOEF0(plane)/4]= 0x00400000; // L 100%  R 0%
+workspace/_unmaintained\rg35xx\platform\platform.c:93:			de_mem[DE_OVL_SCOEF1(plane)/4]= 0x00400000; // L 87.5% R 12.5%
+workspace/_unmaintained\rg35xx\platform\platform.c:94:			de_mem[DE_OVL_SCOEF2(plane)/4]= 0x00400000; // L 75%   R 25%
+workspace/_unmaintained\rg35xx\platform\platform.c:95:			de_mem[DE_OVL_SCOEF3(plane)/4]= 0x00400000; // L 62.5% R 37.5%
+workspace/_unmaintained\rg35xx\platform\platform.c:96:			de_mem[DE_OVL_SCOEF4(plane)/4]= 0x00004000; // L 50%   R 50%
+workspace/_unmaintained\rg35xx\platform\platform.c:97:			de_mem[DE_OVL_SCOEF5(plane)/4]= 0x00004000; // L 37.5% R 62.5%
+workspace/_unmaintained\rg35xx\platform\platform.c:98:			de_mem[DE_OVL_SCOEF6(plane)/4]= 0x00004000; // L 25%   R 75%
+workspace/_unmaintained\rg35xx\platform\platform.c:99:			de_mem[DE_OVL_SCOEF7(plane)/4]= 0x00004000; // L 12.5% R 87.5%
+workspace/_unmaintained\rg35xx\platform\platform.c:102:			de_mem[DE_OVL_SCOEF0(plane)/4]= 0x00400000;
+workspace/_unmaintained\rg35xx\platform\platform.c:103:			de_mem[DE_OVL_SCOEF1(plane)/4]= 0x00400000;
+workspace/_unmaintained\rg35xx\platform\platform.c:104:			de_mem[DE_OVL_SCOEF2(plane)/4]= 0x00400000;
+workspace/_unmaintained\rg35xx\platform\platform.c:105:			de_mem[DE_OVL_SCOEF3(plane)/4]= 0x00400000;
+workspace/_unmaintained\rg35xx\platform\platform.c:106:			de_mem[DE_OVL_SCOEF4(plane)/4]= 0x00202000;
+workspace/_unmaintained\rg35xx\platform\platform.c:107:			de_mem[DE_OVL_SCOEF5(plane)/4]= 0x00004000;
+workspace/_unmaintained\rg35xx\platform\platform.c:108:			de_mem[DE_OVL_SCOEF6(plane)/4]= 0x00004000;
+workspace/_unmaintained\rg35xx\platform\platform.c:109:			de_mem[DE_OVL_SCOEF7(plane)/4]= 0x00004000;
+workspace/_unmaintained\rg35xx\platform\platform.c:112:			de_mem[DE_OVL_SCOEF0(plane)/4]= 0x00400000;
+workspace/_unmaintained\rg35xx\platform\platform.c:113:			de_mem[DE_OVL_SCOEF1(plane)/4]= 0xFC3E07FF;
+workspace/_unmaintained\rg35xx\platform\platform.c:114:			de_mem[DE_OVL_SCOEF2(plane)/4]= 0xFA3810FE;
+workspace/_unmaintained\rg35xx\platform\platform.c:115:			de_mem[DE_OVL_SCOEF3(plane)/4]= 0xF9301BFC;
+workspace/_unmaintained\rg35xx\platform\platform.c:116:			de_mem[DE_OVL_SCOEF4(plane)/4]= 0xFA2626FA;
+workspace/_unmaintained\rg35xx\platform\platform.c:117:			de_mem[DE_OVL_SCOEF5(plane)/4]= 0xFC1B30F9;
+workspace/_unmaintained\rg35xx\platform\platform.c:118:			de_mem[DE_OVL_SCOEF6(plane)/4]= 0xFE1038FA;
+workspace/_unmaintained\rg35xx\platform\platform.c:119:			de_mem[DE_OVL_SCOEF7(plane)/4]= 0xFF073EFC;
+workspace/_unmaintained\rg35xx\platform\platform.c:122:			de_mem[DE_OVL_SCOEF0(plane)/4]= 0x00400000;
+workspace/_unmaintained\rg35xx\platform\platform.c:123:			de_mem[DE_OVL_SCOEF1(plane)/4]= 0x00380800;
+workspace/_unmaintained\rg35xx\platform\platform.c:124:			de_mem[DE_OVL_SCOEF2(plane)/4]= 0x00301000;
+workspace/_unmaintained\rg35xx\platform\platform.c:125:			de_mem[DE_OVL_SCOEF3(plane)/4]= 0x00281800;
+workspace/_unmaintained\rg35xx\platform\platform.c:126:			de_mem[DE_OVL_SCOEF4(plane)/4]= 0x00202000;
+workspace/_unmaintained\rg35xx\platform\platform.c:127:			de_mem[DE_OVL_SCOEF5(plane)/4]= 0x00182800;
+workspace/_unmaintained\rg35xx\platform\platform.c:128:			de_mem[DE_OVL_SCOEF6(plane)/4]= 0x00103000;
+workspace/_unmaintained\rg35xx\platform\platform.c:129:			de_mem[DE_OVL_SCOEF7(plane)/4]= 0x00083800;
+workspace/_unmaintained\rg35xx\platform\platform.c:132:			de_mem[DE_OVL_SCOEF0(plane)/4]= 0x10201000;
+workspace/_unmaintained\rg35xx\platform\platform.c:133:			de_mem[DE_OVL_SCOEF1(plane)/4]= 0x0E1E1202;
+workspace/_unmaintained\rg35xx\platform\platform.c:134:			de_mem[DE_OVL_SCOEF2(plane)/4]= 0x0C1C1404;
+workspace/_unmaintained\rg35xx\platform\platform.c:135:			de_mem[DE_OVL_SCOEF3(plane)/4]= 0x0A1A1606;
+workspace/_unmaintained\rg35xx\platform\platform.c:136:			de_mem[DE_OVL_SCOEF4(plane)/4]= 0x08181808;
+workspace/_unmaintained\rg35xx\platform\platform.c:137:			de_mem[DE_OVL_SCOEF5(plane)/4]= 0x06161A0A;
+workspace/_unmaintained\rg35xx\platform\platform.c:138:			de_mem[DE_OVL_SCOEF6(plane)/4]= 0x04141C0C;
+workspace/_unmaintained\rg35xx\platform\platform.c:139:			de_mem[DE_OVL_SCOEF7(plane)/4]= 0x02121E0E;
+workspace/_unmaintained\rg35xx\platform\platform.c:146:	de_mem[DE_PATH_CTL(0)/4] = (de_enable_overlay?0x30300000:0x30100000) | (de_mem[DE_PATH_CTL(0)/4] & 0xCF0FFFFF);
+workspace/_unmaintained\rg35xx\platform\platform.c:149:	de_mem[(DE_OVL_OSIZE(0))/4] = ((w-1)&0xFFFF) | ((h-1)<<16);
+workspace/_unmaintained\rg35xx\platform\platform.c:150:	de_mem[(DE_OVL_SR(0))/4] = ((0x2000*((de_mem[(DE_OVL_ISIZE(0))/4]&0xFFFF)+1)/w)&0xFFFF) |
+workspace/_unmaintained\rg35xx\platform\platform.c:151:						((0x2000*((de_mem[(DE_OVL_ISIZE(0))/4]>>16)+1)/h)<<16);
+workspace/_unmaintained\rg35xx\platform\platform.c:152:	de_mem[(DE_OVL_COOR(0,0))/4] = (y<<16) | (x&0xFFFF);
+workspace/_unmaintained\rg35xx\platform\platform.c:314:	int vw = (vid.de_mem[DE_PATH_SIZE(0)/4]&0xFFFF)+1;
+workspace/_unmaintained\rg35xx\platform\platform.c:317:	vid.de_mem[DE_OVL_ISIZE(0)/4] = vid.de_mem[DE_OVL_ISIZE(2)/4] = ((vid.width-1) & 0xFFFF) | ((vid.height-1) << 16);
+workspace/_unmaintained\rg35xx\platform\platform.c:318:	vid.de_mem[DE_OVL_SR(0)/4] = vid.de_mem[DE_OVL_SR(2)/4] = ((0x2000*vid.width/vw)&0xFFFF) | ((0x2000*vid.height/vh)<<16);
+workspace/_unmaintained\rg35xx\platform\platform.c:359:	int vw = (vid.de_mem[DE_PATH_SIZE(0)/4]&0xFFFF)+1;
+workspace/_unmaintained\rg35xx\platform\platform.c:362:	vid.de_mem[DE_OVL_ISIZE(0)/4] = vid.de_mem[DE_OVL_ISIZE(2)/4] = ((vid.width-1) & 0xFFFF) | ((vid.height-1) << 16);
+workspace/_unmaintained\rg35xx\platform\platform.c:363:	vid.de_mem[DE_OVL_SR(0)/4] = vid.de_mem[DE_OVL_SR(2)/4] = ((0x2000*vid.width/vw)&0xFFFF) | ((0x2000*vid.height/vh)<<16);
+workspace/_unmaintained\rg35xx\platform\platform.c:457:#define OVERLAY_RGBA_MASK 0x00ff0000,0x0000ff00,0x000000ff,0xff000000 // ARGB
+workspace/_unmaintained\rg35xx\platform\platform.c:474:	memset(ovl.overlay->pixels, 0xff, size);
+workspace/_unmaintained\rg35xx\overclock\overclock.c:14://	-- 0xe64e v 1000000 : 700000 + (25000x12) / 0x0c 01100 1110[01100]1001110
+workspace/_unmaintained\rg35xx\overclock\overclock.c:15://	-  0xe6ce v 1025000 : 700000 + (25000x13) / 0x0d 01101 1110[01101]1001110
+workspace/_unmaintained\rg35xx\overclock\overclock.c:16://	   0xe84e v 1100000 : 700000 + (25000x16) / 0x10 10000 1110[10000]1001110
+workspace/_unmaintained\rg35xx\overclock\overclock.c:17://	+  0xebce v 1275000 : 700000 + (25000x23) / 0x17 10111 1110[10111]1001110
+workspace/_unmaintained\rg35xx\overclock\overclock.c:18://	++ 0xedce v 1375000 : 700000 + (25000x27) / 0x1b 11011 1110[11011]1001110
+workspace/_unmaintained\rg35xx\overclock\overclock.c:28:	sprintf(str, "11=%04x", 0xe04e | volt);
+workspace/_unmaintained\rg35xx\overclock\overclock.c:34:#define CMU_BASE	(0xB0160000)
+workspace/_unmaintained\rg35xx\overclock\overclock.c:45:	cmu_mem[0] = (cmu_mem[0] & 0xFFFFFF80) | clock;
+workspace/_unmaintained\miyoomini\overclock\overclock.c:14:#define	BASE_REG_RIU_PA		(0x1F000000)
+workspace/_unmaintained\miyoomini\overclock\overclock.c:15:#define	BASE_REG_MPLL_PA	(BASE_REG_RIU_PA + 0x103000*2)
+workspace/_unmaintained\miyoomini\overclock\overclock.c:16:#define	PLL_SIZE		(0x1000)
+workspace/_unmaintained\miyoomini\overclock\overclock.c:28:	lpf_value = p16[0x2A4] + (p16[0x2A6] << 16); post_div = p16[0x232] + 1;
+workspace/_unmaintained\miyoomini\overclock\overclock.c:29:	if (lpf_value == 0) lpf_value= (p8[0x2C2<<1] <<  16) + (p8[0x2C1<<1] << 8) + p8[0x2C0<<1];
+workspace/_unmaintained\miyoomini\overclock\overclock.c:63:	uint32_t cur_post_div = (p16[0x232] & 0x0F) + 1;
+workspace/_unmaintained\miyoomini\overclock\overclock.c:68:			p16[0x232] = (p16[0x232] & 0xF0) | ((tmp_post_div-1) & 0x0F);
+workspace/_unmaintained\miyoomini\overclock\overclock.c:72:	p16[0x2A8] = 0x0000;		//reg_lpf_enable = 0
+workspace/_unmaintained\miyoomini\overclock\overclock.c:73:	p16[0x2AE] = 0x000F;		//reg_lpf_update_cnt = 32
+workspace/_unmaintained\miyoomini\overclock\overclock.c:74:	p16[0x2A4] = lpf&0xFFFF;	//set target freq to LPF high
+workspace/_unmaintained\miyoomini\overclock\overclock.c:75:	p16[0x2A6] = lpf>>16;		//set target freq to LPF high
+workspace/_unmaintained\miyoomini\overclock\overclock.c:76:	p16[0x2B0] = 0x0001;		//switch to LPF control
+workspace/_unmaintained\miyoomini\overclock\overclock.c:77:	p16[0x2B2] |= 0x1000;		//from low to high
+workspace/_unmaintained\miyoomini\overclock\overclock.c:78:	p16[0x2A8] = 0x0001;		//reg_lpf_enable = 1
+workspace/_unmaintained\miyoomini\overclock\overclock.c:79:	while( !(p16[0x2BA]&1) );	//polling done
+workspace/_unmaintained\miyoomini\overclock\overclock.c:80:	p16[0x2A0] = lpf&0xFFFF;	//store freq to LPF low
+workspace/_unmaintained\miyoomini\overclock\overclock.c:81:	p16[0x2A2] = lpf>>16;		//store freq to LPF low
+workspace/_unmaintained\miyoomini\overclock\overclock.c:86:			p16[0x232] = (p16[0x232] & 0xF0) | ((tmp_post_div-1) & 0x0F);
+workspace/_unmaintained\rgb30\platform\platform.c:75:#define EV_KEY			0x01
+workspace/_unmaintained\rgb30\platform\platform.c:76:#define EV_ABS			0x03
+workspace/_unmaintained\rgb30\platform\platform.c:352:static int hard_scale = 4; // TODO: base src size, eg. 160x144 can be 4
+workspace/_unmaintained\rgb30\platform\platform.c:425:    uint8_t red = (rgb565 >> 11) & 0x1F;
+workspace/_unmaintained\rgb30\platform\platform.c:427:    uint8_t green = (rgb565 >> 5) & 0x3F;
+workspace/_unmaintained\rgb30\platform\platform.c:429:    uint8_t blue = rgb565 & 0x1F;
+workspace/_unmaintained\rgb30\platform\platform.c:640:#define OVERLAY_RGBA_MASK 0x00ff0000,0x0000ff00,0x000000ff,0xff000000 // ARGB
+workspace/_unmaintained\my282\tests\brightness\brightness.c:10:#define DISP_LCD_SET_BRIGHTNESS 0x102
+workspace/_unmaintained\my282\tests\brightness\brightness.c:11:#define DISP_LCD_GET_BRIGHTNESS	0x103
+workspace/_unmaintained\miyoomini\blank\blank.c:15:	int map_size = vinfo.xres * vinfo.yres * (vinfo.bits_per_pixel / 8); // 640x480x4
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:20:	DISP_FORMAT_ARGB_8888                    = 0x00,//MSB  A-R-G-B  LSB
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:21:	DISP_FORMAT_ABGR_8888                    = 0x01,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:22:	DISP_FORMAT_RGBA_8888                    = 0x02,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:23:	DISP_FORMAT_BGRA_8888                    = 0x03,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:24:	DISP_FORMAT_XRGB_8888                    = 0x04,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:25:	DISP_FORMAT_XBGR_8888                    = 0x05,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:26:	DISP_FORMAT_RGBX_8888                    = 0x06,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:27:	DISP_FORMAT_BGRX_8888                    = 0x07,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:28:	DISP_FORMAT_RGB_888                      = 0x08,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:29:	DISP_FORMAT_BGR_888                      = 0x09,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:30:	DISP_FORMAT_RGB_565                      = 0x0a,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:31:	DISP_FORMAT_BGR_565                      = 0x0b,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:32:	DISP_FORMAT_ARGB_4444                    = 0x0c,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:33:	DISP_FORMAT_ABGR_4444                    = 0x0d,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:34:	DISP_FORMAT_RGBA_4444                    = 0x0e,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:35:	DISP_FORMAT_BGRA_4444                    = 0x0f,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:36:	DISP_FORMAT_ARGB_1555                    = 0x10,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:37:	DISP_FORMAT_ABGR_1555                    = 0x11,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:38:	DISP_FORMAT_RGBA_5551                    = 0x12,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:39:	DISP_FORMAT_BGRA_5551                    = 0x13,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:43:	DISP_FORMAT_YUV444_I_AYUV                = 0x40,//MSB  A-Y-U-V  LSB, reserved
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:44:	DISP_FORMAT_YUV444_I_VUYA                = 0x41,//MSB  V-U-Y-A  LSB
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:45:	DISP_FORMAT_YUV422_I_YVYU                = 0x42,//MSB  Y-V-Y-U  LSB
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:46:	DISP_FORMAT_YUV422_I_YUYV                = 0x43,//MSB  Y-U-Y-V  LSB
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:47:	DISP_FORMAT_YUV422_I_UYVY                = 0x44,//MSB  U-Y-V-Y  LSB
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:48:	DISP_FORMAT_YUV422_I_VYUY                = 0x45,//MSB  V-Y-U-Y  LSB
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:49:	DISP_FORMAT_YUV444_P                     = 0x46,//MSB  P3-2-1-0 LSB,  YYYY UUUU VVVV, reserved
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:50:	DISP_FORMAT_YUV422_P                     = 0x47,//MSB  P3-2-1-0 LSB   YYYY UU   VV
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:51:	DISP_FORMAT_YUV420_P                     = 0x48,//MSB  P3-2-1-0 LSB   YYYY U    V
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:52:	DISP_FORMAT_YUV411_P                     = 0x49,//MSB  P3-2-1-0 LSB   YYYY U    V
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:53:	DISP_FORMAT_YUV422_SP_UVUV               = 0x4a,//MSB  V-U-V-U  LSB
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:54:	DISP_FORMAT_YUV422_SP_VUVU               = 0x4b,//MSB  U-V-U-V  LSB
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:55:	DISP_FORMAT_YUV420_SP_UVUV               = 0x4c,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:56:	DISP_FORMAT_YUV420_SP_VUVU               = 0x4d,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:57:	DISP_FORMAT_YUV411_SP_UVUV               = 0x4e,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:58:	DISP_FORMAT_YUV411_SP_VUVU               = 0x4f,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:63:	DISP_3D_OUT_MODE_CI_1 = 0x5,//column interlaved 1
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:64:	DISP_3D_OUT_MODE_CI_2 = 0x6,//column interlaved 2
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:65:	DISP_3D_OUT_MODE_CI_3 = 0x7,//column interlaved 3
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:66:	DISP_3D_OUT_MODE_CI_4 = 0x8,//column interlaved 4
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:67:	DISP_3D_OUT_MODE_LIRGB = 0x9,//line interleaved rgb
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:69:	DISP_3D_OUT_MODE_TB = 0x0,//top bottom
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:70:	DISP_3D_OUT_MODE_FP = 0x1,//frame packing
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:71:	DISP_3D_OUT_MODE_SSF = 0x2,//side by side full
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:72:	DISP_3D_OUT_MODE_SSH = 0x3,//side by side half
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:73:	DISP_3D_OUT_MODE_LI = 0x4,//line interleaved
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:74:	DISP_3D_OUT_MODE_FA = 0xa,//field alternative
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:119:	DISP_TV_MOD_1080P_60HZ          = 0xa,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:120:	DISP_TV_MOD_1080P_24HZ_3D_FP    = 0x17,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:121:	DISP_TV_MOD_720P_50HZ_3D_FP     = 0x18,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:122:	DISP_TV_MOD_720P_60HZ_3D_FP     = 0x19,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:123:	DISP_TV_MOD_1080P_25HZ          = 0x1a,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:124:	DISP_TV_MOD_1080P_30HZ          = 0x1b,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:125:	DISP_TV_MOD_PAL                 = 0xb,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:126:	DISP_TV_MOD_PAL_SVIDEO          = 0xc,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:127:	DISP_TV_MOD_NTSC                = 0xe,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:128:	DISP_TV_MOD_NTSC_SVIDEO         = 0xf,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:129:	DISP_TV_MOD_PAL_M               = 0x11,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:130:	DISP_TV_MOD_PAL_M_SVIDEO        = 0x12,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:131:	DISP_TV_MOD_PAL_NC              = 0x14,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:132:	DISP_TV_MOD_PAL_NC_SVIDEO       = 0x15,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:133:	DISP_TV_MOD_3840_2160P_30HZ     = 0x1c,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:134:	DISP_TV_MOD_3840_2160P_25HZ     = 0x1d,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:135:	DISP_TV_MOD_3840_2160P_24HZ     = 0x1e,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:136:	DISP_TV_MODE_NUM                = 0x1f,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:432:	DISP_RESERVE0 = 0x00,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:433:	DISP_RESERVE1 = 0x01,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:434:	DISP_SET_BKCOLOR = 0x03,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:435:	DISP_GET_BKCOLOR = 0x04,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:436:	DISP_SET_COLORKEY = 0x05,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:437:	DISP_GET_COLORKEY = 0x06,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:438:	DISP_GET_SCN_WIDTH = 0x07,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:439:	DISP_GET_SCN_HEIGHT = 0x08,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:440:	DISP_GET_OUTPUT_TYPE = 0x09,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:441:	DISP_SET_EXIT_MODE = 0x0A,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:442:	DISP_VSYNC_EVENT_EN = 0x0B,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:443:	DISP_BLANK = 0x0C,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:444:	DISP_SHADOW_PROTECT = 0x0D,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:445:	DISP_HWC_COMMIT = 0x0E,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:446:	DISP_DEVICE_SWITCH = 0x0F,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:447:	DISP_GET_OUTPUT = 0x10,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:448:	DISP_SET_COLOR_RANGE = 0x11,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:449:	DISP_GET_COLOR_RANGE = 0x12,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:452:	DISP_LAYER_ENABLE = 0x40,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:453:	DISP_LAYER_DISABLE = 0x41,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:454:	DISP_LAYER_SET_INFO = 0x42,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:455:	DISP_LAYER_GET_INFO = 0x43,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:456:	DISP_LAYER_TOP = 0x44,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:457:	DISP_LAYER_BOTTOM = 0x45,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:458:	DISP_LAYER_GET_FRAME_ID = 0x46,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:459:	DISP_LAYER_SET_CONFIG = 0x47,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:460:	DISP_LAYER_GET_CONFIG = 0x48,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:463:	DISP_HDMI_SUPPORT_MODE = 0xc4,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:464:	DISP_SET_TV_HPD = 0xc5,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:465:	DISP_HDMI_GET_EDID = 0xc6,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:468:	DISP_LCD_ENABLE = 0x100,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:469:	DISP_LCD_DISABLE = 0x101,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:470:	DISP_LCD_SET_BRIGHTNESS = 0x102,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:471:	DISP_LCD_GET_BRIGHTNESS = 0x103,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:472:	DISP_LCD_BACKLIGHT_ENABLE  = 0x104,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:473:	DISP_LCD_BACKLIGHT_DISABLE  = 0x105,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:474:	DISP_LCD_SET_SRC = 0x106,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:475:	DISP_LCD_SET_FPS  = 0x107,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:476:	DISP_LCD_GET_FPS  = 0x108,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:477:	DISP_LCD_GET_SIZE = 0x109,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:478:	DISP_LCD_GET_MODEL_NAME = 0x10a,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:479:	DISP_LCD_SET_GAMMA_TABLE = 0x10b,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:480:	DISP_LCD_GAMMA_CORRECTION_ENABLE = 0x10c,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:481:	DISP_LCD_GAMMA_CORRECTION_DISABLE = 0x10d,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:482:	DISP_LCD_USER_DEFINED_FUNC = 0x10e,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:483:	DISP_LCD_CHECK_OPEN_FINISH = 0x10f,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:484:	DISP_LCD_CHECK_CLOSE_FINISH = 0x110,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:487:	DISP_CAPTURE_START = 0x140,//caputre screen and scaler to dram
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:488:	DISP_CAPTURE_STOP = 0x141,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:489:	DISP_CAPTURE_COMMIT = 0x142,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:492:	DISP_ENHANCE_ENABLE = 0x180,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:493:	DISP_ENHANCE_DISABLE = 0x181,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:494:	DISP_ENHANCE_GET_EN = 0x182,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:495:	DISP_ENHANCE_SET_WINDOW = 0x183,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:496:	DISP_ENHANCE_GET_WINDOW = 0x184,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:497:	DISP_ENHANCE_SET_MODE = 0x185,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:498:	DISP_ENHANCE_GET_MODE = 0x186,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:499:	DISP_ENHANCE_DEMO_ENABLE = 0x187,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:500:	DISP_ENHANCE_DEMO_DISABLE = 0x188,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:503:	DISP_SMBL_ENABLE = 0x200,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:504:	DISP_SMBL_DISABLE = 0x201,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:505:	DISP_SMBL_GET_EN = 0x202,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:506:	DISP_SMBL_SET_WINDOW = 0x203,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:507:	DISP_SMBL_GET_WINDOW = 0x204,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:510:	DISP_FB_REQUEST = 0x280,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:511:	DISP_FB_RELEASE = 0x281,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:513:	DISP_MEM_REQUEST = 0x2c0,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:514:	DISP_MEM_RELEASE = 0x2c1,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:515:	DISP_MEM_GETADR = 0x2c2,
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:518:#define FBIOGET_LAYER_HDL_0 0x4700
+workspace/_unmaintained\trimuismart\platform\sunxi_display2.h:519:#define FBIOGET_LAYER_HDL_1 0x4701
+workspace/_unmaintained\miyoomini\other\logotweak\logowrite.c:11:#define	IMGSIZE	0x20000
+workspace/_unmaintained\miyoomini\other\logotweak\logowrite.c:38:	if ((read_ofs32[0] != 0x41545353)||(read_ofs32[1] != 0x52)||(read_ofs32[2] != 4)) { puts("missing SSTAR"); return -1; }
+workspace/_unmaintained\miyoomini\other\logotweak\logowrite.c:42:	if (read_ofs32[0] != 0x50534944) { puts("missing DISP"); return -1; }
+workspace/_unmaintained\miyoomini\other\logotweak\logowrite.c:45:	if ((a)||(read_ofs - read_buf) > (IMGSIZE-0x2c)) { puts("invalid DISP format"); return -1; }
+workspace/_unmaintained\miyoomini\other\logotweak\logowrite.c:48:	if (read_ofs32[0] != 0x4F474F4C) { puts("missing LOGO1"); return -1; }
+workspace/_unmaintained\miyoomini\other\logotweak\logowrite.c:51:	if ((a)||(read_ofs - read_buf) > (IMGSIZE-0x2c)) { puts("invalid LOGO1 format"); return -1; }
+workspace/_unmaintained\miyoomini\other\logotweak\logowrite.c:54:	if (read_ofs32[0] != 0x4F474F4C) { puts("missing LOGO2"); return -1; }
+workspace/_unmaintained\miyoomini\other\logotweak\logowrite.c:57:	if ((a)||(read_ofs - read_buf) > (IMGSIZE-0x2c)) { puts("invalid LOGO2 format"); return -1; }
+workspace/_unmaintained\miyoomini\other\logotweak\logowrite.c:60:	if (read_ofs32[0] != 0x4F474F4C) { puts("missing LOGO3"); return -1; }
+workspace/_unmaintained\miyoomini\other\logotweak\logowrite.c:73:	if (mtdinfo.erasesize != 0x10000) { puts("MTD erasesize incorrect"); return -1; }
+workspace/_unmaintained\miyoomini\other\logotweak\logowrite.c:87:	for (i=0, r=0xff; i<IMGSIZE; i++) r &= read_buf[i];
+workspace/_unmaintained\miyoomini\other\logotweak\logowrite.c:88:	if (r != 0xff) { puts("erase failed"); return -1; }
+workspace/_unmaintained\trimuismart\platform\platform.c:48:#define DE			(0x01000000)
+workspace/_unmaintained\trimuismart\platform\platform.c:49:#define RT_MIXER0		(DE+0x00100000)
+workspace/_unmaintained\trimuismart\platform\platform.c:50:#define OVL_V			(RT_MIXER0+0x2000+(SCALER_CH*0x1000))
+workspace/_unmaintained\trimuismart\platform\platform.c:51:#define OVL_V_TOP_LADD0		(0x18+(SCALER_LAYER*0x30))
+workspace/_unmaintained\trimuismart\platform\platform.c:404:#define OVERLAY_RGBA_MASK 0x00ff0000,0x0000ff00,0x000000ff,0xff000000 // ARGB
+workspace/_unmaintained\trimuismart\platform\platform.c:423:#define LRADC 0x01C22800
+workspace/_unmaintained\trimuismart\platform\platform.c:424:#define LRADC_VALUE 0x10
+workspace/_unmaintained\trimuismart\platform\platform.c:441:	*(uint32_t*)adc.adc_addr = 0xC0004D;
+workspace/_unmaintained\my282\show\show.c:13:#define RGBA_MASK_565	0xF800, 0x07E0, 0x001F, 0x0000
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:20:	DISP_FORMAT_ARGB_8888                    = 0x00,//MSB  A-R-G-B  LSB
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:21:	DISP_FORMAT_ABGR_8888                    = 0x01,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:22:	DISP_FORMAT_RGBA_8888                    = 0x02,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:23:	DISP_FORMAT_BGRA_8888                    = 0x03,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:24:	DISP_FORMAT_XRGB_8888                    = 0x04,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:25:	DISP_FORMAT_XBGR_8888                    = 0x05,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:26:	DISP_FORMAT_RGBX_8888                    = 0x06,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:27:	DISP_FORMAT_BGRX_8888                    = 0x07,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:28:	DISP_FORMAT_RGB_888                      = 0x08,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:29:	DISP_FORMAT_BGR_888                      = 0x09,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:30:	DISP_FORMAT_RGB_565                      = 0x0a,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:31:	DISP_FORMAT_BGR_565                      = 0x0b,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:32:	DISP_FORMAT_ARGB_4444                    = 0x0c,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:33:	DISP_FORMAT_ABGR_4444                    = 0x0d,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:34:	DISP_FORMAT_RGBA_4444                    = 0x0e,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:35:	DISP_FORMAT_BGRA_4444                    = 0x0f,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:36:	DISP_FORMAT_ARGB_1555                    = 0x10,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:37:	DISP_FORMAT_ABGR_1555                    = 0x11,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:38:	DISP_FORMAT_RGBA_5551                    = 0x12,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:39:	DISP_FORMAT_BGRA_5551                    = 0x13,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:43:	DISP_FORMAT_YUV444_I_AYUV                = 0x40,//MSB  A-Y-U-V  LSB, reserved
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:44:	DISP_FORMAT_YUV444_I_VUYA                = 0x41,//MSB  V-U-Y-A  LSB
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:45:	DISP_FORMAT_YUV422_I_YVYU                = 0x42,//MSB  Y-V-Y-U  LSB
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:46:	DISP_FORMAT_YUV422_I_YUYV                = 0x43,//MSB  Y-U-Y-V  LSB
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:47:	DISP_FORMAT_YUV422_I_UYVY                = 0x44,//MSB  U-Y-V-Y  LSB
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:48:	DISP_FORMAT_YUV422_I_VYUY                = 0x45,//MSB  V-Y-U-Y  LSB
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:49:	DISP_FORMAT_YUV444_P                     = 0x46,//MSB  P3-2-1-0 LSB,  YYYY UUUU VVVV, reserved
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:50:	DISP_FORMAT_YUV422_P                     = 0x47,//MSB  P3-2-1-0 LSB   YYYY UU   VV
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:51:	DISP_FORMAT_YUV420_P                     = 0x48,//MSB  P3-2-1-0 LSB   YYYY U    V
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:52:	DISP_FORMAT_YUV411_P                     = 0x49,//MSB  P3-2-1-0 LSB   YYYY U    V
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:53:	DISP_FORMAT_YUV422_SP_UVUV               = 0x4a,//MSB  V-U-V-U  LSB
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:54:	DISP_FORMAT_YUV422_SP_VUVU               = 0x4b,//MSB  U-V-U-V  LSB
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:55:	DISP_FORMAT_YUV420_SP_UVUV               = 0x4c,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:56:	DISP_FORMAT_YUV420_SP_VUVU               = 0x4d,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:57:	DISP_FORMAT_YUV411_SP_UVUV               = 0x4e,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:58:	DISP_FORMAT_YUV411_SP_VUVU               = 0x4f,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:63:	DISP_3D_OUT_MODE_CI_1 = 0x5,//column interlaved 1
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:64:	DISP_3D_OUT_MODE_CI_2 = 0x6,//column interlaved 2
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:65:	DISP_3D_OUT_MODE_CI_3 = 0x7,//column interlaved 3
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:66:	DISP_3D_OUT_MODE_CI_4 = 0x8,//column interlaved 4
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:67:	DISP_3D_OUT_MODE_LIRGB = 0x9,//line interleaved rgb
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:69:	DISP_3D_OUT_MODE_TB = 0x0,//top bottom
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:70:	DISP_3D_OUT_MODE_FP = 0x1,//frame packing
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:71:	DISP_3D_OUT_MODE_SSF = 0x2,//side by side full
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:72:	DISP_3D_OUT_MODE_SSH = 0x3,//side by side half
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:73:	DISP_3D_OUT_MODE_LI = 0x4,//line interleaved
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:74:	DISP_3D_OUT_MODE_FA = 0xa,//field alternative
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:119:	DISP_TV_MOD_1080P_60HZ          = 0xa,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:120:	DISP_TV_MOD_1080P_24HZ_3D_FP    = 0x17,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:121:	DISP_TV_MOD_720P_50HZ_3D_FP     = 0x18,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:122:	DISP_TV_MOD_720P_60HZ_3D_FP     = 0x19,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:123:	DISP_TV_MOD_1080P_25HZ          = 0x1a,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:124:	DISP_TV_MOD_1080P_30HZ          = 0x1b,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:125:	DISP_TV_MOD_PAL                 = 0xb,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:126:	DISP_TV_MOD_PAL_SVIDEO          = 0xc,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:127:	DISP_TV_MOD_NTSC                = 0xe,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:128:	DISP_TV_MOD_NTSC_SVIDEO         = 0xf,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:129:	DISP_TV_MOD_PAL_M               = 0x11,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:130:	DISP_TV_MOD_PAL_M_SVIDEO        = 0x12,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:131:	DISP_TV_MOD_PAL_NC              = 0x14,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:132:	DISP_TV_MOD_PAL_NC_SVIDEO       = 0x15,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:133:	DISP_TV_MOD_3840_2160P_30HZ     = 0x1c,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:134:	DISP_TV_MOD_3840_2160P_25HZ     = 0x1d,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:135:	DISP_TV_MOD_3840_2160P_24HZ     = 0x1e,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:136:	DISP_TV_MODE_NUM                = 0x1f,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:432:	DISP_RESERVE0 = 0x00,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:433:	DISP_RESERVE1 = 0x01,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:434:	DISP_SET_BKCOLOR = 0x03,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:435:	DISP_GET_BKCOLOR = 0x04,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:436:	DISP_SET_COLORKEY = 0x05,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:437:	DISP_GET_COLORKEY = 0x06,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:438:	DISP_GET_SCN_WIDTH = 0x07,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:439:	DISP_GET_SCN_HEIGHT = 0x08,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:440:	DISP_GET_OUTPUT_TYPE = 0x09,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:441:	DISP_SET_EXIT_MODE = 0x0A,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:442:	DISP_VSYNC_EVENT_EN = 0x0B,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:443:	DISP_BLANK = 0x0C,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:444:	DISP_SHADOW_PROTECT = 0x0D,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:445:	DISP_HWC_COMMIT = 0x0E,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:446:	DISP_DEVICE_SWITCH = 0x0F,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:447:	DISP_GET_OUTPUT = 0x10,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:448:	DISP_SET_COLOR_RANGE = 0x11,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:449:	DISP_GET_COLOR_RANGE = 0x12,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:452:	DISP_LAYER_ENABLE = 0x40,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:453:	DISP_LAYER_DISABLE = 0x41,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:454:	DISP_LAYER_SET_INFO = 0x42,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:455:	DISP_LAYER_GET_INFO = 0x43,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:456:	DISP_LAYER_TOP = 0x44,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:457:	DISP_LAYER_BOTTOM = 0x45,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:458:	DISP_LAYER_GET_FRAME_ID = 0x46,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:459:	DISP_LAYER_SET_CONFIG = 0x47,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:460:	DISP_LAYER_GET_CONFIG = 0x48,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:463:	DISP_HDMI_SUPPORT_MODE = 0xc4,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:464:	DISP_SET_TV_HPD = 0xc5,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:465:	DISP_HDMI_GET_EDID = 0xc6,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:468:	DISP_LCD_ENABLE = 0x100,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:469:	DISP_LCD_DISABLE = 0x101,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:470:	DISP_LCD_SET_BRIGHTNESS = 0x102,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:471:	DISP_LCD_GET_BRIGHTNESS = 0x103,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:472:	DISP_LCD_BACKLIGHT_ENABLE  = 0x104,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:473:	DISP_LCD_BACKLIGHT_DISABLE  = 0x105,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:474:	DISP_LCD_SET_SRC = 0x106,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:475:	DISP_LCD_SET_FPS  = 0x107,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:476:	DISP_LCD_GET_FPS  = 0x108,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:477:	DISP_LCD_GET_SIZE = 0x109,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:478:	DISP_LCD_GET_MODEL_NAME = 0x10a,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:479:	DISP_LCD_SET_GAMMA_TABLE = 0x10b,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:480:	DISP_LCD_GAMMA_CORRECTION_ENABLE = 0x10c,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:481:	DISP_LCD_GAMMA_CORRECTION_DISABLE = 0x10d,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:482:	DISP_LCD_USER_DEFINED_FUNC = 0x10e,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:483:	DISP_LCD_CHECK_OPEN_FINISH = 0x10f,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:484:	DISP_LCD_CHECK_CLOSE_FINISH = 0x110,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:487:	DISP_CAPTURE_START = 0x140,//caputre screen and scaler to dram
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:488:	DISP_CAPTURE_STOP = 0x141,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:489:	DISP_CAPTURE_COMMIT = 0x142,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:492:	DISP_ENHANCE_ENABLE = 0x180,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:493:	DISP_ENHANCE_DISABLE = 0x181,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:494:	DISP_ENHANCE_GET_EN = 0x182,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:495:	DISP_ENHANCE_SET_WINDOW = 0x183,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:496:	DISP_ENHANCE_GET_WINDOW = 0x184,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:497:	DISP_ENHANCE_SET_MODE = 0x185,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:498:	DISP_ENHANCE_GET_MODE = 0x186,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:499:	DISP_ENHANCE_DEMO_ENABLE = 0x187,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:500:	DISP_ENHANCE_DEMO_DISABLE = 0x188,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:503:	DISP_SMBL_ENABLE = 0x200,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:504:	DISP_SMBL_DISABLE = 0x201,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:505:	DISP_SMBL_GET_EN = 0x202,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:506:	DISP_SMBL_SET_WINDOW = 0x203,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:507:	DISP_SMBL_GET_WINDOW = 0x204,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:510:	DISP_FB_REQUEST = 0x280,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:511:	DISP_FB_RELEASE = 0x281,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:513:	DISP_MEM_REQUEST = 0x2c0,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:514:	DISP_MEM_RELEASE = 0x2c1,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:515:	DISP_MEM_GETADR = 0x2c2,
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:518:#define FBIOGET_LAYER_HDL_0 0x4700
+workspace/_unmaintained\trimuismart\libmsettings\sunxi_display2.h:519:#define FBIOGET_LAYER_HDL_1 0x4701
+workspace/_unmaintained\my282\libmstick\mstick.c:21:#define MIYOO_PLAYER_MAGIC		0xFF
+workspace/_unmaintained\my282\libmstick\mstick.c:22:#define MIYOO_PLAYER_MAGIC_END	0xFE
+workspace/_unmaintained\miyoomini\other\logotweak\logoread.c:9:#define	IMGSIZE	0x20000
+workspace/_unmaintained\miyoomini\other\logotweak\logoread.c:29:	if (mtdinfo.erasesize != 0x10000) { puts("MTD erasesize incorrect"); return -1; }
+workspace/_unmaintained\miyoomini\other\logotweak\logoread.c:39:	if ((read_ofs32[0] != 0x41545353)||(read_ofs32[1] != 0x52)||(read_ofs32[2] != 4)) { puts("missing SSTAR"); return -1; }
+workspace/_unmaintained\miyoomini\other\logotweak\logoread.c:43:	if (read_ofs32[0] != 0x50534944) { puts("missing DISP"); return -1; }
+workspace/_unmaintained\miyoomini\other\logotweak\logoread.c:46:	if ((a)||(read_ofs - read_buf) > (IMGSIZE-0x2c)) { puts("invalid DISP format"); return -1; }
+workspace/_unmaintained\miyoomini\other\logotweak\logoread.c:49:	if (read_ofs32[0] != 0x4F474F4C) { puts("missing LOGO"); return -1; }
+workspace/_unmaintained\miyoomini\other\logotweak\logoread.c:55:		if (read_ofs32[0] != 0x4F474F4C) { puts("missing LOGO"); return -1; }
+workspace/_unmaintained\miyoomini\other\logotweak\logoread.c:57:		if ((a)||(read_ofs32[9] != 0x2c)||(read_ofs32[10] != 0x1)) { puts("invalid LOGO format"); return -1; }
+workspace/_unmaintained\miyoomini\other\logotweak\logoread.c:59:		read_ofs += 0x2c;
+workspace/_unmaintained\miyoomini\other\logotweak\logomake.c:11:#define	IMGSIZE	0x20000
+workspace/_unmaintained\miyoomini\other\logotweak\logomake.c:32:	if (mtdinfo.erasesize != 0x10000) { puts("MTD erasesize incorrect"); return -1; }
+workspace/_unmaintained\miyoomini\other\logotweak\logomake.c:42:	if ((read_ofs32[0] != 0x41545353)||(read_ofs32[1] != 0x52)||(read_ofs32[2] != 4)) { puts("missing SSTAR"); return -1; }
+workspace/_unmaintained\miyoomini\other\logotweak\logomake.c:46:	if (read_ofs32[0] != 0x50534944) { puts("missing DISP"); return -1; }
+workspace/_unmaintained\miyoomini\other\logotweak\logomake.c:49:	if ((a)||(read_ofs - read_buf) > (IMGSIZE-0x2c)) { puts("invalid DISP format"); return -1; }
+workspace/_unmaintained\miyoomini\other\logotweak\logomake.c:52:	if (read_ofs32[0] != 0x4F474F4C) { puts("missing LOGO"); return -1; }
+workspace/_unmaintained\miyoomini\other\logotweak\logomake.c:59:		read_ofs32[0] = 0x4F474F4C;
+workspace/_unmaintained\miyoomini\other\logotweak\logomake.c:61:		read_ofs32[9] = 0x2c; read_ofs32[10] = 1;
+workspace/_unmaintained\miyoomini\other\logotweak\logomake.c:71:		read_ofs += 0x2c;
+workspace/_unmaintained\miyoomini\other\logotweak\logomake.c:78:		if (size != size32) read_ofs[size] = 0xff;
+workspace/_unmaintained\miyoomini\other\logotweak\logomake.c:85:	// fill rest bytes to 0xFF
+workspace/_unmaintained\miyoomini\other\logotweak\logomake.c:86:	if (IMGSIZE-(read_ofs-read_buf) > 0) memset(read_ofs, 0xFF, IMGSIZE-(read_ofs-read_buf));
+workspace/_unmaintained\miyoomini\batmon\batmon.c:18:#define	AXPID	(0x34)
+workspace/_unmaintained\miyoomini\batmon\batmon.c:59://		B9 .. (& 0x7F) battery percentage
+workspace/_unmaintained\miyoomini\batmon\batmon.c:102:	if (is_plus) return (axp_read(0x00) & 0x4) > 0;
+workspace/_unmaintained\miyoomini\batmon\batmon.c:137:	int map_size = vinfo.xres * vinfo.yres * (vinfo.bits_per_pixel / 8); // 640x480x4
+workspace/_unmaintained\miyoomini\batmon\batmon.c:152:			*(dst+3) = 0xf; // alpha
+workspace/_unmaintained\miyoomini\libmsettings\msettings.c:23:#define	AXPID	(0x34)
+workspace/_unmaintained\miyoomini\libmsettings\msettings.c:64://		B9 .. (& 0x7F) battery percentage
+workspace/_unmaintained\miyoomini\libmsettings\msettings.c:192:#define MI_AO_SETMUTE	0x4008690d
+workspace/_unmaintained\my282\platform\platform.c:66:#define EV_KEY			0x01
+workspace/_unmaintained\my282\platform\platform.c:67:#define EV_ABS			0x03
+workspace/_unmaintained\my282\platform\platform.c:336:static int hard_scale = 4; // TODO: base src size, eg. 160x144 can be 4
+workspace/_unmaintained\my282\platform\platform.c:409:    uint8_t red = (rgb565 >> 11) & 0x1F;
+workspace/_unmaintained\my282\platform\platform.c:411:    uint8_t green = (rgb565 >> 5) & 0x3F;
+workspace/_unmaintained\my282\platform\platform.c:413:    uint8_t blue = rgb565 & 0x1F;
+workspace/_unmaintained\my282\platform\platform.c:633:#define OVERLAY_RGBA_MASK 0x00ff0000,0x0000ff00,0x000000ff,0xff000000 // ARGB
+workspace/_unmaintained\my282\libmsettings\msettings.c:134:#define DISP_LCD_SET_BRIGHTNESS  0x102
+workspace/_unmaintained\my282\overclock\overclock.c:9:#define CCU_BASE    0x01C20000
+workspace/_unmaintained\my282\overclock\overclock.c:41:    1, 0x8000000c,
+workspace/_unmaintained\my282\overclock\overclock.c:42:    2, 0x80000008,
+workspace/_unmaintained\my282\overclock\overclock.c:43:    3, 0x80000006,
+workspace/_unmaintained\my282\overclock\overclock.c:44:    4, 0x80000004,
+workspace/_unmaintained\my282\overclock\overclock.c:45:    5, 0x80000108,
+workspace/_unmaintained\my282\overclock\overclock.c:46:    6, 0x80000003,
+workspace/_unmaintained\my282\overclock\overclock.c:47:    7, 0x80000209,
+workspace/_unmaintained\my282\overclock\overclock.c:48:    8, 0x80000002,
+workspace/_unmaintained\my282\overclock\overclock.c:49:    9, 0x80000104,
+workspace/_unmaintained\my282\overclock\overclock.c:50:    10, 0x80000206,
+workspace/_unmaintained\my282\overclock\overclock.c:51:    11, 0x8000050c,
+workspace/_unmaintained\my282\overclock\overclock.c:52:    12, 0x80000001,
+workspace/_unmaintained\my282\overclock\overclock.c:53:    13, 0x80000306,
+workspace/_unmaintained\my282\overclock\overclock.c:54:    14, 0x80000204,
+workspace/_unmaintained\my282\overclock\overclock.c:55:    15, 0x80000407,
+workspace/_unmaintained\my282\overclock\overclock.c:56:    16, 0x80000102,
+workspace/_unmaintained\my282\overclock\overclock.c:57:    17, 0x80000406,
+workspace/_unmaintained\my282\overclock\overclock.c:58:    18, 0x80000203,
+workspace/_unmaintained\my282\overclock\overclock.c:59:    19, 0x80000304,
+workspace/_unmaintained\my282\overclock\overclock.c:60:    20, 0x80000405,
+workspace/_unmaintained\my282\overclock\overclock.c:61:    21, 0x80000607,
+workspace/_unmaintained\my282\overclock\overclock.c:62:    22, 0x80000a0b,
+workspace/_unmaintained\my282\overclock\overclock.c:63:    24, 0x80000000,
+workspace/_unmaintained\my282\overclock\overclock.c:64:    25, 0x80000d0c,
+workspace/_unmaintained\my282\overclock\overclock.c:65:    26, 0x80000908,
+workspace/_unmaintained\my282\overclock\overclock.c:66:    27, 0x80000706,
+workspace/_unmaintained\my282\overclock\overclock.c:67:    28, 0x80000504,
+workspace/_unmaintained\my282\overclock\overclock.c:68:    29, 0x80000a08,
+workspace/_unmaintained\my282\overclock\overclock.c:69:    30, 0x80000403,
+workspace/_unmaintained\my282\overclock\overclock.c:70:    31, 0x80000c09,
+workspace/_unmaintained\my282\overclock\overclock.c:71:    32, 0x80000302,
+workspace/_unmaintained\my282\overclock\overclock.c:72:    33, 0x80000604,
+workspace/_unmaintained\my282\overclock\overclock.c:73:    34, 0x80000906,
+workspace/_unmaintained\my282\overclock\overclock.c:74:    35, 0x8000120c,
+workspace/_unmaintained\my282\overclock\overclock.c:75:    36, 0x80000201,
+workspace/_unmaintained\my282\overclock\overclock.c:76:    37, 0x80000a06,
+workspace/_unmaintained\my282\overclock\overclock.c:77:    38, 0x80000704,
+workspace/_unmaintained\my282\overclock\overclock.c:78:    39, 0x80000c07,
+workspace/_unmaintained\my282\overclock\overclock.c:79:    40, 0x80000402,
+workspace/_unmaintained\my282\overclock\overclock.c:80:    41, 0x80000b06,
+workspace/_unmaintained\my282\overclock\overclock.c:81:    42, 0x80000603,
+workspace/_unmaintained\my282\overclock\overclock.c:82:    43, 0x80000804,
+workspace/_unmaintained\my282\overclock\overclock.c:83:    44, 0x80000a05,
+workspace/_unmaintained\my282\overclock\overclock.c:84:    45, 0x80000e07,
+workspace/_unmaintained\my282\overclock\overclock.c:85:    46, 0x8000160b,
+workspace/_unmaintained\my282\overclock\overclock.c:86:    48, 0x80000100,
+workspace/_unmaintained\my282\overclock\overclock.c:87:    49, 0x80001a0c,
+workspace/_unmaintained\my282\overclock\overclock.c:88:    50, 0x80001208,
+workspace/_unmaintained\my282\overclock\overclock.c:89:    51, 0x80000e06,
+workspace/_unmaintained\my282\overclock\overclock.c:90:    52, 0x80000a04,
+workspace/_unmaintained\my282\overclock\overclock.c:91:    53, 0x80001308,
+workspace/_unmaintained\my282\overclock\overclock.c:92:    54, 0x80000803,
+workspace/_unmaintained\my282\overclock\overclock.c:93:    55, 0x80001609,
+workspace/_unmaintained\my282\overclock\overclock.c:94:    56, 0x80000602,
+workspace/_unmaintained\my282\overclock\overclock.c:95:    57, 0x80000b04,
+workspace/_unmaintained\my282\overclock\overclock.c:96:    58, 0x80001006,
+workspace/_unmaintained\my282\overclock\overclock.c:97:    59, 0x80001f0c,
+workspace/_unmaintained\my282\overclock\overclock.c:98:    60, 0x80000401,
+workspace/_unmaintained\my282\overclock\overclock.c:99:    61, 0x80001106,
+workspace/_unmaintained\my282\overclock\overclock.c:100:    62, 0x80000c04,
+workspace/_unmaintained\my282\overclock\overclock.c:101:    63, 0x80001407,
+workspace/_unmaintained\my282\overclock\overclock.c:102:    64, 0x80000702,
+workspace/_unmaintained\my282\overclock\overclock.c:103:    65, 0x80001206,
+workspace/_unmaintained\my282\overclock\overclock.c:104:    66, 0x80000a03,
+workspace/_unmaintained\my282\overclock\overclock.c:105:    67, 0x80000d04,
+workspace/_unmaintained\my282\overclock\overclock.c:106:    68, 0x80001005,
+workspace/_unmaintained\my282\overclock\overclock.c:107:    69, 0x80001607,
+workspace/_unmaintained\my282\overclock\overclock.c:108:    70, 0x8000220b,
+workspace/_unmaintained\my282\overclock\overclock.c:109:    72, 0x80000200,
+workspace/_unmaintained\my282\overclock\overclock.c:110:    73, 0x8000270c,
+workspace/_unmaintained\my282\overclock\overclock.c:111:    74, 0x80001b08,
+workspace/_unmaintained\my282\overclock\overclock.c:112:    75, 0x80001506,
+workspace/_unmaintained\my282\overclock\overclock.c:113:    76, 0x80000f04,
+workspace/_unmaintained\my282\overclock\overclock.c:114:    77, 0x80001c08,
+workspace/_unmaintained\my282\overclock\overclock.c:115:    78, 0x80000c03,
+workspace/_unmaintained\my282\overclock\overclock.c:116:    79, 0x80002009,
+workspace/_unmaintained\my282\overclock\overclock.c:117:    80, 0x80000902,
+workspace/_unmaintained\my282\overclock\overclock.c:118:    81, 0x80001004,
+workspace/_unmaintained\my282\overclock\overclock.c:119:    82, 0x80001706,
+workspace/_unmaintained\my282\overclock\overclock.c:120:    83, 0x80002c0c,
+workspace/_unmaintained\my282\overclock\overclock.c:121:    84, 0x80000601,
+workspace/_unmaintained\my282\overclock\overclock.c:122:    85, 0x80001806,
+workspace/_unmaintained\my282\overclock\overclock.c:123:    86, 0x80001104,
+workspace/_unmaintained\my282\overclock\overclock.c:124:    87, 0x80001c07,
+workspace/_unmaintained\my282\overclock\overclock.c:125:    88, 0x80000a02,
+workspace/_unmaintained\my282\overclock\overclock.c:126:    89, 0x80001906,
+workspace/_unmaintained\my282\overclock\overclock.c:127:    90, 0x80000e03,
+workspace/_unmaintained\my282\overclock\overclock.c:128:    91, 0x80001204,
+workspace/_unmaintained\my282\overclock\overclock.c:129:    92, 0x80001605,
+workspace/_unmaintained\my282\overclock\overclock.c:130:    93, 0x80001e07,
+workspace/_unmaintained\my282\overclock\overclock.c:131:    94, 0x80002e0b,
+workspace/_unmaintained\my282\overclock\overclock.c:132:    96, 0x80000300,
+workspace/_unmaintained\my282\overclock\overclock.c:133:    97, 0x8000340c,
+workspace/_unmaintained\my282\overclock\overclock.c:134:    98, 0x80002408,
+workspace/_unmaintained\my282\overclock\overclock.c:135:    99, 0x80001c06,
+workspace/_unmaintained\my282\overclock\overclock.c:136:    100, 0x80001404,
+workspace/_unmaintained\my282\overclock\overclock.c:137:    101, 0x80002508,
+workspace/_unmaintained\my282\overclock\overclock.c:138:    102, 0x80001003,
+workspace/_unmaintained\my282\overclock\overclock.c:139:    103, 0x80002a09,
+workspace/_unmaintained\my282\overclock\overclock.c:140:    104, 0x80000c02,
+workspace/_unmaintained\my282\overclock\overclock.c:141:    105, 0x80001504,
+workspace/_unmaintained\my282\overclock\overclock.c:142:    106, 0x80001e06,
+workspace/_unmaintained\my282\overclock\overclock.c:143:    107, 0x8000390c,
+workspace/_unmaintained\my282\overclock\overclock.c:144:    108, 0x80000801,
+workspace/_unmaintained\my282\overclock\overclock.c:145:    109, 0x80001f06,
+workspace/_unmaintained\my282\overclock\overclock.c:146:    110, 0x80001604,
+workspace/_unmaintained\my282\overclock\overclock.c:147:    111, 0x80002407,
+workspace/_unmaintained\my282\overclock\overclock.c:148:    112, 0x80000d02,
+workspace/_unmaintained\my282\overclock\overclock.c:149:    113, 0x80002006,
+workspace/_unmaintained\my282\overclock\overclock.c:150:    114, 0x80001203,
+workspace/_unmaintained\my282\overclock\overclock.c:151:    115, 0x80001704,
+workspace/_unmaintained\my282\overclock\overclock.c:152:    116, 0x80001c05,
+workspace/_unmaintained\my282\overclock\overclock.c:153:    117, 0x80002607,
+workspace/_unmaintained\my282\overclock\overclock.c:154:    118, 0x80003a0b,
+workspace/_unmaintained\my282\overclock\overclock.c:155:    120, 0x80000400,
+workspace/_unmaintained\my282\overclock\overclock.c:156:    121, 0x8000410c,
+workspace/_unmaintained\my282\overclock\overclock.c:157:    122, 0x80002d08,
+workspace/_unmaintained\my282\overclock\overclock.c:158:    123, 0x80002306,
+workspace/_unmaintained\my282\overclock\overclock.c:159:    124, 0x80001904,
+workspace/_unmaintained\my282\overclock\overclock.c:160:    125, 0x80002e08,
+workspace/_unmaintained\my282\overclock\overclock.c:161:    126, 0x80001403,
+workspace/_unmaintained\my282\overclock\overclock.c:162:    127, 0x80003409,
+workspace/_unmaintained\my282\overclock\overclock.c:163:    128, 0x80000f02,
+workspace/_unmaintained\my282\overclock\overclock.c:164:    129, 0x80001a04,
+workspace/_unmaintained\my282\overclock\overclock.c:165:    130, 0x80002506,
+workspace/_unmaintained\my282\overclock\overclock.c:166:    131, 0x8000460c,
+workspace/_unmaintained\my282\overclock\overclock.c:167:    132, 0x80000a01,
+workspace/_unmaintained\my282\overclock\overclock.c:168:    133, 0x80002606,
+workspace/_unmaintained\my282\overclock\overclock.c:169:    134, 0x80001b04,
+workspace/_unmaintained\my282\overclock\overclock.c:170:    135, 0x80002c07,
+workspace/_unmaintained\my282\overclock\overclock.c:171:    136, 0x80001002,
+workspace/_unmaintained\my282\overclock\overclock.c:172:    137, 0x80002706,
+workspace/_unmaintained\my282\overclock\overclock.c:173:    138, 0x80001603,
+workspace/_unmaintained\my282\overclock\overclock.c:174:    139, 0x80001c04,
+workspace/_unmaintained\my282\overclock\overclock.c:175:    140, 0x80002205,
+workspace/_unmaintained\my282\overclock\overclock.c:176:    141, 0x80002e07,
+workspace/_unmaintained\my282\overclock\overclock.c:177:    142, 0x8000460b,
+workspace/_unmaintained\my282\overclock\overclock.c:178:    144, 0x80000500,
+workspace/_unmaintained\my282\overclock\overclock.c:179:    145, 0x80004e0c,
+workspace/_unmaintained\my282\overclock\overclock.c:180:    146, 0x80003608,
+workspace/_unmaintained\my282\overclock\overclock.c:181:    147, 0x80002a06,
+workspace/_unmaintained\my282\overclock\overclock.c:182:    148, 0x80001e04,
+workspace/_unmaintained\my282\overclock\overclock.c:183:    149, 0x80003708,
+workspace/_unmaintained\my282\overclock\overclock.c:184:    150, 0x80001803,
+workspace/_unmaintained\my282\overclock\overclock.c:185:    151, 0x80003e09,
+workspace/_unmaintained\my282\overclock\overclock.c:186:    152, 0x80001202,
+workspace/_unmaintained\my282\overclock\overclock.c:187:    153, 0x80001f04,
+workspace/_unmaintained\my282\overclock\overclock.c:188:    154, 0x80002c06,
+workspace/_unmaintained\my282\overclock\overclock.c:189:    155, 0x8000530c,
+workspace/_unmaintained\my282\overclock\overclock.c:190:    156, 0x80000c01,
+workspace/_unmaintained\my282\overclock\overclock.c:191:    157, 0x80002d06,
+workspace/_unmaintained\my282\overclock\overclock.c:192:    158, 0x80002004,
+workspace/_unmaintained\my282\overclock\overclock.c:193:    159, 0x80003407,
+workspace/_unmaintained\my282\overclock\overclock.c:194:    160, 0x80001302,
+workspace/_unmaintained\my282\overclock\overclock.c:195:    161, 0x80002e06,
+workspace/_unmaintained\my282\overclock\overclock.c:196:    162, 0x80001a03,
+workspace/_unmaintained\my282\overclock\overclock.c:197:    163, 0x80002104,
+workspace/_unmaintained\my282\overclock\overclock.c:198:    164, 0x80002805,
+workspace/_unmaintained\my282\overclock\overclock.c:199:    165, 0x80003607,
+workspace/_unmaintained\my282\overclock\overclock.c:200:    166, 0x8000520b,
+workspace/_unmaintained\my282\overclock\overclock.c:201:    168, 0x80000600,
+workspace/_unmaintained\my282\overclock\overclock.c:202:    169, 0x80005b0c,
+workspace/_unmaintained\my282\overclock\overclock.c:203:    170, 0x80003f08,
+workspace/_unmaintained\my282\overclock\overclock.c:204:    171, 0x80003106,
+workspace/_unmaintained\my282\overclock\overclock.c:205:    172, 0x80002304,
+workspace/_unmaintained\my282\overclock\overclock.c:206:    173, 0x80004008,
+workspace/_unmaintained\my282\overclock\overclock.c:207:    174, 0x80001c03,
+workspace/_unmaintained\my282\overclock\overclock.c:208:    175, 0x80004809,
+workspace/_unmaintained\my282\overclock\overclock.c:209:    176, 0x80001502,
+workspace/_unmaintained\my282\overclock\overclock.c:210:    177, 0x80002404,
+workspace/_unmaintained\my282\overclock\overclock.c:211:    178, 0x80003306,
+workspace/_unmaintained\my282\overclock\overclock.c:212:    179, 0x8000600c,
+workspace/_unmaintained\my282\overclock\overclock.c:213:    180, 0x80000e01,
+workspace/_unmaintained\my282\overclock\overclock.c:214:    181, 0x80003406,
+workspace/_unmaintained\my282\overclock\overclock.c:215:    182, 0x80002504,
+workspace/_unmaintained\my282\overclock\overclock.c:216:    183, 0x80003c07,
+workspace/_unmaintained\my282\overclock\overclock.c:217:    184, 0x80001602,
+workspace/_unmaintained\my282\overclock\overclock.c:218:    185, 0x80003506,
+workspace/_unmaintained\my282\overclock\overclock.c:219:    186, 0x80001e03,
+workspace/_unmaintained\my282\overclock\overclock.c:220:    187, 0x80002604,
+workspace/_unmaintained\my282\overclock\overclock.c:221:    188, 0x80002e05,
+workspace/_unmaintained\my282\overclock\overclock.c:222:    189, 0x80003e07,
+workspace/_unmaintained\my282\overclock\overclock.c:223:    190, 0x80005e0b,
+workspace/_unmaintained\my282\overclock\overclock.c:224:    192, 0x80000700,
+workspace/_unmaintained\my282\overclock\overclock.c:225:    193, 0x8000680c,
+workspace/_unmaintained\my282\overclock\overclock.c:226:    194, 0x80004808,
+workspace/_unmaintained\my282\overclock\overclock.c:227:    195, 0x80003806,
+workspace/_unmaintained\my282\overclock\overclock.c:228:    196, 0x80002804,
+workspace/_unmaintained\my282\overclock\overclock.c:229:    197, 0x80004908,
+workspace/_unmaintained\my282\overclock\overclock.c:230:    198, 0x80002003,
+workspace/_unmaintained\my282\overclock\overclock.c:231:    199, 0x80005209,
+workspace/_unmaintained\my282\overclock\overclock.c:232:    200, 0x80001802,
+workspace/_unmaintained\my282\overclock\overclock.c:233:    201, 0x80002904,
+workspace/_unmaintained\my282\overclock\overclock.c:234:    202, 0x80003a06,
+workspace/_unmaintained\my282\overclock\overclock.c:235:    203, 0x80006d0c,
+workspace/_unmaintained\my282\overclock\overclock.c:236:    204, 0x80001001,
+workspace/_unmaintained\my282\overclock\overclock.c:237:    205, 0x80003b06,
+workspace/_unmaintained\my282\overclock\overclock.c:238:    206, 0x80002a04,
+workspace/_unmaintained\my282\overclock\overclock.c:239:    207, 0x80004407,
+workspace/_unmaintained\my282\overclock\overclock.c:240:    208, 0x80001902,
+workspace/_unmaintained\my282\overclock\overclock.c:241:    209, 0x80003c06,
+workspace/_unmaintained\my282\overclock\overclock.c:242:    210, 0x80002203,
+workspace/_unmaintained\my282\overclock\overclock.c:243:    211, 0x80002b04,
+workspace/_unmaintained\my282\overclock\overclock.c:244:    212, 0x80003405,
+workspace/_unmaintained\my282\overclock\overclock.c:245:    213, 0x80004607,
+workspace/_unmaintained\my282\overclock\overclock.c:246:    214, 0x80006a0b,
+workspace/_unmaintained\my282\overclock\overclock.c:247:    216, 0x80000800,
+workspace/_unmaintained\my282\overclock\overclock.c:248:    217, 0x8000750c,
+workspace/_unmaintained\my282\overclock\overclock.c:249:    218, 0x80005108,
+workspace/_unmaintained\my282\overclock\overclock.c:250:    219, 0x80003f06,
+workspace/_unmaintained\my282\overclock\overclock.c:251:    220, 0x80002d04,
+workspace/_unmaintained\my282\overclock\overclock.c:252:    221, 0x80005208,
+workspace/_unmaintained\my282\overclock\overclock.c:253:    222, 0x80002403,
+workspace/_unmaintained\my282\overclock\overclock.c:254:    223, 0x80005c09,
+workspace/_unmaintained\my282\overclock\overclock.c:255:    224, 0x80001b02,
+workspace/_unmaintained\my282\overclock\overclock.c:256:    225, 0x80002e04,
+workspace/_unmaintained\my282\overclock\overclock.c:257:    226, 0x80004106,
+workspace/_unmaintained\my282\overclock\overclock.c:258:    227, 0x80007a0c,
+workspace/_unmaintained\my282\overclock\overclock.c:259:    228, 0x80001201,
+workspace/_unmaintained\my282\overclock\overclock.c:260:    229, 0x80004206,
+workspace/_unmaintained\my282\overclock\overclock.c:261:    230, 0x80002f04,
+workspace/_unmaintained\my282\overclock\overclock.c:262:    231, 0x80004c07,
+workspace/_unmaintained\my282\overclock\overclock.c:263:    232, 0x80001c02,
+workspace/_unmaintained\my282\overclock\overclock.c:264:    233, 0x80004306,
+workspace/_unmaintained\my282\overclock\overclock.c:265:    234, 0x80002603,
+workspace/_unmaintained\my282\overclock\overclock.c:266:    235, 0x80003004,
+workspace/_unmaintained\my282\overclock\overclock.c:267:    236, 0x80003a05,
+workspace/_unmaintained\my282\overclock\overclock.c:268:    237, 0x80004e07,
+workspace/_unmaintained\my282\overclock\overclock.c:269:    238, 0x8000760b,
+workspace/_unmaintained\my282\overclock\overclock.c:270:    240, 0x80000900,
+workspace/_unmaintained\my282\overclock\overclock.c:271:    242, 0x80005a08,
+workspace/_unmaintained\my282\overclock\overclock.c:272:    243, 0x80004606,
+workspace/_unmaintained\my282\overclock\overclock.c:273:    244, 0x80003204,
+workspace/_unmaintained\my282\overclock\overclock.c:274:    245, 0x80005b08,
+workspace/_unmaintained\my282\overclock\overclock.c:275:    246, 0x80002803,
+workspace/_unmaintained\my282\overclock\overclock.c:276:    247, 0x80006609,
+workspace/_unmaintained\my282\overclock\overclock.c:277:    248, 0x80001e02,
+workspace/_unmaintained\my282\overclock\overclock.c:278:    249, 0x80003304,
+workspace/_unmaintained\my282\overclock\overclock.c:279:    250, 0x80004806,
+workspace/_unmaintained\my282\overclock\overclock.c:280:    252, 0x80001401,
+workspace/_unmaintained\my282\overclock\overclock.c:281:    253, 0x80004906,
+workspace/_unmaintained\my282\overclock\overclock.c:282:    254, 0x80003404,
+workspace/_unmaintained\my282\overclock\overclock.c:283:    255, 0x80005407,
+workspace/_unmaintained\my282\overclock\overclock.c:284:    256, 0x80001f02,
+workspace/_unmaintained\my282\overclock\overclock.c:285:    257, 0x80004a06,
+workspace/_unmaintained\my282\overclock\overclock.c:286:    258, 0x80002a03,
+workspace/_unmaintained\my282\overclock\overclock.c:287:    259, 0x80003504,
+workspace/_unmaintained\my282\overclock\overclock.c:288:    260, 0x80004005,
+workspace/_unmaintained\my282\overclock\overclock.c:289:    261, 0x80005607,
+workspace/_unmaintained\my282\overclock\overclock.c:290:    264, 0x80000a00,
+workspace/_unmaintained\my282\overclock\overclock.c:291:    266, 0x80006308,
+workspace/_unmaintained\my282\overclock\overclock.c:292:    267, 0x80004d06,
+workspace/_unmaintained\my282\overclock\overclock.c:293:    268, 0x80003704,
+workspace/_unmaintained\my282\overclock\overclock.c:294:    269, 0x80006408,
+workspace/_unmaintained\my282\overclock\overclock.c:295:    270, 0x80002c03,
+workspace/_unmaintained\my282\overclock\overclock.c:296:    271, 0x80007009,
+workspace/_unmaintained\my282\overclock\overclock.c:297:    272, 0x80002102,
+workspace/_unmaintained\my282\overclock\overclock.c:298:    273, 0x80003804,
+workspace/_unmaintained\my282\overclock\overclock.c:299:    274, 0x80004f06,
+workspace/_unmaintained\my282\overclock\overclock.c:300:    276, 0x80001601,
+workspace/_unmaintained\my282\overclock\overclock.c:301:    277, 0x80005006,
+workspace/_unmaintained\my282\overclock\overclock.c:302:    278, 0x80003904,
+workspace/_unmaintained\my282\overclock\overclock.c:303:    279, 0x80005c07,
+workspace/_unmaintained\my282\overclock\overclock.c:304:    280, 0x80002202,
+workspace/_unmaintained\my282\overclock\overclock.c:305:    281, 0x80005106,
+workspace/_unmaintained\my282\overclock\overclock.c:306:    282, 0x80002e03,
+workspace/_unmaintained\my282\overclock\overclock.c:307:    283, 0x80003a04,
+workspace/_unmaintained\my282\overclock\overclock.c:308:    284, 0x80004605,
+workspace/_unmaintained\my282\overclock\overclock.c:309:    285, 0x80005e07,
+workspace/_unmaintained\my282\overclock\overclock.c:310:    288, 0x80000b00,
+workspace/_unmaintained\my282\overclock\overclock.c:311:    290, 0x80006c08,
+workspace/_unmaintained\my282\overclock\overclock.c:312:    291, 0x80005406,
+workspace/_unmaintained\my282\overclock\overclock.c:313:    292, 0x80003c04,
+workspace/_unmaintained\my282\overclock\overclock.c:314:    293, 0x80006d08,
+workspace/_unmaintained\my282\overclock\overclock.c:315:    294, 0x80003003,
+workspace/_unmaintained\my282\overclock\overclock.c:316:    295, 0x80007a09,
+workspace/_unmaintained\my282\overclock\overclock.c:317:    296, 0x80002402,
+workspace/_unmaintained\my282\overclock\overclock.c:318:    297, 0x80003d04,
+workspace/_unmaintained\my282\overclock\overclock.c:319:    298, 0x80005606,
+workspace/_unmaintained\my282\overclock\overclock.c:320:    300, 0x80001801,
+workspace/_unmaintained\my282\overclock\overclock.c:321:    301, 0x80005706,
+workspace/_unmaintained\my282\overclock\overclock.c:322:    302, 0x80003e04,
+workspace/_unmaintained\my282\overclock\overclock.c:323:    303, 0x80006407,
+workspace/_unmaintained\my282\overclock\overclock.c:324:    304, 0x80002502,
+workspace/_unmaintained\my282\overclock\overclock.c:325:    305, 0x80005806,
+workspace/_unmaintained\my282\overclock\overclock.c:326:    306, 0x80003203,
+workspace/_unmaintained\my282\overclock\overclock.c:327:    307, 0x80003f04,
+workspace/_unmaintained\my282\overclock\overclock.c:328:    308, 0x80004c05,
+workspace/_unmaintained\my282\overclock\overclock.c:329:    309, 0x80006607,
+workspace/_unmaintained\my282\overclock\overclock.c:330:    312, 0x80000c00,
+workspace/_unmaintained\my282\overclock\overclock.c:331:    314, 0x80007508,
+workspace/_unmaintained\my282\overclock\overclock.c:332:    315, 0x80005b06,
+workspace/_unmaintained\my282\overclock\overclock.c:333:    316, 0x80004104,
+workspace/_unmaintained\my282\overclock\overclock.c:334:    317, 0x80007608,
+workspace/_unmaintained\my282\overclock\overclock.c:335:    318, 0x80003403,
+workspace/_unmaintained\my282\overclock\overclock.c:336:    320, 0x80002702,
+workspace/_unmaintained\my282\overclock\overclock.c:337:    321, 0x80004204,
+workspace/_unmaintained\my282\overclock\overclock.c:338:    322, 0x80005d06,
+workspace/_unmaintained\my282\overclock\overclock.c:339:    324, 0x80001a01,
+workspace/_unmaintained\my282\overclock\overclock.c:340:    325, 0x80005e06,
+workspace/_unmaintained\my282\overclock\overclock.c:341:    326, 0x80004304,
+workspace/_unmaintained\my282\overclock\overclock.c:342:    327, 0x80006c07,
+workspace/_unmaintained\my282\overclock\overclock.c:343:    328, 0x80002802,
+workspace/_unmaintained\my282\overclock\overclock.c:344:    329, 0x80005f06,
+workspace/_unmaintained\my282\overclock\overclock.c:345:    330, 0x80003603,
+workspace/_unmaintained\my282\overclock\overclock.c:346:    331, 0x80004404,
+workspace/_unmaintained\my282\overclock\overclock.c:347:    332, 0x80005205,
+workspace/_unmaintained\my282\overclock\overclock.c:348:    333, 0x80006e07,
+workspace/_unmaintained\my282\overclock\overclock.c:349:    336, 0x80000d00,
+workspace/_unmaintained\my282\overclock\overclock.c:350:    338, 0x80007e08,
+workspace/_unmaintained\my282\overclock\overclock.c:351:    339, 0x80006206,
+workspace/_unmaintained\my282\overclock\overclock.c:352:    340, 0x80004604,
+workspace/_unmaintained\my282\overclock\overclock.c:353:    341, 0x80007f08,
+workspace/_unmaintained\my282\overclock\overclock.c:354:    342, 0x80003803,
+workspace/_unmaintained\my282\overclock\overclock.c:355:    344, 0x80002a02,
+workspace/_unmaintained\my282\overclock\overclock.c:356:    345, 0x80004704,
+workspace/_unmaintained\my282\overclock\overclock.c:357:    346, 0x80006406,
+workspace/_unmaintained\my282\overclock\overclock.c:358:    348, 0x80001c01,
+workspace/_unmaintained\my282\overclock\overclock.c:359:    349, 0x80006506,
+workspace/_unmaintained\my282\overclock\overclock.c:360:    350, 0x80004804,
+workspace/_unmaintained\my282\overclock\overclock.c:361:    351, 0x80007407,
+workspace/_unmaintained\my282\overclock\overclock.c:362:    352, 0x80002b02,
+workspace/_unmaintained\my282\overclock\overclock.c:363:    353, 0x80006606,
+workspace/_unmaintained\my282\overclock\overclock.c:364:    354, 0x80003a03,
+workspace/_unmaintained\my282\overclock\overclock.c:365:    355, 0x80004904,
+workspace/_unmaintained\my282\overclock\overclock.c:366:    356, 0x80005805,
+workspace/_unmaintained\my282\overclock\overclock.c:367:    357, 0x80007607,
+workspace/_unmaintained\my282\overclock\overclock.c:368:    360, 0x80000e00,
+workspace/_unmaintained\my282\overclock\overclock.c:369:    363, 0x80006906,
+workspace/_unmaintained\my282\overclock\overclock.c:370:    364, 0x80004b04,
+workspace/_unmaintained\my282\overclock\overclock.c:371:    366, 0x80003c03,
+workspace/_unmaintained\my282\overclock\overclock.c:372:    368, 0x80002d02,
+workspace/_unmaintained\my282\overclock\overclock.c:373:    369, 0x80004c04,
+workspace/_unmaintained\my282\overclock\overclock.c:374:    370, 0x80006b06,
+workspace/_unmaintained\my282\overclock\overclock.c:375:    372, 0x80001e01,
+workspace/_unmaintained\my282\overclock\overclock.c:376:    373, 0x80006c06,
+workspace/_unmaintained\my282\overclock\overclock.c:377:    374, 0x80004d04,
+workspace/_unmaintained\my282\overclock\overclock.c:378:    375, 0x80007c07,
+workspace/_unmaintained\my282\overclock\overclock.c:379:    376, 0x80002e02,
+workspace/_unmaintained\my282\overclock\overclock.c:380:    377, 0x80006d06,
+workspace/_unmaintained\my282\overclock\overclock.c:381:    378, 0x80003e03,
+workspace/_unmaintained\my282\overclock\overclock.c:382:    379, 0x80004e04,
+workspace/_unmaintained\my282\overclock\overclock.c:383:    380, 0x80005e05,
+workspace/_unmaintained\my282\overclock\overclock.c:384:    381, 0x80007e07,
+workspace/_unmaintained\my282\overclock\overclock.c:385:    384, 0x80000f00,
+workspace/_unmaintained\my282\overclock\overclock.c:386:    387, 0x80007006,
+workspace/_unmaintained\my282\overclock\overclock.c:387:    388, 0x80005004,
+workspace/_unmaintained\my282\overclock\overclock.c:388:    390, 0x80004003,
+workspace/_unmaintained\my282\overclock\overclock.c:389:    392, 0x80003002,
+workspace/_unmaintained\my282\overclock\overclock.c:390:    393, 0x80005104,
+workspace/_unmaintained\my282\overclock\overclock.c:391:    394, 0x80007206,
+workspace/_unmaintained\my282\overclock\overclock.c:392:    396, 0x80002001,
+workspace/_unmaintained\my282\overclock\overclock.c:393:    397, 0x80007306,
+workspace/_unmaintained\my282\overclock\overclock.c:394:    398, 0x80005204,
+workspace/_unmaintained\my282\overclock\overclock.c:395:    400, 0x80003102,
+workspace/_unmaintained\my282\overclock\overclock.c:396:    401, 0x80007406,
+workspace/_unmaintained\my282\overclock\overclock.c:397:    402, 0x80004203,
+workspace/_unmaintained\my282\overclock\overclock.c:398:    403, 0x80005304,
+workspace/_unmaintained\my282\overclock\overclock.c:399:    404, 0x80006405,
+workspace/_unmaintained\my282\overclock\overclock.c:400:    408, 0x80001000,
+workspace/_unmaintained\my282\overclock\overclock.c:401:    411, 0x80007706,
+workspace/_unmaintained\my282\overclock\overclock.c:402:    412, 0x80005504,
+workspace/_unmaintained\my282\overclock\overclock.c:403:    414, 0x80004403,
+workspace/_unmaintained\my282\overclock\overclock.c:404:    416, 0x80003302,
+workspace/_unmaintained\my282\overclock\overclock.c:405:    417, 0x80005604,
+workspace/_unmaintained\my282\overclock\overclock.c:406:    418, 0x80007906,
+workspace/_unmaintained\my282\overclock\overclock.c:407:    420, 0x80002201,
+workspace/_unmaintained\my282\overclock\overclock.c:408:    421, 0x80007a06,
+workspace/_unmaintained\my282\overclock\overclock.c:409:    422, 0x80005704,
+workspace/_unmaintained\my282\overclock\overclock.c:410:    424, 0x80003402,
+workspace/_unmaintained\my282\overclock\overclock.c:411:    425, 0x80007b06,
+workspace/_unmaintained\my282\overclock\overclock.c:412:    426, 0x80004603,
+workspace/_unmaintained\my282\overclock\overclock.c:413:    427, 0x80005804,
+workspace/_unmaintained\my282\overclock\overclock.c:414:    428, 0x80006a05,
+workspace/_unmaintained\my282\overclock\overclock.c:415:    432, 0x80001100,
+workspace/_unmaintained\my282\overclock\overclock.c:416:    435, 0x80007e06,
+workspace/_unmaintained\my282\overclock\overclock.c:417:    436, 0x80005a04,
+workspace/_unmaintained\my282\overclock\overclock.c:418:    438, 0x80004803,
+workspace/_unmaintained\my282\overclock\overclock.c:419:    440, 0x80003602,
+workspace/_unmaintained\my282\overclock\overclock.c:420:    441, 0x80005b04,
+workspace/_unmaintained\my282\overclock\overclock.c:421:    444, 0x80002401,
+workspace/_unmaintained\my282\overclock\overclock.c:422:    446, 0x80005c04,
+workspace/_unmaintained\my282\overclock\overclock.c:423:    448, 0x80003702,
+workspace/_unmaintained\my282\overclock\overclock.c:424:    450, 0x80004a03,
+workspace/_unmaintained\my282\overclock\overclock.c:425:    451, 0x80005d04,
+workspace/_unmaintained\my282\overclock\overclock.c:426:    452, 0x80007005,
+workspace/_unmaintained\my282\overclock\overclock.c:427:    456, 0x80001200,
+workspace/_unmaintained\my282\overclock\overclock.c:428:    460, 0x80005f04,
+workspace/_unmaintained\my282\overclock\overclock.c:429:    462, 0x80004c03,
+workspace/_unmaintained\my282\overclock\overclock.c:430:    464, 0x80003902,
+workspace/_unmaintained\my282\overclock\overclock.c:431:    465, 0x80006004,
+workspace/_unmaintained\my282\overclock\overclock.c:432:    468, 0x80002601,
+workspace/_unmaintained\my282\overclock\overclock.c:433:    470, 0x80006104,
+workspace/_unmaintained\my282\overclock\overclock.c:434:    472, 0x80003a02,
+workspace/_unmaintained\my282\overclock\overclock.c:435:    474, 0x80004e03,
+workspace/_unmaintained\my282\overclock\overclock.c:436:    475, 0x80006204,
+workspace/_unmaintained\my282\overclock\overclock.c:437:    476, 0x80007605,
+workspace/_unmaintained\my282\overclock\overclock.c:438:    480, 0x80001300,
+workspace/_unmaintained\my282\overclock\overclock.c:439:    484, 0x80006404,
+workspace/_unmaintained\my282\overclock\overclock.c:440:    486, 0x80005003,
+workspace/_unmaintained\my282\overclock\overclock.c:441:    488, 0x80003c02,
+workspace/_unmaintained\my282\overclock\overclock.c:442:    489, 0x80006504,
+workspace/_unmaintained\my282\overclock\overclock.c:443:    492, 0x80002801,
+workspace/_unmaintained\my282\overclock\overclock.c:444:    494, 0x80006604,
+workspace/_unmaintained\my282\overclock\overclock.c:445:    496, 0x80003d02,
+workspace/_unmaintained\my282\overclock\overclock.c:446:    498, 0x80005203,
+workspace/_unmaintained\my282\overclock\overclock.c:447:    499, 0x80006704,
+workspace/_unmaintained\my282\overclock\overclock.c:448:    500, 0x80007c05,
+workspace/_unmaintained\my282\overclock\overclock.c:449:    504, 0x80001400,
+workspace/_unmaintained\my282\overclock\overclock.c:450:    508, 0x80006904,
+workspace/_unmaintained\my282\overclock\overclock.c:451:    510, 0x80005403,
+workspace/_unmaintained\my282\overclock\overclock.c:452:    512, 0x80003f02,
+workspace/_unmaintained\my282\overclock\overclock.c:453:    513, 0x80006a04,
+workspace/_unmaintained\my282\overclock\overclock.c:454:    516, 0x80002a01,
+workspace/_unmaintained\my282\overclock\overclock.c:455:    518, 0x80006b04,
+workspace/_unmaintained\my282\overclock\overclock.c:456:    520, 0x80004002,
+workspace/_unmaintained\my282\overclock\overclock.c:457:    522, 0x80005603,
+workspace/_unmaintained\my282\overclock\overclock.c:458:    523, 0x80006c04,
+workspace/_unmaintained\my282\overclock\overclock.c:459:    528, 0x80001500,
+workspace/_unmaintained\my282\overclock\overclock.c:460:    532, 0x80006e04,
+workspace/_unmaintained\my282\overclock\overclock.c:461:    534, 0x80005803,
+workspace/_unmaintained\my282\overclock\overclock.c:462:    536, 0x80004202,
+workspace/_unmaintained\my282\overclock\overclock.c:463:    537, 0x80006f04,
+workspace/_unmaintained\my282\overclock\overclock.c:464:    540, 0x80002c01,
+workspace/_unmaintained\my282\overclock\overclock.c:465:    542, 0x80007004,
+workspace/_unmaintained\my282\overclock\overclock.c:466:    544, 0x80004302,
+workspace/_unmaintained\my282\overclock\overclock.c:467:    546, 0x80005a03,
+workspace/_unmaintained\my282\overclock\overclock.c:468:    547, 0x80007104,
+workspace/_unmaintained\my282\overclock\overclock.c:469:    552, 0x80001600,
+workspace/_unmaintained\my282\overclock\overclock.c:470:    556, 0x80007304,
+workspace/_unmaintained\my282\overclock\overclock.c:471:    558, 0x80005c03,
+workspace/_unmaintained\my282\overclock\overclock.c:472:    560, 0x80004502,
+workspace/_unmaintained\my282\overclock\overclock.c:473:    561, 0x80007404,
+workspace/_unmaintained\my282\overclock\overclock.c:474:    564, 0x80002e01,
+workspace/_unmaintained\my282\overclock\overclock.c:475:    566, 0x80007504,
+workspace/_unmaintained\my282\overclock\overclock.c:476:    568, 0x80004602,
+workspace/_unmaintained\my282\overclock\overclock.c:477:    570, 0x80005e03,
+workspace/_unmaintained\my282\overclock\overclock.c:478:    571, 0x80007604,
+workspace/_unmaintained\my282\overclock\overclock.c:479:    576, 0x80001700,
+workspace/_unmaintained\my282\overclock\overclock.c:480:    580, 0x80007804,
+workspace/_unmaintained\my282\overclock\overclock.c:481:    582, 0x80006003,
+workspace/_unmaintained\my282\overclock\overclock.c:482:    584, 0x80004802,
+workspace/_unmaintained\my282\overclock\overclock.c:483:    585, 0x80007904,
+workspace/_unmaintained\my282\overclock\overclock.c:484:    588, 0x80003001,
+workspace/_unmaintained\my282\overclock\overclock.c:485:    590, 0x80007a04,
+workspace/_unmaintained\my282\overclock\overclock.c:486:    592, 0x80004902,
+workspace/_unmaintained\my282\overclock\overclock.c:487:    594, 0x80006203,
+workspace/_unmaintained\my282\overclock\overclock.c:488:    595, 0x80007b04,
+workspace/_unmaintained\my282\overclock\overclock.c:489:    600, 0x80001800,
+workspace/_unmaintained\my282\overclock\overclock.c:490:    604, 0x80007d04,
+workspace/_unmaintained\my282\overclock\overclock.c:491:    606, 0x80006403,
+workspace/_unmaintained\my282\overclock\overclock.c:492:    608, 0x80004b02,
+workspace/_unmaintained\my282\overclock\overclock.c:493:    609, 0x80007e04,
+workspace/_unmaintained\my282\overclock\overclock.c:494:    612, 0x80003201,
+workspace/_unmaintained\my282\overclock\overclock.c:495:    614, 0x80007f04,
+workspace/_unmaintained\my282\overclock\overclock.c:496:    616, 0x80004c02,
+workspace/_unmaintained\my282\overclock\overclock.c:497:    618, 0x80006603,
+workspace/_unmaintained\my282\overclock\overclock.c:498:    624, 0x80001900,
+workspace/_unmaintained\my282\overclock\overclock.c:499:    630, 0x80006803,
+workspace/_unmaintained\my282\overclock\overclock.c:500:    632, 0x80004e02,
+workspace/_unmaintained\my282\overclock\overclock.c:501:    636, 0x80003401,
+workspace/_unmaintained\my282\overclock\overclock.c:502:    640, 0x80004f02,
+workspace/_unmaintained\my282\overclock\overclock.c:503:    642, 0x80006a03,
+workspace/_unmaintained\my282\overclock\overclock.c:504:    648, 0x80001a00,
+workspace/_unmaintained\my282\overclock\overclock.c:505:    654, 0x80006c03,
+workspace/_unmaintained\my282\overclock\overclock.c:506:    656, 0x80005102,
+workspace/_unmaintained\my282\overclock\overclock.c:507:    660, 0x80003601,
+workspace/_unmaintained\my282\overclock\overclock.c:508:    664, 0x80005202,
+workspace/_unmaintained\my282\overclock\overclock.c:509:    666, 0x80006e03,
+workspace/_unmaintained\my282\overclock\overclock.c:510:    672, 0x80001b00,
+workspace/_unmaintained\my282\overclock\overclock.c:511:    678, 0x80007003,
+workspace/_unmaintained\my282\overclock\overclock.c:512:    680, 0x80005402,
+workspace/_unmaintained\my282\overclock\overclock.c:513:    684, 0x80003801,
+workspace/_unmaintained\my282\overclock\overclock.c:514:    688, 0x80005502,
+workspace/_unmaintained\my282\overclock\overclock.c:515:    690, 0x80007203,
+workspace/_unmaintained\my282\overclock\overclock.c:516:    696, 0x80001c00,
+workspace/_unmaintained\my282\overclock\overclock.c:517:    702, 0x80007403,
+workspace/_unmaintained\my282\overclock\overclock.c:518:    704, 0x80005702,
+workspace/_unmaintained\my282\overclock\overclock.c:519:    708, 0x80003a01,
+workspace/_unmaintained\my282\overclock\overclock.c:520:    712, 0x80005802,
+workspace/_unmaintained\my282\overclock\overclock.c:521:    714, 0x80007603,
+workspace/_unmaintained\my282\overclock\overclock.c:522:    720, 0x80001d00,
+workspace/_unmaintained\my282\overclock\overclock.c:523:    726, 0x80007803,
+workspace/_unmaintained\my282\overclock\overclock.c:524:    728, 0x80005a02,
+workspace/_unmaintained\my282\overclock\overclock.c:525:    732, 0x80003c01,
+workspace/_unmaintained\my282\overclock\overclock.c:526:    736, 0x80005b02,
+workspace/_unmaintained\my282\overclock\overclock.c:527:    738, 0x80007a03,
+workspace/_unmaintained\my282\overclock\overclock.c:528:    744, 0x80001e00,
+workspace/_unmaintained\my282\overclock\overclock.c:529:    750, 0x80007c03,
+workspace/_unmaintained\my282\overclock\overclock.c:530:    752, 0x80005d02,
+workspace/_unmaintained\my282\overclock\overclock.c:531:    756, 0x80003e01,
+workspace/_unmaintained\my282\overclock\overclock.c:532:    760, 0x80005e02,
+workspace/_unmaintained\my282\overclock\overclock.c:533:    762, 0x80007e03,
+workspace/_unmaintained\my282\overclock\overclock.c:534:    768, 0x80001f00,
+workspace/_unmaintained\my282\overclock\overclock.c:535:    776, 0x80006002,
+workspace/_unmaintained\my282\overclock\overclock.c:536:    780, 0x80004001,
+workspace/_unmaintained\my282\overclock\overclock.c:537:    784, 0x80006102,
+workspace/_unmaintained\my282\overclock\overclock.c:538:    792, 0x80002000,
+workspace/_unmaintained\my282\overclock\overclock.c:539:    800, 0x80006302,
+workspace/_unmaintained\my282\overclock\overclock.c:540:    804, 0x80004201,
+workspace/_unmaintained\my282\overclock\overclock.c:541:    808, 0x80006402,
+workspace/_unmaintained\my282\overclock\overclock.c:542:    816, 0x80002100,
+workspace/_unmaintained\my282\overclock\overclock.c:543:    824, 0x80006602,
+workspace/_unmaintained\my282\overclock\overclock.c:544:    828, 0x80004401,
+workspace/_unmaintained\my282\overclock\overclock.c:545:    832, 0x80006702,
+workspace/_unmaintained\my282\overclock\overclock.c:546:    840, 0x80002200,
+workspace/_unmaintained\my282\overclock\overclock.c:547:    848, 0x80006902,
+workspace/_unmaintained\my282\overclock\overclock.c:548:    852, 0x80004601,
+workspace/_unmaintained\my282\overclock\overclock.c:549:    856, 0x80006a02,
+workspace/_unmaintained\my282\overclock\overclock.c:550:    864, 0x80002300,
+workspace/_unmaintained\my282\overclock\overclock.c:551:    872, 0x80006c02,
+workspace/_unmaintained\my282\overclock\overclock.c:552:    876, 0x80004801,
+workspace/_unmaintained\my282\overclock\overclock.c:553:    880, 0x80006d02,
+workspace/_unmaintained\my282\overclock\overclock.c:554:    888, 0x80002400,
+workspace/_unmaintained\my282\overclock\overclock.c:555:    896, 0x80006f02,
+workspace/_unmaintained\my282\overclock\overclock.c:556:    900, 0x80004a01,
+workspace/_unmaintained\my282\overclock\overclock.c:557:    904, 0x80007002,
+workspace/_unmaintained\my282\overclock\overclock.c:558:    912, 0x80002500,
+workspace/_unmaintained\my282\overclock\overclock.c:559:    920, 0x80007202,
+workspace/_unmaintained\my282\overclock\overclock.c:560:    924, 0x80004c01,
+workspace/_unmaintained\my282\overclock\overclock.c:561:    928, 0x80007302,
+workspace/_unmaintained\my282\overclock\overclock.c:562:    936, 0x80002600,
+workspace/_unmaintained\my282\overclock\overclock.c:563:    944, 0x80007502,
+workspace/_unmaintained\my282\overclock\overclock.c:564:    948, 0x80004e01,
+workspace/_unmaintained\my282\overclock\overclock.c:565:    952, 0x80007602,
+workspace/_unmaintained\my282\overclock\overclock.c:566:    960, 0x80002700,
+workspace/_unmaintained\my282\overclock\overclock.c:567:    968, 0x80007802,
+workspace/_unmaintained\my282\overclock\overclock.c:568:    972, 0x80005001,
+workspace/_unmaintained\my282\overclock\overclock.c:569:    976, 0x80007902,
+workspace/_unmaintained\my282\overclock\overclock.c:570:    984, 0x80002800,
+workspace/_unmaintained\my282\overclock\overclock.c:571:    992, 0x80007b02,
+workspace/_unmaintained\my282\overclock\overclock.c:572:    996, 0x80005201,
+workspace/_unmaintained\my282\overclock\overclock.c:573:    1000, 0x80007c02,
+workspace/_unmaintained\my282\overclock\overclock.c:574:    1008, 0x80002900,
+workspace/_unmaintained\my282\overclock\overclock.c:575:    1016, 0x80007e02,
+workspace/_unmaintained\my282\overclock\overclock.c:576:    1020, 0x80005401,
+workspace/_unmaintained\my282\overclock\overclock.c:577:    1024, 0x80007f02,
+workspace/_unmaintained\my282\overclock\overclock.c:578:    1032, 0x80002a00,
+workspace/_unmaintained\my282\overclock\overclock.c:579:    1044, 0x80005601,
+workspace/_unmaintained\my282\overclock\overclock.c:580:    1056, 0x80002b00,
+workspace/_unmaintained\my282\overclock\overclock.c:581:    1068, 0x80005801,
+workspace/_unmaintained\my282\overclock\overclock.c:582:    1080, 0x80002c00,
+workspace/_unmaintained\my282\overclock\overclock.c:583:    1092, 0x80005a01,
+workspace/_unmaintained\my282\overclock\overclock.c:584:    1104, 0x80002d00,
+workspace/_unmaintained\my282\overclock\overclock.c:585:    1116, 0x80005c01,
+workspace/_unmaintained\my282\overclock\overclock.c:586:    1128, 0x80002e00,
+workspace/_unmaintained\my282\overclock\overclock.c:587:    1140, 0x80005e01,
+workspace/_unmaintained\my282\overclock\overclock.c:588:    1152, 0x80002f00,
+workspace/_unmaintained\my282\overclock\overclock.c:589:    1164, 0x80006001,
+workspace/_unmaintained\my282\overclock\overclock.c:590:    1176, 0x80003000,
+workspace/_unmaintained\my282\overclock\overclock.c:591:    1188, 0x80006201,
+workspace/_unmaintained\my282\overclock\overclock.c:592:    1200, 0x80003100,
+workspace/_unmaintained\my282\overclock\overclock.c:593:    1212, 0x80006401,
+workspace/_unmaintained\my282\overclock\overclock.c:594:    1224, 0x80003200,
+workspace/_unmaintained\my282\overclock\overclock.c:595:    1236, 0x80006601,
+workspace/_unmaintained\my282\overclock\overclock.c:596:    1248, 0x80003300,
+workspace/_unmaintained\my282\overclock\overclock.c:597:    1260, 0x80006801,
+workspace/_unmaintained\my282\overclock\overclock.c:598:    1272, 0x80003400,
+workspace/_unmaintained\my282\overclock\overclock.c:599:    1284, 0x80006a01,
+workspace/_unmaintained\my282\overclock\overclock.c:600:    1296, 0x80003500,
+workspace/_unmaintained\my282\overclock\overclock.c:601:    1308, 0x80006c01,
+workspace/_unmaintained\my282\overclock\overclock.c:602:    1320, 0x80003600,
+workspace/_unmaintained\my282\overclock\overclock.c:603:    1332, 0x80006e01,
+workspace/_unmaintained\my282\overclock\overclock.c:604:    1344, 0x80003700,
+workspace/_unmaintained\my282\overclock\overclock.c:605:    1356, 0x80007001,
+workspace/_unmaintained\my282\overclock\overclock.c:606:    1368, 0x80003800,
+workspace/_unmaintained\my282\overclock\overclock.c:607:    1380, 0x80007201,
+workspace/_unmaintained\my282\overclock\overclock.c:608:    1392, 0x80003900,
+workspace/_unmaintained\my282\overclock\overclock.c:609:    1404, 0x80007401,
+workspace/_unmaintained\my282\overclock\overclock.c:610:    1416, 0x80003a00,
+workspace/_unmaintained\my282\overclock\overclock.c:611:    1428, 0x80007601,
+workspace/_unmaintained\my282\overclock\overclock.c:612:    1440, 0x80003b00,
+workspace/_unmaintained\my282\overclock\overclock.c:613:    1452, 0x80007801,
+workspace/_unmaintained\my282\overclock\overclock.c:614:    1464, 0x80003c00,
+workspace/_unmaintained\my282\overclock\overclock.c:615:    1476, 0x80007a01,
+workspace/_unmaintained\my282\overclock\overclock.c:616:    1488, 0x80003d00,
+workspace/_unmaintained\my282\overclock\overclock.c:617:    1500, 0x80007c01,
+workspace/_unmaintained\my282\overclock\overclock.c:618:    1512, 0x80003e00,
+workspace/_unmaintained\my282\overclock\overclock.c:619:    1524, 0x80007e01,
+workspace/_unmaintained\my282\overclock\overclock.c:620:    1536, 0x80003f00,
+workspace/_unmaintained\my282\overclock\overclock.c:621:    1560, 0x80004000,
+workspace/_unmaintained\my282\overclock\overclock.c:622:    1584, 0x80004100,
+workspace/_unmaintained\my282\overclock\overclock.c:623:    1608, 0x80004200,
+workspace/_unmaintained\my282\overclock\overclock.c:624:    1632, 0x80004300,
+workspace/_unmaintained\my282\overclock\overclock.c:625:    1656, 0x80004400,
+workspace/_unmaintained\my282\overclock\overclock.c:626:    1680, 0x80004500,
+workspace/_unmaintained\my282\overclock\overclock.c:627:    1704, 0x80004600,
+workspace/_unmaintained\my282\overclock\overclock.c:628:    1728, 0x80004700,
+workspace/_unmaintained\my282\overclock\overclock.c:629:    1752, 0x80004800,
+workspace/_unmaintained\my282\overclock\overclock.c:630:    1776, 0x80004900,
+workspace/_unmaintained\my282\overclock\overclock.c:631:    1800, 0x80004a00,
+workspace/_unmaintained\my282\overclock\overclock.c:632:    1824, 0x80004b00,
+workspace/_unmaintained\my282\overclock\overclock.c:633:    1848, 0x80004c00,
+workspace/_unmaintained\my282\overclock\overclock.c:634:    1872, 0x80004d00,
+workspace/_unmaintained\my282\overclock\overclock.c:635:    1896, 0x80004e00,
+workspace/_unmaintained\my282\overclock\overclock.c:636:    1920, 0x80004f00,
+workspace/_unmaintained\my282\overclock\overclock.c:637:    1944, 0x80005000,
+workspace/_unmaintained\my282\overclock\overclock.c:638:    1968, 0x80005100,
+workspace/_unmaintained\my282\overclock\overclock.c:639:    1992, 0x80005200,
+workspace/_unmaintained\my282\overclock\overclock.c:640:    2016, 0x80005300,
+workspace/_unmaintained\my282\overclock\overclock.c:641:    2040, 0x80005400,
+workspace/_unmaintained\my282\overclock\overclock.c:642:    2064, 0x80005500,
+workspace/_unmaintained\my282\overclock\overclock.c:643:    2088, 0x80005600,
+workspace/_unmaintained\my282\overclock\overclock.c:644:    2112, 0x80005700,
+workspace/_unmaintained\my282\overclock\overclock.c:645:    2136, 0x80005800,
+workspace/_unmaintained\my282\overclock\overclock.c:646:    2160, 0x80005900,
+workspace/_unmaintained\my282\overclock\overclock.c:647:    2184, 0x80005a00,
+workspace/_unmaintained\my282\overclock\overclock.c:648:    2208, 0x80005b00,
+workspace/_unmaintained\my282\overclock\overclock.c:649:    2232, 0x80005c00,
+workspace/_unmaintained\my282\overclock\overclock.c:650:    2256, 0x80005d00,
+workspace/_unmaintained\my282\overclock\overclock.c:651:    2280, 0x80005e00,
+workspace/_unmaintained\my282\overclock\overclock.c:652:    2304, 0x80005f00,
+workspace/_unmaintained\my282\overclock\overclock.c:653:    2328, 0x80006000,
+workspace/_unmaintained\my282\overclock\overclock.c:654:    2352, 0x80006100,
+workspace/_unmaintained\my282\overclock\overclock.c:655:    2376, 0x80006200,
+workspace/_unmaintained\my282\overclock\overclock.c:656:    2400, 0x80006300,
+workspace/_unmaintained\my282\overclock\overclock.c:657:    2424, 0x80006400,
+workspace/_unmaintained\my282\overclock\overclock.c:658:    2448, 0x80006500,
+workspace/_unmaintained\my282\overclock\overclock.c:659:    2472, 0x80006600,
+workspace/_unmaintained\my282\overclock\overclock.c:660:    2496, 0x80006700,
+workspace/_unmaintained\my282\overclock\overclock.c:661:    2520, 0x80006800,
+workspace/_unmaintained\my282\overclock\overclock.c:662:    2544, 0x80006900,
+workspace/_unmaintained\my282\overclock\overclock.c:663:    2568, 0x80006a00,
+workspace/_unmaintained\my282\overclock\overclock.c:664:    2592, 0x80006b00,
+workspace/_unmaintained\my282\overclock\overclock.c:665:    2616, 0x80006c00,
+workspace/_unmaintained\my282\overclock\overclock.c:666:    2640, 0x80006d00,
+workspace/_unmaintained\my282\overclock\overclock.c:667:    2664, 0x80006e00,
+workspace/_unmaintained\my282\overclock\overclock.c:668:    2688, 0x80006f00,
+workspace/_unmaintained\my282\overclock\overclock.c:669:    2712, 0x80007000,
+workspace/_unmaintained\my282\overclock\overclock.c:670:    2736, 0x80007100,
+workspace/_unmaintained\my282\overclock\overclock.c:671:    2760, 0x80007200,
+workspace/_unmaintained\my282\overclock\overclock.c:672:    2784, 0x80007300,
+workspace/_unmaintained\my282\overclock\overclock.c:673:    2808, 0x80007400,
+workspace/_unmaintained\my282\overclock\overclock.c:674:    2832, 0x80007500,
+workspace/_unmaintained\my282\overclock\overclock.c:675:    2856, 0x80007600,
+workspace/_unmaintained\my282\overclock\overclock.c:676:    2880, 0x80007700,
+workspace/_unmaintained\my282\overclock\overclock.c:677:    2904, 0x80007800,
+workspace/_unmaintained\my282\overclock\overclock.c:678:    2928, 0x80007900,
+workspace/_unmaintained\my282\overclock\overclock.c:679:    2952, 0x80007a00,
+workspace/_unmaintained\my282\overclock\overclock.c:680:    2976, 0x80007b00,
+workspace/_unmaintained\my282\overclock\overclock.c:681:    3000, 0x80007c00,
+workspace/_unmaintained\my282\overclock\overclock.c:682:    3024, 0x80007d00,
+workspace/_unmaintained\my282\overclock\overclock.c:683:    3048, 0x80007e00,
+workspace/_unmaintained\my282\overclock\overclock.c:684:    3072, 0x80007f00,
+workspace/_unmaintained\my282\overclock\overclock.c:688:    96, 0x80000110,
+workspace/_unmaintained\my282\overclock\overclock.c:689:    144, 0x80000120,
+workspace/_unmaintained\my282\overclock\overclock.c:690:    192, 0x80000130,
+workspace/_unmaintained\my282\overclock\overclock.c:691:    216, 0x80000220,
+workspace/_unmaintained\my282\overclock\overclock.c:692:    240, 0x80000410,
+workspace/_unmaintained\my282\overclock\overclock.c:693:    288, 0x80000230,
+workspace/_unmaintained\my282\overclock\overclock.c:694:    336, 0x80000610,
+workspace/_unmaintained\my282\overclock\overclock.c:695:    360, 0x80000420,
+workspace/_unmaintained\my282\overclock\overclock.c:696:    384, 0x80000330,
+workspace/_unmaintained\my282\overclock\overclock.c:697:    432, 0x80000520,
+workspace/_unmaintained\my282\overclock\overclock.c:698:    480, 0x80000430,
+workspace/_unmaintained\my282\overclock\overclock.c:699:    504, 0x80000620,
+workspace/_unmaintained\my282\overclock\overclock.c:700:    528, 0x80000a10,
+workspace/_unmaintained\my282\overclock\overclock.c:701:    576, 0x80000530,
+workspace/_unmaintained\my282\overclock\overclock.c:702:    624, 0x80000c10,
+workspace/_unmaintained\my282\overclock\overclock.c:703:    648, 0x80000820,
+workspace/_unmaintained\my282\overclock\overclock.c:704:    672, 0x80000630,
+workspace/_unmaintained\my282\overclock\overclock.c:705:    720, 0x80000920,
+workspace/_unmaintained\my282\overclock\overclock.c:706:    768, 0x80000730,
+workspace/_unmaintained\my282\overclock\overclock.c:707:    792, 0x80000a20,
+workspace/_unmaintained\my282\overclock\overclock.c:708:    816, 0x80001010,
+workspace/_unmaintained\my282\overclock\overclock.c:709:    864, 0x80000830,
+workspace/_unmaintained\my282\overclock\overclock.c:710:    864, 0x80001110,
+workspace/_unmaintained\my282\overclock\overclock.c:711:    912, 0x80001210,
+workspace/_unmaintained\my282\overclock\overclock.c:712:    936, 0x80000c20,
+workspace/_unmaintained\my282\overclock\overclock.c:713:    960, 0x80000930,
+workspace/_unmaintained\my282\overclock\overclock.c:714:    1008, 0x80000d20,
+workspace/_unmaintained\my282\overclock\overclock.c:715:    1056, 0x80000a30,
+workspace/_unmaintained\my282\overclock\overclock.c:716:    1080, 0x80000e20,
+workspace/_unmaintained\my282\overclock\overclock.c:717:    1104, 0x80001610,
+workspace/_unmaintained\my282\overclock\overclock.c:718:    1152, 0x80000b30,
+workspace/_unmaintained\my282\overclock\overclock.c:719:    1200, 0x80001810,
+workspace/_unmaintained\my282\overclock\overclock.c:720:    1224, 0x80001020,
+workspace/_unmaintained\my282\overclock\overclock.c:721:    1248, 0x80000c30,
+workspace/_unmaintained\my282\overclock\overclock.c:722:    1296, 0x80001120,
+workspace/_unmaintained\my282\overclock\overclock.c:723:    1344, 0x80000d30,
+workspace/_unmaintained\my282\overclock\overclock.c:724:    1368, 0x80001220,
+workspace/_unmaintained\my282\overclock\overclock.c:725:    1392, 0x80001c10,
+workspace/_unmaintained\my282\overclock\overclock.c:726:    1440, 0x80000e30,
+workspace/_unmaintained\my282\overclock\overclock.c:727:    1488, 0x80001e10,
+workspace/_unmaintained\my282\overclock\overclock.c:728:    1512, 0x80001420,
+workspace/_unmaintained\my282\overclock\overclock.c:729:    1536, 0x80000f30,
+workspace/_unmaintained\my282\overclock\overclock.c:730:    1584, 0x80001520,
+workspace/_unmaintained\my282\overclock\overclock.c:731:    1632, 0x80001030,
+workspace/_unmaintained\my282\overclock\overclock.c:732:    1656, 0x80001620,
+workspace/_unmaintained\my282\overclock\overclock.c:733:    1728, 0x80001130,
+workspace/_unmaintained\my282\overclock\overclock.c:734:    1800, 0x80001820,
+workspace/_unmaintained\my282\overclock\overclock.c:735:    1824, 0x80001230,
+workspace/_unmaintained\my282\overclock\overclock.c:736:    1872, 0x80001920,
+workspace/_unmaintained\my282\overclock\overclock.c:737:    1920, 0x80001330,
+workspace/_unmaintained\my282\overclock\overclock.c:738:    1944, 0x80001a20,
+workspace/_unmaintained\my282\overclock\overclock.c:739:    2016, 0x80001430,
+workspace/_unmaintained\my282\overclock\overclock.c:740:    2088, 0x80001c20,
+workspace/_unmaintained\my282\overclock\overclock.c:741:    2112, 0x80001530,
+workspace/_unmaintained\my282\overclock\overclock.c:742:    2160, 0x80001d20,
+workspace/_unmaintained\my282\overclock\overclock.c:743:    2208, 0x80001630,
+workspace/_unmaintained\my282\overclock\overclock.c:744:    2232, 0x80001e20,
+workspace/_unmaintained\my282\overclock\overclock.c:745:    2304, 0x80001730,
+workspace/_unmaintained\my282\overclock\overclock.c:746:    2400, 0x80001830,
+workspace/_unmaintained\my282\overclock\overclock.c:747:    2496, 0x80001930,
+workspace/_unmaintained\my282\overclock\overclock.c:748:    2592, 0x80001a30,
+workspace/_unmaintained\my282\overclock\overclock.c:749:    2688, 0x80001b30,
+workspace/_unmaintained\my282\overclock\overclock.c:750:    2784, 0x80001c30,
+workspace/_unmaintained\my282\overclock\overclock.c:751:    2880, 0x80001d30,
+workspace/_unmaintained\my282\overclock\overclock.c:752:    2976, 0x80001e30,
+workspace/_unmaintained\my282\overclock\overclock.c:753:    3072, 0x80001f30,
+workspace/_unmaintained\my282\overclock\overclock.c:847:    v = *((uint32_t *)&pmem[0x00]);
+workspace/_unmaintained\my282\overclock\overclock.c:850:    n = ((v >> 8) & 0x1f) + 1;
+workspace/_unmaintained\my282\overclock\overclock.c:858:    v = *((uint32_t *)&pmem[0x38]);
+workspace/_unmaintained\my282\overclock\overclock.c:859:    m = (v & 0xf) + 1;
+workspace/_unmaintained\my282\overclock\overclock.c:860:    n = ((v >> 8) & 0x7f) + 1;
+workspace/_unmaintained\my282\overclock\overclock.c:867:    v = *((uint32_t *)&pmem[0xf8]);
+workspace/_unmaintained\my282\overclock\overclock.c:869:        v = *((uint32_t *)&pmem[0x20]);
+workspace/_unmaintained\my282\overclock\overclock.c:872:        n = ((v >> 8) & 0x1f) + 1;
+workspace/_unmaintained\my282\overclock\overclock.c:877:        v = *((uint32_t *)&pmem[0x4c]);
+workspace/_unmaintained\my282\overclock\overclock.c:878:        n = (v >> 8) & 0x3f;
+workspace/_unmaintained\my282\overclock\overclock.c:1004:    uint32_t *p = (uint32_t *)&pmem[0x4c];
+workspace/_unmaintained\my282\overclock\overclock.c:1006:    v &= 0x3f;
+workspace/_unmaintained\my282\overclock\overclock.c:1013:    uint32_t *p = (uint32_t *)&pmem[0x00];
+workspace/_unmaintained\my282\overclock\overclock.c:1021:    uint32_t *p = (uint32_t *)&pmem[0x38];
