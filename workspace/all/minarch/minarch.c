@@ -1142,11 +1142,6 @@ static char* overlay_labels[] = {
 	NULL
 };
 // static char* sharpness_labels[] = {
-// 	"Sharp",
-// 	"Crisp",
-// 	"Soft",
-// 	NULL
-// };
 static char* sharpness_labels[] = {
 	"NEAREST",
 	"LINEAR",
@@ -2775,10 +2770,6 @@ static void Special_refreshDMGPalette(void) {
 }
 static void Special_init(void) {
 	if (special.palette_updated>1) special.palette_updated = 1;
-	// else if (exactMatch((char*)core.tag, "GBC"))  {
-	// 	putInt("/tmp/dmg_grid_color",0xF79E);
-	// 	special.palette_updated = 1;
-	// }
 }
 static void Special_render(void) {
 	if (special.palette_updated) Special_refreshDMGPalette();
@@ -3068,7 +3059,6 @@ static Option* OptionList_getOption(OptionList* list, const char* key) {
 }
 static char* OptionList_getOptionValue(OptionList* list, const char* key) {
 	Option* item = OptionList_getOption(list, key);
-	// if (item) LOG_info("\tGET %s (%s) = %s (%s)\n", item->name, item->key, item->labels[item->value], item->values[item->value]);
 	if (item) {
 		int count = 0;
 		while ( item->values && item->values[count]) count++;
@@ -3076,7 +3066,6 @@ static char* OptionList_getOptionValue(OptionList* list, const char* key) {
 			return item->values[item->value];
 		}
 	}
-	// else LOG_warn("unknown option %s \n", key);
 	return NULL;
 }
 static void OptionList_setOptionRawValue(OptionList* list, const char* key, int value) {
@@ -3246,14 +3235,7 @@ static void input_poll_callback(void) {
 		show_menu = 1;
 	}
 	
-	// TODO: figure out how to ignore button when MENU+button is handled first
-	// TODO: array size of LOCAL_ whatever that macro is
-	// TODO: then split it into two loops
-	// TODO: first check for MENU+button
-	// TODO: when found mark button the array
-	// TODO: then check for button
-	// TODO: only modify if absent from array
-	// TODO: the shortcuts loop above should also contribute to the array
+	// TODO: prevent MENU+button from also triggering button action
 	
 	buttons = 0;
 	for (int i=0; config.controls[i].name; i++) {
