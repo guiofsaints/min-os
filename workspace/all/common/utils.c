@@ -13,9 +13,11 @@
 ///////////////////////////////////////
 
 int prefixMatch(const char* pre, const char* str) {
+	if (!pre || !str) return 0;
 	return (strncasecmp(pre,str,strlen(pre))==0);
 }
 int suffixMatch(const char* suf, const char* str) {
+	if (!suf || !str) return 0;
 	int len = strlen(suf);
 	int offset = strlen(str)-len;
 	return (offset>=0 && strncasecmp(suf, str+offset, len)==0);
@@ -27,9 +29,11 @@ int exactMatch(const char* str1, const char* str2) {
 	return (strncmp(str1,str2,len1)==0);
 }
 int containsString(const char* haystack, const char* needle) {
+	if (!haystack || !needle) return 0;
 	return strcasestr(haystack, needle) != NULL;
 }
 int hide(const char* file_name) {
+	if (!file_name) return 0;
 	return file_name[0]=='.' || suffixMatch(".disabled", file_name) || exactMatch("map.txt", file_name);
 }
 char *splitString(char *str, const char *delim)
@@ -41,12 +45,14 @@ char *splitString(char *str, const char *delim)
     return p + strlen(delim); // return tail substring
 }
 void truncateString(char *string, size_t max_len) {
+	if (!string) return;
 	size_t len = strlen(string) + 1;
 	if (len <= max_len) return;
 
 	strncpy(&string[max_len - 4], "...\0", 4);
 }
 void wrapString(char *string, size_t max_len, size_t max_lines) {
+	if (!string) return;
 	char *line = string;
 
 	for (size_t i = 1; i < max_lines; i++) {
@@ -315,6 +321,7 @@ bool pathRelativeTo(char *path_out, const char *dir_from, const char *file_to)
 }
 
 void getDisplayName(const char* in_name, char* out_name) {
+	if (!in_name || !out_name) return;
 	char* tmp;
 	char work_name[256];
 	strncpy(work_name, in_name, sizeof(work_name) - 1);
@@ -394,12 +401,14 @@ void getEmuName(const char* in_name, char* out_name) { // NOTE: both char arrays
 	// printf(" out_name: %s\n", out_name); fflush(stdout);
 }
 void getEmuPath(const char* emu_name, char* pak_path) {
+	if (!emu_name || !pak_path) return;
 	snprintf(pak_path, 256, "%s/Emus/%s/%s.pak/launch.sh", SDCARD_PATH, PLATFORM, emu_name);
 	if (exists(pak_path)) return;
 	snprintf(pak_path, 256, "%s/Emus/%s.pak/launch.sh", PAKS_PATH, emu_name);
 }
 
 void normalizeNewline(char* line) {
+	if (!line) return;
 	int len = strlen(line);
 	if (len>1 && line[len-1]=='\n' && line[len-2]=='\r') { // windows!
 		line[len-2] = '\n';
@@ -407,6 +416,7 @@ void normalizeNewline(char* line) {
 	}
 }
 void trimTrailingNewlines(char* line) {
+	if (!line) return;
 	int len = strlen(line);
 	while (len>0 && line[len-1]=='\n') {
 		line[len-1] = '\0'; // trim newline
@@ -447,6 +457,7 @@ int toggle(const char *path) {
     }
 }
 void putFile(const char* path, const char* contents) {
+	if (!path || !contents) return;
 	FILE* file = fopen(path, "w");
 	if (file) {
 		fputs(contents, file);
@@ -454,6 +465,7 @@ void putFile(const char* path, const char* contents) {
 	}
 }
 void getFile(const char* path, char* buffer, size_t buffer_size) {
+	if (!path || !buffer) return;
 	FILE *file = fopen(path, "r");
 	if (file) {
 		fseek(file, 0L, SEEK_END);
