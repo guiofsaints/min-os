@@ -78,6 +78,10 @@ For other devices we recommend checking out [MinUI](https://github.com/shauninma
 - Trimui Brick
 - Trimui Smart Pro
 
+> **Note:** Support for other devices (Miyoo Mini, Anbernic RG35XX, etc.) has been archived.  
+> See the [`archive/unmaintained-platforms`](../../tree/archive/unmaintained-platforms) branch for historical platform code.  
+> For these devices, we recommend using [MinUI](https://github.com/shauninman/MinUI).
+
 ---
 
 ## Installing
