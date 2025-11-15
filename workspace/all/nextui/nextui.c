@@ -2471,7 +2471,7 @@ int main (int argc, char *argv[]) {
 		if(dirty) {
 			SDL_Surface *tmpOldScreen = NULL;
 			SDL_Surface * switcherSur = NULL;
-			// NOTE:22 This causes slowdown when CFG_getMenuTransitions is set to false because animationdirection turns > 0 somewhere but is never set back to 0 and so this code runs on every action, will fix later
+			// TODO: animationdirection not properly reset causing unnecessary redraws
 			if(animationdirection != ANIM_NONE || (lastScreen==SCREEN_GAMELIST && currentScreen == SCREEN_GAMESWITCHER)) {
 				if(tmpOldScreen) SDL_FreeSurface(tmpOldScreen);
 				tmpOldScreen = GFX_captureRendererToSurface();

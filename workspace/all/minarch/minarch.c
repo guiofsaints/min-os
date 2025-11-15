@@ -735,8 +735,7 @@ static void SRAM_read(void) {
 	void* sram = core.get_memory_data(RETRO_MEMORY_SAVE_RAM);
 
 #ifdef HAS_SRM
-	// TODO: rzipstream_open can also handle uncompressed, else branch is probably unnecessary
-	// srm, potentially compressed
+	// rzipstream handles both compressed and uncompressed formats
 	if (CFG_getSaveFormat() == SAVE_FORMAT_SRM) {
 		rzipstream_t* sram_file = rzipstream_open(filename, RETRO_VFS_FILE_ACCESS_READ);
 		if(!sram_file) return;
@@ -919,8 +918,7 @@ static void State_read(void) { // from picoarch
 	RFILE *state_rfile = NULL;
 	rzipstream_t *state_rzfile = NULL;
 
-	// TODO: rzipstream_open can also handle uncompressed, else branch is probably unnecessary
-	// srm, potentially compressed
+	// rzipstream handles both compressed and uncompressed formats
 	if (CFG_getStateFormat() == STATE_FORMAT_SRM || CFG_getStateFormat() == STATE_FORMAT_SRM_EXTRADOT) {
 		state_rzfile = rzipstream_open(filename, RETRO_VFS_FILE_ACCESS_READ);
 		if(!state_rzfile) {
@@ -3425,9 +3423,7 @@ static bool environment_callback(unsigned cmd, void *data) { // copied from pico
 		// fflush(stdout);
 		break;
 	}
-	// TODO: I think this is where the core reports its variables (the precursor to options)
-	// TODO: this is called if RETRO_ENVIRONMENT_GET_CORE_OPTIONS_VERSION sets out to 0
-	// TODO: not used by anything yet
+	// Legacy retro variables API (precursor to options, unused by modern cores)
 	case RETRO_ENVIRONMENT_SET_VARIABLES: { /* 16 */
 		// puts("RETRO_ENVIRONMENT_SET_VARIABLES");
 		const struct retro_variable *vars = (const struct retro_variable *)data;
@@ -3584,35 +3580,8 @@ static bool environment_callback(unsigned cmd, void *data) { // copied from pico
 		break;
 	}
 	// TODO: RETRO_ENVIRONMENT_GET_MESSAGE_INTERFACE_VERSION 59
-	// TODO: used by mgba, (but only during frameskip?)
-	// case RETRO_ENVIRONMENT_SET_AUDIO_BUFFER_STATUS_CALLBACK: { /* 62 */
-	// 	LOG_info("RETRO_ENVIRONMENT_SET_AUDIO_BUFFER_STATUS_CALLBACK\n");
-	// 	const struct retro_audio_buffer_status_callback *cb = (const struct retro_audio_buffer_status_callback *)data;
-	// 	if (cb) {
-	// 		LOG_info("has audo_buffer_status callback\n");
-	// 		core.audio_buffer_status = cb->callback;
-	// 	} else {
-	// 		LOG_info("no audo_buffer_status callback\n");
-	// 		core.audio_buffer_status = NULL;
-	// 	}
-	// 	break;
-	// }
-	// TODO: used by mgba, (but only during frameskip?)
-	// case RETRO_ENVIRONMENT_SET_MINIMUM_AUDIO_LATENCY: { /* 63 */
-	// 	LOG_info("RETRO_ENVIRONMENT_SET_MINIMUM_AUDIO_LATENCY\n");
-	//
-	// 	const unsigned *latency_ms = (const unsigned *)data;
-	// 	if (latency_ms) {
-	// 		unsigned frames = *latency_ms * core.fps / 1000;
-	// 		if (frames < 30)
-	// 			// audio_buffer_size_override = frames;
-	// 			LOG_info("audio_buffer_size_override = %i (unused?)\n", frames);
-	// 		else
-	// 			LOG_info("Audio buffer change out of range (%d), ignored\n", frames);
-	// 	}
-	// 	break;
-	// }
-
+	// TODO: RETRO_ENVIRONMENT_SET_AUDIO_BUFFER_STATUS_CALLBACK 62 (unused)
+	// TODO: RETRO_ENVIRONMENT_SET_MINIMUM_AUDIO_LATENCY 63 (unused)
 	// TODO: RETRO_ENVIRONMENT_SET_FASTFORWARDING_OVERRIDE 64
 	case RETRO_ENVIRONMENT_SET_CONTENT_INFO_OVERRIDE: { /* 65 */
 		// const struct retro_system_content_info_override* info = (const struct retro_system_content_info_override* )data;
