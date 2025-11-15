@@ -1118,6 +1118,10 @@ scaler_t GFX_getAAScaler(GFX_Renderer *renderer)
 {
 	int gcd_w, div_w, gcd_h, div_h;
 	blend_args.blend_line = (uint16_t *)calloc(renderer->src_w, sizeof(uint16_t));
+	if (!blend_args.blend_line) {
+		LOG_error("Failed to allocate blend_line\n");
+		return NULL;
+	}
 
 	gcd_w = gcd(renderer->src_w, renderer->dst_w);
 	blend_args.w_ratio_in = renderer->src_w / gcd_w;
@@ -2170,7 +2174,17 @@ static void SND_resizeBuffer(void)
 #endif
 
 	int buffer_bytes = snd.frame_count * sizeof(SND_Frame);
-	snd.buffer = (SND_Frame *)realloc(snd.buffer, buffer_bytes);
+	SND_Frame *new_buffer = (SND_Frame *)realloc(snd.buffer, buffer_bytes);
+	if (!new_buffer) {
+		LOG_error("Failed to reallocate audio buffer\n");
+#if defined(USE_SDL2)
+		SDL_UnlockAudioDevice(snd.device_id);
+#else
+		SDL_UnlockAudio();
+#endif
+		return;
+	}
+	snd.buffer = new_buffer;
 
 	LOG_info("Resized audio buffer to: %d bytes\n", buffer_bytes);
 

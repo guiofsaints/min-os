@@ -472,6 +472,10 @@ char* allocFile(const char* path) { // caller must free!
 		fseek(file, 0L, SEEK_END);
 		size_t size = ftell(file);
 		contents = calloc(size+1, sizeof(char));
+		if (!contents) {
+			fclose(file);
+			return NULL;
+		}
 		fseek(file, 0L, SEEK_SET);
 		fread(contents, sizeof(char), size, file);
 		fclose(file);
