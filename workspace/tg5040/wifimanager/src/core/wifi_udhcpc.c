@@ -56,7 +56,8 @@ static int get_net_ip(const char *if_name, int family, char *ip, int len)
 					(void *)&(addr6->sin6_addr), buf, NI_MAXHOST)){
 				if(len <= strlen(buf) )
 					break;
-				strcpy(ip,buf);
+				strncpy(ip, buf, len - 1);
+				ip[len - 1] = '\0';
 			}
         } else if (if_inter->ifa_addr->sa_family==AF_INET) { // check it is IP4
 			addr4 = (struct sockaddr_in *)if_inter->ifa_addr;
@@ -64,7 +65,8 @@ static int get_net_ip(const char *if_name, int family, char *ip, int len)
 						(void *)&(addr4->sin_addr), buf, NI_MAXHOST)) {
 				if(len <= strlen(buf))
 					break;
-				strcpy(ip, buf);
+				strncpy(ip, buf, len - 1);
+				ip[len - 1] = '\0';
 			}
         }
     }

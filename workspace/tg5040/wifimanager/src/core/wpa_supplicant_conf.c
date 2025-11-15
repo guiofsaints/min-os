@@ -97,8 +97,8 @@ int wpa_conf_is_ap_exist(const char *ssid, tKEY_MGMT key_mgmt, char *net_id, int
         }
 
         /* get key_mgmt */
-        sprintf(cmd, "GET_NETWORK %s key_mgmt", net_id);
-        cmd[255] = '\0';
+        snprintf(cmd, sizeof(cmd), "GET_NETWORK %s key_mgmt", net_id);
+        cmd[sizeof(cmd) - 1] = '\0';
         ret = wifi_command(cmd, key_reply, sizeof(key_reply));
         if(ret){
             wmg_printf(MSG_ERROR,"do get network %s key_mgmt error!\n", net_id);
@@ -190,7 +190,7 @@ int wpa_conf_ssid2netid(char *ssid, tKEY_MGMT key_mgmt, char *net_id, int *len)
         }
 
         /* get key_mgmt */
-        sprintf(cmd, "GET_NETWORK %s key_mgmt", net_id);
+        snprintf(cmd, sizeof(cmd), "GET_NETWORK %s key_mgmt", net_id);
         cmd[CMD_LEN] = '\0';
         ret = wifi_command(cmd, key_reply, sizeof(key_reply));
         if(ret){
@@ -250,7 +250,7 @@ int wpa_conf_get_max_priority()
             }
         }
 
-        sprintf(cmd, "GET_NETWORK %s priority", net_id);
+        snprintf(cmd, sizeof(cmd), "GET_NETWORK %s priority", net_id);
         ret = wifi_command(cmd, priority, sizeof(priority));
         if(ret){
             wmg_printf(MSG_ERROR,"do get network priority error!\n");
@@ -442,7 +442,7 @@ int wpa_conf_enable_all_networks()
         }
 
         /* cancel saved in wpa_supplicant.conf */
-        sprintf(cmd, "ENABLE_NETWORK %s", net_id);
+        snprintf(cmd, sizeof(cmd), "ENABLE_NETWORK %s", net_id);
         ret = wifi_command(cmd, reply, sizeof(reply));
         if(ret){
             wmg_printf(MSG_ERROR,"do enable network %s error!\n", net_id);
@@ -453,7 +453,7 @@ int wpa_conf_enable_all_networks()
     }
 
     /* save config */
-	  sprintf(cmd, "%s", "SAVE_CONFIG");
+	  snprintf(cmd, sizeof(cmd), "%s", "SAVE_CONFIG");
 	  ret = wifi_command(cmd, reply, sizeof(reply));
     if(ret){
         wmg_printf(MSG_ERROR,"do save config error!\n");
@@ -492,7 +492,7 @@ int wpa_conf_remove_all_networks()
         }
 
         /* cancel saved in wpa_supplicant.conf */
-        sprintf(cmd, "REMOVE_NETWORK %s", net_id);
+        snprintf(cmd, sizeof(cmd), "REMOVE_NETWORK %s", net_id);
         ret = wifi_command(cmd, reply, sizeof(reply));
         if(ret){
             wmg_printf(MSG_ERROR,"do remove network %s error!\n", net_id);
@@ -503,7 +503,7 @@ int wpa_conf_remove_all_networks()
     }
 
     /* save config */
-	  sprintf(cmd, "%s", "SAVE_CONFIG");
+	  snprintf(cmd, sizeof(cmd), "%s", "SAVE_CONFIG");
 	  ret = wifi_command(cmd, reply, sizeof(reply));
     if(ret){
         wmg_printf(MSG_ERROR,"do save config error!\n");
@@ -544,7 +544,7 @@ int wpa_conf_remove_maxnetid_network()
     }
 
     /* cancel saved in wpa_supplicant.conf */
-    sprintf(cmd, "REMOVE_NETWORK %s", net_id);
+    snprintf(cmd, sizeof(cmd), "REMOVE_NETWORK %s", net_id);
     wmg_printf(MSG_DEBUG,"remove network %s!\n", net_id);
     ret = wifi_command(cmd, reply, sizeof(reply));
     if(ret){
@@ -553,7 +553,7 @@ int wpa_conf_remove_maxnetid_network()
     }
 
     /* save config */
-      sprintf(cmd, "%s", "SAVE_CONFIG");
+      snprintf(cmd, sizeof(cmd), "%s", "SAVE_CONFIG");
       ret = wifi_command(cmd, reply, sizeof(reply));
     if(ret){
         wmg_printf(MSG_ERROR,"do save config error!\n");
