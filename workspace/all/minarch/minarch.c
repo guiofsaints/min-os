@@ -331,12 +331,12 @@ int extract_zip(char** extensions)
 			//LOG_info("Size: [%llu], ", sb.size);
 			//LOG_info("mtime: [%u]\n", (unsigned int)sb.mtime);
 			if (sb.name[len - 1] == '/') {
-				sprintf(game.tmp_path, "%s/%s", tmp_dirname, basename((char*)sb.name));
+				snprintf(game.tmp_path, sizeof(game.tmp_path), "%s/%s", tmp_dirname, basename((char*)sb.name));
 			} else {
 				int found = 0;
 				char extension[8];
 				for (int e=0; extensions[e]; e++) {
-					sprintf(extension, ".%s", extensions[e]);
+					snprintf(extension, sizeof(extension), ".%s", extensions[e]);
 					if (suffixMatch(extension, sb.name)) {
 						found = 1;
 						break;
@@ -350,7 +350,7 @@ int extract_zip(char** extensions)
 					return 0;
 				}
 
-				sprintf(game.tmp_path, "%s/%s", tmp_dirname, basename((char*)sb.name));
+				snprintf(game.tmp_path, sizeof(game.tmp_path), "%s/%s", tmp_dirname, basename((char*)sb.name));
 				fd = open(game.tmp_path, O_RDWR | O_TRUNC | O_CREAT, 0644);
 				if (fd < 0) {
 					LOG_error( "open failed\n");
@@ -558,9 +558,9 @@ finish:
 #define CHEAT_MAX_LIST_LENGTH (CHEAT_MAX_PATHS * MAX_PATH)
 static void Cheat_getPaths(char paths[CHEAT_MAX_PATHS][MAX_PATH], int* count) {
 	// Generate possible paths, ordered by most likely to be used (pre v6.2.3 style first)
-	sprintf(paths[(*count)++], "%s/%s.cht", core.cheats_dir, game.name); // /mnt/SDCARD/Cheats/GB/Super Example World.<ext>.cht
+	snprintf(paths[(*count)++], MAX_PATH, "%s/%s.cht", core.cheats_dir, game.name); // /mnt/SDCARD/Cheats/GB/Super Example World.<ext>.chtd.<ext>.cht
 	if(CFG_getUseExtractedFileName())
-		sprintf(paths[(*count)++], "%s/%s.cht", core.cheats_dir, game.alt_name); // /mnt/SDCARD/Cheats/GB/Super Example World (USA).<ext>.cht
+		snprintf(paths[(*count)++], MAX_PATH, "%s/%s.cht", core.cheats_dir, game.alt_name); // /mnt/SDCARD/Cheats/GB/Super Example World (USA).<ext>.cht
 
 	// game.alt_name, but with all extension-like stuff removed (apart from .cht)
 	// eg. Super Example World (USA).zip -> Super Example World (USA).cht
@@ -575,7 +575,7 @@ static void Cheat_getPaths(char paths[CHEAT_MAX_PATHS][MAX_PATH], int* count) {
 			char* tmp = strrchr(rom_name, '.');
 			if (tmp != NULL && strlen(tmp) > 2 && strlen(tmp) <= 5) {
 				tmp[0] = '\0';
-				sprintf(paths[(*count)++], "%s/%s.%s.cht", core.cheats_dir, rom_name, ext); // /mnt/SDCARD/Cheats/GB/Super Example World (USA).foo.cht
+				snprintf(paths[(*count)++], MAX_PATH, "%s/%s.%s.cht", core.cheats_dir, rom_name, ext); // /mnt/SDCARD/Cheats/GB/Super Example World (USA).foo.cht
 			}
 			i++;
 		}
@@ -587,18 +587,18 @@ static void Cheat_getPaths(char paths[CHEAT_MAX_PATHS][MAX_PATH], int* count) {
 	//     Super Example World (USA) (Rev 1).rar -> Super Example World
 	char rom_name[MAX_PATH];
 	getDisplayName(game.alt_name, rom_name);
-	sprintf(paths[(*count)++], "%s/%s.cht", core.cheats_dir, rom_name); // /mnt/SDCARD/Cheats/GB/Super Example World.cht
+	snprintf(paths[(*count)++], MAX_PATH, "%s/%s.cht", core.cheats_dir, rom_name); // /mnt/SDCARD/Cheats/GB/Super Example World.cht
 
 	// Respect map.txt: use alias if available
 	// eg. 1941.zip	-> 1941: Counter Attack
 	if(getAlias(game.path, rom_name))
-		sprintf(paths[(*count)++], "%s/%s.cht", core.cheats_dir, rom_name); // /mnt/SDCARD/Cheats/GB/Super Example World.cht
+		snprintf(paths[(*count)++], MAX_PATH, "%s/%s.cht", core.cheats_dir, rom_name); // /mnt/SDCARD/Cheats/GB/Super Example World.cht
 
 	// Santitized alias, ignoring all extra cruft - including Cheat specifics like "(Game Breaker)" etc.
 	// This is a wildcard that may match something unexpected, but also may find something when nothing else does.
 	getDisplayName(game.alt_name, rom_name);
 	getAlias(game.path, rom_name);
-	sprintf(paths[(*count)++], "%s/%s*.cht", core.cheats_dir, rom_name); // /mnt/SDCARD/Cheats/GB/Super Example World*.cht
+	snprintf(paths[(*count)++], MAX_PATH, "%s/%s*.cht", core.cheats_dir, rom_name); // /mnt/SDCARD/Cheats/GB/Super Example World*.cht
 
 	// Log all path candidates
 	{
@@ -719,7 +719,7 @@ static void formatSavePath(char* work_name, char* filename, const char* suffix) 
 	if (tmp != NULL && strlen(tmp) > 2 && strlen(tmp) <= 5) {
 		tmp[0] = '\0';
 	}
-	sprintf(filename, "%s/%s%s", core.saves_dir, work_name, suffix);
+	snprintf(filename, MAX_PATH, "%s/%s%s", core.saves_dir, work_name, suffix);
 }
 
 static void SRAM_getPath(char* filename) {
@@ -735,7 +735,7 @@ static void SRAM_getPath(char* filename) {
 		formatSavePath(work_name, filename, ".sav");
 	}
 	else {
-		sprintf(filename, "%s/%s.sav", core.saves_dir, game.alt_name);
+		snprintf(filename, MAX_PATH, "%s/%s.sav", core.saves_dir, game.alt_name);
 	}
 
 	LOG_info("SRAM_getPath %s\n", filename);
@@ -819,7 +819,7 @@ static void SRAM_write(void) {
 ///////////////////////////////////////
 
 static void RTC_getPath(char* filename) {
-	sprintf(filename, "%s/%s.rtc", core.saves_dir, game.alt_name);
+	snprintf(filename, MAX_PATH, "%s/%s.rtc", core.saves_dir, game.alt_name);
 }
 static void RTC_read(void) {
 	size_t rtc_size = core.get_memory_size(RETRO_MEMORY_RTC);
@@ -874,7 +874,7 @@ static void formatStatePath(char* work_name, char* filename, const char* suffix)
 	if (tmp != NULL && strlen(tmp) > 2 && strlen(tmp) <= 5) {
 		tmp[0] = '\0';
 	}
-	sprintf(filename, "%s/%s%s", core.saves_dir, work_name, suffix);
+	snprintf(filename, MAX_PATH, "%s/%s%s", core.saves_dir, work_name, suffix);
 }
 
 static void State_getPath(char* filename) {
@@ -891,9 +891,9 @@ static void State_getPath(char* filename) {
 		}
 
 		if(state_slot == AUTO_RESUME_SLOT)
-			sprintf(filename, "%s/%s.state.auto", core.states_dir, work_name);
+			snprintf(filename, MAX_PATH, "%s/%s.state.auto", core.states_dir, work_name);
 		else 
-			sprintf(filename, "%s/%s.state.%i", core.states_dir, work_name, state_slot);
+			snprintf(filename, MAX_PATH, "%s/%s.state.%i", core.states_dir, work_name, state_slot);
 	}
 	else if (CFG_getStateFormat() == STATE_FORMAT_SRM
 	 	  || CFG_getStateFormat() == STATE_FORMAT_SRM_UNCOMRESSED) {
@@ -904,14 +904,14 @@ static void State_getPath(char* filename) {
 		}
 
 		if(state_slot == AUTO_RESUME_SLOT)
-			sprintf(filename, "%s/%s.state.auto", core.states_dir, work_name);
+			snprintf(filename, MAX_PATH, "%s/%s.state.auto", core.states_dir, work_name);
 		else if(state_slot == 0)
-			sprintf(filename, "%s/%s.state", core.states_dir, work_name);
+			snprintf(filename, MAX_PATH, "%s/%s.state", core.states_dir, work_name);
 		else 
-			sprintf(filename, "%s/%s.state%i", core.states_dir, work_name, state_slot);
+			snprintf(filename, MAX_PATH, "%s/%s.state%i", core.states_dir, work_name, state_slot);
 	}
 	else {
-		sprintf(filename, "%s/%s.st%i", core.states_dir, game.alt_name, state_slot);
+		snprintf(filename, MAX_PATH, "%s/%s.st%i", core.states_dir, game.alt_name, state_slot);
 	}
 }
 
@@ -2156,9 +2156,9 @@ enum {
 };
 static void Config_getPath(char* filename, int override) {
 	char device_tag[64] = {0};
-	if (config.device_tag) sprintf(device_tag,"-%s",config.device_tag);
-	if (override) sprintf(filename, "%s/%s%s.cfg", core.config_dir, game.alt_name, device_tag);
-	else sprintf(filename, "%s/minarch%s.cfg", core.config_dir, device_tag);
+	if (config.device_tag) snprintf(device_tag, sizeof(device_tag), "-%s",config.device_tag);
+	if (override) snprintf(filename, MAX_PATH, "%s/%s%s.cfg", core.config_dir, game.alt_name, device_tag);
+	else snprintf(filename, MAX_PATH, "%s/minarch%s.cfg", core.config_dir, device_tag);
 	LOG_info("Config_getPath %s\n", filename);
 }
 static void Config_init(void) {
@@ -2330,8 +2330,8 @@ static void Config_readControlsString(char* cfg) {
 	char* tmp;
 	for (int i=0; config.controls[i].name; i++) {
 		ButtonMapping* mapping = &config.controls[i];
-		sprintf(key, "bind %s", mapping->name);
-		sprintf(value, "NONE");
+		snprintf(key, sizeof(key), "bind %s", mapping->name);
+		snprintf(value, sizeof(value), "NONE");
 		
 		if (!Config_getValue(cfg, key, value, NULL)) continue;
 		if ((tmp = strrchr(value, ':'))) *tmp = '\0'; // this is a binding artifact in default.cfg, ignore
@@ -2357,8 +2357,8 @@ static void Config_readControlsString(char* cfg) {
 	
 	for (int i=0; config.shortcuts[i].name; i++) {
 		ButtonMapping* mapping = &config.shortcuts[i];
-		sprintf(key, "bind %s", mapping->name);
-		sprintf(value, "NONE");
+		snprintf(key, sizeof(key), "bind %s", mapping->name);
+		snprintf(value, sizeof(value), "NONE");
 
 		if (!Config_getValue(cfg, key, value, NULL)) continue;
 		
@@ -2398,7 +2398,7 @@ static void Config_load(void) {
 	char* system_path = SYSTEM_PATH "/system.cfg";
 	
 	char device_system_path[MAX_PATH] = {0};
-	if (config.device_tag) sprintf(device_system_path, SYSTEM_PATH "/system-%s.cfg", config.device_tag);
+	if (config.device_tag) snprintf(device_system_path, MAX_PATH, SYSTEM_PATH "/system-%s.cfg", config.device_tag);
 	
 	if (config.device_tag && exists(device_system_path)) {
 		LOG_info("usng device_system_path: %s\n", device_system_path);
@@ -2421,7 +2421,7 @@ static void Config_load(void) {
 		getEmuPath((char *)core.tag, device_default_path);
 		tmp = strrchr(device_default_path, '/');
 		char filename[64];
-		sprintf(filename,"/default-%s.cfg", config.device_tag);
+		snprintf(filename, sizeof(filename), "/default-%s.cfg", config.device_tag);
 		strcpy(tmp,filename);
 	}
 	
@@ -2528,14 +2528,14 @@ static void Config_write(int override) {
 static void Config_restore(void) {
 	char path[MAX_PATH];
 	if (config.loaded==CONFIG_GAME) {
-		if (config.device_tag) sprintf(path, "%s/%s-%s.cfg", core.config_dir, game.alt_name, config.device_tag);
-		else sprintf(path, "%s/%s.cfg", core.config_dir, game.alt_name);
+		if (config.device_tag) snprintf(path, MAX_PATH, "%s/%s-%s.cfg", core.config_dir, game.alt_name, config.device_tag);
+		else snprintf(path, MAX_PATH, "%s/%s.cfg", core.config_dir, game.alt_name);
 		unlink(path);
 		LOG_info("deleted game config: %s\n", path);
 	}
 	else if (config.loaded==CONFIG_CONSOLE) {
-		if (config.device_tag) sprintf(path, "%s/minarch-%s.cfg", core.config_dir, config.device_tag);
-		else sprintf(path, "%s/minarch.cfg", core.config_dir);
+		if (config.device_tag) snprintf(path, MAX_PATH, "%s/minarch-%s.cfg", core.config_dir, config.device_tag);
+		else snprintf(path, MAX_PATH, "%s/minarch.cfg", core.config_dir);
 		unlink(path);
 		LOG_info("deleted console config: %s\n", path);
 	}
@@ -2582,7 +2582,7 @@ static void Config_restore(void) {
 
 void readShadersPreset(int i) {
 		char shaderspath[MAX_PATH] = {0};
-		sprintf(shaderspath, SHADERS_FOLDER "/%s", config.shaders.options[SH_SHADERS_PRESET].values[i]);
+		snprintf(shaderspath, MAX_PATH, SHADERS_FOLDER "/%s", config.shaders.options[SH_SHADERS_PRESET].values[i]);
 		LOG_info("read shaders preset %s\n",shaderspath);
 		if (exists(shaderspath)) {
 			config.shaders_preset = allocFile(shaderspath);
@@ -4168,7 +4168,7 @@ static void selectScaler(int src_w, int src_h, int src_p) {
 		// this is the same whether fit or oversized
 		scale = MIN(DEVICE_WIDTH/src_w, DEVICE_HEIGHT/src_h);
 		if (!scale) {
-			sprintf(scaler_name, "forced crop");
+			snprintf(scaler_name, sizeof(scaler_name), "forced crop");
 			dst_w = DEVICE_WIDTH;
 			dst_h = DEVICE_HEIGHT;
 			dst_p = DEVICE_PITCH;
@@ -4191,7 +4191,7 @@ static void selectScaler(int src_w, int src_h, int src_p) {
 			int scale_y = CEIL_DIV(DEVICE_HEIGHT, src_h);
 			scale = MIN(scale_x, scale_y);
 
-			sprintf(scaler_name, "cropped");
+			snprintf(scaler_name, sizeof(scaler_name), "cropped");
 			dst_w = DEVICE_WIDTH;
 			dst_h = DEVICE_HEIGHT;
 			dst_p = DEVICE_PITCH;
@@ -4221,7 +4221,7 @@ static void selectScaler(int src_w, int src_h, int src_p) {
 			}
 		}
 		else {
-			sprintf(scaler_name, "integer");
+			snprintf(scaler_name, sizeof(scaler_name), "integer");
 			int scaled_w = src_w * scale;
 			int scaled_h = src_h * scale;
 			dst_w = DEVICE_WIDTH;
@@ -4234,7 +4234,7 @@ static void selectScaler(int src_w, int src_h, int src_p) {
 	else if (fit) {
 		// these both will use a generic nn scaler
 		if (scaling==SCALE_FULLSCREEN) {
-			sprintf(scaler_name, "full fit");
+			snprintf(scaler_name, sizeof(scaler_name), "full fit");
 			dst_w = DEVICE_WIDTH;
 			dst_h = DEVICE_HEIGHT;
 			dst_p = DEVICE_PITCH;
@@ -4244,7 +4244,7 @@ static void selectScaler(int src_w, int src_h, int src_p) {
 			double scale_f = MIN(((double)DEVICE_WIDTH)/aspect_w, ((double)DEVICE_HEIGHT)/aspect_h);
 			LOG_info("scale_f:%f\n", scale_f);
 			
-			sprintf(scaler_name, "aspect fit");
+			snprintf(scaler_name, sizeof(scaler_name), "aspect fit");
 			dst_w = aspect_w * scale_f;
 			dst_h = aspect_h * scale_f;
 			dst_p = DEVICE_PITCH;
@@ -4269,7 +4269,7 @@ static void selectScaler(int src_w, int src_h, int src_p) {
 		int scaled_h = src_h * scale;
 		
 		if (scaling==SCALE_FULLSCREEN) {
-			sprintf(scaler_name, "full%i", scale);
+			snprintf(scaler_name, sizeof(scaler_name), "full%i", scale);
 			// type = 'full (oversized)';
 			dst_w = scaled_w;
 			dst_h = scaled_h;
@@ -4298,7 +4298,7 @@ static void selectScaler(int src_w, int src_h, int src_p) {
 			
 			dst_p = dst_w * FIXED_BPP;
 			
-			sprintf(scaler_name, "raw%i", scale);
+			snprintf(scaler_name, sizeof(scaler_name), "raw%i", scale);
 			LOG_info("ignore core aspect %ix%i\n\n",dst_w,dst_h);
 			
 		}
@@ -4320,7 +4320,7 @@ static void selectScaler(int src_w, int src_h, int src_p) {
 			// then to fixed aspect
 						
 			if (core_aspect>fixed_aspect) {
-				sprintf(scaler_name, "aspect%iL", scale);
+				snprintf(scaler_name, sizeof(scaler_name), "aspect%iL", scale);
 				// letterbox
 				// dst_w = scaled_w;
 				// dst_h = scaled_w / fixed_aspect_ratio;
@@ -4333,7 +4333,7 @@ static void selectScaler(int src_w, int src_h, int src_p) {
 				dst_y = (dst_h - scaled_h) / 2;
 			}
 			else if (core_aspect<fixed_aspect) {
-				sprintf(scaler_name, "aspect%iP", scale);
+				snprintf(scaler_name, sizeof(scaler_name), "aspect%iP", scale);
 				// pillarbox
 				// dst_w = scaled_h * fixed_aspect_ratio;
 				// dst_w += dst_w%2;
@@ -4347,7 +4347,7 @@ static void selectScaler(int src_w, int src_h, int src_p) {
 				dst_x = (dst_w - scaled_w) / 2;
 			}
 			else {
-				sprintf(scaler_name, "aspect%iM", scale);
+				snprintf(scaler_name, sizeof(scaler_name), "aspect%iM", scale);
 				// perfect match
 				dst_w = scaled_w;
 				dst_h = scaled_h;
@@ -4588,26 +4588,26 @@ static void video_refresh_callback_main(const void *data, unsigned width, unsign
 		int scale = renderer.scale;
 		if (scale==-1) scale = 1; // nearest neighbor flag
 
-		sprintf(debug_text, "%ix%i %ix %i/%i", renderer.src_w,renderer.src_h, scale,currentsampleratein,currentsamplerateout);
+		snprintf(debug_text, sizeof(debug_text), "%ix%i %ix %i/%i", renderer.src_w,renderer.src_h, scale,currentsampleratein,currentsamplerateout);
 		blitBitmapText(debug_text,x,y,(uint32_t*)data,pitch / 4, width,height);
 		
-		sprintf(debug_text, "%.03f/%i/%.0f/%i/%i/%i", currentratio,
+		snprintf(debug_text, sizeof(debug_text), "%.03f/%i/%.0f/%i/%i/%i", currentratio,
 				currentbuffersize,currentbufferms, currentbufferfree, currentbuffertarget,avgbufferfree);
 		blitBitmapText(debug_text, x, y + 14, (uint32_t*)data, pitch / 4, width,
 					height);
 
-		sprintf(debug_text, "%i,%i %ix%i", renderer.dst_x,renderer.dst_y, renderer.src_w*scale,renderer.src_h*scale);
+		snprintf(debug_text, sizeof(debug_text), "%i,%i %ix%i", renderer.dst_x,renderer.dst_y, renderer.src_w*scale,renderer.src_h*scale);
 		blitBitmapText(debug_text,-x,y,(uint32_t*)data,pitch / 4, width,height);
 	
-		sprintf(debug_text, "%ix%i", renderer.dst_w,renderer.dst_h);
+		snprintf(debug_text, sizeof(debug_text), "%ix%i", renderer.dst_w,renderer.dst_h);
 		blitBitmapText(debug_text,-x,-y,(uint32_t*)data,pitch / 4, width,height);
 
 		//want this to overwrite bottom right in case screen is too small this info more important tbh
 		PLAT_getCPUTemp();
-		sprintf(debug_text, "%.01f/%.01f/%.0f%%/%ihz/%ic", currentfps, currentreqfps,currentcpuse,currentcpuspeed,currentcputemp);
+		snprintf(debug_text, sizeof(debug_text), "%.01f/%.01f/%.0f%%/%ihz/%ic", currentfps, currentreqfps,currentcpuse,currentcpuspeed,currentcputemp);
 		blitBitmapText(debug_text,x,-y,(uint32_t*)data,pitch / 4, width,height);
 
-		sprintf(debug_text, "%i/%ix%i/%ix%i/%ix%i", currentshaderpass, currentshadersrcw,currentshadersrch,currentshadertexw,currentshadertexh,currentshaderdstw,currentshaderdsth);
+		snprintf(debug_text, sizeof(debug_text), "%i/%ix%i/%ix%i/%ix%i", currentshaderpass, currentshadersrcw,currentshadersrch,currentshadertexw,currentshadertexh,currentshaderdstw,currentshaderdsth);
 		blitBitmapText(debug_text,x,-y - 14,(uint32_t*)data,pitch / 4, width,height);
 	
 		double buffer_fill = (double) (currentbuffersize - currentbufferfree) / (double) currentbuffersize;
@@ -4777,7 +4777,7 @@ void Core_open(const char* core_path, const char* tag_name) {
 	LOG_info("Block Extract: %d\n", info.block_extract);
 
 	Core_getName((char*)core_path, (char*)core.name);
-	sprintf((char*)core.version, "%s (%s)", info.library_name, info.library_version);
+	snprintf((char*)core.version, sizeof(core.version), "%s (%s)", info.library_name, info.library_version);
 	strcpy((char*)core.tag, tag_name);
 	strcpy((char*)core.extensions, info.valid_extensions);
 	
@@ -4785,15 +4785,15 @@ void Core_open(const char* core_path, const char* tag_name) {
 	
 	LOG_info("core: %s version: %s tag: %s (valid_extensions: %s need_fullpath: %i)\n", core.name, core.version, core.tag, info.valid_extensions, info.need_fullpath);
 	
-	sprintf((char*)core.config_dir, USERDATA_PATH "/%s-%s", core.tag, core.name);
-	sprintf((char*)core.states_dir, SHARED_USERDATA_PATH "/%s-%s", core.tag, core.name);
-	sprintf((char*)core.saves_dir, SDCARD_PATH "/Saves/%s", core.tag);
-	sprintf((char*)core.bios_dir, SDCARD_PATH "/Bios/%s", core.tag);
-	sprintf((char*)core.cheats_dir, SDCARD_PATH "/Cheats/%s", core.tag);
-	sprintf((char*)core.overlays_dir, SDCARD_PATH "/Overlays/%s", core.tag);
+	snprintf((char*)core.config_dir, sizeof(core.config_dir), USERDATA_PATH "/%s-%s", core.tag, core.name);
+	snprintf((char*)core.states_dir, sizeof(core.states_dir), SHARED_USERDATA_PATH "/%s-%s", core.tag, core.name);
+	snprintf((char*)core.saves_dir, sizeof(core.saves_dir), SDCARD_PATH "/Saves/%s", core.tag);
+	snprintf((char*)core.bios_dir, sizeof(core.bios_dir), SDCARD_PATH "/Bios/%s", core.tag);
+	snprintf((char*)core.cheats_dir, sizeof(core.cheats_dir), SDCARD_PATH "/Cheats/%s", core.tag);
+	snprintf((char*)core.overlays_dir, sizeof(core.overlays_dir), SDCARD_PATH "/Overlays/%s", core.tag);
 	
 	char cmd[512];
-	sprintf(cmd, "mkdir -p \"%s\"; mkdir -p \"%s\"", core.config_dir, core.states_dir);
+	snprintf(cmd, sizeof(cmd), "mkdir -p \"%s\"; mkdir -p \"%s\"", core.config_dir, core.states_dir);
 	system(cmd);
 
 	set_environment_callback(environment_callback);
@@ -4947,11 +4947,11 @@ void Menu_init(void) {
 	
 	char emu_name[256];
 	getEmuName(game.path, emu_name);
-	sprintf(menu.minui_dir, SHARED_USERDATA_PATH "/.minui/%s", emu_name);
+	snprintf(menu.minui_dir, sizeof(menu.minui_dir), SHARED_USERDATA_PATH "/.minui/%s", emu_name);
 	mkdir(menu.minui_dir, 0755);
 
 	// always sanitized/outer name, to keep main UI from having to inspect archives
-	sprintf(menu.slot_path, "%s/%s.txt", menu.minui_dir, game.name);
+	snprintf(menu.slot_path, sizeof(menu.slot_path), "%s/%s.txt", menu.minui_dir, game.name);
 	
 	if (simple_mode) menu.items[ITEM_OPTS] = "Reset";
 	
@@ -6348,8 +6348,8 @@ static void Menu_updateState(void) {
 	state_slot = last_slot;
 
 	// always sanitized/outer name, to keep main UI from having to inspect archives
-	sprintf(menu.bmp_path, "%s/%s.%d.bmp", menu.minui_dir, game.name, menu.slot);
-	sprintf(menu.txt_path, "%s/%s.%d.txt", menu.minui_dir, game.name, menu.slot);
+	snprintf(menu.bmp_path, sizeof(menu.bmp_path), "%s/%s.%d.bmp", menu.minui_dir, game.name, menu.slot);
+	snprintf(menu.txt_path, sizeof(menu.txt_path), "%s/%s.%d.txt", menu.minui_dir, game.name, menu.slot);
 	
 	menu.save_exists = exists(save_path);
 	menu.preview_exists = menu.save_exists && exists(menu.bmp_path);
@@ -6406,7 +6406,7 @@ static void Menu_screenshot(void) {
 	mkdir(SDCARD_PATH "/Screenshots", 0755);
 
 	char png_path[256];
-	sprintf(png_path, SDCARD_PATH "/Screenshots/%s.%s.png", rom_name, buffer);
+	snprintf(png_path, sizeof(png_path), SDCARD_PATH "/Screenshots/%s.%s.png", rom_name, buffer);
 	int cw, ch;
 	unsigned char* pixels = GFX_GL_screenCapture(&cw, &ch);
 	SaveImageArgs* args = malloc(sizeof(SaveImageArgs));
@@ -6458,7 +6458,7 @@ static void Menu_loadState(void) {
 		
 			char slot_disc_path[256];
 			if (slot_disc_name[0]=='/') strcpy(slot_disc_path, slot_disc_name);
-			else sprintf(slot_disc_path, "%s%s", menu.base_path, slot_disc_name);
+			else snprintf(slot_disc_path, sizeof(slot_disc_path), "%s%s", menu.base_path, slot_disc_name);
 		
 			char* disc_path = menu.disc_paths[menu.disc];
 			if (!exactMatch(slot_disc_path, disc_path)) {
@@ -6528,7 +6528,7 @@ static void Menu_loop(void) {
 	char disc_name[16];
 	if (menu.total_discs) {
 		rom_disc = menu.disc;
-		sprintf(disc_name, "Disc %i", menu.disc+1);
+		snprintf(disc_name, sizeof(disc_name), "Disc %i", menu.disc+1);
 	}
 		
 	int selected = 0; // resets every launch
@@ -6565,7 +6565,7 @@ static void Menu_loop(void) {
 				menu.disc -= 1;
 				if (menu.disc<0) menu.disc += menu.total_discs;
 				dirty = 1;
-				sprintf(disc_name, "Disc %i", menu.disc+1);
+				snprintf(disc_name, sizeof(disc_name), "Disc %i", menu.disc+1);
 			}
 			else if (selected==ITEM_SAVE || selected==ITEM_LOAD) {
 				menu.slot -= 1;
@@ -6578,7 +6578,7 @@ static void Menu_loop(void) {
 				menu.disc += 1;
 				if (menu.disc==menu.total_discs) menu.disc -= menu.total_discs;
 				dirty = 1;
-				sprintf(disc_name, "Disc %i", menu.disc+1);
+				snprintf(disc_name, sizeof(disc_name), "Disc %i", menu.disc+1);
 			}
 			else if (selected==ITEM_SAVE || selected==ITEM_LOAD) {
 				menu.slot += 1;
@@ -6957,7 +6957,7 @@ int main(int argc , char* argv[]) {
 	LOG_info("MinArch\n");
 
 	static char asoundpath[MAX_PATH];
-	sprintf(asoundpath, "%s/.asoundrc", getenv("HOME"));
+	snprintf(asoundpath, MAX_PATH, "%s/.asoundrc", getenv("HOME"));
 	LOG_info("minarch: need asoundrc at %s\n", asoundpath);
 	if(exists(asoundpath))
 		LOG_info("asoundrc exists at %s\n", asoundpath);
