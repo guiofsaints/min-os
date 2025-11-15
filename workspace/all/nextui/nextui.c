@@ -229,14 +229,7 @@ static void getUniqueName(Entry* entry, char* out_name) {
 	char emu_tag[256];
 	getEmuName(entry->path, emu_tag);
 	
-	char *tmp;
-	strcpy(out_name, entry->name);
-	tmp = out_name + strlen(out_name);
-	strcpy(tmp, " (");
-	tmp = out_name + strlen(out_name);
-	strcpy(tmp, emu_tag);
-	tmp = out_name + strlen(out_name);
-	strcpy(tmp, ")");
+	snprintf(out_name, 256, "%s (%s)", entry->name, emu_tag);
 }
 
 static void Directory_index(Directory* self) {
@@ -548,13 +541,15 @@ static int hasCue(char* dir_path, char* cue_path) { // NOTE: dir_path not rom_pa
 static int hasM3u(char* rom_path, char* m3u_path) { // NOTE: rom_path not dir_path
 	char* tmp;
 	
-	strcpy(m3u_path, rom_path);
+	strncpy(m3u_path, rom_path, 256 - 1);
+	m3u_path[255] = '\0';
 	tmp = strrchr(m3u_path, '/') + 1;
 	tmp[0] = '\0';
 	
 	// path to parent directory
 	char base_path[256];
-	strcpy(base_path, m3u_path);
+	strncpy(base_path, m3u_path, sizeof(base_path) - 1);
+	base_path[sizeof(base_path) - 1] = '\0';
 	
 	tmp = strrchr(m3u_path, '/');
 	tmp[0] = '\0';
@@ -562,7 +557,12 @@ static int hasM3u(char* rom_path, char* m3u_path) { // NOTE: rom_path not dir_pa
 	// get parent directory name
 	char dir_name[256];
 	tmp = strrchr(m3u_path, '/');
-	strcpy(dir_name, tmp);
+	if (tmp) {
+		strncpy(dir_name, tmp, sizeof(dir_name) - 1);
+		dir_name[sizeof(dir_name) - 1] = '\0';
+	} else {
+		dir_name[0] = '\0';
+	}
 	
 	// dir_name is also our m3u file name
 	tmp = m3u_path + strlen(m3u_path); 
@@ -1125,7 +1125,8 @@ static void readyResumePath(char* rom_path, int type) {
 	can_resume = 0;
 	has_preview = 0;
 	char path[256];
-	strcpy(path, rom_path);
+	strncpy(path, rom_path, sizeof(path) - 1);
+	path[sizeof(path) - 1] = '\0';
 	
 	if (!prefixMatch(ROMS_PATH, path)) return;
 	
