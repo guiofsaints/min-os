@@ -328,10 +328,11 @@ GLuint load_shader_from_file(GLenum type, const char* filename, const char* path
             return 0;
         }
 
-        strcpy(combined, replacement_version);
-        strcat(combined, define);
-        if (default_precision) strcat(combined, default_precision);
-        strcat(combined, source + header_len);
+        strncpy(combined, replacement_version, combined_len - 1);
+        combined[combined_len - 1] = '\0';
+        strncat(combined, define, combined_len - strlen(combined) - 1);
+        if (default_precision) strncat(combined, default_precision, combined_len - strlen(combined) - 1);
+        strncat(combined, source + header_len, combined_len - strlen(combined) - 1);
     } else if (version_start && version_end) {
         // Keep existing version, insert define after it
         size_t header_len = version_end - source + 1;
@@ -347,7 +348,8 @@ GLuint load_shader_from_file(GLenum type, const char* filename, const char* path
         memcpy(combined + header_len, define, define_len);
         if (default_precision)
             memcpy(combined + header_len + define_len, default_precision, precision_len);
-        strcpy(combined + header_len + define_len + precision_len, source + header_len);
+        strncpy(combined + header_len + define_len + precision_len, source + header_len, combined_len - header_len - define_len - precision_len - 1);
+        combined[combined_len - 1] = '\0';
     } else {
         // No version — use fallback
         size_t version_len = strlen(fallback_version);
@@ -359,10 +361,11 @@ GLuint load_shader_from_file(GLenum type, const char* filename, const char* path
             return 0;
         }
 
-        strcpy(combined, fallback_version);
-        strcat(combined, define);
-        if (default_precision) strcat(combined, default_precision);
-        strcat(combined, source);
+        strncpy(combined, fallback_version, combined_len - 1);
+        combined[combined_len - 1] = '\0';
+        strncat(combined, define, combined_len - strlen(combined) - 1);
+        if (default_precision) strncat(combined, default_precision, combined_len - strlen(combined) - 1);
+        strncat(combined, source, combined_len - strlen(combined) - 1);
     }
 
     GLuint shader = glCreateShader(type);
@@ -2022,7 +2025,7 @@ char* PLAT_getModel(void) {
 
 void PLAT_getOsVersionInfo(char *output_str, size_t max_len)
 {
-	sprintf(output_str, "%s", "1.2.3");
+	snprintf(output_str, max_len, "%s", "1.2.3");
 }
 
 int PLAT_isOnline(void) {
@@ -2167,8 +2170,9 @@ void PLAT_setCurrentTimezone(const char* tz) {
 	for (int i = 0; i < 5; i++) {
 		struct WIFI_network *network = &networks[i];
 
-		sprintf(network->ssid, "Network%d", i);
-		strcpy(network->bssid, "01:01:01:01:01:01");
+		snprintf(network->ssid, sizeof(network->ssid), "Network%d", i);
+		strncpy(network->bssid, "01:01:01:01:01:01", sizeof(network->bssid) - 1);
+		network->bssid[sizeof(network->bssid) - 1] = '\0';
 		network->rssi = (70 / 5) * (i + 1);
 		network->freq = 2400;
 		network->security = i % 2 ? SECURITY_WPA2_PSK : SECURITY_WEP;
@@ -2178,8 +2182,10 @@ void PLAT_setCurrentTimezone(const char* tz) {
  bool PLAT_wifiConnected() { return true; }
  int PLAT_wifiConnection(struct WIFI_connection *connection_info) {
 	connection_info->freq = 2400;
-	strcpy(connection_info->ip, "127.0.0.1");
-	strcpy(connection_info->ssid, "Network1");
+	strncpy(connection_info->ip, "127.0.0.1", sizeof(connection_info->ip) - 1);
+	connection_info->ip[sizeof(connection_info->ip) - 1] = '\0';
+	strncpy(connection_info->ssid, "Network1", sizeof(connection_info->ssid) - 1);
+	connection_info->ssid[sizeof(connection_info->ssid) - 1] = '\0';
 	return 0;
  }
  bool PLAT_wifiHasCredentials(char *ssid, WifiSecurityType sec) { return false; }

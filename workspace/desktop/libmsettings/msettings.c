@@ -187,7 +187,7 @@ int peekVersion(const char *filename) {
 
 void InitSettings(void){
 	// We are not really using them, but we should be able to debug them
-	sprintf(SettingsPath, "%s/msettings.bin", getenv("USERDATA_PATH"));
+	snprintf(SettingsPath, sizeof(SettingsPath), "%s/msettings.bin", getenv("USERDATA_PATH"));
 	//sprintf(SettingsPath, "%s/msettings.bin", SDCARD_PATH "/.userdata");
 	msettings = (Settings*)malloc(sizeof(Settings));
 	
