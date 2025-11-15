@@ -238,7 +238,7 @@ static void Directory_index(Directory* self) {
     
     Hash* map = NULL;
     char map_path[256];
-    sprintf(map_path, "%s/map.txt", is_collection ? COLLECTIONS_PATH : self->path);
+    snprintf(map_path, sizeof(map_path), "%s/map.txt", is_collection ? COLLECTIONS_PATH : self->path);
 
     if (exists(map_path)) {
         FILE* file = fopen(map_path, "r");
@@ -413,7 +413,7 @@ static Recent* Recent_new(char* path, char* alias) {
 	Recent* self = malloc(sizeof(Recent));
 
 	char sd_path[256]; // only need to get emu name
-	sprintf(sd_path, "%s%s", SDCARD_PATH, path);
+	snprintf(sd_path, sizeof(sd_path), "%s%s", SDCARD_PATH, path);
 
 	char emu_name[256];
 	getEmuName(sd_path, emu_name);
@@ -508,17 +508,17 @@ static Entry* entryFromPakName(char* pak_name)
 {
 	char pak_path[256];
 	// Check in Tools
-	sprintf(pak_path, "%s/Tools/%s/%s.pak", SDCARD_PATH, PLATFORM, pak_name);
+	snprintf(pak_path, sizeof(pak_path), "%s/Tools/%s/%s.pak", SDCARD_PATH, PLATFORM, pak_name);
 	if(exists(pak_path))
 		return Entry_newNamed(pak_path, ENTRY_PAK, pak_name);
 
 	// Check in Emus
-	sprintf(pak_path, "%s/Emus/%s.pak", PAKS_PATH, pak_name);
+	snprintf(pak_path, sizeof(pak_path), "%s/Emus/%s.pak", PAKS_PATH, pak_name);
 	if(exists(pak_path)) 
 		return Entry_newNamed(pak_path, ENTRY_PAK, pak_name);
 
 	// Check in platform Emus
-	sprintf(pak_path, "%s/Emus/%s/%s.pak", SDCARD_PATH, PLATFORM, pak_name);
+	snprintf(pak_path, sizeof(pak_path), "%s/Emus/%s/%s.pak", SDCARD_PATH, PLATFORM, pak_name);
 	if(exists(pak_path)) 
 		return Entry_newNamed(pak_path, ENTRY_PAK, pak_name);
 
@@ -535,7 +535,7 @@ static int hasEmu(char* emu_name) {
 }
 static int hasCue(char* dir_path, char* cue_path) { // NOTE: dir_path not rom_path
 	char* tmp = strrchr(dir_path, '/') + 1; // folder name
-	sprintf(cue_path, "%s/%s.cue", dir_path, tmp);
+	snprintf(cue_path, 256, "%s/%s.cue", dir_path, tmp);
 	return exists(cue_path);
 }
 static int hasM3u(char* rom_path, char* m3u_path) { // NOTE: rom_path not dir_path
@@ -684,7 +684,7 @@ static int hasRoms(char* dir_name) {
 	if (!hasEmu(emu_name)) return has;
 	
 	// check for at least one non-hidden file (we're going to assume it's a rom)
-	sprintf(rom_path, "%s/%s/", ROMS_PATH, dir_name);
+	snprintf(rom_path, sizeof(rom_path), "%s/%s/", ROMS_PATH, dir_name);
 	DIR *dh = opendir(rom_path);
 	if (dh!=NULL) {
 		struct dirent *dp;
@@ -954,14 +954,14 @@ static Array* getDiscs(char* path){
 			if (strlen(line)==0) continue; // skip empty lines
 			
 			char disc_path[256];
-			sprintf(disc_path, "%s%s", base_path, line);
+			snprintf(disc_path, sizeof(disc_path), "%s%s", base_path, line);
 						
 			if (exists(disc_path)) {
 				disc += 1;
 				Entry* entry = Entry_new(disc_path, ENTRY_ROM);
 				free(entry->name);
 				char name[16];
-				sprintf(name, "Disc %i", disc);
+				snprintf(name, sizeof(name), "Disc %i", disc);
 				entry->name = strdup(name);
 				Array_push(entries, entry);
 			}
@@ -1157,7 +1157,7 @@ static void readyResumePath(char* rom_path, int type) {
 	tmp = strrchr(path, '/') + 1;
 	strcpy(rom_file, tmp);
 	
-	sprintf(slot_path, "%s/.minui/%s/%s.txt", SHARED_USERDATA_PATH, emu_name, rom_file); // /.userdata/.minui/<EMU>/<romname>.ext.txt
+	snprintf(slot_path, sizeof(slot_path), "%s/.minui/%s/%s.txt", SHARED_USERDATA_PATH, emu_name, rom_file); // /.userdata/.minui/<EMU>/<romname>.ext.txt
 	can_resume = exists(slot_path);
 
 	// slot_path contains a single integer representing the last used slot
@@ -1188,7 +1188,7 @@ static int autoResume(void) {
 	
 	// make sure rom still exists
 	char sd_path[256];
-	sprintf(sd_path, "%s%s", SDCARD_PATH, path);
+	snprintf(sd_path, sizeof(sd_path), "%s%s", SDCARD_PATH, path);
 	if (!exists(sd_path)) return 0;
 	
 	// make sure emu still exists
@@ -1203,12 +1203,12 @@ static int autoResume(void) {
 	// putFile(LAST_PATH, FAUX_RECENT_PATH); // saveLast() will crash here because top is NULL
 
 	char act[256];
-	sprintf(act, "gametimectl.elf start '%s'", escapeSingleQuotes(sd_path));
+	snprintf(act, sizeof(act), "gametimectl.elf start '%s'", escapeSingleQuotes(sd_path));
 	system(act);
 	
 	char cmd[256];
 	// dont escape sd_path again because it was already escaped for gametimectl and function modifies input str aswell
-	sprintf(cmd, "'%s' '%s'", escapeSingleQuotes(emu_path), sd_path);
+	snprintf(cmd, sizeof(cmd), "'%s' '%s'", escapeSingleQuotes(emu_path), sd_path);
 	putInt(RESUME_SLOT_PATH, AUTO_RESUME_SLOT);
 	queueNext(cmd);
 	return 1;
