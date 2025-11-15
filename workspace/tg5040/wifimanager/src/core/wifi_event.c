@@ -165,7 +165,7 @@ static void handle_event(int event, char * remainder) {
 						wmg_printf(MSG_WARNING,"*****connecting id %s != cennected id %s***\n", a->netIdConnecting, netid_connected);
 
 						/* send disconnect */
-						sprintf(cmd, "%s", "DISCONNECT");
+						snprintf(cmd, sizeof(cmd), "%s", "DISCONNECT");
 						wifi_command(cmd, reply, sizeof(reply));
 						break;
 					}
@@ -306,7 +306,7 @@ static int dispatch_event(const char *event_str, int nread)
         a->assocRejectCnt ++;
         if(a->assocRejectCnt >= MAX_ASSOC_REJECT_COUNT){
             /* send disconnect */
-            sprintf(cmd, "%s", "DISCONNECT");
+            snprintf(cmd, sizeof(cmd), "%s", "DISCONNECT");
             wifi_command(cmd, reply, sizeof(reply));
 			evtSend(WPAE_ASSOC_REJECT);
 			wmg_printf(MSG_ERROR,"ASSOC REJECT!\n");

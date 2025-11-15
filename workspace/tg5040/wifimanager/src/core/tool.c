@@ -27,7 +27,7 @@ int get_process_state(const char *process_nae,int length){
 		wmg_printf(MSG_ERROR,"process nae is too long!\n");
 		return -1;
 	}
-	sprintf(cmd,"ps | grep %s | grep -v grep",process_nae);
+	snprintf(cmd, sizeof(cmd), "ps | grep %s | grep -v grep", process_nae);
     strea = popen(cmd, "r" ); //CHECK_WIFI_SHELL-->> FILE* strea
     if(!strea) return -1;
     bytes = fread( buf, sizeof(char), sizeof(buf), strea);

@@ -331,7 +331,9 @@ void da_ctl_free(void)
 
 	if (ctl.socket_created) {
 		char tmp[256] = WIFIDAEMOIN_RUN_STATE_DIR "/";
-		unlink(strcat(tmp, CLT_VERSION));
+		strncat(tmp, CLT_VERSION, sizeof(tmp) - strlen(tmp) - 1);
+		tmp[sizeof(tmp) - 1] = '\0';
+		unlink(tmp);
 		ctl.socket_created = false;
 	}
 	ctl.enable = false;

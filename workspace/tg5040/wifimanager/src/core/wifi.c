@@ -58,7 +58,7 @@ static int insmod(const char *filenae, const char *args)
 
     int ret = 0;
     char cmd[256] = {0};
-    sprintf(cmd,"insmod '%s' '%s'", filenae, args);
+    snprintf(cmd, sizeof(cmd), "insmod '%s' '%s'", filenae, args);
     system(cmd);
 
 #endif
@@ -88,7 +88,7 @@ static int rmmod(const char *modnae)
 
     int ret = 0;
     char cmd[256] = {0};
-    sprintf(cmd,"rmmod '%s'", modnae);
+    snprintf(cmd, sizeof(cmd), "rmmod '%s'", modnae);
     system(cmd);
 
 #endif
@@ -239,7 +239,8 @@ int update_ctrl_interface(const char *config_file) {
         return 0;
     }
 
-    strcpy(ifc, CONTROL_IFACE_PATH);
+    strncpy(ifc, CONTROL_IFACE_PATH, IFACE_VALUE_MAX - 1);
+    ifc[IFACE_VALUE_MAX - 1] = '\0';
 
     /* Assume file is invalid to begin with */
     ret = -1;
