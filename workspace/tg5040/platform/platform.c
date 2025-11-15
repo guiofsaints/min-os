@@ -3924,21 +3924,21 @@ int PLAT_bluetoothPaired(struct BT_devicePaired *paired, int max)
 	return count;
 }
 
-void PLAT_bluetoothPair(char *addr)
+void PLAT_bluetoothPair(const char *addr)
 {
 	int ret = bt_manager_pair(addr);
 	if (ret)
 		LOG_error("BT pair failed: %d\n", ret);
 }
 
-void PLAT_bluetoothUnpair(char *addr)
+void PLAT_bluetoothUnpair(const char *addr)
 {
 	int ret = bt_manager_unpair(addr);
 	if (ret)
 		LOG_error("BT unpair failed\n");
 }
 
-void PLAT_bluetoothConnect(char *addr)
+void PLAT_bluetoothConnect(const char *addr)
 {
 	// can we get away wth just calling both?
 	int ret = bt_manager_connect(addr);
@@ -3957,7 +3957,7 @@ void PLAT_bluetoothConnect(char *addr)
 	//PLAT_bluetoothStreamBegin(0);
 }
 
-void PLAT_bluetoothDisconnect(char *addr)
+void PLAT_bluetoothDisconnect(const char *addr)
 {
 	// can we get away wth just calling this?
 	int ret = bt_manager_disconnect(addr);

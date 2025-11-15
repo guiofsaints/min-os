@@ -297,7 +297,7 @@ int PLAT_resetScrollText(TTF_Font* font, const char* in_name,int max_width);
 void GFX_scrollTextSurface(TTF_Font* font, const char* in_name, SDL_Surface** out_surface, int max_width, int height, int padding, SDL_Color color,float heightratio); // returns final width
 int GFX_getTextWidth(TTF_Font* font, const char* in_name, char* out_name, int max_width, int padding); // returns final width
 int GFX_getTextHeight(TTF_Font* font, const char* in_name, char* out_name, int max_width, int padding); // returns final width
-int GFX_wrapText(TTF_Font* font, char* str, int max_width, int max_lines);
+int GFX_wrapText(TTF_Font* font, char* str, int max_width, int max_lines); // modifies str in place
 
 #define GFX_getScaler PLAT_getScaler		// scaler_t:(GFX_Renderer* renderer)
 #define GFX_blitRenderer PLAT_blitRenderer	// void:(GFX_Renderer* renderer)
@@ -332,9 +332,9 @@ void GFX_blitRect(int asset, SDL_Surface* dst, SDL_Rect* dst_rect);
 void GFX_blitRectColor(int asset, SDL_Surface* dst, SDL_Rect* dst_rect, uint32_t asset_color);
 void GFX_blitBattery(SDL_Surface* dst, SDL_Rect* dst_rect);
 void GFX_blitBatteryAtPosition(SDL_Surface *dst, int x, int y);
-int GFX_getButtonWidth(char* hint, char* button);
-void GFX_blitButton(char* hint, char*button, SDL_Surface* dst, SDL_Rect* dst_rect);
-void GFX_blitMessage(TTF_Font* font, char* msg, SDL_Surface* dst, SDL_Rect* dst_rect);
+int GFX_getButtonWidth(const char* hint, const char* button);
+void GFX_blitButton(const char* hint, const char* button, SDL_Surface* dst, SDL_Rect* dst_rect);
+void GFX_blitMessage(TTF_Font* font, const char* msg, SDL_Surface* dst, SDL_Rect* dst_rect);
 
 int GFX_blitHardwareGroup(SDL_Surface* dst, int show_setting);
 void GFX_blitHardwareHints(SDL_Surface* dst, int show_setting);
@@ -811,13 +811,13 @@ int PLAT_bluetoothScan(struct BT_device *devices, int max);
 // returns the list of paired devices
 int PLAT_bluetoothPaired(struct BT_devicePaired *devices, int max);
 // pair with the given address
-void PLAT_bluetoothPair(char *addr);
+void PLAT_bluetoothPair(const char *addr);
 // unpair from the given address
-void PLAT_bluetoothUnpair(char *addr);
+void PLAT_bluetoothUnpair(const char *addr);
 // connect with the given address
-void PLAT_bluetoothConnect(char *addr);
+void PLAT_bluetoothConnect(const char *addr);
 // disconnect from the given address
-void PLAT_bluetoothDisconnect(char *addr);
+void PLAT_bluetoothDisconnect(const char *addr);
 // returns true if connected to at least one sink
 bool PLAT_bluetoothConnected();
 // init audio stream
