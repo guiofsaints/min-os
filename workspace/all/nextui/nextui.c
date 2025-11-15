@@ -2188,20 +2188,76 @@ void animPill(AnimTask *task) {
 
 void initImageLoaderPool() {
     thumbqueueMutex = SDL_CreateMutex();
+    if (!thumbqueueMutex) {
+        LOG_error("Failed to create thumbqueueMutex\n");
+        return;
+    }
     bgqueueMutex = SDL_CreateMutex();
+    if (!bgqueueMutex) {
+        LOG_error("Failed to create bgqueueMutex\n");
+        return;
+    }
     bgqueueCond = SDL_CreateCond();
+    if (!bgqueueCond) {
+        LOG_error("Failed to create bgqueueCond\n");
+        return;
+    }
     thumbqueueCond = SDL_CreateCond();
+    if (!thumbqueueCond) {
+        LOG_error("Failed to create thumbqueueCond\n");
+        return;
+    }
 	bgMutex = SDL_CreateMutex();
+    if (!bgMutex) {
+        LOG_error("Failed to create bgMutex\n");
+        return;
+    }
 	thumbMutex = SDL_CreateMutex();
+    if (!thumbMutex) {
+        LOG_error("Failed to create thumbMutex\n");
+        return;
+    }
 	animMutex = SDL_CreateMutex();
+    if (!animMutex) {
+        LOG_error("Failed to create animMutex\n");
+        return;
+    }
 	animqueueMutex = SDL_CreateMutex();
+    if (!animqueueMutex) {
+        LOG_error("Failed to create animqueueMutex\n");
+        return;
+    }
 	animqueueCond = SDL_CreateCond();
+    if (!animqueueCond) {
+        LOG_error("Failed to create animqueueCond\n");
+        return;
+    }
 	frameMutex = SDL_CreateMutex();
+    if (!frameMutex) {
+        LOG_error("Failed to create frameMutex\n");
+        return;
+    }
 	flipCond = SDL_CreateCond();
+    if (!flipCond) {
+        LOG_error("Failed to create flipCond\n");
+        return;
+    }
 
-    SDL_CreateThread(BGLoadWorker, "BGLoadWorker", NULL);
-    SDL_CreateThread(ThumbLoadWorker, "ThumbLoadWorker", NULL);
-	SDL_CreateThread(animWorker, "animWorker", NULL);
+    SDL_Thread *bgThread = SDL_CreateThread(BGLoadWorker, "BGLoadWorker", NULL);
+    if (!bgThread) {
+        LOG_error("Failed to create BGLoadWorker thread\n");
+        return;
+    }
+    SDL_Thread *thumbThread = SDL_CreateThread(ThumbLoadWorker, "ThumbLoadWorker", NULL);
+    if (!thumbThread) {
+        LOG_error("Failed to create ThumbLoadWorker thread\n");
+        return;
+    }
+	SDL_Thread *animThread = SDL_CreateThread(animWorker, "animWorker", NULL);
+    if (!animThread) {
+        LOG_error("Failed to create animWorker thread\n");
+        return;
+    }
 }
 ///////////////////////////////////////
 
@@ -2277,11 +2333,22 @@ int main (int argc, char *argv[]) {
 	folderbgbmp = NULL;
 
 	SDL_Surface * blackBG = SDL_CreateRGBSurfaceWithFormat(0,screen->w,screen->h,32,SDL_PIXELFORMAT_RGBA8888);
-	SDL_FillRect(blackBG,NULL,SDL_MapRGBA(screen->format,0,0,0,255));
+	if (!blackBG) {
+		LOG_error("Failed to create blackBG surface\n");
+		// Continue without blackBG - not critical
+	} else {
+		SDL_FillRect(blackBG,NULL,SDL_MapRGBA(screen->format,0,0,0,255));
+	}
 
 	SDL_LockMutex(animMutex);
 	globalpill = SDL_CreateRGBSurfaceWithFormat(SDL_SWSURFACE, screen->w, SCALE1(PILL_SIZE), FIXED_DEPTH, SDL_PIXELFORMAT_RGBA8888);
+	if (!globalpill) {
+		LOG_error("Failed to create globalpill surface\n");
+	}
 	globalText = SDL_CreateRGBSurfaceWithFormat(SDL_SWSURFACE, screen->w, SCALE1(PILL_SIZE), FIXED_DEPTH, SDL_PIXELFORMAT_RGBA8888);
+	if (!globalText) {
+		LOG_error("Failed to create globalText surface\n");
+	}
 	static int globallpillW = 0;
 	SDL_UnlockMutex(animMutex);
 
@@ -2877,19 +2944,21 @@ int main (int argc, char *argv[]) {
 					else {
 						SDL_Rect preview_rect = {ox,oy,screen->w,screen->h};
 						SDL_Surface * tmpsur = SDL_CreateRGBSurfaceWithFormat(0,screen->w,screen->h,32,SDL_PIXELFORMAT_RGBA8888);
-						SDL_FillRect(tmpsur, &preview_rect, SDL_MapRGBA(screen->format,0,0,0,255));
-						if(lastScreen == SCREEN_GAME) {
-							GFX_animateSurfaceOpacity(tmpsur,0,0,screen->w,screen->h,255,0,CFG_getMenuTransitions() ? 150:20,LAYER_BACKGROUND);
-						} else if(lastScreen == SCREEN_GAMELIST) { 
-							GFX_animateSurface(tmpsur,0,0-screen->h,0,0,screen->w,screen->h,CFG_getMenuTransitions() ? 100:20,255,255,LAYER_ALL);
-						} else if(lastScreen == SCREEN_GAMESWITCHER) {
-							GFX_flipHidden();
-							if(gsanimdir == SLIDE_LEFT) 
-								GFX_animateSurface(tmpsur,0+screen->w,0,0,0,screen->w,screen->h,CFG_getMenuTransitions() ? 80:20,0,255,LAYER_ALL);
-							else if(gsanimdir == SLIDE_RIGHT)
-								GFX_animateSurface(tmpsur,0-screen->w,0,0,0,screen->w,screen->h,CFG_getMenuTransitions() ? 80:20,0,255,LAYER_ALL);
+						if (tmpsur) {
+							SDL_FillRect(tmpsur, &preview_rect, SDL_MapRGBA(screen->format,0,0,0,255));
+							if(lastScreen == SCREEN_GAME) {
+								GFX_animateSurfaceOpacity(tmpsur,0,0,screen->w,screen->h,255,0,CFG_getMenuTransitions() ? 150:20,LAYER_BACKGROUND);
+							} else if(lastScreen == SCREEN_GAMELIST) { 
+								GFX_animateSurface(tmpsur,0,0-screen->h,0,0,screen->w,screen->h,CFG_getMenuTransitions() ? 100:20,255,255,LAYER_ALL);
+							} else if(lastScreen == SCREEN_GAMESWITCHER) {
+								GFX_flipHidden();
+								if(gsanimdir == SLIDE_LEFT) 
+									GFX_animateSurface(tmpsur,0+screen->w,0,0,0,screen->w,screen->h,CFG_getMenuTransitions() ? 80:20,0,255,LAYER_ALL);
+								else if(gsanimdir == SLIDE_RIGHT)
+									GFX_animateSurface(tmpsur,0-screen->w,0,0,0,screen->w,screen->h,CFG_getMenuTransitions() ? 80:20,0,255,LAYER_ALL);
+							}
+							SDL_FreeSurface(tmpsur);
 						}
-						SDL_FreeSurface(tmpsur);
 						GFX_blitMessage(font.large, "No Preview", screen, &preview_rect);
 					}
 					Entry_free(selectedEntry);
