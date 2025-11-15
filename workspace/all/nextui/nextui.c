@@ -719,7 +719,8 @@ static Array* getRoms()
         while ((dp = readdir(dh)) != NULL) {
             if (hide(dp->d_name)) continue;
             if (hasRoms(dp->d_name)) {
-                strcpy(tmp, dp->d_name);
+                strncpy(tmp, dp->d_name, full_path + sizeof(full_path) - tmp - 1);
+                tmp[full_path + sizeof(full_path) - tmp - 1] = '\0';
                 Array_push(emus, Entry_new(full_path, ENTRY_DIR));
             }
         }
@@ -937,7 +938,8 @@ static Array* getDiscs(char* path){
 	Array* entries = Array_new();
 	
 	char base_path[256];
-	strcpy(base_path, path);
+	strncpy(base_path, path, sizeof(base_path) - 1);
+	base_path[sizeof(base_path) - 1] = '\0';
 	char* tmp = strrchr(base_path, '/') + 1;
 	tmp[0] = '\0';
 	
@@ -1224,13 +1226,16 @@ static void openRom(char* path, char* last) {
 	LOG_info("openRom(%s,%s)\n", path, last);
 	
 	char sd_path[256];
-	strcpy(sd_path, path);
+	strncpy(sd_path, path, sizeof(sd_path) - 1);
+	sd_path[sizeof(sd_path) - 1] = '\0';
 	
 	char m3u_path[256];
 	int has_m3u = hasM3u(sd_path, m3u_path);
 	
 	char recent_path[256];
-	strcpy(recent_path, has_m3u ? m3u_path : sd_path);
+	const char* src = has_m3u ? m3u_path : sd_path;
+	strncpy(recent_path, src, sizeof(recent_path) - 1);
+	recent_path[sizeof(recent_path) - 1] = '\0';
 	
 	if (has_m3u && suffixMatch(".m3u", sd_path)) {
 		getFirstDisc(m3u_path, sd_path);
