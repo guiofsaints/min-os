@@ -162,12 +162,16 @@ PlayActivities *play_activity_find_all(void)
     }
     sqlite3_reset(stmt);
 
-    play_activities = (PlayActivities *)malloc(sizeof(PlayActivities));
-    play_activities->count = play_activity_count;
-    play_activities->play_time_total = 0;
-    play_activities->play_activity = (PlayActivity **)malloc(sizeof(PlayActivity *) * play_activities->count);
-
-    for (int i = 0; i < play_activities->count; i++) {
+	play_activities = (PlayActivities *)malloc(sizeof(PlayActivities));
+	play_activities->count = play_activity_count;
+	play_activities->play_time_total = 0;
+	// Check for overflow before allocating play_activity array
+	if (play_activities->count > SIZE_MAX / sizeof(PlayActivity *)) {
+		fprintf(stderr, "Play activity allocation overflow prevented\n");
+		free(play_activities);
+		return NULL;
+	}
+	play_activities->play_activity = (PlayActivity **)malloc(sizeof(PlayActivity *) * play_activities->count);    for (int i = 0; i < play_activities->count; i++) {
         if (sqlite3_step(stmt) != SQLITE_ROW)
             break;
 

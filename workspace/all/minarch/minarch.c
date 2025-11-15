@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
 #include <stdarg.h>
 #include <msettings.h>
 
@@ -2284,6 +2285,11 @@ static void Config_init(void) {
 
 	if (overlaylist) {
 		int newcount = filecount + 1;
+		// Check for overflow in list allocation
+		if (newcount < filecount || newcount > SIZE_MAX / sizeof(char*) - 1) {
+			LOG_info("overlay list size overflow prevented");
+			return;
+		}
 		char** newlist = malloc(sizeof(char*) * (newcount + 1)); // +1 for NULL terminator
 		if (!newlist) {
 			LOG_info("failed to make newlist");
@@ -2657,6 +2663,11 @@ void loadShaderSettings(int i) {
 		config.shaderpragmas[i].options[menucount].default_value = params[j].def;
 		
 		int steps = (int)((params[j].max - params[j].min) / params[j].step) + 1;
+		// Check for overflow in steps calculation and allocation
+		if (steps < 0 || steps > SIZE_MAX / sizeof(char*) - 1) {
+			LOG_error("Shader parameter steps overflow prevented\n");
+			continue;
+		}
 		config.shaderpragmas[i].options[menucount].values = malloc(sizeof(char *) * (steps + 1));
 		if (!config.shaderpragmas[i].options[menucount].values) {
 			LOG_error("Failed to allocate memory for shader values\n");
@@ -4101,6 +4112,11 @@ static const char* bitmap_font[] = {
 
 
 	void drawRect(int x, int y, int w, int h, uint32_t c, uint32_t *data, int stride) {
+		if (!data || stride <= 0) return;
+		// Prevent overflow in array index calculations
+		if (w < 0 || h < 0) return;
+		if (x < 0 || y < 0) return;
+		if (stride > INT_MAX / (y + h)) return;
 		for (int _x = x; _x < x + w; _x++) {
 			data[_x + y * stride] = c;
 			data[_x + (y + h - 1) * stride] = c;
@@ -4113,6 +4129,11 @@ static const char* bitmap_font[] = {
 	
 	
 	void fillRect(int x, int y, int w, int h, uint32_t c, uint32_t *data, int stride) {
+		if (!data || stride <= 0) return;
+		// Prevent overflow in array index calculations
+		if (w < 0 || h < 0) return;
+		if (x < 0 || y < 0) return;
+		if (stride > INT_MAX / (y + h)) return;
 		for (int _y = y; _y < y + h; _y++) {
 			for (int _x = x; _x < x + w; _x++) {
 				data[_x + _y * stride] = c;
@@ -4713,8 +4734,18 @@ static void video_refresh_callback(const void* data, unsigned width, unsigned he
 	// I need to check quit here because sometimes quit is true but callback is still called by the core after and it still runs one more frame and it looks ugly :D
 	if(!quit) {
 		if (!rgbaData || rgbaDataSize != width * height) {
+			// Check for overflow before calculating buffer size
+			if (width > 0 && height > SIZE_MAX / width) {
+				printf("Video buffer size overflow prevented (width=%u, height=%u)\n", width, height);
+				return;
+			}
+			size_t new_size = (size_t)width * (size_t)height;
+			if (new_size > SIZE_MAX / sizeof(Uint32)) {
+				printf("Video buffer allocation overflow prevented\n");
+				return;
+			}
 			if (rgbaData) free(rgbaData);
-			rgbaDataSize = width * height;
+			rgbaDataSize = new_size;
 			rgbaData = (Uint32*)malloc(rgbaDataSize * sizeof(Uint32));
 			if (!rgbaData) {
 				printf("Failed to allocate memory for RGBA8888 data.\n");

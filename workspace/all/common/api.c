@@ -2254,6 +2254,18 @@ ResampledFrames resample_audio(const SND_Frame *input_frames,
 
 	int max_output_frames = (int)(input_frame_count * final_ratio + 1);
 
+	// Check for overflow in buffer size calculations
+	if (input_frame_count > SIZE_MAX / 2 / sizeof(float)) {
+		fprintf(stderr, "Audio input buffer size overflow prevented\n");
+		src_delete(src_state);
+		exit(1);
+	}
+	if (max_output_frames > SIZE_MAX / 2 / sizeof(float)) {
+		fprintf(stderr, "Audio output buffer size overflow prevented\n");
+		src_delete(src_state);
+		exit(1);
+	}
+
 	float *input_buffer = (float *)malloc(input_frame_count * 2 * sizeof(float));
 	float *output_buffer = (float *)malloc(max_output_frames * 2 * sizeof(float));
 	if (!input_buffer || !output_buffer)
@@ -2289,6 +2301,15 @@ ResampledFrames resample_audio(const SND_Frame *input_frames,
 	}
 
 	int output_frame_count = src_data.output_frames_gen;
+
+	// Check for overflow in output frames allocation
+	if (output_frame_count > SIZE_MAX / sizeof(SND_Frame)) {
+		fprintf(stderr, "Output frames allocation overflow prevented\n");
+		free(input_buffer);
+		free(output_buffer);
+		src_delete(src_state);
+		exit(1);
+	}
 
 	SND_Frame *output_frames = (SND_Frame *)malloc(output_frame_count * sizeof(SND_Frame));
 	if (!output_frames)

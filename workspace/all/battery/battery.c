@@ -622,9 +622,15 @@ void initLayout()
     graph.layout.label_size_x = graph.layout.graph_display_size_x / 2;
     graph.layout.label_size_y = FONT_MEDIUM; // true for all? better make sure!
 
-    graph.layout.graph_max_size = GRAPH_MAX_FULL_PAGES * graph.layout.graph_display_size_x;
+	graph.layout.graph_max_size = GRAPH_MAX_FULL_PAGES * graph.layout.graph_display_size_x;
 
-    graph.graphic = (GraphSpot *)malloc(graph.layout.graph_max_size * sizeof(GraphSpot));
+	// Check for overflow before allocating graph data
+	if (graph.layout.graph_max_size > SIZE_MAX / sizeof(GraphSpot)) {
+		fprintf(stderr, "Graph allocation overflow prevented\n");
+		exit(1);
+	}
+
+	graph.graphic = (GraphSpot *)malloc(graph.layout.graph_max_size * sizeof(GraphSpot));
     for (int i = 0; i < graph.layout.graph_max_size; i++)
     {
         graph.graphic[i].pixel_height = 0;

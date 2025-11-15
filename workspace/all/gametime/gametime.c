@@ -181,8 +181,13 @@ SDL_Surface *loadRomImage(char *image_path)
 
 void preloadRomImages()
 {
-    // load all rom images into SDL_Surfaces
-    romImages = malloc(sizeof(SDL_Surface *) * play_activities->count);
+	// load all rom images into SDL_Surfaces
+	// Check for overflow before allocating rom images array
+	if (play_activities->count > SIZE_MAX / sizeof(SDL_Surface *)) {
+		fprintf(stderr, "ROM images allocation overflow prevented\n");
+		return;
+	}
+	romImages = malloc(sizeof(SDL_Surface *) * play_activities->count);
     for (int i = 0; i < play_activities->count; i++) {
         PlayActivity *entry = play_activities->play_activity[i];
         ROM *rom = entry->rom;

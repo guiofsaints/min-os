@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
 #include <msettings.h>
 #include <sys/types.h>
 #include <dirent.h>
@@ -39,6 +40,11 @@ static Array* Array_new(void) {
 static void Array_push(Array* self, void* item) {
 	if (!self) return;
 	if (self->count>=self->capacity) {
+		// Check for overflow before doubling capacity
+		if (self->capacity > SIZE_MAX / 2 / sizeof(void*)) {
+			fprintf(stderr, "Array capacity overflow prevented\n");
+			return; // Overflow would occur, keep existing data
+		}
 		self->capacity *= 2;
 		void* new_items = realloc(self->items, sizeof(void*) * self->capacity);
 		if (!new_items) return; // allocation failed, keep existing data
