@@ -4727,9 +4727,10 @@ static size_t audio_sample_batch_callback(const int16_t *data, size_t frames) {
 ///////////////////////////////////////
 
 void Core_getName(char* in_name, char* out_name) {
-	strcpy(out_name, basename(in_name));
+	strncpy(out_name, basename(in_name), 127);
+	out_name[127] = '\0';
 	char* tmp = strrchr(out_name, '_');
-	tmp[0] = '\0';
+	if (tmp) tmp[0] = '\0';
 }
 void Core_open(const char* core_path, const char* tag_name) {
 	LOG_info("Core_open\n");
@@ -4778,8 +4779,10 @@ void Core_open(const char* core_path, const char* tag_name) {
 
 	Core_getName((char*)core_path, (char*)core.name);
 	snprintf((char*)core.version, sizeof(core.version), "%s (%s)", info.library_name, info.library_version);
-	strcpy((char*)core.tag, tag_name);
-	strcpy((char*)core.extensions, info.valid_extensions);
+	strncpy((char*)core.tag, tag_name, 7);
+	((char*)core.tag)[7] = '\0';
+	strncpy((char*)core.extensions, info.valid_extensions, 127);
+	((char*)core.extensions)[127] = '\0';
 	
 	core.need_fullpath = info.need_fullpath;
 	
@@ -6979,8 +6982,10 @@ int main(int argc , char* argv[]) {
 	if(argc < 2)
 		return EXIT_FAILURE;
 
-	strcpy(core_path, argv[1]);
-	strcpy(rom_path, argv[2]);
+	strncpy(core_path, argv[1], MAX_PATH - 1);
+	core_path[MAX_PATH - 1] = '\0';
+	strncpy(rom_path, argv[2], MAX_PATH - 1);
+	rom_path[MAX_PATH - 1] = '\0';
 	getEmuName(rom_path, tag_name);
 	
 	LOG_info("rom_path: %s\n", rom_path);
