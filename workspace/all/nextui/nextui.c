@@ -594,7 +594,8 @@ static int hasRecents(void) {
 			Array_push(recents, recent);
 		
 			char parent_path[256];
-			strcpy(parent_path, disc_path);
+			strncpy(parent_path, disc_path, sizeof(parent_path) - 1);
+			parent_path[sizeof(parent_path) - 1] = '\0';
 			char* tmp = strrchr(parent_path, '/') + 1;
 			tmp[0] = '\0';
 			Array_push(parent_paths, strdup(parent_path));
@@ -628,7 +629,8 @@ static int hasRecents(void) {
 					char m3u_path[256];
 					if (hasM3u(sd_path, m3u_path)) { // TODO: this might tank launch speed
 						char parent_path[256];
-						strcpy(parent_path, path);
+						strncpy(parent_path, path, sizeof(parent_path) - 1);
+						parent_path[sizeof(parent_path) - 1] = '\0';
 						char* tmp = strrchr(parent_path, '/') + 1;
 						tmp[0] = '\0';
 						
@@ -977,7 +979,8 @@ static int getFirstDisc(char* m3u_path, char* disc_path) { // based on getDiscs(
 	int found = 0;
 
 	char base_path[256];
-	strcpy(base_path, m3u_path);
+	strncpy(base_path, m3u_path, sizeof(base_path) - 1);
+	base_path[sizeof(base_path) - 1] = '\0';
 	char* tmp = strrchr(base_path, '/') + 1;
 	tmp[0] = '\0';
 	
@@ -1417,7 +1420,8 @@ static void openDirectory(char* path, int auto_launch) {
 	}
 
 	char m3u_path[256];
-	strcpy(m3u_path, auto_path);
+	strncpy(m3u_path, auto_path, sizeof(m3u_path) - 1);
+	m3u_path[sizeof(m3u_path) - 1] = '\0';
 	char* tmp = strrchr(m3u_path, '.') + 1; // extension
 	if (tmp && (m3u_path + sizeof(m3u_path) - tmp > 4)) {
 		strncpy(tmp, "m3u", 4); // replace with m3u (max 3 chars + null)

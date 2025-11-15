@@ -192,7 +192,8 @@ static void Game_open(char* path) {
 		char* ext;
 		char exts[128];
 		char* extensions[32];
-		strcpy(exts,core.extensions);
+		strncpy(exts, core.extensions, sizeof(exts) - 1);
+		exts[sizeof(exts) - 1] = '\0';
 		while ((ext=strtok(i?NULL:exts,"|"))) {
 			extensions[i++] = ext;
 			if (!strcmp("zip", ext)) {
@@ -250,17 +251,22 @@ static void Game_open(char* path) {
 	char base_path[256];
 	char dir_name[256];
 
-	strcpy(m3u_path, game.path);
+	strncpy(m3u_path, game.path, sizeof(m3u_path) - 1);
+	m3u_path[sizeof(m3u_path) - 1] = '\0';
 	tmp = strrchr(m3u_path, '/') + 1;
 	tmp[0] = '\0';
 	
-	strcpy(base_path, m3u_path);
+	strncpy(base_path, m3u_path, sizeof(base_path) - 1);
+	base_path[sizeof(base_path) - 1] = '\0';
 	
 	tmp = strrchr(m3u_path, '/');
 	tmp[0] = '\0';
 
 	tmp = strrchr(m3u_path, '/');
-	strcpy(dir_name, tmp);
+	if (tmp) {
+		strncpy(dir_name, tmp, sizeof(dir_name) - 1);
+		dir_name[sizeof(dir_name) - 1] = '\0';
+	}
 	
 	tmp = m3u_path + strlen(m3u_path); 
 	strncpy(tmp, dir_name, 256 - strlen(m3u_path) - 1);
@@ -271,9 +277,15 @@ static void Game_open(char* path) {
 	m3u_path[255] = '\0';
 	
 	if (exists(m3u_path)) {
-		strcpy(game.m3u_path, m3u_path);
-		strcpy((char*)game.name, strrchr(m3u_path, '/')+1);
-		strcpy((char*)game.alt_name, game.name); // default it
+		strncpy(game.m3u_path, m3u_path, sizeof(game.m3u_path) - 1);
+		game.m3u_path[sizeof(game.m3u_path) - 1] = '\0';
+		tmp = strrchr(m3u_path, '/');
+		if (tmp) {
+			strncpy((char*)game.name, tmp + 1, sizeof(game.name) - 1);
+			((char*)game.name)[sizeof(game.name) - 1] = '\0';
+		}
+		strncpy((char*)game.alt_name, game.name, sizeof(game.alt_name) - 1);
+		((char*)game.alt_name)[sizeof(game.alt_name) - 1] = '\0';
 	}
 	
 	game.is_open = 1;
@@ -570,10 +582,12 @@ static void Cheat_getPaths(char paths[CHEAT_MAX_PATHS][MAX_PATH], int* count) {
 		int i = 0;
 		char* ext;
 		char exts[128];
-		strcpy(exts,core.extensions);
+		strncpy(exts, core.extensions, sizeof(exts) - 1);
+		exts[sizeof(exts) - 1] = '\0';
 		while ((ext=strtok(i?NULL:exts,"|"))) {
 			char rom_name[MAX_PATH];
-			strcpy(rom_name, game.alt_name);
+			strncpy(rom_name, game.alt_name, sizeof(rom_name) - 1);
+			rom_name[sizeof(rom_name) - 1] = '\0';
 			char* tmp = strrchr(rom_name, '.');
 			if (tmp != NULL && strlen(tmp) > 2 && strlen(tmp) <= 5) {
 				tmp[0] = '\0';
@@ -665,7 +679,8 @@ bool Cheats_load() {
 			globfree(&glob_results);
 			if (filename[0] == '\0') continue; // no match
 		} else {
-			strcpy(filename, paths[i]);
+			strncpy(filename, paths[i], MAX_PATH - 1);
+			filename[MAX_PATH - 1] = '\0';
 			if (!exists(filename)) {
 				filename[0] = '\0';
 				continue;
@@ -729,11 +744,13 @@ static void SRAM_getPath(char* filename) {
 
 	if (CFG_getSaveFormat() == SAVE_FORMAT_SRM 
 	 || CFG_getSaveFormat() == SAVE_FORMAT_SRM_UNCOMPRESSED) {
-		strcpy(work_name, game.alt_name);
+		strncpy(work_name, game.alt_name, sizeof(work_name) - 1);
+		work_name[sizeof(work_name) - 1] = '\0';
 		formatSavePath(work_name, filename, ".srm");
 	}
 	else if (CFG_getSaveFormat() == SAVE_FORMAT_GEN) {
-		strcpy(work_name, game.alt_name);
+		strncpy(work_name, game.alt_name, sizeof(work_name) - 1);
+		work_name[sizeof(work_name) - 1] = '\0';
 		formatSavePath(work_name, filename, ".sav");
 	}
 	else {
@@ -886,7 +903,8 @@ static void State_getPath(char* filename) {
 	// should probably be removed at some point in the future.
 	if (CFG_getStateFormat() == STATE_FORMAT_SRM_EXTRADOT 
 	 || CFG_getStateFormat() == STATE_FORMAT_SRM_UNCOMRESSED_EXTRADOT) {
-		strcpy(work_name, game.alt_name);
+		strncpy(work_name, game.alt_name, sizeof(work_name) - 1);
+		work_name[sizeof(work_name) - 1] = '\0';
 		char* tmp = strrchr(work_name, '.');
 		if (tmp != NULL && strlen(tmp) > 2 && strlen(tmp) <= 5) {
 			tmp[0] = '\0';
@@ -899,7 +917,8 @@ static void State_getPath(char* filename) {
 	}
 	else if (CFG_getStateFormat() == STATE_FORMAT_SRM
 	 	  || CFG_getStateFormat() == STATE_FORMAT_SRM_UNCOMRESSED) {
-		strcpy(work_name, game.alt_name);
+		strncpy(work_name, game.alt_name, sizeof(work_name) - 1);
+		work_name[sizeof(work_name) - 1] = '\0';
 		char* tmp = strrchr(work_name, '.');
 		if (tmp != NULL && strlen(tmp) > 2 && strlen(tmp) <= 5) {
 			tmp[0] = '\0';
@@ -2220,7 +2239,8 @@ static void Config_init(void) {
 		
 		// TODO: test this without a final line return
 		tmp2 = calloc(strlen(button_name)+1, sizeof(char));
-		strcpy(tmp2, button_name);
+		strncpy(tmp2, button_name, strlen(button_name));
+		tmp2[strlen(button_name)] = '\0';
 		ButtonMapping* button = &core_button_mapping[i++];
 		button->name = tmp2;
 		button->retro = retro_id;
@@ -2851,11 +2871,13 @@ static void OptionList_init(const struct retro_core_option_definition *defs) {
 			len = strlen(def->key) + 1;
 		
 			item->key = calloc(len, sizeof(char));
-			strcpy(item->key, def->key);
+			strncpy(item->key, def->key, len - 1);
+			item->key[len - 1] = '\0';
 			
 			len = strlen(def->desc) + 1;
 			item->name = calloc(len, sizeof(char));
-			strcpy(item->name, getOptionNameFromKey(def->key,def->desc));
+			strncpy(item->name, getOptionNameFromKey(def->key,def->desc), len - 1);
+			item->name[len - 1] = '\0';
 			
 			if (def->info) {
 				len = strlen(def->info) + 1;
@@ -2882,12 +2904,14 @@ static void OptionList_init(const struct retro_core_option_definition *defs) {
 		
 				len = strlen(value) + 1;
 				item->values[j] = calloc(len, sizeof(char));
-				strcpy(item->values[j], value);
+				strncpy(item->values[j], value, len - 1);
+				item->values[j][len - 1] = '\0';
 		
 				if (label) {
 					len = strlen(label) + 1;
 					item->labels[j] = calloc(len, sizeof(char));
-					strcpy(item->labels[j], label);
+					strncpy(item->labels[j], label, len - 1);
+					item->labels[j][len - 1] = '\0';
 				}
 				else {
 					item->labels[j] = item->values[j];
@@ -3002,11 +3026,13 @@ static void OptionList_vars(const struct retro_variable *vars) {
 
 			len = strlen(var->key) + 1;
 			item->key = calloc(len, sizeof(char));
-			strcpy(item->key, var->key);
+			strncpy(item->key, var->key, len - 1);
+			item->key[len - 1] = '\0';
 			
 			len = strlen(var->value) + 1;
 			item->var = calloc(len, sizeof(char));
-			strcpy(item->var, var->value);
+			strncpy(item->var, var->value, len - 1);
+			item->var[len - 1] = '\0';
 			
 			char* tmp = strchr(item->var, ';');
 			if (tmp && *(tmp+1)==' ') {
@@ -4968,7 +4994,8 @@ void Menu_init(void) {
 	
 	if (game.m3u_path[0]) {
 		char* tmp;
-		strcpy(menu.base_path, game.m3u_path);
+		strncpy(menu.base_path, game.m3u_path, sizeof(menu.base_path) - 1);
+		menu.base_path[sizeof(menu.base_path) - 1] = '\0';
 		tmp = strrchr(menu.base_path, '/') + 1;
 		tmp[0] = '\0';
 		
@@ -5553,7 +5580,8 @@ static int OptionCheats_openMenu(MenuList* list, int i) {
 			// this stuff gets actually copied around.. what year is it?
 			int len = strlen(cheat->name) + 1;
 			item->name = calloc(len, sizeof(char));
-			strcpy(item->name, cheat->name);
+			strncpy(item->name, cheat->name, len - 1);
+			item->name[len - 1] = '\0';
 
 			if(cheat->info) {
 				len = strlen(cheat->info) + 1;
@@ -5784,7 +5812,8 @@ static bool getAlias(char* path, char* alias) {
 					char* key = line;
 					char* value = tmp+1;
 					if (exactMatch(file_name,key)) {
-						strcpy(alias, value);
+						strncpy(alias, value, MAX_PATH - 1);
+						alias[MAX_PATH - 1] = '\0';
 						is_alias = true;
 						break;
 					}
@@ -6470,7 +6499,10 @@ static void Menu_loadState(void) {
 			getFile(menu.txt_path, slot_disc_name, 256);
 		
 			char slot_disc_path[256];
-			if (slot_disc_name[0]=='/') strcpy(slot_disc_path, slot_disc_name);
+			if (slot_disc_name[0]=='/') {
+				strncpy(slot_disc_path, slot_disc_name, sizeof(slot_disc_path) - 1);
+				slot_disc_path[sizeof(slot_disc_path) - 1] = '\0';
+			}
 			else snprintf(slot_disc_path, sizeof(slot_disc_path), "%s%s", menu.base_path, slot_disc_name);
 		
 			char* disc_path = menu.disc_paths[menu.disc];
