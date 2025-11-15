@@ -263,10 +263,12 @@ static void Game_open(char* path) {
 	strcpy(dir_name, tmp);
 	
 	tmp = m3u_path + strlen(m3u_path); 
-	strcpy(tmp, dir_name);
+	strncpy(tmp, dir_name, 256 - strlen(m3u_path) - 1);
+	m3u_path[255] = '\0';
 	
 	tmp = m3u_path + strlen(m3u_path);
-	strcpy(tmp, ".m3u");
+	strncpy(tmp, ".m3u", 256 - strlen(m3u_path) - 1);
+	m3u_path[255] = '\0';
 	
 	if (exists(m3u_path)) {
 		strcpy(game.m3u_path, m3u_path);
@@ -4976,7 +4978,8 @@ void Menu_init(void) {
 				char disc_path[256];
 				strcpy(disc_path, menu.base_path);
 				tmp = disc_path + strlen(disc_path);
-				strcpy(tmp, line);
+				strncpy(tmp, line, 256 - strlen(disc_path) - 1);
+				disc_path[255] = '\0';
 				
 				// found a valid disc path
 				if (exists(disc_path)) {

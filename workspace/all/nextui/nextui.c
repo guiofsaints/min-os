@@ -566,11 +566,13 @@ static int hasM3u(char* rom_path, char* m3u_path) { // NOTE: rom_path not dir_pa
 	
 	// dir_name is also our m3u file name
 	tmp = m3u_path + strlen(m3u_path); 
-	strcpy(tmp, dir_name);
+	strncpy(tmp, dir_name, 256 - strlen(m3u_path) - 1);
+	m3u_path[255] = '\0';
 
 	// add extension
 	tmp = m3u_path + strlen(m3u_path);
-	strcpy(tmp, ".m3u");
+	strncpy(tmp, ".m3u", 256 - strlen(m3u_path) - 1);
+	m3u_path[255] = '\0';
 	
 	return exists(m3u_path);
 }
