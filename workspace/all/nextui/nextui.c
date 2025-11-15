@@ -1528,9 +1528,11 @@ static void Entry_open(Entry* self) {
 		if (prefixMatch(COLLECTIONS_PATH, top->path)) {
 			char* tmp;
 			char filename[256];
-			
 			tmp = strrchr(self->path, '/');
-			if (tmp) strcpy(filename, tmp+1);
+			if (tmp) {
+				strncpy(filename, tmp + 1, sizeof(filename) - 1);
+				filename[sizeof(filename) - 1] = '\0';
+			}
 			
 			char last_path[256];
 			snprintf(last_path, sizeof(last_path), "%s/%s", top->path, filename);
@@ -1569,12 +1571,16 @@ static void loadLast(void) { // call after loading root directory
 	getFile(LAST_PATH, last_path, 256);
 	
 	char full_path[256];
-	strcpy(full_path, last_path);
+	strncpy(full_path, last_path, sizeof(full_path) - 1);
+	full_path[sizeof(full_path) - 1] = '\0';
 	
 	char* tmp;
 	char filename[256];
 	tmp = strrchr(last_path, '/');
-	if (tmp) strcpy(filename, tmp);
+	if (tmp) {
+		strncpy(filename, tmp, sizeof(filename) - 1);
+		filename[sizeof(filename) - 1] = '\0';
+	}
 	
 	Array* last = Array_new();
 	while (!exactMatch(last_path, SDCARD_PATH)) {
@@ -1590,7 +1596,8 @@ static void loadLast(void) { // call after loading root directory
 			char collated_path[256];
 			collated_path[0] = '\0';
 			if (suffixMatch(")", path) && isConsoleDir(path)) {
-				strcpy(collated_path, path);
+				strncpy(collated_path, path, sizeof(collated_path) - 1);
+				collated_path[sizeof(collated_path) - 1] = '\0';
 				tmp = strrchr(collated_path, '(');
 				if (tmp) tmp[1] = '\0'; // 1 because we want to keep the opening parenthesis to avoid collating "Game Boy Color" and "Game Boy Advance" into "Game Boy"
 			}

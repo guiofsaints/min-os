@@ -108,10 +108,14 @@ char *replaceString2(const char *orig, char *rep, char *with)
         ins = strstr(orig, rep);
         len_front = ins - orig;
         tmp = strncpy(tmp, orig, len_front) + len_front;
-        tmp = strcpy(tmp, with) + len_with;
+        size_t remaining = result_len - (tmp - result);
+        strncpy(tmp, with, remaining - 1);
+        tmp[remaining - 1] = '\0';
+        tmp += len_with;
         orig += len_front + len_rep; // move to next "end of rep"
     }
-    strcpy(tmp, orig);
+    strncpy(tmp, orig, result_len - (tmp - result) - 1);
+    result[result_len - 1] = '\0';
     return result;
 }
 // Stores the trimmed input string into the given output buffer, which must be
@@ -230,7 +234,8 @@ char *removeExtension(const char *myStr)
     char *lastExt;
     if (retStr == NULL)
         return NULL;
-    strcpy(retStr, myStr);
+    strncpy(retStr, myStr, strlen(myStr));
+    retStr[strlen(myStr)] = '\0';
     if ((lastExt = strrchr(retStr, '.')) != NULL && *(lastExt + 1) != ' ' && *(lastExt + 2) != '\0')
         *lastExt = '\0';
     return retStr;
@@ -242,14 +247,16 @@ const char *baseName(const char *filename)
 }
 void folderPath(const char *path, char *result) {
     char pathCopy[256];  
-    strcpy(pathCopy, path);
+    strncpy(pathCopy, path, sizeof(pathCopy) - 1);
+    pathCopy[sizeof(pathCopy) - 1] = '\0';
 
     char *lastSlash = strrchr(pathCopy, '/');  // Find the last slash
     if (lastSlash != NULL) {
         *lastSlash = '\0';  // Cut off the filename
-        strcpy(result, pathCopy);  // Copy the remaining path
+        strncpy(result, pathCopy, 256 - 1);
+        result[255] = '\0';  // Copy the remaining path
     } else {
-        strcpy(result, "");  // No folder found
+        result[0] = '\0';  // No folder found
     }
 }
 void cleanName(char *name_out, const char *file_name)
@@ -310,8 +317,10 @@ bool pathRelativeTo(char *path_out, const char *dir_from, const char *file_to)
 void getDisplayName(const char* in_name, char* out_name) {
 	char* tmp;
 	char work_name[256];
-	strcpy(work_name, in_name);
-	strcpy(out_name, in_name);
+	strncpy(work_name, in_name, sizeof(work_name) - 1);
+	work_name[sizeof(work_name) - 1] = '\0';
+	strncpy(out_name, in_name, 256 - 1);
+	out_name[255] = '\0';
 	
 	if (suffixMatch("/" PLATFORM, work_name)) { // hide platform from Tools path...
 		tmp = strrchr(work_name, '/');
@@ -320,7 +329,10 @@ void getDisplayName(const char* in_name, char* out_name) {
 	
 	// extract just the filename if necessary
 	tmp = strrchr(work_name, '/');
-	if (tmp) strcpy(out_name, tmp+1);
+	if (tmp) {
+		strncpy(out_name, tmp + 1, 256 - 1);
+		out_name[255] = '\0';
+	}
 	
 	// remove extension(s), eg. .p8.png
 	while ((tmp = strrchr(out_name, '.'))!=NULL) {
@@ -330,7 +342,8 @@ void getDisplayName(const char* in_name, char* out_name) {
 	}
 	
 	// remove trailing parens (round and square)
-	strcpy(work_name, out_name);
+	strncpy(work_name, out_name, sizeof(work_name) - 1);
+	work_name[sizeof(work_name) - 1] = '\0';
 	while ((tmp=strrchr(out_name, '('))!=NULL || (tmp=strrchr(out_name, '['))!=NULL) {
 		if (tmp==out_name) break;
 		tmp[0] = '\0';
@@ -338,7 +351,10 @@ void getDisplayName(const char* in_name, char* out_name) {
 	}
 	
 	// make sure we haven't nuked the entire name
-	if (out_name[0]=='\0') strcpy(out_name, work_name);
+	if (out_name[0]=='\0') {
+		strncpy(out_name, work_name, 256 - 1);
+		out_name[255] = '\0';
+	}
 	
 	// remove trailing whitespace
 	tmp = out_name + strlen(out_name) - 1;
@@ -347,7 +363,8 @@ void getDisplayName(const char* in_name, char* out_name) {
 }
 void getEmuName(const char* in_name, char* out_name) { // NOTE: both char arrays need to be MAX_PATH length!
 	char* tmp;
-	strcpy(out_name, in_name);
+	strncpy(out_name, in_name, MAX_PATH - 1);
+	out_name[MAX_PATH - 1] = '\0';
 	tmp = out_name;
 	
 	// printf("--------\n  in_name: %s\n",in_name); fflush(stdout);
@@ -358,7 +375,8 @@ void getEmuName(const char* in_name, char* out_name) { // NOTE: both char arrays
 		char* tmp2 = strchr(tmp, '/');
 		if (tmp2) tmp2[0] = '\0';
 		// printf("    tmp1: %s\n", tmp);
-		strcpy(out_name, tmp);
+		strncpy(out_name, tmp, MAX_PATH - 1);
+		out_name[MAX_PATH - 1] = '\0';
 		tmp = out_name;
 	}
 
@@ -367,7 +385,8 @@ void getEmuName(const char* in_name, char* out_name) { // NOTE: both char arrays
 	if (tmp) {
 		tmp += 1;
 		// printf("    tmp2: %s\n", tmp);
-		strcpy(out_name, tmp);
+		strncpy(out_name, tmp, MAX_PATH - 1);
+		out_name[MAX_PATH - 1] = '\0';
 		tmp = strchr(out_name,')');
 		tmp[0] = '\0';
 	}
