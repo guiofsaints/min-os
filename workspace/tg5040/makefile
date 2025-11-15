@@ -5,7 +5,7 @@ PLATFORM=$(UNION_PLATFORM)
 endif
 
 ifeq (,$(PLATFORM))
-$(error please specify PLATFORM, eg. PLATFORM=rgb30 make)
+$(error please specify PLATFORM, eg. PLATFORM=tg5040 make)
 endif
 
 ###########################################################
@@ -23,12 +23,12 @@ early: $(REQUIRES_EVTEST) $(REQUIRES_JSTEST) $(REQUIRES_UNZIP60) $(REQUIRES_FILE
 	cd $(REQUIRES_FILEMGR) && make -j
 	cd $(REQUIRES_EVTEST) && $(CROSS_COMPILE)gcc -o evtest evtest.c
 	cd $(REQUIRES_JSTEST) && $(CROSS_COMPILE)gcc -o jstest jstest.c
-	cd $(REQUIRES_UNZIP60) && make -f unix/Makefile.trimuismart unzip
+	cd $(REQUIRES_UNZIP60) && make -f unix/Makefile unzip
 
 clean:
 	cd show && make clean
 	cd $(REQUIRES_FILEMGR) && make clean
-	cd $(REQUIRES_UNZIP60) && make -f unix/Makefile.trimuismart clean
+	cd $(REQUIRES_UNZIP60) && make -f unix/Makefile clean
 
 ###########################################################
 

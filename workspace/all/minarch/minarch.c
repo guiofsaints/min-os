@@ -92,7 +92,7 @@ static struct Core {
 	const char version[128]; // eg. Gambatte (v0.5.0-netlink 7e02df6)
 	const char extensions[128]; // eg. gb|gbc|dmg
 	
-	const char config_dir[MAX_PATH]; // eg. /mnt/sdcard/.userdata/rg35xx/GB-gambatte
+	const char config_dir[MAX_PATH]; // eg. /mnt/sdcard/.userdata/tg5040/GB-gambatte
 	const char states_dir[MAX_PATH]; // eg. /mnt/sdcard/.userdata/arm-480/GB-gambatte
 	const char saves_dir[MAX_PATH]; // eg. /mnt/sdcard/Saves/GB
 	const char bios_dir[MAX_PATH]; // eg. /mnt/sdcard/Bios/GB
@@ -4192,7 +4192,7 @@ static void selectScaler(int src_w, int src_h, int src_p) {
 	renderer.true_w = src_w;
 	renderer.true_h = src_h;
 	
-	// TODO: this is saving non-rgb30 devices from themselves...or rather, me
+	// TODO: HDMI output handling
 	int scaling = screen_scaling;
 	if (scaling==SCALE_CROPPED && DEVICE_WIDTH==HDMI_WIDTH) {
 		scaling = SCALE_NATIVE;
@@ -4585,7 +4585,7 @@ static void video_refresh_callback_main(const void *data, unsigned width, unsign
 	// 10 seems to be the sweet spot that allows 2x in NES and SNES and 8x in GB at 60fps
 	// 14 will let GB hit 10x but NES and SNES will drop to 1.5x at 30fps (not sure why)
 	// but 10 hurts PS...
-	// TODO: 10 was based on rg35xx, probably different results on other supported platforms
+	// TODO: may need tuning for optimal fast-forward performance
 	if (fast_forward && SDL_GetTicks()-last_flip_time<10) return;
 	
 	// FFVII menus 

@@ -3,7 +3,7 @@
 #include <stdint.h>
 
 //
-//	arm NEON / C integer scalers for rg35xx
+//	arm NEON / C integer scalers
 //	args/	src :	src offset		address of top left corner
 //		dst :	dst offset		address	of top left corner
 //		sw  :	src width		pixels
