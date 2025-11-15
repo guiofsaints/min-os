@@ -211,8 +211,13 @@ static void Game_open(char* path) {
 			if(!extract_zip(extensions))
 				return;
 			// Update the game name to the extracted file name instead of the zip name
-			if (CFG_getUseExtractedFileName())
-				strcpy((char*)game.alt_name, strrchr(game.tmp_path, '/')+1);
+			if (CFG_getUseExtractedFileName()) {
+				char* tmp = strrchr(game.tmp_path, '/');
+				if (tmp) {
+					strncpy((char*)game.alt_name, tmp + 1, sizeof(game.alt_name) - 1);
+					((char*)game.alt_name)[sizeof(game.alt_name) - 1] = '\0';
+				}
+			}
 		}
 		else {
 			LOG_info("Core can handle zip file: %s\n", game.path);
@@ -659,7 +664,8 @@ bool Cheats_load() {
 		if (strchr(paths[i],'*')) {
 			// Use glob to handle wildcards
 			char glob_pattern[MAX_PATH];
-			strcpy(glob_pattern, paths[i]);
+			strncpy(glob_pattern, paths[i], sizeof(glob_pattern) - 1);
+			glob_pattern[sizeof(glob_pattern) - 1] = '\0';
 
 			glob_t glob_results;
 			memset(&glob_results, 0, sizeof(glob_t));
@@ -668,7 +674,8 @@ bool Cheats_load() {
 			if (glob_ret == 0 && glob_results.gl_pathc > 0) {
 				for (size_t gi = 0; gi < glob_results.gl_pathc; ++gi) {
 					if (!suffixMatch(".cht", glob_results.gl_pathv[gi])) continue;
-					strcpy(filename, glob_results.gl_pathv[gi]);
+					strncpy(filename, glob_results.gl_pathv[gi], MAX_PATH - 1);
+					filename[MAX_PATH - 1] = '\0';
 					if (exists(filename)) {
 						LOG_info("Found potential cheat file: %s\n", filename);
 						break;
@@ -5009,7 +5016,8 @@ void Menu_init(void) {
 				if (strlen(line)==0) continue; // skip empty lines
 		
 				char disc_path[256];
-				strcpy(disc_path, menu.base_path);
+				strncpy(disc_path, menu.base_path, sizeof(disc_path) - 1);
+				disc_path[sizeof(disc_path) - 1] = '\0';
 				tmp = disc_path + strlen(disc_path);
 				strncpy(tmp, line, 256 - strlen(disc_path) - 1);
 				disc_path[255] = '\0';
@@ -5785,7 +5793,8 @@ static bool getAlias(char* path, char* alias) {
 	// LOG_info("alias path: %s\n", path);
 	char* tmp;
 	char map_path[256];
-	strcpy(map_path, path);
+	strncpy(map_path, path, sizeof(map_path) - 1);
+	map_path[sizeof(map_path) - 1] = '\0';
 	tmp = strrchr(map_path, '/');
 	if (tmp) {
 		tmp += 1;

@@ -1042,7 +1042,8 @@ static void addEntries(Array* entries, char* path) {
 static int isConsoleDir(char* path) {
 	char* tmp;
 	char parent_dir[256];
-	strcpy(parent_dir, path);
+	strncpy(parent_dir, path, sizeof(parent_dir) - 1);
+	parent_dir[sizeof(parent_dir) - 1] = '\0';
 	tmp = strrchr(parent_dir, '/');
 	tmp[0] = '\0';
 	
@@ -1054,7 +1055,8 @@ static Array* getEntries(char* path){
 
 	if (isConsoleDir(path)) { // top-level console folder, might collate
 		char collated_path[256];
-		strcpy(collated_path, path);
+		strncpy(collated_path, path, sizeof(collated_path) - 1);
+		collated_path[sizeof(collated_path) - 1] = '\0';
 		char* tmp = strrchr(collated_path, '(');
 		// 1 because we want to keep the opening parenthesis to avoid collating "Game Boy Color" and "Game Boy Advance" into "Game Boy"
 		// but conditional so we can continue to support a bare tag name as a folder name
@@ -1149,14 +1151,16 @@ static void readyResumePath(char* rom_path, int type) {
 			}
 			if (!exists(auto_path)) return; // no m3u
 		}
-		strcpy(path, auto_path); // cue or m3u if one exists
+		strncpy(path, auto_path, 256 - 1);
+		path[255] = '\0'; // cue or m3u if one exists
 	}
 	
 	if (!suffixMatch(".m3u", path)) {
 		char m3u_path[256];
 		if (hasM3u(path, m3u_path)) {
 			// change path to m3u path
-			strcpy(path, m3u_path);
+			strncpy(path, m3u_path, 256 - 1);
+			path[255] = '\0';
 		}
 	}
 	
@@ -1164,8 +1168,11 @@ static void readyResumePath(char* rom_path, int type) {
 	getEmuName(path, emu_name);
 	
 	char rom_file[256];
-	tmp = strrchr(path, '/') + 1;
-	strcpy(rom_file, tmp);
+	tmp = strrchr(path, '/');
+	if (tmp) {
+		strncpy(rom_file, tmp + 1, sizeof(rom_file) - 1);
+		rom_file[sizeof(rom_file) - 1] = '\0';
+	}
 	
 	snprintf(slot_path, sizeof(slot_path), "%s/.minui/%s/%s.txt", SHARED_USERDATA_PATH, emu_name, rom_file); // /.userdata/.minui/<EMU>/<romname>.ext.txt
 	can_resume = exists(slot_path);
@@ -1262,7 +1269,11 @@ static void openRom(char* path, char* last) {
 
 		if (has_m3u) {
 			char rom_file[256];
-			strcpy(rom_file, strrchr(m3u_path, '/') + 1);
+			char* tmp = strrchr(m3u_path, '/');
+			if (tmp) {
+				strncpy(rom_file, tmp + 1, sizeof(rom_file) - 1);
+				rom_file[sizeof(rom_file) - 1] = '\0';
+			}
 			
 			// get disc for state
 			char disc_path_path[256];
@@ -1272,11 +1283,19 @@ static void openRom(char* path, char* last) {
 				// switch to disc path
 				char disc_path[256];
 				getFile(disc_path_path, disc_path, 256);
-				if (disc_path[0]=='/') strcpy(sd_path, disc_path); // absolute
+				if (disc_path[0]=='/') {
+					strncpy(sd_path, disc_path, sizeof(sd_path) - 1);
+					sd_path[sizeof(sd_path) - 1] = '\0'; // absolute
+				}
 				else { // relative
-					strcpy(sd_path, m3u_path);
-					char* tmp = strrchr(sd_path, '/') + 1;
-					strcpy(tmp, disc_path);
+					strncpy(sd_path, m3u_path, sizeof(sd_path) - 1);
+					sd_path[sizeof(sd_path) - 1] = '\0';
+					char* tmp = strrchr(sd_path, '/');
+					if (tmp) {
+						tmp += 1;
+						strncpy(tmp, disc_path, sizeof(sd_path) - (tmp - sd_path) - 1);
+						sd_path[sizeof(sd_path) - 1] = '\0';
+					}
 				}
 			}
 		}
@@ -1357,7 +1376,8 @@ Array* pathToStack(const char* path) {
 	if (exactMatch(path, SDCARD_PATH)) return array;
 
 	char temp_path[PATH_MAX];
-	strcpy(temp_path, SDCARD_PATH);
+	strncpy(temp_path, SDCARD_PATH, sizeof(temp_path) - 1);
+	temp_path[sizeof(temp_path) - 1] = '\0';
 	size_t current_len = strlen(SDCARD_PATH);
 
 	const char* cursor = path + current_len;
