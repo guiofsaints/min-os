@@ -795,7 +795,8 @@ static Array* getCollections(void)
 		Array* collections = Array_new();
 		while ((dp = readdir(dh)) != NULL) {
 			if (hide(dp->d_name)) continue;
-			strcpy(tmp, dp->d_name);
+			strncpy(tmp, dp->d_name, 256 - strlen(full_path) - 1);
+			tmp[256 - strlen(full_path) - 1] = '\0';
 			Array_push(collections, Entry_new(full_path, ENTRY_DIR)); // Collections are fake directories
 		}
 		closedir(dh); // Close immediately after use
@@ -1006,7 +1007,8 @@ static void addEntries(Array* entries, char* path) {
 		tmp = full_path + strlen(full_path);
 		while((dp = readdir(dh)) != NULL) {
 			if (hide(dp->d_name)) continue;
-			strcpy(tmp, dp->d_name);
+			strncpy(tmp, dp->d_name, 256 - strlen(full_path) - 1);
+			tmp[256 - strlen(full_path) - 1] = '\0';
 			int is_dir = dp->d_type==DT_DIR;
 			int type;
 			if (is_dir) {
@@ -1063,7 +1065,8 @@ static Array* getEntries(char* path){
 			while((dp = readdir(dh)) != NULL) {
 				if (hide(dp->d_name)) continue;
 				if (dp->d_type!=DT_DIR) continue;
-				strcpy(tmp, dp->d_name);
+				strncpy(tmp, dp->d_name, 256 - strlen(full_path) - 1);
+				tmp[256 - strlen(full_path) - 1] = '\0';
 			
 				if (!prefixMatch(collated_path, full_path)) continue;
 				addEntries(entries, full_path);
