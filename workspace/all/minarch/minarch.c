@@ -261,8 +261,6 @@ static void Game_open(char* path) {
 }
 static void Game_close(void) {
 	if (game.data) free(game.data);
-	// why delete tempfile? keep it for next time when loading the game its much faster from /tmp ram folder
-	// if (game.tmp_path[0]) remove(game.tmp_path);
 	game.is_open = 0;
 	VIB_setStrength(0); // just in case
 }
