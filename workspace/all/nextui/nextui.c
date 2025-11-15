@@ -1141,7 +1141,9 @@ static void readyResumePath(char* rom_path, int type) {
 	if (type==ENTRY_DIR) {
 		if (!hasCue(path, auto_path)) { // no cue?
 			tmp = strrchr(auto_path, '.') + 1; // extension
-			strcpy(tmp, "m3u"); // replace with m3u
+			if (tmp && (auto_path + sizeof(auto_path) - tmp > 4)) {
+				strncpy(tmp, "m3u", 4); // replace with m3u (max 3 chars + null)
+			}
 			if (!exists(auto_path)) return; // no m3u
 		}
 		strcpy(path, auto_path); // cue or m3u if one exists
@@ -1417,7 +1419,9 @@ static void openDirectory(char* path, int auto_launch) {
 	char m3u_path[256];
 	strcpy(m3u_path, auto_path);
 	char* tmp = strrchr(m3u_path, '.') + 1; // extension
-	strcpy(tmp, "m3u"); // replace with m3u
+	if (tmp && (m3u_path + sizeof(m3u_path) - tmp > 4)) {
+		strncpy(tmp, "m3u", 4); // replace with m3u (max 3 chars + null)
+	}
 	if (exists(m3u_path) && auto_launch) {
 		auto_path[0] = '\0';
 		if (getFirstDisc(m3u_path, auto_path)) {

@@ -2416,7 +2416,10 @@ static void Config_load(void) {
 	char default_path[MAX_PATH];
 	getEmuPath((char *)core.tag, default_path);
 	char* tmp = strrchr(default_path, '/');
-	strcpy(tmp,"/default.cfg");
+	if (tmp) {
+		strncpy(tmp,"/default.cfg", MAX_PATH - (tmp - default_path) - 1);
+		default_path[MAX_PATH - 1] = '\0';
+	}
 
 	char device_default_path[MAX_PATH] = {0};
 	if (config.device_tag) {
@@ -2424,7 +2427,10 @@ static void Config_load(void) {
 		tmp = strrchr(device_default_path, '/');
 		char filename[64];
 		snprintf(filename, sizeof(filename), "/default-%s.cfg", config.device_tag);
-		strcpy(tmp,filename);
+		if (tmp) {
+			strncpy(tmp, filename, MAX_PATH - (tmp - device_default_path) - 1);
+			device_default_path[MAX_PATH - 1] = '\0';
+		}
 	}
 	
 	if (config.device_tag && exists(device_default_path)) {
@@ -5755,7 +5761,8 @@ static bool getAlias(char* path, char* alias) {
 	tmp = strrchr(map_path, '/');
 	if (tmp) {
 		tmp += 1;
-		strcpy(tmp, "map.txt");
+		strncpy(tmp, "map.txt", 256 - (tmp - map_path) - 1);
+		map_path[255] = '\0';
 		// LOG_info("map_path: %s\n", map_path);
 	}
 	char* file_name = strrchr(path,'/');
