@@ -26,15 +26,22 @@ typedef struct Array {
 
 static Array* Array_new(void) {
 	Array* self = malloc(sizeof(Array));
+	if (!self) return NULL;
 	self->count = 0;
 	self->capacity = 8;
 	self->items = malloc(sizeof(void*) * self->capacity);
+	if (!self->items) {
+		free(self);
+		return NULL;
+	}
 	return self;
 }
 static void Array_push(Array* self, void* item) {
 	if (self->count>=self->capacity) {
 		self->capacity *= 2;
-		self->items = realloc(self->items, sizeof(void*) * self->capacity);
+		void* new_items = realloc(self->items, sizeof(void*) * self->capacity);
+		if (!new_items) return; // allocation failed, keep existing data
+		self->items = new_items;
 	}
 	self->items[self->count++] = item;
 }
@@ -101,8 +108,18 @@ typedef struct Hash {
 
 static Hash* Hash_new(void) {
 	Hash* self = malloc(sizeof(Hash));
+	if (!self) return NULL;
 	self->keys = Array_new();
+	if (!self->keys) {
+		free(self);
+		return NULL;
+	}
 	self->values = Array_new();
+	if (!self->values) {
+		Array_free(self->keys);
+		free(self);
+		return NULL;
+	}
 	return self;
 }
 static void Hash_free(Hash* self) {
@@ -140,8 +157,18 @@ static Entry* Entry_new(char* path, int type) {
 	char display_name[256];
 	getDisplayName(path, display_name);
 	Entry* self = malloc(sizeof(Entry));
+	if (!self) return NULL;
 	self->path = strdup(path);
+	if (!self->path) {
+		free(self);
+		return NULL;
+	}
 	self->name = strdup(display_name);
+	if (!self->name) {
+		free(self->path);
+		free(self);
+		return NULL;
+	}
 	self->unique = NULL;
 	self->type = type;
 	self->alpha = 0;
@@ -193,6 +220,7 @@ typedef struct IntArray {
 } IntArray;
 static IntArray* IntArray_new(void) {
 	IntArray* self = malloc(sizeof(IntArray));
+	if (!self) return NULL;
 	self->count = 0;
 	memset(self->items, 0, sizeof(int) * INT_ARRAY_MAX);
 	return self;
@@ -355,8 +383,18 @@ static Directory* Directory_new(char* path, int selected) {
 	getDisplayName(path, display_name);
 	
 	Directory* self = malloc(sizeof(Directory));
+	if (!self) return NULL;
 	self->path = strdup(path);
+	if (!self->path) {
+		free(self);
+		return NULL;
+	}
 	self->name = strdup(display_name);
+	if (!self->name) {
+		free(self->path);
+		free(self);
+		return NULL;
+	}
 	if (exactMatch(path, SDCARD_PATH)) {
 		self->entries = getRoot();
 	}
@@ -375,7 +413,20 @@ static Directory* Directory_new(char* path, int selected) {
 	else {
 		self->entries = getEntries(path);
 	}
+	if (!self->entries) {
+		free(self->name);
+		free(self->path);
+		free(self);
+		return NULL;
+	}
 	self->alphas = IntArray_new();
+	if (!self->alphas) {
+		EntryArray_free(self->entries);
+		free(self->name);
+		free(self->path);
+		free(self);
+		return NULL;
+	}
 	self->selected = selected;
 	Directory_index(self);
 	return self;
@@ -411,6 +462,7 @@ static char* recent_alias = NULL;
 static int hasEmu(char* emu_name);
 static Recent* Recent_new(char* path, char* alias) {
 	Recent* self = malloc(sizeof(Recent));
+	if (!self) return NULL;
 
 	char sd_path[256]; // only need to get emu name
 	snprintf(sd_path, sizeof(sd_path), "%s%s", SDCARD_PATH, path);
@@ -419,6 +471,10 @@ static Recent* Recent_new(char* path, char* alias) {
 	getEmuName(sd_path, emu_name);
 	
 	self->path = strdup(path);
+	if (!self->path) {
+		free(self);
+		return NULL;
+	}
 	self->alias = alias ? strdup(alias) : NULL;
 	self->available = hasEmu(emu_name);
 	return self;
@@ -1767,6 +1823,11 @@ int currentAnimQueueSize = 0;
 void enqueueBGTask(LoadBackgroundTask* task) {
 	SDL_LockMutex(bgqueueMutex);
     TaskNode* node = (TaskNode*)malloc(sizeof(TaskNode));
+    if (!node) {
+        SDL_UnlockMutex(bgqueueMutex);
+        if (task) free(task);
+        return;
+    }
     node->task = task;
     node->next = NULL;
 
@@ -1801,6 +1862,11 @@ void enqueueBGTask(LoadBackgroundTask* task) {
 void enqueueThumbTask(LoadBackgroundTask* task) {
 	SDL_LockMutex(thumbqueueMutex);
     TaskNode* node = (TaskNode*)malloc(sizeof(TaskNode));
+    if (!node) {
+        SDL_UnlockMutex(thumbqueueMutex);
+        if (task) free(task);
+        return;
+    }
     node->task = task;
     node->next = NULL;
 
@@ -2077,6 +2143,10 @@ int animWorker(void* unused) {
 
 void enqueueanmimtask(AnimTask* task) {
     AnimTaskNode* node = (AnimTaskNode*)malloc(sizeof(AnimTaskNode));
+    if (!node) {
+        if (task) free(task);
+        return;
+    }
     node->task = task;
     node->next = NULL;
 	
@@ -2978,6 +3048,11 @@ int main (int argc, char *argv[]) {
 							globallpillW =  max_width;
 							SDL_UnlockMutex(animMutex);
 							AnimTask* task = malloc(sizeof(AnimTask));
+							if (!task) {
+								SDL_FreeSurface(text_unique);
+								SDL_FreeSurface(text);
+								continue;
+							}
 							task->startX = SCALE1(BUTTON_MARGIN);
 							task->startY = SCALE1(previousY+PADDING);
 							task->targetX = SCALE1(BUTTON_MARGIN);

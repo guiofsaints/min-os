@@ -2246,6 +2246,10 @@ static void Config_init(void) {
 		
 		// TODO: test this without a final line return
 		tmp2 = calloc(strlen(button_name)+1, sizeof(char));
+		if (!tmp2) {
+			LOG_error("Failed to allocate memory for button name\n");
+			break;
+		}
 		strncpy(tmp2, button_name, strlen(button_name));
 		tmp2[strlen(button_name)] = '\0';
 		ButtonMapping* button = &core_button_mapping[i++];
@@ -2631,6 +2635,10 @@ void readShadersPreset(int i) {
 void loadShaderSettings(int i) {
 	int menucount = 0;
 	config.shaderpragmas[i].options = calloc(32 + 1, sizeof(Option));
+	if (!config.shaderpragmas[i].options) {
+		LOG_error("Failed to allocate memory for shader options\n");
+		return;
+	}
 	ShaderParam *params = PLAT_getShaderPragmas(i);
 	if(params == NULL) return;
 	for (int j = 0; j < 32; j++) {
@@ -2651,10 +2659,28 @@ void loadShaderSettings(int i) {
 		
 		int steps = (int)((params[j].max - params[j].min) / params[j].step) + 1;
 		config.shaderpragmas[i].options[menucount].values = malloc(sizeof(char *) * (steps + 1));
+		if (!config.shaderpragmas[i].options[menucount].values) {
+			LOG_error("Failed to allocate memory for shader values\n");
+			continue;
+		}
 		config.shaderpragmas[i].options[menucount].labels = malloc(sizeof(char *) * (steps + 1));
+		if (!config.shaderpragmas[i].options[menucount].labels) {
+			free(config.shaderpragmas[i].options[menucount].values);
+			LOG_error("Failed to allocate memory for shader labels\n");
+			continue;
+		}
 		for (int s = 0; s < steps; s++) {
 			float val = params[j].min + s * params[j].step;
 			char *str = malloc(16);
+			if (!str) {
+				// Cleanup and abort this parameter
+				for (int k = 0; k < s; k++) {
+					free(config.shaderpragmas[i].options[menucount].values[k]);
+				}
+				free(config.shaderpragmas[i].options[menucount].values);
+				free(config.shaderpragmas[i].options[menucount].labels);
+				break;
+			}
 			snprintf(str, 16, "%.2f", val);
 			config.shaderpragmas[i].options[menucount].values[s] = str;
 			config.shaderpragmas[i].options[menucount].labels[s] = str;
@@ -2870,6 +2896,10 @@ static void OptionList_init(const struct retro_core_option_definition *defs) {
 	config.core.categories = NULL; // There is no categories in v1 definition
 	if (count) {
 		config.core.options = calloc(count+1, sizeof(Option));
+		if (!config.core.options) {
+			LOG_error("Failed to allocate memory for core options\n");
+			return;
+		}
 		
 		for (int i=0; i<config.core.count; i++) {
 			int len;
@@ -2878,6 +2908,7 @@ static void OptionList_init(const struct retro_core_option_definition *defs) {
 			len = strlen(def->key) + 1;
 		
 			item->key = calloc(len, sizeof(char));
+			if (!item->key) continue;
 			strncpy(item->key, def->key, len - 1);
 			item->key[len - 1] = '\0';
 			
