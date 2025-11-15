@@ -249,7 +249,7 @@ void putFile(char* path, char* contents) {
 }
 void putInt(char* path, int value) {
 	char buffer[8];
-	sprintf(buffer, "%d", value);
+	snprintf(buffer, sizeof(buffer), "%d", value);
 	putFile(path, buffer);
 }
 
@@ -279,7 +279,7 @@ void InitSettings(void) {
 	char* device = getenv("DEVICE");
 	is_brick = exactMatch("brick", device);
 	
-	sprintf(SettingsPath, "%s/msettings.bin", getenv("USERDATA_PATH"));
+	snprintf(SettingsPath, sizeof(SettingsPath), "%s/msettings.bin", getenv("USERDATA_PATH"));
 	
 	shm_fd = shm_open(SHM_KEY, O_RDWR | O_CREAT | O_EXCL, 0644); // see if it exists
 	if (shm_fd==-1 && errno==EEXIST) { // already exists

@@ -100,7 +100,7 @@ int main (int argc, char *argv[]) {
 
 	char path[32];
 	for (int i=0; i<INPUT_COUNT; i++) {
-		sprintf(path, "/dev/input/event%i", i);
+		snprintf(path, sizeof(path), "/dev/input/event%i", i);
 		inputs[i] = open(path, O_RDONLY | O_NONBLOCK | O_CLOEXEC);
 	}
 	

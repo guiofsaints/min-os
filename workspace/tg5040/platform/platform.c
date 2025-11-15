@@ -334,8 +334,13 @@ GLuint load_shader_from_file(GLenum type, const char* filename, const char* path
     char* line = strtok(source, "\n");
     while (line) {
         if (strncmp(line, "#pragma parameter", 17) != 0) {
-            strcat(cleaned, line);
-            strcat(cleaned, "\n");
+            size_t cleaned_len = strlen(cleaned);
+            size_t line_len = strlen(line);
+            size_t remaining = strlen(source) - cleaned_len;
+            if (cleaned_len + line_len + 2 < strlen(source) + 1) {
+                strncat(cleaned, line, remaining - 1);
+                strncat(cleaned, "\n", remaining - 1);
+            }
         }
         line = strtok(NULL, "\n");
     }
@@ -413,10 +418,11 @@ GLuint load_shader_from_file(GLenum type, const char* filename, const char* path
             return 0;
         }
 
-        strcpy(combined, replacement_version);
-        strcat(combined, define);
-        if (default_precision) strcat(combined, default_precision);
-        strcat(combined, cleaned + header_len);
+        strncpy(combined, replacement_version, combined_len - 1);
+        combined[combined_len - 1] = '\0';
+        strncat(combined, define, combined_len - strlen(combined) - 1);
+        if (default_precision) strncat(combined, default_precision, combined_len - strlen(combined) - 1);
+        strncat(combined, cleaned + header_len, combined_len - strlen(combined) - 1);
     } else if (version_start && version_end) {
         size_t header_len = version_end - cleaned + 1;
         combined_len = header_len + define_len + precision_len + (source_len - header_len) + 1;
@@ -432,7 +438,8 @@ GLuint load_shader_from_file(GLenum type, const char* filename, const char* path
         memcpy(combined + header_len, define, define_len);
         if (default_precision)
             memcpy(combined + header_len + define_len, default_precision, precision_len);
-        strcpy(combined + header_len + define_len + precision_len, cleaned + header_len);
+        strncpy(combined + header_len + define_len + precision_len, cleaned + header_len, combined_len - header_len - define_len - precision_len - 1);
+        combined[combined_len - 1] = '\0';
     } else {
         size_t version_len = strlen(fallback_version);
         combined_len = version_len + define_len + precision_len + source_len + 1;
@@ -444,10 +451,11 @@ GLuint load_shader_from_file(GLenum type, const char* filename, const char* path
             return 0;
         }
 
-        strcpy(combined, fallback_version);
-        strcat(combined, define);
-        if (default_precision) strcat(combined, default_precision);
-        strcat(combined, cleaned);
+        strncpy(combined, fallback_version, combined_len - 1);
+        combined[combined_len - 1] = '\0';
+        strncat(combined, define, combined_len - strlen(combined) - 1);
+        if (default_precision) strncat(combined, default_precision, combined_len - strlen(combined) - 1);
+        strncat(combined, cleaned, combined_len - strlen(combined) - 1);
     }
 
     GLuint shader = glCreateShader(type);
@@ -2803,7 +2811,7 @@ void PLAT_clearTurbo() {
 
 int PLAT_setDateTime(int y, int m, int d, int h, int i, int s) {
 	char cmd[512];
-	sprintf(cmd, "date -s '%d-%d-%d %d:%d:%d'; hwclock -u -w", y,m,d,h,i,s);
+	snprintf(cmd, sizeof(cmd), "date -s '%d-%d-%d %d:%d:%d'; hwclock -u -w", y,m,d,h,i,s);
 	system(cmd);
 	return 0; // why does this return an int?
 }
@@ -3171,11 +3179,13 @@ int PLAT_wifiConnection(struct WIFI_connection *connection_info)
 			connection_info->link_speed = conn.link_speed;
 			connection_info->noise = conn.noise;
 			connection_info->rssi = conn.rssi;
-			strcpy(connection_info->ip, conn.ip_address);
+			strncpy(connection_info->ip, conn.ip_address, sizeof(connection_info->ip) - 1);
+			connection_info->ip[sizeof(connection_info->ip) - 1] = '\0';
 			//strcpy(connection_info->ssid, conn.ssid);
 			
 			// aw_wifid_get_connection returns garbage SSID sometimes
-			strcpy(connection_info->ssid, status.ssid);
+			strncpy(connection_info->ssid, status.ssid, sizeof(connection_info->ssid) - 1);
+			connection_info->ssid[sizeof(connection_info->ssid) - 1] = '\0';
 		}
 		else {
 			connection_reset(connection_info);
@@ -3426,7 +3436,7 @@ static void bt_test_gap_connected_changed_cb(btmg_bt_device_t *device)
 	else {
 		// not sure why this isnt handled over btmgr interface, but we need it
 		char act[256];
-		sprintf(act, "bluetoothctl trust %s", device->remote_address);
+		snprintf(act, sizeof(act), "bluetoothctl trust %s", device->remote_address);
 		system(act);
 	}
 }
@@ -3850,8 +3860,10 @@ int PLAT_bluetoothScan(struct BT_device *devices, int max)
 		while (dev_node != NULL && count < max) {
 			btlog("%s %s\n", dev_node->dev_addr, dev_node->dev_name);
 			struct BT_device *device = &devices[count];
-			strcpy(device->addr, dev_node->dev_addr);
-			strcpy(device->name, dev_node->dev_name);
+			strncpy(device->addr, dev_node->dev_addr, sizeof(device->addr) - 1);
+			device->addr[sizeof(device->addr) - 1] = '\0';
+			strncpy(device->name, dev_node->dev_name, sizeof(device->name) - 1);
+			device->name[sizeof(device->name) - 1] = '\0';
 			device->kind = BLUETOOTH_AUDIO;
 
 			count++;
@@ -3866,8 +3878,10 @@ int PLAT_bluetoothScan(struct BT_device *devices, int max)
 		while (dev_node != NULL && count < max) {
 			btlog("%s %s\n", dev_node->dev_addr, dev_node->dev_name);
 			struct BT_device *device = &devices[count];
-			strcpy(device->addr, dev_node->dev_addr);
-			strcpy(device->name, dev_node->dev_name);
+			strncpy(device->addr, dev_node->dev_addr, sizeof(device->addr) - 1);
+			device->addr[sizeof(device->addr) - 1] = '\0';
+			strncpy(device->name, dev_node->dev_name, sizeof(device->name) - 1);
+			device->name[sizeof(device->name) - 1] = '\0';
 			device->kind = BLUETOOTH_CONTROLLER;
 
 			count++;
@@ -3891,8 +3905,10 @@ int PLAT_bluetoothPaired(struct BT_devicePaired *paired, int max)
 	if(iter) {
 		while(iter && count < max) {
 			struct BT_devicePaired *device = &paired[count];
-			strcpy(device->remote_addr, iter->remote_address);
-			strcpy(device->remote_name, iter->remote_name);
+			strncpy(device->remote_addr, iter->remote_address, sizeof(device->remote_addr) - 1);
+			device->remote_addr[sizeof(device->remote_addr) - 1] = '\0';
+			strncpy(device->remote_name, iter->remote_name, sizeof(device->remote_name) - 1);
+			device->remote_name[sizeof(device->remote_name) - 1] = '\0';
 			device->rssi = iter->rssi;
 			device->is_bonded = iter->is_bonded;
 			device->is_connected = iter->is_connected;
