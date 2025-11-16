@@ -79,8 +79,9 @@ For other devices we recommend checking out [MinUI](https://github.com/shauninma
 - Trimui Smart Pro
 
 > **Note:** Support for other devices (Miyoo Mini, Anbernic RG35XX, etc.) has been archived.  
-> See the [`archive/unmaintained-platforms`](../../tree/archive/unmaintained-platforms) branch for historical platform code.  
-> For these devices, we recommend using [MinUI](https://github.com/shauninman/MinUI).
+> - **Using a deprecated device?** Read the [Migration Guide](MIGRATION.md) for your options  
+> - **Historical code:** [`archive/unmaintained-platforms`](../../tree/archive/unmaintained-platforms) branch  
+> - **Alternative firmware:** [MinUI](https://github.com/shauninman/MinUI) actively supports most archived devices
 
 ---
 
