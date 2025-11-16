@@ -3,7 +3,7 @@
 **Document Version**: 1.0  
 **Date**: November 15, 2025  
 **Target State**: Post-platform-simplification architecture  
-**Scope**: TrimUI Brick/Smart Pro (tg5040) + Desktop (testing)
+**Scope**: TrimUI Brick (tg5040) + Desktop (testing)
 
 ---
 
@@ -97,7 +97,7 @@ NextUI/
 │   │   ├── bootlogo/                 # Boot logo display
 │   │   └── cores/                    # Shared core build logic
 │   │
-│   ├── tg5040/                       # TrimUI Brick/Smart Pro
+│   ├── tg5040/                       # TrimUI Brick
 │   │   ├── makefile                  # Platform build
 │   │   │
 │   │   ├── platform/                 # Hardware abstraction
@@ -328,7 +328,7 @@ void setSettingInt(const char* key, int value);
 
 Two platform implementations:
 
-#### tg5040 (TrimUI Brick / Smart Pro) - PRIMARY
+#### tg5040 (TrimUI Brick) - PRIMARY
 
 **Location**: `workspace/tg5040/`
 

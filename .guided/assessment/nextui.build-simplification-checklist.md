@@ -24,7 +24,8 @@ This checklist provides concrete, actionable steps to simplify the min-os build 
 **Current State**:
 ```makefile
 ifeq (,$(PLATFORMS))
-# Only TrimUI Brick/Smart Pro (tg5040) is supported
+# Only TrimUI Brick (tg5040) is supported
+# TrimUI Smart Pro and other devices have been archived
 # See archive/unmaintained-platforms branch for other devices
 PLATFORMS = tg5040
 endif
@@ -523,7 +524,7 @@ help:
 	@echo "NextUI Build System"
 	@echo ""
 	@echo "Main targets:"
-	@echo "  make all          - Build TrimUI Brick/Smart Pro (tg5040)"
+	@echo "  make all          - Build TrimUI Brick (tg5040)"
 	@echo "  make desktop      - Build desktop testing version"
 	@echo "  make clean        - Clean all build artifacts"
 	@echo "  make shell        - Open Docker shell (tg5040 toolchain)"

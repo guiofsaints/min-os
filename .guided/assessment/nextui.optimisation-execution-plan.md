@@ -22,7 +22,7 @@ Each phase is broken down into concrete, actionable tasks with clear dependencie
 ## Guiding Principles
 
 1. **Incremental Progress**: Small, testable changes over big-bang rewrites
-2. **User Safety**: Never break existing functionality for TrimUI Brick/Smart Pro users
+2. **User Safety**: Never break existing functionality for TrimUI Brick users
 3. **Measure Everything**: Benchmark before/after, track metrics, verify with real hardware
 4. **Parallel Work Streams**: Size reduction, refactoring, and tooling can progress simultaneously
 5. **Clear Checkpoints**: Each task has defined "done" criteria and validation steps
@@ -202,7 +202,7 @@ rg "PLATFORM_(MIYOOMINI|RG35XX|RGB30|TRIMUISMART|ZERO28|MY282|MY355|GKDPIXEL|M17
 **Objective**: Reflect archival in user-facing and developer-facing docs.
 
 **Tasks**:
-- [ ] Update `README.md` with supported platforms (TrimUI Brick, Smart Pro only)
+- [ ] Update `README.md` with supported platforms (TrimUI Brick only)
 - [ ] Add section on accessing archived platforms
 - [ ] Update build documentation (`docs/BUILD.md`)
 - [ ] Update online documentation (if hosted separately)

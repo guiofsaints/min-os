@@ -4,7 +4,7 @@ A pak is just a folder with a ".pak" extension that contains a shell script name
 
 There are two kinds of paks, emulators and tools. Emulator paks live in the Emus folder. Tool paks live in the Tools folder. These two folders live at the root of your SD card. Extra paks should never be added to the hidden ".system" folder at the root of the SD card. This folder is deleted and replaced every time a user updates NextUI.
 
-Paks are platform specific. Inside the Emus and Tools folders you will find (or need to create) platform folders. NextUI currently supports the TrimUI Brick and Smart Pro, which use the "tg5040" platform folder name.
+Paks are platform specific. Inside the Emus and Tools folders you will find (or need to create) platform folders. NextUI currently supports the TrimUI Brick, which uses the "tg5040" platform folder name.
 
 > **Note:** Other devices were previously supported but have been archived. See the [`archive/unmaintained-platforms`](../../tree/archive/unmaintained-platforms) branch for historical platform code, or use [MinUI](https://github.com/shauninman/MinUI) for those devices.
 

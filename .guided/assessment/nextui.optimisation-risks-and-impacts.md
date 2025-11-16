@@ -877,7 +877,7 @@ dst[sizeof(dst) - 1] = '\0';  // ✅ Always null-terminate
 
 ## MinOS Strategic Goals
 
-1. **Platform consolidation**: Support only TrimUI Brick and Smart Pro
+1. **Platform consolidation**: Support only TrimUI Brick
 2. **Simplification**: Minimal UI, reduced feature bloat
 3. **Modularity**: Clean separation between OS layer, emulation, and UI
 4. **Community extensibility**: Robust PAK system

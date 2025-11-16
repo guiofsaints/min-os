@@ -2,7 +2,7 @@
 
 **Document Version**: 1.0  
 **Date**: November 15, 2025  
-**Target Scope**: TrimUI Brick/Smart Pro (tg5040) + Desktop Testing  
+**Target Scope**: TrimUI Brick (tg5040) + Desktop Testing  
 **Miyoo Support**: Documented as optional future work  
 **Timeline**: 2-4 weeks for core simplification
 
@@ -10,12 +10,12 @@
 
 ## Executive Summary
 
-This plan simplifies min-os from a multi-platform emulation frontend (11+ devices) to a **focused, high-quality experience** for TrimUI Brick and Smart Pro devices. The simplification removes ~60% of codebase complexity, improves maintainability, and allows the team to focus on features and quality for supported devices.
+This plan simplifies min-os from a multi-platform emulation frontend (11+ devices) to a **focused, high-quality experience** exclusively for the TrimUI Brick device. The simplification removes ~60% of codebase complexity, improves maintainability, and allows the team to focus on features and quality for this specific device.
 
 ### Key Outcomes
 
-- **Supported Platforms**: TrimUI Brick/Smart Pro (tg5040) + desktop (testing only)
-- **Removed**: 11 unmaintained platforms (miyoomini, rg35xx, rgb30, etc.)
+- **Supported Platforms**: TrimUI Brick (tg5040) + desktop (testing only)
+- **Removed**: 12 unmaintained platforms (including Smart Pro, miyoomini, rg35xx, rgb30, etc.)
 - **Preserved**: All legacy code archived in Git branch for community forks
 - **Migration Path**: Clear documentation for users of deprecated devices
 - **Build Simplification**: 50% faster builds, cleaner makefiles, single Docker toolchain
@@ -30,7 +30,7 @@ Based on analysis of `makefile`, `workspace/`, and `skeleton/` directories:
 
 | Platform ID | Device Name | Architecture | Toolchain | Status | LOC Estimate |
 |------------|-------------|--------------|-----------|--------|--------------|
-| **tg5040** | TrimUI Brick / Smart Pro | ARM Cortex-A53 (aarch64) | ghcr.io/loveretro/tg5040-toolchain | ✅ **ACTIVE** | ~60,000 |
+| **tg5040** | TrimUI Brick | ARM Cortex-A53 (aarch64) | ghcr.io/loveretro/tg5040-toolchain | ✅ **ACTIVE** | ~60,000 |
 | **desktop** | macOS / Linux (testing) | x86_64 / ARM64 | Native GCC/Clang | ✅ **ACTIVE** | ~8,000 |
 | miyoomini | Miyoo Mini | ARMv7 (Allwinner A30) | miyoomini-toolchain | ⚠️ **UNMAINTAINED** | ~12,000 |
 | rg35xx | Anbernic RG35XX | ARMv7 (Actions ATM7039) | rg35xx-toolchain | ⚠️ **UNMAINTAINED** | ~10,000 |
@@ -46,10 +46,10 @@ Based on analysis of `makefile`, `workspace/`, and `skeleton/` directories:
 
 **Total Current LOC**: ~158,000 (including unmaintained platforms)
 
-**Note**: The top-level `makefile` already reflects simplification (line 13-15):
+**Note**: The top-level `makefile` already reflects simplification (line 13-16):
 ```makefile
-# Only TrimUI Brick/Smart Pro (tg5040) is supported
-# See archive/unmaintained-platforms branch for other devices
+# Only TrimUI Brick (tg5040) is supported
+# TrimUI Smart Pro and other devices archived
 PLATFORMS = tg5040
 ```
 
@@ -63,7 +63,7 @@ This indicates **Phase A.1 (archival) has already been completed** in the codeba
 
 | Toolchain | Repository | Docker Image | Purpose | Status |
 |-----------|-----------|--------------|---------|--------|
-| **tg5040** | `LoveRetro/tg5040-toolchain` | `ghcr.io/loveretro/tg5040-toolchain:latest` | TrimUI Brick/Smart Pro cross-compilation | ✅ KEEP |
+| **tg5040** | `LoveRetro/tg5040-toolchain` | `ghcr.io/loveretro/tg5040-toolchain:latest` | TrimUI Brick cross-compilation | ✅ KEEP |
 | **desktop** | Native system | N/A (uses system GCC/Clang) | Local testing and development | ✅ KEEP |
 
 ### Deprecated Toolchains (Archive)

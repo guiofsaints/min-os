@@ -9,7 +9,7 @@
 
 ## Executive Summary
 
-Phase A successfully simplified min-os from a **13-platform multi-device firmware** to a **focused TrimUI Brick/Smart Pro solution**. This strategic consolidation reduced the codebase by **77%**, eliminated platform-specific duplication, and established a clean foundation for ongoing development.
+Phase A successfully simplified min-os from a **13-platform multi-device firmware** to a **focused TrimUI Brick-only solution**. This strategic consolidation reduced the codebase by **77%**, eliminated platform-specific duplication, and established a clean foundation for ongoing development.
 
 ---
 
@@ -45,6 +45,7 @@ Phase A successfully simplified min-os from a **13-platform multi-device firmwar
 9. rgb30 (Powkiddy RGB30)
 10. trimuismart (TrimUI Smart)
 11. zero28 (Powkiddy Zero 2.8)
+12. **trimui_smartpro** (TrimUI Smart Pro)
 
 **Verification**:
 - ✅ Branch exists on remote: `origin/archive/unmaintained-platforms`
@@ -446,7 +447,7 @@ The codebase is now:
 - **Understandable**: Clear architecture vs. platform maze
 - **Optimizable**: Small surface area vs. sprawling complexity
 
-Phase A establishes a **solid foundation** for Phase C performance work. The team can now focus on making TrimUI Brick/Smart Pro the **best handheld emulation experience** possible.
+Phase A establishes a **solid foundation** for Phase C performance work. The team can now focus on making TrimUI Brick the **best handheld emulation experience** possible.
 
 ---
 

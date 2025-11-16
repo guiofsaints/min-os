@@ -11,8 +11,8 @@ endif
 endif
 
 ifeq (,$(PLATFORMS))
-# Only TrimUI Brick/Smart Pro (tg5040) is supported
-# See archive/unmaintained-platforms branch for other devices
+# Only TrimUI Brick (tg5040) is supported
+# TrimUI Smart Pro and other devices archived in archive/unmaintained-platforms branch
 PLATFORMS = tg5040
 endif
 

@@ -34,7 +34,7 @@
 
 ---
 
-A CFW based of MinUI with a rebuild emulation engine and tons of added features for the TrimUI Brick and Smart Pro. 
+A CFW based of MinUI with a rebuild emulation engine and tons of added features for the TrimUI Brick. 
 
 For other devices we recommend checking out [MinUI](https://github.com/shauninman/MinUI)
 
@@ -75,10 +75,9 @@ For other devices we recommend checking out [MinUI](https://github.com/shauninma
 ---
 
 ## Currently supported devices:
-- Trimui Brick
-- Trimui Smart Pro
+- TrimUI Brick
 
-> **Note:** Support for other devices (Miyoo Mini, Anbernic RG35XX, etc.) has been archived.  
+> **Note:** Support for other devices (TrimUI Smart Pro, Miyoo Mini, Anbernic RG35XX, etc.) has been archived.  
 > - **Using a deprecated device?** Read the [Migration Guide](MIGRATION.md) for your options  
 > - **Historical code:** [`archive/unmaintained-platforms`](../../tree/archive/unmaintained-platforms) branch  
 > - **Alternative firmware:** [MinUI](https://github.com/shauninman/MinUI) actively supports most archived devices

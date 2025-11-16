@@ -2,7 +2,7 @@
 
 **Date**: November 15, 2025  
 **Project**: min-os Platform Consolidation  
-**Scope**: Miyoo/TrimUI Focus Strategy  
+**Scope**: TrimUI Brick Exclusive  
 **Timeline**: 2-4 weeks execution
 
 ---
@@ -60,11 +60,13 @@ This platform simplification initiative for min-os consists of three detailed pl
 
 ### Supported Platforms (Final Scope)
 
-✅ **PRIMARY: TrimUI Brick / Smart Pro (tg5040)**
+✅ **PRIMARY: TrimUI Brick (tg5040)**
 - Full hardware support
 - All features implemented
 - Active maintenance and testing
 - Docker cross-compilation toolchain
+
+**Note**: TrimUI Smart Pro uses the same tg5040 platform but is no longer officially supported. Smart Pro users should use MinUI.
 
 ✅ **SECONDARY: Desktop (testing only)**
 - Native builds for macOS/Linux/Windows
@@ -250,7 +252,7 @@ This platform simplification is **Phase A.1** of the broader optimization plan (
 ## 🎯 Focus on TrimUI Excellence
 
 Starting with this release, min-os exclusively supports:
-- ✅ **TrimUI Brick / Smart Pro** (tg5040)
+- ✅ **TrimUI Brick** (tg5040)
 - ✅ **Desktop** (testing only)
 
 ## ⚠️ Breaking Change: Deprecated Devices
@@ -386,7 +388,7 @@ Once platform simplification complete:
 
 ## Conclusion
 
-Platform simplification is a **strategic decision** to focus on excellence rather than breadth. By concentrating on TrimUI Brick/Smart Pro, NextUI can become the **premier emulation frontend** for these devices while maintaining the ability to support additional platforms in the future through a clean, well-documented abstraction layer.
+Platform simplification is a **strategic decision** to focus on excellence rather than breadth. By concentrating exclusively on TrimUI Brick, NextUI can become the **premier emulation frontend** for this device while maintaining the ability to support additional platforms in the future through a clean, well-documented abstraction layer.
 
 **Key Takeaway**: Simplifying from 13 platforms to 2 platforms removes 60% of complexity while improving build speed by 81% and setting the foundation for sustainable, high-quality development.
 

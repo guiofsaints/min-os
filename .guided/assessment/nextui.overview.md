@@ -2,7 +2,7 @@
 
 ## What is NextUI?
 
-**NextUI** is a custom firmware (CFW) for handheld retro gaming devices, specifically targeting the **TrimUI Brick** and **TrimUI Smart Pro**. It is based on **MinUI** – a minimal retro gaming interface originally created by Shaun Inman – but NextUI has significantly diverged from MinUI through a complete rebuild of the emulation engine and the addition of numerous features tailored to the TrimUI hardware ecosystem.
+**NextUI** is a custom firmware (CFW) for handheld retro gaming devices, specifically targeting the **TrimUI Brick**. It is based on **MinUI** – a minimal retro gaming interface originally created by Shaun Inman – but NextUI has significantly diverged from MinUI through a complete rebuild of the emulation engine and the addition of numerous features tailored to the TrimUI Brick hardware.
 
 NextUI aims to deliver a polished, high-performance emulation experience with low latency, advanced audio resampling, GPU-accelerated rendering, shader support, and modern quality-of-life features such as WiFi integration, Bluetooth audio, game time tracking, LED control, and deep sleep management.
 
@@ -83,7 +83,7 @@ NextUI started as a fork of MinUI but has evolved into a distinct project with s
 | **Battery Monitoring**   | Basic battery icon                          | Battery history graph, time remaining prediction             |
 | **Deep Sleep**           | Not supported                               | Instant-on deep sleep with power-off protection (Brick)      |
 | **UI Enhancements**      | Static menus                                | Animated scrolling titles, game switcher, themed colors      |
-| **Platform Focus**       | Multi-device (many handhelds)               | TrimUI Brick & Smart Pro optimized (other devices unmaintained) |
+| **Platform Focus**       | Multi-device (many handhelds)               | TrimUI Brick exclusive (other devices unmaintained) |
 
 ### Technical Divergence
 

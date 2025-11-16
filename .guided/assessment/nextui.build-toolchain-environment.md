@@ -6,7 +6,7 @@ This document captures the build toolchain, environment requirements, and build 
 
 ## Overview
 
-NextUI uses a **Docker-based cross-compilation toolchain** targeting ARM Cortex-A53 processors (TrimUI Brick/Smart Pro). The build system is orchestrated by GNU Make and requires Linux-based ARM toolchains that run inside Docker containers.
+NextUI uses a **Docker-based cross-compilation toolchain** targeting ARM Cortex-A53 processors (TrimUI Brick). The build system is orchestrated by GNU Make and requires Linux-based ARM toolchains that run inside Docker containers.
 
 **Key Insight**: Building NextUI natively on Windows is **not supported** by the official build system. However, Windows users can:
 1. Use **Docker Desktop** to run the Linux-based build
@@ -19,7 +19,6 @@ NextUI uses a **Docker-based cross-compilation toolchain** targeting ARM Cortex-
 
 ### Target Platforms
 - **TrimUI Brick** (`PLATFORM=tg5040`)
-- **TrimUI Smart Pro** (`PLATFORM=tg5040`)
 - **Desktop** (`PLATFORM=desktop`) - macOS/Linux testing only
 
 ### Build Layers
@@ -80,7 +79,7 @@ NextUI uses a **Docker-based cross-compilation toolchain** targeting ARM Cortex-
   6. Libretro cores (if `COMPILE_CORES=true`)
 
 #### Platform Makefile: `workspace/tg5040/makefile`
-- **Purpose**: Platform-specific targets (TrimUI Brick/Smart Pro)
+- **Purpose**: Platform-specific targets (TrimUI Brick)
 - **Dependencies**:
   - evtest (input device testing)
   - jstest (joystick testing)

@@ -11,7 +11,7 @@ NextUI/
 │   └── SYSTEM/       # Hidden .system folder (binaries, libs, cores, res)
 ├── workspace/        # Source code for all binaries
 │   ├── all/          # Cross-platform shared code
-│   ├── tg5040/       # TrimUI Brick & Smart Pro specific code
+│   ├── tg5040/       # TrimUI Brick specific code
 │   ├── desktop/      # macOS/Linux desktop build (dev/debug)
 │   └── _unmaintained/ # Legacy code for retired platforms
 ├── toolchains/       # Docker-based cross-compilation toolchains (pulled at build)
@@ -80,7 +80,7 @@ Core modules used by all platforms:
 | `cores/`            | Libretro core submodules (when built) |
 | `readmes/`          | README formatting utilities |
 
-#### `tg5040/` – TrimUI Brick & Smart Pro Specific Code
+#### `tg5040/` – TrimUI Brick Specific Code
 
 | Module              | Description |
 |---------------------|-------------|

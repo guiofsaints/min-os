@@ -1,20 +1,20 @@
 # Migration Guide for Deprecated Device Users
 
 **Effective Date**: November 15, 2025  
-**Affected Platforms**: 11 devices (see below)  
-**Reason**: Platform consolidation to focus on TrimUI Brick/Smart Pro
+**Affected Platforms**: 12 devices (see below)  
+**Reason**: Platform consolidation to focus exclusively on TrimUI Brick
 
 ---
 
 ## ⚠️ Important Notice
 
-As of **November 2025**, min-os/NextUI has transitioned to a **single-platform focus** supporting only:
+As of **November 2025**, min-os/NextUI has transitioned to a **single-device focus** supporting only:
 - ✅ **TrimUI Brick**
-- ✅ **TrimUI Smart Pro**
 
 Support for the following devices has been **discontinued**:
 
 ### Discontinued Devices
+- TrimUI Smart Pro
 - Miyoo Mini, Miyoo 282, Miyoo 355
 - Anbernic RG35XX, RG35XX Plus
 - Powkiddy RGB30, Zero 2.8
@@ -33,7 +33,7 @@ Support for the following devices has been **discontinued**:
 - **Better testing** with focused hardware verification
 
 ### Strategic Alignment
-- TrimUI Brick/Smart Pro represent the **future** of affordable handheld emulation
+- TrimUI Brick represents the **optimal target** for focused development
 - Active hardware availability and manufacturer support
 - Strong community adoption and ecosystem
 
@@ -192,7 +192,10 @@ make PLATFORM=miyoomini
 **A**: Yes! Old releases remain available and functional. Your device won't stop working.
 
 ### Q: Can I request my device be re-supported?
-**A**: Unfortunately, no. The decision to focus on TrimUI Brick/Smart Pro is strategic and permanent for this project.
+**A**: Unfortunately, no. The decision to focus exclusively on TrimUI Brick is strategic and permanent for this project.
+
+**Q**: What about TrimUI Smart Pro users?
+**A**: Smart Pro is very similar to Brick, but this project focuses on Brick specifically. Smart Pro users should use MinUI or fork from the archive branch.
 
 ### Q: What if I find a bug in my old version?
 **A**: You have two options:
@@ -224,7 +227,7 @@ make PLATFORM=miyoomini
 
 ## Getting Help
 
-### For NextUI on TrimUI Brick/Smart Pro:
+### For NextUI on TrimUI Brick:
 - 📖 Documentation: https://nextui.loveretro.games/docs/
 - 💬 Discord: https://discord.gg/HKd7wqZk3h
 - 🐛 GitHub Issues: https://github.com/guiofsaints/min-os/issues
@@ -246,7 +249,7 @@ make PLATFORM=miyoomini
 | **Nov 15, 2025** | Platform simplification completed |
 | **Nov 15, 2025** | Archive branch created with historical code |
 | **Nov 15, 2025** | This migration guide published |
-| **Ongoing** | Main branch focuses on TrimUI Brick/Smart Pro only |
+| **Ongoing** | Main branch focuses on TrimUI Brick only |
 
 ---
 
